@@ -1,0 +1,16 @@
+﻿<Window x:Name="campBatallaWindow" x:Class="Principal.CampBatalla"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Principal"
+        mc:Ignorable="d"
+        Title="CampBatalla" Height="1080" Width="1920" Closing="campBatallaWindow_Closing">
+    <Grid>
+        <Image   Name="image1"  Stretch="Fill" >
+            <Image.Source>
+                <BitmapImage UriSource="https://i.pinimg.com/736x/d3/3b/54/d33b5402e9b8fc1dd6c6d4bb5ab2ac2e.jpg" />
+            </Image.Source>
+        </Image>
+    </Grid>
+</Window>

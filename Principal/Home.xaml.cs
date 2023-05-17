@@ -83,6 +83,63 @@ namespace Principal
             int contador = 1;
             //Els filtro amb un Find All per l'id del usuari.
             mazos.LlistaMazos = mazos.LlistaMazos.FindAll(x => x.Usuari.Id == this.Usuari.Id);
+            //Miro cuants mazos té l'usuari i depenent dels mazos vaig fent visibles els botons.
+            if (mazos.LlistaMazos.Count == 1)
+            {
+                btnAfegirMazoRow1.Visibility = Visibility.Hidden;
+                btnEliminarMazoRow1.Visibility = Visibility.Visible;
+                btnModificarMazoRow1.Visibility = Visibility.Visible;
+
+                btnAfegirMazoRow2.Visibility = Visibility.Visible;
+                btnEliminarMazoRow2.Visibility = Visibility.Hidden;
+                btnModificarMazoRow2.Visibility = Visibility.Hidden;
+
+                btnAfegirMazoRow3.Visibility = Visibility.Hidden;
+                btnEliminarMazoRow3.Visibility = Visibility.Hidden;
+                btnModificarMazoRow3.Visibility = Visibility.Hidden;
+            }
+            else if (mazos.LlistaMazos.Count == 2)
+            {
+                btnAfegirMazoRow1.Visibility = Visibility.Hidden;
+                btnEliminarMazoRow1.Visibility = Visibility.Visible;
+                btnModificarMazoRow1.Visibility = Visibility.Visible;
+
+                btnAfegirMazoRow2.Visibility = Visibility.Hidden;
+                btnEliminarMazoRow2.Visibility = Visibility.Visible;
+                btnModificarMazoRow2.Visibility = Visibility.Visible;
+
+                btnAfegirMazoRow3.Visibility = Visibility.Visible;
+                btnEliminarMazoRow3.Visibility = Visibility.Hidden;
+                btnModificarMazoRow3.Visibility = Visibility.Hidden;
+            }
+            else if (mazos.LlistaMazos.Count == 1)
+            {
+                btnAfegirMazoRow1.Visibility = Visibility.Hidden;
+                btnEliminarMazoRow1.Visibility = Visibility.Visible;
+                btnModificarMazoRow1.Visibility = Visibility.Visible;
+
+                btnAfegirMazoRow2.Visibility = Visibility.Hidden;
+                btnEliminarMazoRow2.Visibility = Visibility.Visible;
+                btnModificarMazoRow2.Visibility = Visibility.Visible;
+
+                btnAfegirMazoRow3.Visibility = Visibility.Hidden;
+                btnEliminarMazoRow3.Visibility = Visibility.Visible;
+                btnModificarMazoRow3.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btnAfegirMazoRow1.Visibility = Visibility.Visible;
+                btnEliminarMazoRow1.Visibility = Visibility.Hidden;
+                btnModificarMazoRow1.Visibility = Visibility.Hidden;
+
+                btnAfegirMazoRow2.Visibility = Visibility.Hidden;
+                btnEliminarMazoRow2.Visibility = Visibility.Hidden;
+                btnModificarMazoRow2.Visibility = Visibility.Hidden;
+
+                btnAfegirMazoRow3.Visibility = Visibility.Hidden;
+                btnEliminarMazoRow3.Visibility = Visibility.Hidden;
+                btnModificarMazoRow3.Visibility = Visibility.Hidden;
+            }
             //Recorro tots el mazos buscant els del Usuari loggejat.
             foreach (Mazo mazo in mazos.LlistaMazos)
             {
@@ -219,6 +276,39 @@ namespace Principal
             triarMazo.Show();
             this.Close();
 
+        }
+        /// <summary>
+        /// Metode que obre la finestra de afegir un nou Mazo.
+        /// </summary>
+        /// <param name="sender">Objecte rebut.</param>
+        /// <param name="e">Event intern.</param>
+        private void btnAfegirMazoRow1_Click(object sender, RoutedEventArgs e)
+        {
+            AfegirMazo nouMazo = new(Usuari);
+            nouMazo.Show();
+            this.Close();
+        }
+        /// <summary>
+        /// Metode que obre la finestra de afegir un nou Mazo.
+        /// </summary>
+        /// <param name="sender">Objecte rebut.</param>
+        /// <param name="e">Event intern.</param>
+        private void btnAfegirMazoRow2_Click(object sender, RoutedEventArgs e)
+        {
+            AfegirMazo nouMazo = new(Usuari);
+            nouMazo.Show();
+            this.Close();
+        }
+        /// <summary>
+        /// Metode que obre la finestra de afegir un nou Mazo.
+        /// </summary>
+        /// <param name="sender">Objecte rebut.</param>
+        /// <param name="e">Event intern.</param>
+        private void btnAfegirMazoRow3_Click(object sender, RoutedEventArgs e)
+        {
+            AfegirMazo nouMazo = new(Usuari);
+            nouMazo.Show();
+            this.Close();
         }
     }
     //Classe que utilitzo per el Data grid de Partides així hem mostra les següents dades de partides al data grid.

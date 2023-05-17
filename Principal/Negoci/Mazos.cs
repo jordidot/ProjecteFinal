@@ -42,22 +42,28 @@ namespace Principal.Negoci
         /// <summary>
         ///Metode per afegir mazos
         /// </summary>
-        public void AfegirMazo(Mazo m)
+        public void AfegirMazoBD(Mazo m)
         {
-            MazosDB mazobd = new MazosDB();
+            string nomvalidar = m.Nom;
             bool mazoTrobada = false;
-            mazobd.RecuperarMazos();
-            foreach (Mazo mazo in mazobd.Mazos.LlistaMazos)
-            {
-                if (m.Id == mazo.Id)
-                    mazoTrobada = true;
-            }
-            if (mazoTrobada)
-            {
-                MessageBox.Show("L'id es el mateix, no es pot afegir.");
-            }
+            bool nomvalid = true;
+
+            //Aquest foreach recorre la llista de mazos de la base de dades, per buscar si el
+            List<Mazo> mazosLlista = RecuperarMazos().FindAll(x => x.Id == m.Id);
+            if (mazosLlista.Count > 0)mazoTrobada = true;
+            if (mazoTrobada) MessageBox.Show("L'id es el mateix, no es pot afegir.");
             else
-                llistaMazos.Add(m);
+            {
+                for (int i = 0; i < nomvalidar.Length; i++)
+                    if (i > 16) nomvalid = false;
+
+                if (nomvalid)
+                {
+                    MazosDB mazosdb = new();
+                    mazosdb.AfegirMazoBD(m);
+                }
+                    
+            }
         }
         /// <summary>
         /// Metode per eliminar mazo

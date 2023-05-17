@@ -112,7 +112,7 @@ namespace Principal
                 btnEliminarMazoRow3.Visibility = Visibility.Hidden;
                 btnModificarMazoRow3.Visibility = Visibility.Hidden;
             }
-            else if (mazos.LlistaMazos.Count == 1)
+            else if (mazos.LlistaMazos.Count == 3)
             {
                 btnAfegirMazoRow1.Visibility = Visibility.Hidden;
                 btnEliminarMazoRow1.Visibility = Visibility.Visible;
@@ -284,7 +284,7 @@ namespace Principal
         /// <param name="e">Event intern.</param>
         private void btnAfegirMazoRow1_Click(object sender, RoutedEventArgs e)
         {
-            AfegirMazo nouMazo = new(Usuari);
+            AfegirUnNouMazo nouMazo = new(Usuari);
             nouMazo.Show();
             this.Close();
         }
@@ -295,7 +295,7 @@ namespace Principal
         /// <param name="e">Event intern.</param>
         private void btnAfegirMazoRow2_Click(object sender, RoutedEventArgs e)
         {
-            AfegirMazo nouMazo = new(Usuari);
+            AfegirUnNouMazo nouMazo = new(Usuari);
             nouMazo.Show();
             this.Close();
         }
@@ -306,7 +306,7 @@ namespace Principal
         /// <param name="e">Event intern.</param>
         private void btnAfegirMazoRow3_Click(object sender, RoutedEventArgs e)
         {
-            AfegirMazo nouMazo = new(Usuari);
+            AfegirUnNouMazo nouMazo = new(Usuari);
             nouMazo.Show();
             this.Close();
         }

@@ -22,12 +22,6 @@ namespace Principal.Negoci
         /// <param name="cartes">Atribut cartes,prove de la classe cartes</param>
         /// <param name="nom">Atribut nom, nom del mazo</param>
         /// <param name="usuari">Atribut usuari,prove de la classe usuari</param>
-
-        public Mazo(Cartes cartes, string nom, Usuari usuari, int id)
-        {
-            cartes = new Cartes();
-        }
-
         public Mazo(int id, Cartes cartes, string nom, Usuari usuari)
         {
             this.id = id;

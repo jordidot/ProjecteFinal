@@ -64,7 +64,7 @@ C:\xampp\htdocs\GS-DAW2023\M03\ProjecteFinalProgramacioM3\Programa\ProjecteFinal
 C:\xampp\htdocs\GS-DAW2023\M03\ProjecteFinalProgramacioM3\Programa\ProjecteFinal\Principal\obj\Debug\net6.0-windows\Principal.pdb
 C:\xampp\htdocs\GS-DAW2023\M03\ProjecteFinalProgramacioM3\Programa\ProjecteFinal\Principal\obj\Debug\net6.0-windows\Principal.genruntimeconfig.cache
 C:\xampp\htdocs\GS-DAW2023\M03\ProjecteFinalProgramacioM3\Programa\ProjecteFinal\Principal\obj\Debug\net6.0-windows\ref\Principal.dll
-C:\xampp\htdocs\GS-DAW2023\M03\ProjecteFinalProgramacioM3\Programa\ProjecteFinal\Principal\obj\Debug\net6.0-windows\AfegirMazo.g.cs
-C:\xampp\htdocs\GS-DAW2023\M03\ProjecteFinalProgramacioM3\Programa\ProjecteFinal\Principal\obj\Debug\net6.0-windows\AfegirMazo.baml
 C:\xampp\htdocs\GS-DAW2023\M03\ProjecteFinalProgramacioM3\Programa\ProjecteFinal\Principal\obj\Debug\net6.0-windows\AfegirMazoExtend.g.cs
 C:\xampp\htdocs\GS-DAW2023\M03\ProjecteFinalProgramacioM3\Programa\ProjecteFinal\Principal\obj\Debug\net6.0-windows\AfegirMazoExtend.baml
+C:\xampp\htdocs\GS-DAW2023\M03\ProjecteFinalProgramacioM3\Programa\ProjecteFinal\Principal\obj\Debug\net6.0-windows\AfegirUnNouMazo.g.cs
+C:\xampp\htdocs\GS-DAW2023\M03\ProjecteFinalProgramacioM3\Programa\ProjecteFinal\Principal\obj\Debug\net6.0-windows\AfegirUnNouMazo.baml

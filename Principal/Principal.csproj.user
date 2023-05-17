@@ -10,7 +10,7 @@
     <Compile Update="Administracio.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="AfegirMazo.xaml.cs">
+    <Compile Update="AfegirUnNouMazo.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="AfegirMazoExtend.xaml.cs">
@@ -33,7 +33,7 @@
     <Page Update="Administracio.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="AfegirMazo.xaml">
+    <Page Update="AfegirUnNouMazo.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="AfegirMazoExtend.xaml">

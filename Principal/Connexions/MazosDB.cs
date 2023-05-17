@@ -43,7 +43,7 @@ namespace Principal.Connexions
         /// <param name="mazo">mazo a afegir</param>
         public void AfegirMazoBD(Mazo mazo)
         {
-            var comanda = new MySqlCommand("INSERT INTO mazos VALUES("+mazo.Id+","+mazo.Nom+"," + mazo.Usuari.Id + "," + mazo.Cartes.LlistaCartes[0].Id + "," + mazo.Cartes.LlistaCartes[1].Id + "," + mazo.Cartes.LlistaCartes[2].Id + "," + mazo.Cartes.LlistaCartes[3].Id + "," + mazo.Cartes.LlistaCartes[4].Id + ");", ConnexioBD.Connectar());
+            var comanda = new MySqlCommand("INSERT INTO mazos VALUES("+mazo.Id+",'"+mazo.Nom+"'," + mazo.Usuari.Id + "," + mazo.Cartes.LlistaCartes[0].Id + "," + mazo.Cartes.LlistaCartes[1].Id + "," + mazo.Cartes.LlistaCartes[2].Id + "," + mazo.Cartes.LlistaCartes[3].Id + "," + mazo.Cartes.LlistaCartes[4].Id + ");", ConnexioBD.Connectar());
             comanda.ExecuteNonQuery();
         }
         /// <summary>

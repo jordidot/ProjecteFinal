@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\xampp\htdocs\GS-DAW2023\M03\ProjecteFinalProgramacioM3\Programa\ProjecteFinal\Principal\App.xaml
-7745300120
+8-363021297
 
-28-1179878021
+29-165970553
 195600811376
-Administracio.xaml;AfegirMazo.xaml;CampBatalla.xaml;Home.xaml;MainWindow.xaml;Registre.xaml;TriarMazo.xaml;
+Administracio.xaml;AfegirMazo.xaml;AfegirMazoExtend.xaml;CampBatalla.xaml;Home.xaml;MainWindow.xaml;Registre.xaml;TriarMazo.xaml;
 
 True
 

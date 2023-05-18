@@ -14,6 +14,7 @@ namespace Principal.Connexions
         //Atributs
         private Usuaris usuaris;
         private ConnexioDB connexioBD;
+        private int quantitatTotal;
 
         //Constructors
         /// <summary>
@@ -33,6 +34,11 @@ namespace Principal.Connexions
         {
             get { return usuaris; }
             set { usuaris = value; }
+        }
+        public int QuantiatTotal
+        {
+            get { return this.quantitatTotal; }
+            set { this.quantitatTotal = value; }
         }
         /// <summary>
         /// Propietat de l'atribut connexioBD
@@ -81,27 +87,13 @@ namespace Principal.Connexions
 
                 while (reader.Read())
                 {
-
-                    Partides partides = new Partides();
-                    //PartidesDB partidesdb = new PartidesDB();
-                    //partidesdb.RecuperarPartides();
-                    //foreach (Partida p in partidesdb.Partides.LlistaPartides)
-                    //{
-                    //    if (p.Usuari.Id == reader.GetInt32(0)) partides.LlistaPartides.Add(p);
-                    //}
-
                     Mazos mazos = new();
-                    //MazosDB mazosdb = new MazosDB();
-                    //mazosdb.RecuperarMazos();
-                    //foreach (Mazo m in mazosdb.Mazos.LlistaMazos)
-                    //{
-                    //    if (m.Usuari.Id == reader.GetInt32(2)) mazos.LlistaMazos.Add(m);
-                    //}
-
+                    Partides partides = new();
                     Usuari usuari = new Usuari(reader.GetInt32(0), reader.GetString(4), reader.GetString(2), reader.GetString(1), mazos, partides, reader.GetInt32(6), reader.GetString(3), reader.GetInt32(5));
                     usuaris.Add(usuari);
                 }
                 Usuaris.Llistausuaris = usuaris;
+                this.QuantiatTotal = Usuaris.Llistausuaris.Count;
             }
             catch (Exception ex)
             {

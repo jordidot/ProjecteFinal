@@ -51,26 +51,22 @@ namespace Principal
             else
             {
                 Usuaris usuaris = new();
-                usuaris.Llistausuaris = usuaris.RecuperarUsuaris();
-               
-                //Miro si hi9 han usuaris.
+                usuaris.Llistausuaris = usuaris.RecuperarUsuaris().FindAll(x => x.NomUsuari == txtBoxNomUsuari.Text && x.Contrasenya == pwdBoxContrasenyaUsuari.Password);
+                Cartes cartes = new();
+                cartes = cartes.RecuperarTotesCartes();
+                //Miro si hi han usuaris amb les seguents dades.
                 if (usuaris.Llistausuaris.Count == 0)
-                    MessageBox.Show("No hi ha cap usuari a la base de dades.");
+                    MessageBox.Show("Usuari o contrasenya incorrecte.");
                 else
                 {
-                    foreach (Usuari usuari in usuaris.Llistausuaris)
-                    {
-                        if (usuari.NomUsuari == txtBoxNomUsuari.Text && usuari.Contrasenya == pwdBoxContrasenyaUsuari.Password)
-                        {
-                            //Li passo l'usuari al constructor de la finestra del home per tenir les seves dades.
-                            Home home = new(usuari);
-                            home.Show();
-                            this.Close();
-                        }
-                        else MessageBox.Show("Usuari o contrasenya incorrecte.");
-                    }
+                    //Li passo l'usuari al constructor de la finestra del home per tenir les seves dades.
+                    Home home = new(usuaris.Llistausuaris[0],cartes);
+                    this.Close();
+                    home.Show();
+                    
                 }
             }
         }
     }
 }
+

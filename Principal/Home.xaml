@@ -20,7 +20,7 @@
                     <Button x:Name="btnTancarSessioBenvingut" Content="Tancar la sesió" Padding="10" HorizontalAlignment="Left" Margin="664,331,0,0" VerticalAlignment="Top" Click="BtnTancarSessioBenvingut_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabItemMazos" Header="Els meus mazos" Loaded="TabItemMazos_Loaded">
+            <TabItem x:Name="tabItemMazos" Header="Els meus mazos" GotFocus="tabItemMazos_GotFocus">
                 <Grid Background="#FFE5E5E5">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -33,54 +33,37 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-                            <RowDefinition></RowDefinition>
-
+                            <RowDefinition Height="118*"></RowDefinition>
+                            <RowDefinition Height="429*"></RowDefinition>
+                            <RowDefinition Height="109*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <!--Titols mazos-->
-                        <Label x:Name="lblNomMazo1" Content="" HorizontalAlignment="Left" Margin="32,48,0,0" Grid.Row="0" VerticalAlignment="Top"/>
-                        <Label x:Name="lblNomMazo2" Content="" HorizontalAlignment="Left" Margin="32,48,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-                        <Label x:Name="lblNomMazo3" Content="" HorizontalAlignment="Left" Margin="32,48,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+                        <Label x:Name="lblNomMazo1" Content="" HorizontalAlignment="Left" Margin="32,48,0,0" Grid.Row="0" VerticalAlignment="Top" Height="26" Width="10"/>
+
                         <!--Cartes Fila 1-->
-                        <ListBox x:Name="listBoxRow1Col1" Grid.Column="1" Grid.Row="0" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                        <ListBox x:Name="listBoxRow1Col2" Grid.Column="2" Grid.Row="0" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                        <ListBox x:Name="listBoxRow1Col3" Grid.Column="3" Grid.Row="0" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                        <ListBox x:Name="listBoxRow1Col4" Grid.Column="4" Grid.Row="0" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                        <ListBox x:Name="listBoxRow1Col5" Grid.Column="5" Grid.Row="0" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                        <!--Cartes Fila 2-->
-                        <ListBox x:Name="listBoxRow2Col1" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                        <ListBox x:Name="listBoxRow2Col2" Grid.Column="2" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                        <ListBox x:Name="listBoxRow2Col3" Grid.Column="3" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                        <ListBox x:Name="listBoxRow2Col4" Grid.Column="4" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                        <ListBox x:Name="listBoxRow2Col5" Grid.Column="5" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                        <!--Cartes Fila 3-->
-                        <ListBox x:Name="listBoxRow3Col1" Grid.Column="1" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                        <ListBox x:Name="listBoxRow3Col2" Grid.Column="2" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                        <ListBox x:Name="listBoxRow3Col3" Grid.Column="3" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                        <ListBox x:Name="listBoxRow3Col4" Grid.Column="4" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-                        <ListBox x:Name="listBoxRow3Col5" Grid.Column="5" Grid.Row="2" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                        <ListBox x:Name="listBoxRow1Col1" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,36,0,0"/>
+                        <ListBox x:Name="listBoxRow1Col2" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="3" Margin="170,36,170,0"/>
+                        <ListBox x:Name="listBoxRow1Col3" Grid.Column="3" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,36,0,0"/>
+                        <ListBox x:Name="listBoxRow1Col4" Grid.Column="3" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="3" Margin="170,36,170,0"/>
+                        <ListBox x:Name="listBoxRow1Col5" Grid.Column="5" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,36,0,0"/>
+
                         <!--Botons modificar-->
-                        <Button Visibility="Hidden" x:Name="btnModificarMazoRow1"  Grid.Column="6" Padding="5" Content="Modificar" HorizontalAlignment="Center" Margin="0,46,0,0" Grid.Row="0" VerticalAlignment="Top"/>
-                        <Button Visibility="Hidden" x:Name="btnModificarMazoRow2"  Grid.Column="6" Padding="5" Content="Modificar" HorizontalAlignment="Center" Margin="0,46,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-                        <Button Visibility="Hidden" x:Name="btnModificarMazoRow3"  Grid.Column="6" Padding="5" Content="Modificar" HorizontalAlignment="Center" Margin="0,60,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+                        <Button Visibility="Hidden" x:Name="btnModificarMazoRow1"  Grid.Row="1" Grid.Column="6" Padding="5" Content="Modificar" HorizontalAlignment="Center" VerticalAlignment="Center" Height="28" Width="62"/>
+
                         <!--Botons eliminar-->
-                        <Button x:Name="btnEliminarMazoRow1" Grid.Column="6" Padding="5" Content="Eliminar" HorizontalAlignment="Center" Margin="0,106,0,0" Grid.Row="0" VerticalAlignment="Top" Width="62"/>
-                        <Button x:Name="btnEliminarMazoRow2"  Grid.Column="6" Padding="5" Content="Eliminar" HorizontalAlignment="Center" Margin="0,106,0,0" Grid.Row="1" VerticalAlignment="Top" Width="62"/>
-                        <Button x:Name="btnEliminarMazoRow3"  Grid.Column="6" Padding="5" Content="Eliminar" HorizontalAlignment="Center" Margin="0,120,0,0" Grid.Row="2" VerticalAlignment="Top" Width="62"/>
+                        <Button x:Name="btnEliminarMazoRow1" Grid.Column="6" Padding="5" Content="Eliminar" HorizontalAlignment="Center" Margin="0,36,0,0" Grid.Row="1" VerticalAlignment="Top" Width="62" Height="28" Click="btnEliminarMazoRow1_Click"/>
+
                         <!--Botons afegir-->
-                        <Button x:Name="btnAfegirMazoRow1" Padding="5" Content="Afegir mazo" HorizontalAlignment="Center" Margin="0,106,0,0" Grid.Row="0" VerticalAlignment="Top" Width="106" Click="btnAfegirMazoRow1_Click"/>
-                        <Button x:Name="btnAfegirMazoRow2"  Grid.Column="0" Padding="5" Content="Afegir mazo" HorizontalAlignment="Center" Margin="0,106,0,0"  Grid.Row="1" VerticalAlignment="Top" Width="106" Click="btnAfegirMazoRow2_Click"/>
-                        <Button x:Name="btnAfegirMazoRow3"  Grid.Column="0" Padding="5" Content="Afegir mazo" HorizontalAlignment="Center" Margin="0,106,0,0"  Grid.Row="2" VerticalAlignment="Top" Width="106" Click="btnAfegirMazoRow3_Click"/>
+                        <Button x:Name="btnAfegirMazoRow1" Padding="5" Content="Afegir mazo" HorizontalAlignment="Center" Margin="0,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="106" Click="btnAfegirMazoRow1_Click" Height="28"/>
 
                     </Grid>
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Les meves partides">
+            <TabItem x:Name="tabItemPartides" Header="Les meves partides" GotFocus="tabItemPartides_GotFocus">
                 <Grid Background="#FFE5E5E5">
                     <Label Content="Totes les meves partides realitzades" HorizontalAlignment="Center" Margin="0,36,0,0" VerticalAlignment="Top"/>
-                    <DataGrid x:Name="dataGridPartides" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="102,67,102,172" Loaded="DataGridPartides_Loaded"/>
+                    <DataGrid x:Name="dataGridPartides" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="102,67,102,172"/>
                     <Label Content="Total de punts guanyats: " HorizontalAlignment="Left" Margin="102,422,0,0" VerticalAlignment="Top" Width="142"/>
                     <Label x:Name="lblPuntuacioUsuari" Content="" HorizontalAlignment="Left" Margin="272,422,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.157" Width="107"/>
                 </Grid>

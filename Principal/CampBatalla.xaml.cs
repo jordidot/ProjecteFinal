@@ -23,14 +23,16 @@ namespace Principal
         //Atributs
         private Usuari usuari;
         private Partida partida;
+        public Cartes TotesCartes { get; set; }
         /// <summary>
         /// Constructor del camp de batalla que rep l'usuari i la partida.
         /// </summary>
         /// <param name="usuari">Usuari que juga.</param>
         /// <param name="partida">Dades de la partida, cartes, etc..</param>
-        public CampBatalla(Usuari usuari, Partida partida)
+        public CampBatalla(Usuari usuari, Partida partida, Cartes totesCartes)
         {
             InitializeComponent();
+            TotesCartes = totesCartes;
             this.usuari = usuari;
             this.partida = partida;
         }
@@ -51,7 +53,7 @@ namespace Principal
         {
             //HACER ACTUALIZACION BASE DE DATOS
             
-            Home home = new(Usuari);
+            Home home = new(Usuari,TotesCartes);
             home.Show();
         }
     }

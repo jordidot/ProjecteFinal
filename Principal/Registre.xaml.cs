@@ -33,8 +33,9 @@ namespace Principal
         private void BtntornarLogin_Click(object sender, RoutedEventArgs e)
         {
             MainWindow login = new MainWindow();
-            login.Show();
             this.Close();
+            login.Show();
+            
         }
     }
 }

@@ -5,14 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Principal"
         mc:Ignorable="d"
-        Title="Afegir Mazo" Height="600" Width="1000">
+        Title="Afegir Mazo" Height="700" Width="1000">
     <Grid>
-        <Label x:Name="lblCartesAfegides" Content="Cartes afegides: " Panel.ZIndex="3" HorizontalAlignment="Center" Margin="0,500,0,0" VerticalAlignment="Top" Height="24" Width="662"/>
+        <Label x:Name="lblCartesAfegides" Content="Cartes afegides: " Panel.ZIndex="3" HorizontalAlignment="Center" Margin="0,600,0,0" VerticalAlignment="Top" Height="24" Width="662"/>
         <ScrollViewer HorizontalScrollBarVisibility="Visible" Margin="0,0,0,89">
-            <StackPanel x:Name="stckPanelCartes" Orientation="Horizontal" Loaded="stckPanelCartes_Loaded" Height="405"/>
+            <StackPanel x:Name="stckPanelCartes" Orientation="Horizontal" Loaded="stckPanelCartes_Loaded" Height="474"/>
         </ScrollViewer>
-        <Label x:Name="lblCartesAfegidesSucces" Content="Has afegit totes les cartes disponibles." HorizontalAlignment="Center" Visibility="Hidden" Foreground="Green" Margin="169,524,0,0" VerticalAlignment="Top"/>
-
 
     </Grid>
 </Window>

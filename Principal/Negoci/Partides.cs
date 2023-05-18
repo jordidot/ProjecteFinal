@@ -59,11 +59,11 @@ namespace Principal.Negoci
         {
 
         }
-        public List<Partida> RecuperarPartides()
+        public Partides RecuperarPartides(Usuari usuari)
         {
             PartidesDB partidesdb = new();
-            partidesdb.RecuperarPartides();
-            return partidesdb.Partides.LlistaPartides;
+            partidesdb.RecuperarPartides(usuari);
+            return partidesdb.RecuperarPartides(usuari);
         }
     }
 }

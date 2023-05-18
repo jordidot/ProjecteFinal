@@ -42,16 +42,15 @@ namespace Principal.Negoci
         /// <summary>
         ///Metode per afegir mazos
         /// </summary>
-        public void AfegirMazoBD(Mazo m)
+        public void AfegirMazoBD(Usuari usuari, Mazo m)
         {
             string nomvalidar = m.Nom;
             bool mazoTrobada = false;
             bool nomvalid = true;
 
             //Aquest foreach recorre la llista de mazos de la base de dades, per buscar si el
-            List<Mazo> mazosLlista = RecuperarMazos().FindAll(x => x.Id == m.Id);
-            if (mazosLlista.Count > 0)mazoTrobada = true;
-            if (mazoTrobada) MessageBox.Show("L'id es el mateix, no es pot afegir.");
+            if (usuari.Mazos.LlistaMazos.Contains(m)) mazoTrobada = true;
+            if (mazoTrobada) MessageBox.Show("No es pot afegir aquest mazo.");
             else
             {
                 for (int i = 0; i < nomvalidar.Length; i++)
@@ -62,14 +61,23 @@ namespace Principal.Negoci
                     MazosDB mazosdb = new();
                     mazosdb.AfegirMazoBD(m);
                 }
-                    
+
             }
         }
         /// <summary>
         /// Metode per eliminar mazo
         /// </summary>
-        public void EliminarMazo()
+        public void EliminarMazo(Mazo mazo)
         {
+            try
+            {
+                MazosDB mazosdb = new();
+                mazosdb.EliminarMazoBD(mazo);
+            }catch(Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut eliminar el mazo.");
+            }
+
 
         }
         /// <summary>
@@ -80,11 +88,15 @@ namespace Principal.Negoci
 
 
         }
-        public List<Mazo> RecuperarMazos()
+        public int RecuperarId()
+        {
+            MazosDB mazos = new();
+            return mazos.Quantitat;
+        }
+        public Mazos RecuperarMazos(Usuari usuari)
         {
             MazosDB mazosdb = new();
-            mazosdb.RecuperarMazos();
-            return mazosdb.Mazos.LlistaMazos;
+            return mazosdb.RecuperarMazos(usuari);
         }
     }
 }

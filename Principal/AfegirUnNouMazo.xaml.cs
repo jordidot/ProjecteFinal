@@ -1,4 +1,6 @@
-﻿using Principal.Negoci;
+﻿using MySqlConnector;
+using Principal.Connexions;
+using Principal.Negoci;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,9 +33,10 @@ namespace Principal
         /// Constructor d'afegir mazo que rep un usuari.
         /// </summary>
         /// <param name="usuari">Usuari logejat a l'aplicació.</param>
-        public AfegirUnNouMazo(Usuari usuari)
+        public AfegirUnNouMazo(Usuari usuari,Cartes totesCartes)
         {
             InitializeComponent();
+            this.totesCartes = totesCartes;
             Usuari = usuari;
             CartesMazoNou = new();
             contador = 0;
@@ -60,26 +63,26 @@ namespace Principal
 
         private void stckPanelCartes_Loaded(object sender, RoutedEventArgs e)
         {
-            //Accedeixo a Cartes per recuperar les cartes de la BD.
-            totesCartes = new();
-            totesCartes.LlistaCartes = totesCartes.RecuperarCartes();
+
             foreach (Carta carta in totesCartes.LlistaCartes)
             {
                 ListBox cartaList = new();
                 cartaList.HorizontalContentAlignment = HorizontalAlignment.Center;
-                cartaList.Width = 250;
-                cartaList.Height = 450;
+                cartaList.Width = 550;
+                cartaList.Height = 550;
                 //Afegeixo el nom de la carta.
                 Label nomCarta = new();
                 nomCarta.Content = carta.Nom;
                 //Creo l'imatge de la carta.
                 Image imatgeCarta = new();
                 imatgeCarta.Source = new BitmapImage(new Uri(carta.Imatge));
-                imatgeCarta.Width = 200;
-                imatgeCarta.Height = 200;
+                imatgeCarta.Width = 500;
+                imatgeCarta.Height = 150;
+
                 //Afegeixo descripcio de la carta.
                 Label descripcioCarta = new();
                 descripcioCarta.Content = carta.Descripcio;
+                descripcioCarta.Padding = new Thickness(10);
                 //Afegeixo un listbox amb les habilitats.
                 ListBox habilitatsCarta = new();
                 habilitatsCarta.HorizontalContentAlignment = HorizontalAlignment.Center;
@@ -112,20 +115,21 @@ namespace Principal
         {
             try
             {
-                if (contador <4)
+                if (contador < 4)
                 {
                     CartesMazoNou.LlistaCartes.Add(totesCartes.LlistaCartes[id - 1]);
                     lblCartesAfegides.Content += " " + totesCartes.LlistaCartes[id - 1].Nom + ",";
                     contador++;
                 }
-                else if(contador == 4)
+                else if (contador == 4)
                 {
                     CartesMazoNou.LlistaCartes.Add(totesCartes.LlistaCartes[id - 1]);
                     lblCartesAfegides.Content += " " + totesCartes.LlistaCartes[id - 1].Nom;
-                    lblCartesAfegidesSucces.Visibility = Visibility.Visible;
-                    AfegirMazoExtend extend = new(CartesMazoNou, Usuari, Usuari.Mazos.RecuperarMazos().Count +1,this);
+
+
+                    AfegirMazoExtend extend = new(CartesMazoNou, Usuari, usuari.Mazos.RecuperarId(), this,this.totesCartes);
                     extend.Show();
-                    
+
                 }
 
             }

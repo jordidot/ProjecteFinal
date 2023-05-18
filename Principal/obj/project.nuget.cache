@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "XYfkChUMDNHuj/N0cp1YBrfgGd0Nw6ocgmV1L3lcEWUUcwDtA2dL3VKhUAdlSKRXFr0xjF8OCed89BuM5vZVMQ==",
+  "dgSpecHash": "0AQFQJaJW6eqWfaYECzrj9qFulAB1MHqVoLIj5z87dUQDjRBxr0U0LXNRHdpDuQ7OyJRLC6QXaK4RMIkA17Dqw==",
   "success": true,
-  "projectFilePath": "C:\\xampp\\htdocs\\GS-DAW2023\\M03\\ProjecteFinalProgramacioM3\\Programa\\ProjecteFinal\\Principal\\Principal.csproj",
+  "projectFilePath": "A:\\GSDAW-Asignaturas\\ProjecteFinal\\Principal\\Principal.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\jordi\\.nuget\\packages\\mysqlconnector\\2.2.6\\mysqlconnector.2.2.6.nupkg.sha512"
+    "C:\\Users\\jscll\\.nuget\\packages\\mysqlconnector\\2.2.6\\mysqlconnector.2.2.6.nupkg.sha512"
   ],
   "logs": []
 }

@@ -67,41 +67,27 @@ namespace Principal.Connexions
         /// Metode per recuperar partides de la bd
         /// </summary>
         /// <returns></returns>
-        public void RecuperarPartides()
+        public Partides RecuperarPartides(Usuari usuari)
         {
-            List<Partida> partides = new List<Partida>();
+            Partides partides = new Partides();
             try
             {
                 MySqlCommand command = new MySqlCommand("SELECT * FROM partides;", ConnexioBD.Connectar());
                 MySqlDataReader reader = command.ExecuteReader();
-
 
                 while (reader.Read())
                 {
                     Bot bot = new Bot();
                     bot.Nom = reader.GetString(1);
 
-                    CartesDB cartesbd = new();
-                    //cartesbd.RecuperarCartes();
-                    //Random rand = new Random();
                     Cartes cartesBot = new Cartes();
-                    //cartesBot.LlistaCartes.Add(cartesbd.Cartes.LlistaCartes[rand.Next(0, cartesbd.Cartes.LlistaCartes.Count)]);
 
-                    Usuari usuariPartida = new Usuari();
-                    UsuarisDB usuarisDB = new UsuarisDB();
-                    usuarisDB.RecuperarUsuariBD();
-                    foreach (Usuari u in usuarisDB.Usuaris.Llistausuaris)
-                    {
-                        if (u.Id == reader.GetInt32(2)) usuariPartida = u;
-                    }
-                    Mazo mazoUsuari = new(reader.GetInt32(2), cartesBot, "MazoUsuari", usuariPartida);
+                    Mazo mazoUsuari = new(reader.GetInt32(2), cartesBot, "MazoUsuari", usuari);
 
-                    Partida partida = new Partida(reader.GetInt32(0), bot, 1500, cartesBot, mazoUsuari, usuariPartida, 1500, reader.GetString(3));
-                    partides.Add(partida);
+                    Partida partida = new Partida(reader.GetInt32(0), bot, 1500, cartesBot, mazoUsuari, usuari, 1500, reader.GetString(3));
+                    partides.LlistaPartides.Add(partida);
 
                 }
-                Partides.LlistaPartides = partides;
-
 
             }
             catch (Exception ex)
@@ -112,6 +98,7 @@ namespace Principal.Connexions
             {
                 ConnexioBD.Connectar().Close();
             }
+            return partides;
         }
     }
 }

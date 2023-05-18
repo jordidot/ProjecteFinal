@@ -9,7 +9,6 @@
     <Grid>
         <Label Content="Tria el mazo per jugar" HorizontalAlignment="Center" Margin="0,37,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnMazo1" Content="" HorizontalAlignment="Left" Margin="88,88,0,0" VerticalAlignment="Top" Width="113" Visibility="Hidden" Click="BtnMazo1_Click"/>
-        <Button x:Name="btnMazo2" Content="" HorizontalAlignment="Left" Margin="88,127,0,0" VerticalAlignment="Top" Width="113" Visibility="Hidden" Click="BtnMazo2_Click"/>
-        <Button x:Name="btnMazo3" Content="" HorizontalAlignment="Left" Margin="88,164,0,0" VerticalAlignment="Top" Width="113" Visibility="Hidden" Click="BtnMazo3_Click"/>
+    
     </Grid>
 </Window>

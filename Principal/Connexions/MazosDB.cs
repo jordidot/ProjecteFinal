@@ -62,14 +62,7 @@ namespace Principal.Connexions
 
         }
         
-        /// <summary>
-        /// Metode per afegir mazos a la bd
-        /// </summary>
-        /// <param name="mazo">mazos a afegir</param>
-        public void AfegirMazosBD(Mazo mazo)
-        {
-
-        }
+   
         /// <summary>
         /// Metode per eliminar mazo a la bd
         /// </summary>

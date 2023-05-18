@@ -14,7 +14,7 @@ namespace Principal.Connexions
         //Atributs
         private Usuaris usuaris;
         private ConnexioDB connexioBD;
-        private int quantitatTotal;
+        public int QuantitatTotal { get; set; }
 
         //Constructors
         /// <summary>
@@ -35,11 +35,7 @@ namespace Principal.Connexions
             get { return usuaris; }
             set { usuaris = value; }
         }
-        public int QuantiatTotal
-        {
-            get { return this.quantitatTotal; }
-            set { this.quantitatTotal = value; }
-        }
+ 
         /// <summary>
         /// Propietat de l'atribut connexioBD
         /// </summary>
@@ -50,16 +46,21 @@ namespace Principal.Connexions
         /// Metode per afegir usuari
         /// </summary>
         /// <param name="usuaris">usuari a afegir</param>
-        public void AfegirUsuariBD(Usuari usuaris)
+        public void AfegirUsuariBD(Usuari usuari)
         {
-
-        }
-        /// <summary>
-        /// Metode per afegir Usuaris
-        /// </summary>
-        /// <param name="usuaris">Usuaris a afegir</param>
-        public void AfegirUsuarisBD(Usuaris usuaris)
-        {
+            try
+            {
+                var comanda = new MySqlCommand("INSERT INTO usuaris VALUES(" + usuari.Id + ",'" + usuari.NomUsuari + "','" + usuari.Contrasenya + "','" + usuari.ImatgePerfil + "','" + usuari.Alias + "'," + usuari.EsAdministrador + "," + usuari.Punts+ ");", ConnexioBD.Connectar());
+                comanda.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut afegir l'usuari." + ex.Message);
+            }
+            finally
+            {
+                ConnexioBD.Connectar().Close();
+            }
         }
         /// <summary>
         /// Metode per eliminar usaris
@@ -93,7 +94,7 @@ namespace Principal.Connexions
                     usuaris.Add(usuari);
                 }
                 Usuaris.Llistausuaris = usuaris;
-                this.QuantiatTotal = Usuaris.Llistausuaris.Count;
+                this.QuantitatTotal = Usuaris.Llistausuaris.Count;
             }
             catch (Exception ex)
             {

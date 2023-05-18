@@ -11,6 +11,7 @@ namespace Principal.Negoci
     {
         //Atributs
         private List<Usuari> llistausuaris;
+        public int QuantitatUsuaris { get; set; }
         //Constructors
         /// <summary>
         /// Constructor buit
@@ -42,18 +43,8 @@ namespace Principal.Negoci
         /// <param name="usuari">usuari a afegir</param>
         public void AfegirUsuari(Usuari usuari)
         {
-
-        }
-        /// <summary>
-        /// Metode per comprovar el nom
-        /// </summary>
-        /// <param name="usuari">usuari a comprovar</param>
-        /// <returns></returns>
-        public bool ComprovarNomUsuari(Usuari usuari)
-        {
-            bool holajordi = true;
-
-            return holajordi;
+            UsuarisDB usuarisdb = new();
+            usuarisdb.AfegirUsuariBD(usuari);
         }
         /// <summary>
         /// Metode per eliminar usuari
@@ -75,6 +66,7 @@ namespace Principal.Negoci
         {
             UsuarisDB usuarisdb = new();
             usuarisdb.RecuperarUsuariBD();
+            QuantitatUsuaris = usuarisdb.QuantitatTotal;
             return usuarisdb.Usuaris.Llistausuaris;
         }
     }

@@ -72,7 +72,22 @@ namespace Principal.Connexions
         /// Metode per modificar usuaris
         /// </summary>
         /// <param name="usari">usuari a modificar</param>
-        public void ModificarUsuari(Usuari usari) { }
+        public void ModificarUsuari(Usuari usuari)
+        {
+            try
+            {
+                var comanda = new MySqlCommand("UPDATE usuaris SET imatgeperfil ='"+usuari.ImatgePerfil+ "', alias='" + usuari.Alias + "',esAdministrador="+ usuari.EsAdministrador+ ",punts="+usuari.Punts+" WHERE id="+usuari.Id+";", ConnexioBD.Connectar());
+                comanda.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut modificar l'usuari." + ex.Message);
+            }
+            finally
+            {
+                ConnexioBD.Connectar().Close();
+            }
+        }
 
         /// <summary>
         /// Metode per recuperar usuariBD
@@ -103,6 +118,7 @@ namespace Principal.Connexions
             finally
             {
                 ConnexioBD.Connectar().Close();
+                MySqlConnection.ClearAllPools();
             }
         }
     }

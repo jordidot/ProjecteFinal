@@ -12,7 +12,7 @@ namespace Principal.Negoci
     {
         //Atributs
         private List<Mazo> llistaMazos;
-
+        public Cartes TotesCartes { get; set; }
         //Constructors
         /// <summary>
         /// Constructor buit
@@ -93,9 +93,10 @@ namespace Principal.Negoci
             MazosDB mazos = new();
             return mazos.Quantitat;
         }
-        public Mazos RecuperarMazos(Usuari usuari)
+        public Mazos RecuperarMazos(Usuari usuari,Cartes cartes)
         {
             MazosDB mazosdb = new();
+            mazosdb.TotesCartes = cartes;
             return mazosdb.RecuperarMazos(usuari);
         }
     }

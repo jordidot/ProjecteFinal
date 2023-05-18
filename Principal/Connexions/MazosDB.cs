@@ -15,6 +15,7 @@ namespace Principal.Connexions
         //Atributs
         private Mazos mazos;
         private ConnexioDB connexioBD;
+        public Cartes TotesCartes { get; set; }
         public int Quantitat { get; set; }
 
         //Constructors
@@ -61,8 +62,23 @@ namespace Principal.Connexions
 
 
         }
-        
-   
+
+        public void EliminarMazoUsuariBD(Usuari usuari)
+        {
+            try
+            {
+                var comanda = new MySqlCommand("DELETE FROM mazos WHERE id_usuari=" + usuari.Id + ";", ConnexioBD.Connectar());
+                comanda.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut eliminar el mazo." + ex.Message);
+            }
+            finally
+            {
+                ConnexioBD.Connectar().Close();
+            }
+        }
         /// <summary>
         /// Metode per eliminar mazo a la bd
         /// </summary>
@@ -103,7 +119,7 @@ namespace Principal.Connexions
             {
 
                 //Obro amb el using i realitzo la query passant-li la connexio i tanco un cop llegit.
-                var comanda = new MySqlCommand("SELECT *,(SELECT * FROM mazos) FROM mazos WHERE id_usuari =" + usuari.Id + ";", ConnexioBD.Connectar());
+                var comanda = new MySqlCommand("SELECT *,(SELECT count(*) FROM mazos) FROM mazos WHERE id_usuari =" + usuari.Id + ";", ConnexioBD.Connectar());
                 //Executo la query i guardo totes les dades en un MySqlDataReader.
                 var llegir = comanda.ExecuteReader();
                 //Començo bucle per anar recuperant els camps de cada fila.
@@ -111,8 +127,13 @@ namespace Principal.Connexions
                 {
                     //Creo Cartes per poder afegir-li al Mazo.
                     Cartes cartes = new Cartes();
-                    Mazo mazo = new Mazo(llegir.GetInt32(0), cartes, llegir.GetString(1), usuari);
-                    mazo.Cartes = cartes.RecuperarCartes(mazo);
+                    cartes.LlistaCartes.Add(TotesCartes.LlistaCartes[llegir.GetInt32(3) - 1]);
+                    cartes.LlistaCartes.Add(TotesCartes.LlistaCartes[llegir.GetInt32(4) - 1]);
+                    cartes.LlistaCartes.Add(TotesCartes.LlistaCartes[llegir.GetInt32(5) - 1]);
+                    cartes.LlistaCartes.Add(TotesCartes.LlistaCartes[llegir.GetInt32(6) - 1]);
+                    cartes.LlistaCartes.Add(TotesCartes.LlistaCartes[llegir.GetInt32(7) - 1]);
+
+                    Mazo mazo = new Mazo(llegir.GetInt32(0), cartes, llegir.GetString(1), usuari);;
                     //Afegeixo la carta a la llista de cartes.
                     mazos.LlistaMazos.Add(mazo);
                     Quantitat = llegir.GetInt32(8);
@@ -129,6 +150,7 @@ namespace Principal.Connexions
             {
                 //Tanco la connexio a la BD.
                 ConnexioBD.Connectar().Close();
+                MySqlConnection.ClearAllPools();
             }
             return mazos;
         }

@@ -1,23 +1,40 @@
-﻿<Window x:Class="Principal.Home"
+﻿<Window x:Name="windowHome" x:Class="Principal.Home"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Principal"
         mc:Ignorable="d"
-        Title="Home" Height="700" Width="1200">
+        Title="Home" Height="700" Width="1200" Closing="windowHome_Closing" FontFamily="Bahnschrift">
     <Grid>
         <TabControl>
             <TabItem Header="Benvingut">
-                <Grid Background="#FFE5E5E5">
-                    <Button x:Name="btnPartidaNova" Content="Jugar partida nova" HorizontalAlignment="Left" Margin="647,21,0,0" Padding="10" VerticalAlignment="Top" Click="BtnPartidaNova_Click"/>
-                    <Image x:Name="imageProfile" HorizontalAlignment="Left" Height="155" Margin="187,21,0,0" VerticalAlignment="Top" Width="323"/>
-                    <Label Content="Nom usuari: " HorizontalAlignment="Left" Margin="187,212,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.158,1.159"/>
-                    <Label x:Name="lblAliasBenvingut" Content="" HorizontalAlignment="Left" Margin="269,213,0,0" VerticalAlignment="Top" Width="94"/>
-                    <Button x:Name="btnModificarAliasBefore" Content="Modificar el meu alias" Padding="5" HorizontalAlignment="Left" Margin="381,211,0,0" VerticalAlignment="Top" Click="BtnModificarAliasBefore_Click"/>
-                    <TextBox x:Name="txtBoxAliasNouModificar" Visibility="Hidden" HorizontalAlignment="Left" Margin="385,217,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-                    <Button Visibility="Hidden" x:Name="btnModificarAliasAfter" Padding="5" Content="Modificar" HorizontalAlignment="Left" Margin="549,211,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="btnTancarSessioBenvingut" Content="Tancar la sesió" Padding="10" HorizontalAlignment="Left" Margin="664,331,0,0" VerticalAlignment="Top" Click="BtnTancarSessioBenvingut_Click"/>
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="37*"/>
+                        <ColumnDefinition Width="361*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnPartidaNova" Content="Jugar partida nova" HorizontalAlignment="Left" Margin="687,459,0,0" Padding="10" VerticalAlignment="Top" Click="BtnPartidaNova_Click" Grid.Column="1" FontFamily="Bahnschrift" Height="75" Width="292" FontSize="30" Background="#FFA0E483" Foreground="#FF2B312B" BorderBrush="#FF65FF00">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+                    <Image x:Name="imageProfile" HorizontalAlignment="Left" Height="259" Margin="195,21,0,0" VerticalAlignment="Top" Width="485" Grid.Column="1"/>
+                    <Label Content="Nom usuari: " HorizontalAlignment="Left" Margin="270,309,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.158,1.159" Grid.Column="1"/>
+                    <Label x:Name="lblAliasBenvingut" Content="" HorizontalAlignment="Left" Margin="352,311,0,0" VerticalAlignment="Top" Width="94" Grid.Column="1"/>
+                    <Button x:Name="btnModificarAliasBefore" Content="Modificar el meu alias" Padding="5" HorizontalAlignment="Left" Margin="486,309,0,0" VerticalAlignment="Top" Click="BtnModificarAliasBefore_Click" Grid.Column="1">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+                    <TextBox x:Name="txtBoxAliasNouModificar"  Visibility="Hidden" HorizontalAlignment="Left" Margin="352,315,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Button  x:Name="btnModificarAliasAfter" Visibility="Hidden" Padding="5" Content="Modificar" HorizontalAlignment="Left" Margin="519,309,0,0" VerticalAlignment="Top" Grid.Column="1" Click="btnModificarAliasAfter_Click"/>
+                    <Button x:Name="btnTancarSessioBenvingut" Content="Sortir de l'aplicació" Padding="10" HorizontalAlignment="Left" Margin="854,560,0,0" VerticalAlignment="Top" Click="BtnTancarSessioBenvingut_Click" Grid.Column="1" Background="White">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+                    <Rectangle Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="658" Stroke="Black" VerticalAlignment="Center" Width="198" Fill="#FF1C7FCC"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabItemMazos" Header="Els meus mazos" GotFocus="tabItemMazos_GotFocus">
@@ -63,9 +80,7 @@
             <TabItem x:Name="tabItemPartides" Header="Les meves partides" GotFocus="tabItemPartides_GotFocus">
                 <Grid Background="#FFE5E5E5">
                     <Label Content="Totes les meves partides realitzades" HorizontalAlignment="Center" Margin="0,36,0,0" VerticalAlignment="Top"/>
-                    <DataGrid x:Name="dataGridPartides" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="102,67,102,172"/>
-                    <Label Content="Total de punts guanyats: " HorizontalAlignment="Left" Margin="102,422,0,0" VerticalAlignment="Top" Width="142"/>
-                    <Label x:Name="lblPuntuacioUsuari" Content="" HorizontalAlignment="Left" Margin="272,422,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.553,0.157" Width="107"/>
+                    <DataGrid x:Name="dataGridPartides" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="102,67,102,90"/>
                 </Grid>
             </TabItem>
         </TabControl>

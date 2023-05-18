@@ -60,7 +60,8 @@ namespace Principal.Negoci
         /// <param name="usuari">Usuari modificat</param>
         public void ModificarUsuari(Usuari usuari)
         {
-
+            UsuarisDB usuarisdb = new();
+            usuarisdb.ModificarUsuari(usuari);
         }
         public List<Usuari> RecuperarUsuaris()
         {

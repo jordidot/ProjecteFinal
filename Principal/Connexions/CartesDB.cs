@@ -103,6 +103,7 @@ namespace Principal.Connexions
             {
                 //Tanco la connexio a la BD.
                 ConnexioBD.Connectar().Close();
+                MySqlConnection.ClearAllPools();
             }
             return cartes;
         }

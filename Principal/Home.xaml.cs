@@ -37,7 +37,7 @@ namespace Principal
             lblAliasBenvingut.Content = usuari.Alias;
             imageProfile.Source = new BitmapImage(new Uri(usuari.ImatgePerfil));
         }
-        
+
         //Propietats
         /// <summary>
         /// Propietat de l'usuari del home.
@@ -55,7 +55,7 @@ namespace Principal
         private void BtnModificarAliasBefore_Click(object sender, RoutedEventArgs e)
         {
             btnModificarAliasBefore.Visibility = Visibility.Hidden;
-            txtBoxAliasNouModificar.Text = Usuari.NomUsuari;
+            txtBoxAliasNouModificar.Text = Usuari.Alias;
             txtBoxAliasNouModificar.Visibility = Visibility.Visible;
             btnModificarAliasAfter.Visibility = Visibility.Visible;
         }
@@ -66,8 +66,12 @@ namespace Principal
         /// <param name="e">Event intern.</param>
         private void BtnTancarSessioBenvingut_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new();
-            main.Show();
+            if (this.Usuari.Mazos.LlistaMazos.Count == 1)
+            {
+                MazosDB afegir = new();
+                afegir.EliminarMazoUsuariBD(Usuari);
+                afegir.AfegirMazoBD(this.Usuari.Mazos.LlistaMazos[0]);
+            }
             this.Close();
         }
         /// <summary>
@@ -77,7 +81,7 @@ namespace Principal
         /// <param name="e">Event intern.</param>
         private void tabItemMazos_GotFocus(object sender, RoutedEventArgs e)
         {
-         
+
             //Inicialitzo un contador.
             int contador = 1;
             //Miro cuants mazos té l'usuari i depenent dels mazos vaig fent visibles els botons.
@@ -140,7 +144,7 @@ namespace Principal
         {
             dataGridPartides.ItemsSource = Usuari.Partides.LlistaPartides;
             //Busco el total de punts que té l'usuari per guanyar partides i li afegeixo al label.
-            lblPuntuacioUsuari.Content = Usuari.Punts + " punts.";
+
         }
         /// <summary>
         /// Metode que obre la finestra de triar el Mazo, per poder jugar la partida.
@@ -149,7 +153,7 @@ namespace Principal
         /// <param name="e">Event intern.</param>
         private void BtnPartidaNova_Click(object sender, RoutedEventArgs e)
         {
-            TriarMazo triarMazo = new(this.Usuari,Cartes);
+            TriarMazo triarMazo = new(this.Usuari, Cartes);
             triarMazo.Show();
             this.Close();
 
@@ -161,7 +165,7 @@ namespace Principal
         /// <param name="e">Event intern.</param>
         private void btnAfegirMazoRow1_Click(object sender, RoutedEventArgs e)
         {
-            AfegirUnNouMazo nouMazo = new(Usuari,Cartes);
+            AfegirUnNouMazo nouMazo = new(Usuari, Cartes);
             nouMazo.Show();
             this.Close();
         }
@@ -172,13 +176,13 @@ namespace Principal
             try
             {
                 Usuari.Mazos.LlistaMazos.Remove(Usuari.Mazos.LlistaMazos[0]);
-                Home home = new(Usuari,Cartes);
+                Home home = new(Usuari, Cartes);
                 this.Close();
                 home.Show();
             }
             catch (Exception ex)
             {
-                Home home = new(Usuari,Cartes);
+                Home home = new(Usuari, Cartes);
                 this.Close();
                 home.Show();
             }
@@ -186,6 +190,39 @@ namespace Principal
 
         }
 
+        private void windowHome_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            if (this.Usuari.Mazos.LlistaMazos.Count == 1)
+            {
+                MazosDB afegir = new();
+                afegir.EliminarMazoUsuariBD(Usuari);
+                afegir.AfegirMazoBD(this.Usuari.Mazos.LlistaMazos[0]);
+            }
+
+        }
+
+        private void btnModificarAliasAfter_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Usuaris usuaris = new Usuaris();
+                Usuari.Alias = txtBoxAliasNouModificar.Text;
+                usuaris.ModificarUsuari(Usuari);
+                Home home = new(Usuari, Cartes);
+                this.Close();
+                home.Show();
+            }catch(Exception ex)
+            {
+                MessageBox.Show("No s'ha modificat l'usuari.");
+                Home home = new(Usuari, Cartes);
+                this.Close();
+                home.Show();
+            }
+
+
+
+        }
     }
     //Classe que utilitzo per el Data grid de Partides així hem mostra les següents dades de partides al data grid.
     public class PartidaLLista

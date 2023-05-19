@@ -82,8 +82,6 @@ namespace Principal
         private void tabItemMazos_GotFocus(object sender, RoutedEventArgs e)
         {
 
-            //Inicialitzo un contador.
-            int contador = 1;
             //Miro cuants mazos té l'usuari i depenent dels mazos vaig fent visibles els botons.
             if (Usuari.Mazos.LlistaMazos.Count == 1)
             {
@@ -95,18 +93,34 @@ namespace Principal
                 //Carta 1 Mazo 1
                 listBoxRow1Col1.Items.Add(CrearLabelCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0].Nom));
                 listBoxRow1Col1.Items.Add(CrearImatgeCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0].Imatge));
+                listBoxRow1Col1.Items.Add(CrearLabelCartaDescripcio(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0].Descripcio));
+                listBoxRow1Col1.Items.Add(CrearListBoxHabilitats(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0].Habilitats.LListahabilitats, 1));
                 //Carta 2 Mazo 1
                 listBoxRow1Col2.Items.Add(CrearLabelCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1].Nom));
                 listBoxRow1Col2.Items.Add(CrearImatgeCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1].Imatge));
+                listBoxRow1Col2.Items.Add(CrearLabelCartaDescripcio(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1].Descripcio));
+                listBoxRow1Col2.Items.Add(CrearListBoxHabilitats(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1].Habilitats.LListahabilitats, 2));
                 //Carta 3 Mazo 1
                 listBoxRow1Col3.Items.Add(CrearLabelCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2].Nom));
                 listBoxRow1Col3.Items.Add(CrearImatgeCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2].Imatge));
+                listBoxRow1Col3.Items.Add(CrearLabelCartaDescripcio(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2].Descripcio));
+                listBoxRow1Col3.Items.Add(CrearListBoxHabilitats(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2].Habilitats.LListahabilitats, 3));
                 //Carta 4 Mazo 1
                 listBoxRow1Col4.Items.Add(CrearLabelCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3].Nom));
                 listBoxRow1Col4.Items.Add(CrearImatgeCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3].Imatge));
+                listBoxRow1Col4.Items.Add(CrearLabelCartaDescripcio(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3].Descripcio));
+                listBoxRow1Col4.Items.Add(CrearListBoxHabilitats(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3].Habilitats.LListahabilitats, 4));
                 //Carta 5 Mazo 1
                 listBoxRow1Col5.Items.Add(CrearLabelCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4].Nom));
                 listBoxRow1Col5.Items.Add(CrearImatgeCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4].Imatge));
+                listBoxRow1Col5.Items.Add(CrearLabelCartaDescripcio(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4].Descripcio));
+                listBoxRow1Col5.Items.Add(CrearListBoxHabilitats(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4].Habilitats.LListahabilitats, 5));
+            }
+            else
+            {
+                btnAfegirMazoRow1.Visibility = Visibility.Visible;
+                btnEliminarMazoRow1.Visibility = Visibility.Hidden;
+                btnModificarMazoRow1.Visibility = Visibility.Hidden;
             }
 
         }
@@ -122,6 +136,14 @@ namespace Principal
             nomCarta.HorizontalContentAlignment = HorizontalAlignment.Center;
             return nomCarta;
         }
+        public Label CrearLabelCartaDescripcio(string descripcio)
+        {
+            Label descripcioCarta = new();
+            descripcioCarta.Width = 130;
+            descripcioCarta.Content = descripcio;
+            descripcioCarta.HorizontalContentAlignment = HorizontalAlignment.Center;
+            return descripcioCarta;
+        }
         /// <summary>
         /// Creo un objecte Imatge de la carta.
         /// </summary>
@@ -131,9 +153,89 @@ namespace Principal
         {
             Image imageCarta = new();
             imageCarta.Source = new BitmapImage(new Uri(path));
-            imageCarta.Width = 100;
-            imageCarta.Height = 100;
+            imageCarta.Width = 130;
+            imageCarta.Height = 130;
             return imageCarta;
+        }
+        public ListBox CrearListBoxHabilitats(List<Habilitat> habilitats, int carta)
+        {
+            ListBox list = new();
+            if (carta == 1)
+            {
+                Label label = new();
+                label.Content = habilitats[0].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[1].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[2].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[3].Nom;
+                list.Items.Add(label);
+            }else if(carta == 2)
+            {
+                Label label = new();
+                label.Content = habilitats[4].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[5].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[6].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[7].Nom;
+                list.Items.Add(label);
+            }else if (carta == 3)
+            {
+                Label label = new();
+                label.Content = habilitats[8].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[9].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[10].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[11].Nom;
+                list.Items.Add(label);
+            }else if(carta == 4)
+            {
+                Label label = new();
+                label.Content = habilitats[12].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[13].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[14].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[15].Nom;
+                list.Items.Add(label);
+            }
+            else
+            {
+                Label label = new();
+                label.Content = habilitats[16].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[17].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[18].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[19].Nom;
+                list.Items.Add(label);
+            }
+
+
+            list.Width = 130;
+            return list;
         }
         /// <summary>
         /// Metode que carrega el data grid de la pestanya partides amb les partides de l'usuari.
@@ -212,7 +314,8 @@ namespace Principal
                 Home home = new(Usuari, Cartes);
                 this.Close();
                 home.Show();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("No s'ha modificat l'usuari.");
                 Home home = new(Usuari, Cartes);
@@ -222,6 +325,13 @@ namespace Principal
 
 
 
+        }
+
+        private void btnModificarMazoRow1_Click(object sender, RoutedEventArgs e)
+        {
+            AfegirUnNouMazo nouMazo = new(Usuari, Cartes);
+            nouMazo.Show();
+            this.Close();
         }
     }
     //Classe que utilitzo per el Data grid de Partides així hem mostra les següents dades de partides al data grid.

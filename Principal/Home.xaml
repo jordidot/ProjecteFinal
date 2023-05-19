@@ -58,14 +58,14 @@
                         <Label x:Name="lblNomMazo1" Content="" HorizontalAlignment="Left" Margin="32,48,0,0" Grid.Row="0" VerticalAlignment="Top" Height="26" Width="10"/>
 
                         <!--Cartes Fila 1-->
-                        <ListBox x:Name="listBoxRow1Col1" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,36,0,0"/>
-                        <ListBox x:Name="listBoxRow1Col2" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="3" Margin="170,36,170,0"/>
-                        <ListBox x:Name="listBoxRow1Col3" Grid.Column="3" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,36,0,0"/>
-                        <ListBox x:Name="listBoxRow1Col4" Grid.Column="3" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="3" Margin="170,36,170,0"/>
-                        <ListBox x:Name="listBoxRow1Col5" Grid.Column="5" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,36,0,0"/>
+                        <ListBox x:Name="listBoxRow1Col1" HorizontalContentAlignment="Center" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,36,0,0"/>
+                        <ListBox x:Name="listBoxRow1Col2" HorizontalContentAlignment="Center" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="3" Margin="170,36,170,0"/>
+                        <ListBox x:Name="listBoxRow1Col3" HorizontalContentAlignment="Center" Grid.Column="3" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,36,0,0"/>
+                        <ListBox x:Name="listBoxRow1Col4" HorizontalContentAlignment="Center" Grid.Column="3" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="3" Margin="170,36,170,0"/>
+                        <ListBox x:Name="listBoxRow1Col5" HorizontalContentAlignment="Center" Grid.Column="5" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,36,0,0"/>
 
                         <!--Botons modificar-->
-                        <Button Visibility="Hidden" x:Name="btnModificarMazoRow1"  Grid.Row="1" Grid.Column="6" Padding="5" Content="Modificar" HorizontalAlignment="Center" VerticalAlignment="Center" Height="28" Width="62"/>
+                        <Button Visibility="Hidden" x:Name="btnModificarMazoRow1"  Grid.Row="1" Grid.Column="6" Padding="5" Content="Modificar" HorizontalAlignment="Center" VerticalAlignment="Center" Height="28" Width="62" Click="btnModificarMazoRow1_Click"/>
 
                         <!--Botons eliminar-->
                         <Button x:Name="btnEliminarMazoRow1" Grid.Column="6" Padding="5" Content="Eliminar" HorizontalAlignment="Center" Margin="0,36,0,0" Grid.Row="1" VerticalAlignment="Top" Width="62" Height="28" Click="btnEliminarMazoRow1_Click"/>

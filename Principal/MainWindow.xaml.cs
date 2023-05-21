@@ -25,7 +25,6 @@ namespace Principal
         //Atributs
         private Usuaris usuaris;
         private Cartes cartes;
-        private Partides partides;
         private Mazos mazos;
         //Constructor
         public MainWindow()
@@ -34,7 +33,6 @@ namespace Principal
             usuaris = new();
             cartes = new();
             mazos = new();
-            partides = new();
         }
 
         //Métodes
@@ -69,7 +67,7 @@ namespace Principal
                 {
                     cartes = cartes.RecuperarTotesCartes();
                     usuaris.Llistausuaris[0].Partides.TotesCartes = cartes;
-                    usuaris.Llistausuaris[0].Partides = usuaris.Llistausuaris[0].Partides.RecuperarPartides(usuaris.Llistausuaris[0]);
+                    usuaris.Llistausuaris[0].Partides.LlistaPartides = usuaris.Llistausuaris[0].Partides.RecuperarPartides(usuaris.Llistausuaris[0], cartes).FindAll(x=>x.Usuari.Id == usuaris.Llistausuaris[0].Id);
                     usuaris.Llistausuaris[0].Mazos = mazos.RecuperarMazos(usuaris.Llistausuaris[0], cartes);
                     //Li passo l'usuari al constructor de la finestra del home per tenir les seves dades.
                     Home home = new(usuaris.Llistausuaris[0], cartes);

@@ -12,13 +12,14 @@ namespace Principal.Negoci
         //Atribut
         private List<Partida> llistaPartides;
         public Cartes TotesCartes { get; set; }
-        public int TotalPartides { get; set; }
+        public int Quantitat { get; set; }
         //Constructors
         /// <summary>
         /// Constructor buit
         /// </summary>
         public Partides()
         {
+            TotesCartes = new Cartes();
             llistaPartides = new List<Partida>();
         }
         /// <summary>
@@ -62,14 +63,14 @@ namespace Principal.Negoci
         {
 
         }
-        public Partides RecuperarPartides(Usuari usuari)
+        public List<Partida> RecuperarPartides(Usuari usuari, Cartes cartes)
         {
             Bot bot = new(TotesCartes);
             Partida partida = new(0,bot,1500,usuari,1500,"Empat");
             PartidesDB partidesdb = new(TotesCartes,partida);
-            partidesdb.RecuperarPartides(usuari);
-            TotalPartides = partidesdb.TotalPartides;
-            return partidesdb.Partides;
+            partidesdb.RecuperarPartides(usuari,cartes);
+            this.Quantitat = partidesdb.Quantitat;
+            return partidesdb.RecuperarPartides(usuari, cartes);
         }
     }
 }

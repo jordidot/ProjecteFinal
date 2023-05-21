@@ -57,6 +57,8 @@ namespace Principal
         {
             Partides partides = new();
             partides.AfegirPartida(this.TotesCartes, this.partida);
+            Home home = new(this.partida.Usuari,this.TotesCartes);
+            home.Show();
         }
 
         private void gridCampBatalla_Loaded(object sender, RoutedEventArgs e)

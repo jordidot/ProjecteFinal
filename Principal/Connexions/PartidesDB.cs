@@ -13,10 +13,11 @@ namespace Principal.Connexions
     {
         //Atributs 
         private Partides partides;
+
         private ConnexioDB connexioBD;
         public Cartes TotesCartes { get; set; }
         public int Quantitat { get; set; }
-        public int TotalPartides { get; set; }
+        public Partides TotesPartides { get; set; }
 
 
         //Constructors
@@ -25,6 +26,7 @@ namespace Principal.Connexions
         /// </summary>
         public PartidesDB(Cartes cartes,Partida partida)
         {
+            TotesPartides = new();
             connexioBD = new ConnexioDB("", "127.0.0.1", "cartesdb", "root");
             partides = new Partides();
             this.TotesCartes = cartes;
@@ -81,32 +83,69 @@ namespace Principal.Connexions
         {
         }
   
+        ///// <summary>
+        ///// Metode per recuperar partides d'un usuari de la bd
+        ///// </summary>
+        ///// <returns></returns>
+        //public Partides RecuperarPartides(Usuari usuari)
+        //{
+        //    Partides partides = new Partides();
+        //    try
+        //    {
+        //        MySqlCommand command = new MySqlCommand("SELECT *,(SELECT count(*) FROM partides) FROM partides WHERE id_usuari="+usuari.Id+";", ConnexioBD.Connectar());
+        //        MySqlDataReader reader = command.ExecuteReader();
+        //        while (reader.Read())
+        //        {
+        //            Bot bot = new Bot(TotesCartes);
+        //            bot.Nom = reader.GetString(1);
+
+        //            Cartes cartesBot = new Cartes();
+
+        //            Mazo mazoUsuari = new(reader.GetInt32(2), cartesBot, "MazoUsuari", usuari);
+
+        //            Partida partida = new Partida(reader.GetInt32(0), bot, 1500,usuari, 1500, reader.GetString(3));
+        //            partides.LlistaPartides.Add(partida);
+        //            Quantitat = reader.GetInt32(4);
+        //        }
+        //        this.Partides = partides;
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //    finally
+        //    {
+        //        ConnexioBD.Connectar().Close();
+        //        MySqlConnection.ClearAllPools();
+        //    }
+        //    return partides;
+        //}
         /// <summary>
-        /// Metode per recuperar partides d'un usuari de la bd
+        /// Metode per recuperar usuariBD
         /// </summary>
         /// <returns></returns>
-        public Partides RecuperarPartides(Usuari usuari)
+        public List<Partida> RecuperarPartides(Usuari usuari, Cartes cartes)
         {
-            Partides partides = new Partides();
+            List<Partida> partidesList = new List<Partida>();
             try
             {
-                MySqlCommand command = new MySqlCommand("SELECT *,(SELECT count(*) FROM partides) FROM partides WHERE id_usuari="+usuari.Id+";", ConnexioBD.Connectar());
+                MySqlCommand command = new MySqlCommand("SELECT * FROM partides;", ConnexioBD.Connectar());
                 MySqlDataReader reader = command.ExecuteReader();
+
                 while (reader.Read())
                 {
-                    Bot bot = new Bot(TotesCartes);
+                    Bot bot = new(cartes);
                     bot.Nom = reader.GetString(1);
-
-                    Cartes cartesBot = new Cartes();
-
-                    Mazo mazoUsuari = new(reader.GetInt32(2), cartesBot, "MazoUsuari", usuari);
-
-                    Partida partida = new Partida(reader.GetInt32(0), bot, 1500,usuari, 1500, reader.GetString(3));
-                    partides.LlistaPartides.Add(partida);
-                    TotalPartides = reader.GetInt32(4);
+                    Mazos mazos = new();
+                    Partides partides = new();
+                    usuari.Id = reader.GetInt32(2);
+                    Partida partida = new(reader.GetInt32(0),bot,1500,usuari,1500,reader.GetString(3));
+                    partidesList.Add(partida);
                 }
-                this.Partides = partides;
-
+                
+                TotesPartides.LlistaPartides = partidesList;
+                this.Quantitat = TotesPartides.LlistaPartides.Count;
             }
             catch (Exception ex)
             {
@@ -117,8 +156,8 @@ namespace Principal.Connexions
                 ConnexioBD.Connectar().Close();
                 MySqlConnection.ClearAllPools();
             }
-            return partides;
+            return TotesPartides.LlistaPartides;
         }
-        
+
     }
 }

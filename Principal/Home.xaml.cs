@@ -35,7 +35,9 @@ namespace Principal
             InitializeComponent();
             TotesCartes = cartes;
             this.usuari = usuari;
+      
             if (this.usuari.EsAdministrador == 1) btnAdministracio.Visibility = Visibility.Visible;
+            lblTotalPuntsUsuari.Content = this.usuari.Punts + " Punts";
             lblAliasBenvingut.Content = usuari.Alias;
             imageProfile.Source = new BitmapImage(new Uri(usuari.ImatgePerfil));
         }
@@ -273,7 +275,7 @@ namespace Principal
         private void BtnPartidaNova_Click(object sender, RoutedEventArgs e)
         {
             Bot bot = new(this.TotesCartes);
-            Partida partida = new(Usuari.Partides.TotalPartides +1,bot,1500,this.Usuari,1500,"Perduda");
+            Partida partida = new(Usuari.Partides.Quantitat +1,bot,1500,this.Usuari,1500,"Perduda");
             CampBatalla camp = new(partida,this.TotesCartes);
             this.Close();
             camp.Show();
@@ -313,13 +315,14 @@ namespace Principal
 
         private void windowHome_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-
             if (this.Usuari.Mazos.LlistaMazos.Count == 1)
             {
                 MazosDB afegir = new();
                 afegir.EliminarMazoUsuariBD(Usuari);
                 afegir.AfegirMazoBD(this.Usuari.Mazos.LlistaMazos[0]);
             }
+            UsuarisDB usuari = new();
+            usuari.ModificarUsuari(this.Usuari);
 
         }
 

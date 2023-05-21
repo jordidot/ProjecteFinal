@@ -40,6 +40,8 @@
                         </Button.Effect>
                     </Button>
                     <Rectangle Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="658" Stroke="Black" VerticalAlignment="Center" Width="198" Fill="#FF1C7FCC"/>
+                    <Label Grid.Column="1" Content="Punts guanyats de l'usuari: " HorizontalAlignment="Left" Margin="231,443,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblTotalPuntsUsuari" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="432,439,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="tabItemMazos" Header="Els meus mazos" Loaded="tabItemMazos_Loaded">
@@ -87,7 +89,7 @@
             <TabItem x:Name="tabItemPartides" Header="Les meves partides" Loaded="tabItemPartides_Loaded">
                 <Grid Background="#FFE5E5E5">
                     <Label Content="Totes les meves partides realitzades" HorizontalAlignment="Center" Margin="0,36,0,0" VerticalAlignment="Top"/>
-                    <DataGrid x:Name="dataGridPartides" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="102,67,102,90"/>
+                    <DataGrid x:Name="dataGridPartides" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="102,67,102,90" HorizontalAlignment="Center"/>
                 </Grid>
             </TabItem>
         </TabControl>

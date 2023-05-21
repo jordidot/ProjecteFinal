@@ -91,7 +91,7 @@
                 </Button.Effect>
             </Button>
             <!--Estat de la partida-->
-            <Label x:Name="lblEstatPartida" Content="" Grid.Row="3" Grid.Column="2"  Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" FontSize="20"></Label>
+            <Label x:Name="lblEstatPartida" Content="" Grid.Row="3" Grid.Column="1"  Grid.ColumnSpan="5" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" FontSize="20"></Label>
             <Button x:Name="btnComençaPartidaSeleccionar"  Visibility="Hidden" Content="Començar partida" Grid.Column="3" Grid.Row="3" VerticalContentAlignment="Bottom"  HorizontalAlignment="Center" FontSize="25" FontFamily="Bahnschrift" Background="#FF95E081" Click="btnComençaPartida_Click" Margin="0,99,0,10" Width="254">
                 <Button.Effect>
                     <DropShadowEffect/>

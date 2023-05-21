@@ -16,13 +16,14 @@ namespace Principal.Connexions
         private ConnexioDB connexioBD;
         public Cartes TotesCartes { get; set; }
         public int Quantitat { get; set; }
+        public int TotalPartides { get; set; }
 
 
         //Constructors
         /// <summary>
         /// Constructor buit
         /// </summary>
-        public PartidesDB(Cartes cartes)
+        public PartidesDB(Cartes cartes,Partida partida)
         {
             connexioBD = new ConnexioDB("", "127.0.0.1", "cartesdb", "root");
             partides = new Partides();
@@ -48,9 +49,21 @@ namespace Principal.Connexions
         /// <summary>
         /// Metode per afegir partida a la bd
         /// </summary>
-        public void AfegirPartidaBD()
+        public void AfegirPartidaBD(Partida partida)
         {
-
+            try
+            {
+                var comanda = new MySqlCommand("INSERT INTO partides VALUES(" + partida.Id + ",'" + partida.Bot.Nom + "'," + partida.Usuari.Id + ",'" + partida.EstatPartida + "');", ConnexioBD.Connectar());
+                comanda.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut afegir la partida." + ex.Message);
+            }
+            finally
+            {
+                ConnexioBD.Connectar().Close();
+            }
         }
         /// <summary>
         /// Metode per eliminar una partida de la bd
@@ -79,7 +92,6 @@ namespace Principal.Connexions
             {
                 MySqlCommand command = new MySqlCommand("SELECT *,(SELECT count(*) FROM partides) FROM partides WHERE id_usuari="+usuari.Id+";", ConnexioBD.Connectar());
                 MySqlDataReader reader = command.ExecuteReader();
-
                 while (reader.Read())
                 {
                     Bot bot = new Bot(TotesCartes);
@@ -91,8 +103,9 @@ namespace Principal.Connexions
 
                     Partida partida = new Partida(reader.GetInt32(0), bot, 1500,usuari, 1500, reader.GetString(3));
                     partides.LlistaPartides.Add(partida);
-                    Quantitat = reader.GetInt32(4);
+                    TotalPartides = reader.GetInt32(4);
                 }
+                this.Partides = partides;
 
             }
             catch (Exception ex)

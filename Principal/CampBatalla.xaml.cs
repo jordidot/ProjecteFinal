@@ -30,14 +30,16 @@ namespace Principal
         public Habilitats HabilitatsSeleccionades { get; set; }
         public int Turnos { get; set; }
         public bool HaComençatPartida { get; set; }
+        public Cartes TotesCartes { get; set; }
         /// <summary>
         /// Constructor del camp de batalla que rep l'usuari i la partida.
         /// </summary>
         /// <param name="usuari">Usuari que juga.</param>
         /// <param name="partida">Dades de la partida, cartes, etc..</param>
-        public CampBatalla(Partida partida)
+        public CampBatalla(Partida partida, Cartes cartes)
         {
             InitializeComponent();
+            this.TotesCartes = cartes;
             HaComençatPartida = false;
             Turnos = 40;
             HabilitatsSeleccionades = new();
@@ -53,7 +55,8 @@ namespace Principal
         /// <param name="e">Event intern que relitza per tancar la finestra.</param>
         private void campBatallaWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-
+            Partides partides = new();
+            partides.AfegirPartida(this.TotesCartes, this.partida);
         }
 
         private void gridCampBatalla_Loaded(object sender, RoutedEventArgs e)
@@ -100,6 +103,8 @@ namespace Principal
             lstBoxCartaUsuariSeleccionada.Items.Clear();
             lstBoxCartaUsuariSeleccionada.Items.Add(CrearImatgeCarta(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0].Imatge));
             this.CartaSeleccionadaUsuari = partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0];
+
+
             this.HabilitatsSeleccionades.LListahabilitats.Clear();
             this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0].Habilitats.LListahabilitats[0]);
             this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0].Habilitats.LListahabilitats[1]);
@@ -107,107 +112,94 @@ namespace Principal
             this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0].Habilitats.LListahabilitats[3]);
             if (HaComençatPartida)
                 JugarPartida();
+
         }
         private void lstBoxCartaUsuari2_GotFocus(object sender, RoutedEventArgs e)
         {
             lstBoxCartaUsuariSeleccionada.Items.Clear();
             lstBoxCartaUsuariSeleccionada.Items.Add(CrearImatgeCarta(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1].Imatge));
             this.CartaSeleccionadaUsuari = partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1];
+            this.HabilitatsSeleccionades.LListahabilitats.Clear();
+            this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1].Habilitats.LListahabilitats[4]);
+            this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1].Habilitats.LListahabilitats[5]);
+            this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1].Habilitats.LListahabilitats[6]);
+            this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1].Habilitats.LListahabilitats[7]);
             if (HaComençatPartida)
-            {
-                this.HabilitatsSeleccionades.LListahabilitats.Clear();
-                this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1].Habilitats.LListahabilitats[4]);
-                this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1].Habilitats.LListahabilitats[5]);
-                this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1].Habilitats.LListahabilitats[6]);
-                this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1].Habilitats.LListahabilitats[7]);
-
                 JugarPartida();
-            }
+
         }
         private void lstBoxCartaUsuari3_GotFocus(object sender, RoutedEventArgs e)
         {
             lstBoxCartaUsuariSeleccionada.Items.Clear();
             lstBoxCartaUsuariSeleccionada.Items.Add(CrearImatgeCarta(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2].Imatge));
             this.CartaSeleccionadaUsuari = partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2];
+            this.HabilitatsSeleccionades.LListahabilitats.Clear();
+            this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2].Habilitats.LListahabilitats[8]);
+            this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2].Habilitats.LListahabilitats[9]);
+            this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2].Habilitats.LListahabilitats[10]);
+            this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2].Habilitats.LListahabilitats[11]);
             if (HaComençatPartida)
-            {
-                this.HabilitatsSeleccionades.LListahabilitats.Clear();
-                this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2].Habilitats.LListahabilitats[8]);
-                this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2].Habilitats.LListahabilitats[9]);
-                this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2].Habilitats.LListahabilitats[10]);
-                this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2].Habilitats.LListahabilitats[11]);
-
                 JugarPartida();
-            }
+
         }
         private void lstBoxCartaUsuari4_GotFocus(object sender, RoutedEventArgs e)
         {
             lstBoxCartaUsuariSeleccionada.Items.Clear();
             lstBoxCartaUsuariSeleccionada.Items.Add(CrearImatgeCarta(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3].Imatge));
             this.CartaSeleccionadaUsuari = partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3];
+            this.HabilitatsSeleccionades.LListahabilitats.Clear();
+            this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3].Habilitats.LListahabilitats[12]);
+            this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3].Habilitats.LListahabilitats[13]);
+            this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3].Habilitats.LListahabilitats[14]);
+            this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3].Habilitats.LListahabilitats[15]);
             if (HaComençatPartida)
-            {
-                this.HabilitatsSeleccionades.LListahabilitats.Clear();
-                this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3].Habilitats.LListahabilitats[12]);
-                this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3].Habilitats.LListahabilitats[13]);
-                this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3].Habilitats.LListahabilitats[14]);
-                this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3].Habilitats.LListahabilitats[15]);
-
                 JugarPartida();
-            }
+
         }
         private void lstBoxCartaUsuari5_GotFocus(object sender, RoutedEventArgs e)
         {
             lstBoxCartaUsuariSeleccionada.Items.Clear();
             lstBoxCartaUsuariSeleccionada.Items.Add(CrearImatgeCarta(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4].Imatge));
             this.CartaSeleccionadaUsuari = partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4];
+            this.HabilitatsSeleccionades.LListahabilitats.Clear();
+            this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4].Habilitats.LListahabilitats[16]);
+            this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4].Habilitats.LListahabilitats[17]);
+            this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4].Habilitats.LListahabilitats[18]);
+            this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4].Habilitats.LListahabilitats[19]);
             if (HaComençatPartida)
-            {
-                this.HabilitatsSeleccionades.LListahabilitats.Clear();
-                this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4].Habilitats.LListahabilitats[16]);
-                this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4].Habilitats.LListahabilitats[17]);
-                this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4].Habilitats.LListahabilitats[18]);
-                this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4].Habilitats.LListahabilitats[19]);
-                if (HaComençatPartida)
-                    JugarPartida();
-            }
+                JugarPartida();
+
         }
 
         private void btnComençaPartida_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                HaComençatPartida = true;
-                lstBoxActivitatPartida.Visibility = Visibility.Visible;
-                btnComençaPartida.Visibility = Visibility.Hidden;
-                btnComençaPartidaSeleccionar.Visibility = Visibility.Hidden;
-                lblEstatPartida.Visibility = Visibility.Visible;
-                lblContadorTemps.Content = 1200;
-                ContinuarPartida();
-            }
-            catch (Exception ex)
-            {
-                lstBoxActivitatPartida.Items.Clear();
-                lblVidaBot.Content = "1500";
-                lstBoxActivitatPartida.Visibility = Visibility.Hidden;
-                MessageBox.Show("No has començat la partida! Dona-li click al botó de 'Començar la partida'");
-            }
 
-
-
-
+            HaComençatPartida = true;
+            lstBoxActivitatPartida.Visibility = Visibility.Visible;
+            btnComençaPartida.Visibility = Visibility.Hidden;
+            btnComençaPartidaSeleccionar.Visibility = Visibility.Hidden;
+            lblEstatPartida.Visibility = Visibility.Visible;
+            ContinuarPartida();
         }
         private void ContinuarPartida()
         {
             if (this.Turnos != 0)
             {
+
                 if (int.Parse(lblVidaUsuari.Content.ToString()) <= 0)
                 {
-                    AmagarBotons("Has guanyat la partida, sumes 400 punts!");
+                    lblVidaUsuari.Content = "0";
+                    lblVidaBot.Content = "0";
+                    AmagarBotons("Has perdut la partida, sumes 0 punts! Loser!");
+                    this.partida.EstatPartida = "Perduda";
                 }
                 else if (int.Parse(lblVidaBot.Content.ToString()) <= 0)
                 {
-                    AmagarBotons("Has guanyat la partida, sumes 400 punts!");
+                    lblVidaBot.Content = "0";
+                    lblVidaUsuari.Content = "0";
+                    AmagarBotons("Has guanyat la partida, sumes 400 punts! Winner!");
+                    this.partida.EstatPartida = "Guanyada";
+                    this.partida.Usuari.Punts += 400;
                 }
                 else
                 {
@@ -231,28 +223,38 @@ namespace Principal
                         CartaSeleccionadaBot = partida.Bot.Cartes.LlistaCartes[IdCartaSelecciondaBot];
                         lstBoxCartaBotSeleccionada.Items.Add(CrearImatgeCarta(CartaSeleccionadaBot.Imatge));
                     }
+
                     Turnos--;
-                }
-            }
-            else
-            {
-                if (int.Parse(lblVidaUsuari.Content.ToString()) > 0 && int.Parse(lblVidaBot.Content.ToString()) == 0)
-                {
-                    AmagarBotons("Has guanyat la partida, sumes 400 punts!");
-                   
-                }
-                else if (int.Parse(lblVidaBot.Content.ToString()) > 0 && int.Parse(lblVidaUsuari.Content.ToString()) == 0)
-                {
-                    AmagarBotons("El bot ha guanyat la partida, sumes 0 punts!");
-                }
-                else
-                {
-                    AmagarBotons("Heu quedat empate, sumes 200 punts!");
                 }
 
             }
+            else
+            {
+
+                if (int.Parse(lblVidaUsuari.Content.ToString()) > 0 && int.Parse(lblVidaBot.Content.ToString()) == 0)
+                {
+                    AmagarBotons("Has guanyat la partida, sumes 400 punts!");
+                    this.partida.EstatPartida = "Guanyada";
+                    this.partida.Usuari.Punts += 400;
+                }
+                else if (int.Parse(lblVidaBot.Content.ToString()) > 0 && int.Parse(lblVidaUsuari.Content.ToString()) == 0)
+                {
+                    AmagarBotons("En "+this.partida.Bot.Nom+" ha guanyat la partida, sumes 0 punts!");
+                    this.partida.EstatPartida = "Perduda";
+                    
+                }
+                else if (int.Parse(lblVidaBot.Content.ToString()) == 0 && int.Parse(lblVidaUsuari.Content.ToString()) == 0)
+                {
+                    AmagarBotons("Has perdut no has pogut vencer a "+this.partida.Bot.Nom +" , sumes 0 punts!");
+                    this.partida.EstatPartida = "Perduda";
+                    
+                }
+            }
+
+
+
         }
-       
+
         private void JugarPartida()
         {
             lblContadorTemps.Content = "Torns totals: " + Turnos.ToString();
@@ -270,12 +272,34 @@ namespace Principal
         {
             try
             {
-                lstBoxActivitatPartida.Items.Add("TORN DE: " + partida.Usuari.Alias);
-                MessageBox.Show(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[0].Nom + " li has tret a " + partida.Bot.Nom + " 25 punts de vida.");
-                lstBoxActivitatPartida.Items.Add(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[0].Nom + " li has tret a " + partida.Bot.Nom + " 25 punts de vida.");
-                lblVidaBot.Content = (int.Parse(lblVidaBot.Content.ToString()) - 25).ToString();
-                HabilitatRandomBot();
-                ContinuarPartida();
+                if (HabilitatsSeleccionades.LListahabilitats[0].Cooldown > 0)
+                {
+                    Random random = new();
+                    int sort = random.Next(1, 3);
+                    if (sort == 1)
+                    {
+                        lstBoxActivitatPartida.Items.Add("TORN DE: " + partida.Usuari.Alias);
+                        MessageBox.Show(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[0].Nom + " li has tret a " + partida.Bot.Nom + " 25 punts de vida.");
+                        lstBoxActivitatPartida.Items.Add(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[0].Nom + " li has tret a " + partida.Bot.Nom + " 25 punts de vida.");
+                        lblVidaBot.Content = (int.Parse(lblVidaBot.Content.ToString()) - 25).ToString();
+                        HabilitatRandomBot();
+                    }
+                    else
+                    {
+                        HabilitatRandomBot();
+                        lstBoxActivitatPartida.Items.Add("TORN DE: " + partida.Usuari.Alias);
+                        MessageBox.Show(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[0].Nom + " li has tret a " + partida.Bot.Nom + " 25 punts de vida.");
+                        lstBoxActivitatPartida.Items.Add(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[0].Nom + " li has tret a " + partida.Bot.Nom + " 25 punts de vida.");
+                        lblVidaBot.Content = (int.Parse(lblVidaBot.Content.ToString()) - 25).ToString();
+                    }
+                    HabilitatsSeleccionades.LListahabilitats[0].Cooldown--;
+                    ContinuarPartida();
+                }
+                else
+                {
+                    MessageBox.Show("No pots utilitzar més aquesta habilitat.");
+                }
+
             }
             catch (Exception ex)
             {
@@ -293,12 +317,34 @@ namespace Principal
         {
             try
             {
-                lstBoxActivitatPartida.Items.Add("TORN DE: " + partida.Usuari.Alias);
-                MessageBox.Show(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[1].Nom + " li has tret a " + partida.Bot.Nom + " 50 punts de vida.");
-                lstBoxActivitatPartida.Items.Add(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[1].Nom + " li has tret a " + partida.Bot.Nom + " 50 punts de vida.");
-                lblVidaBot.Content = (int.Parse(lblVidaBot.Content.ToString()) - 50).ToString();
-                HabilitatRandomBot();
-                ContinuarPartida();
+                if (HabilitatsSeleccionades.LListahabilitats[1].Cooldown > 0)
+                {
+                    Random random = new();
+                    int sort = random.Next(1, 3);
+                    if (sort == 1)
+                    {
+                        lstBoxActivitatPartida.Items.Add("TORN DE: " + partida.Usuari.Alias);
+                        MessageBox.Show(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[1].Nom + " li has tret a " + partida.Bot.Nom + " 50 punts de vida.");
+                        lstBoxActivitatPartida.Items.Add(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[1].Nom + " li has tret a " + partida.Bot.Nom + " 50 punts de vida.");
+                        lblVidaBot.Content = (int.Parse(lblVidaBot.Content.ToString()) - 50).ToString();
+                        HabilitatRandomBot();
+                    }
+                    else
+                    {
+                        HabilitatRandomBot();
+                        lstBoxActivitatPartida.Items.Add("TORN DE: " + partida.Usuari.Alias);
+                        MessageBox.Show(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[1].Nom + " li has tret a " + partida.Bot.Nom + " 50 punts de vida.");
+                        lstBoxActivitatPartida.Items.Add(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[1].Nom + " li has tret a " + partida.Bot.Nom + " 50 punts de vida.");
+                        lblVidaBot.Content = (int.Parse(lblVidaBot.Content.ToString()) - 50).ToString();
+                    }
+                    HabilitatsSeleccionades.LListahabilitats[1].Cooldown--;
+                    ContinuarPartida();
+                }
+                else
+                {
+                    MessageBox.Show("No pots utilitzar més aquesta habilitat.");
+                }
+
             }
             catch (Exception ex)
             {
@@ -313,12 +359,34 @@ namespace Principal
         {
             try
             {
-                lstBoxActivitatPartida.Items.Add("TORN DE: " + partida.Usuari.Alias);
-                MessageBox.Show(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[2].Nom + " li has tret a " + partida.Bot.Nom + " 75 punts de vida.");
-                lstBoxActivitatPartida.Items.Add(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[2].Nom + " li has tret a " + partida.Bot.Nom + " 75 punts de vida.");
-                lblVidaBot.Content = (int.Parse(lblVidaBot.Content.ToString()) - 75).ToString();
-                HabilitatRandomBot();
-                ContinuarPartida();
+                if (HabilitatsSeleccionades.LListahabilitats[2].Cooldown > 0)
+                {
+                    Random random = new();
+                    int sort = random.Next(1, 3);
+                    if (sort == 1)
+                    {
+                        lstBoxActivitatPartida.Items.Add("TORN DE: " + partida.Usuari.Alias);
+                        MessageBox.Show(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[2].Nom + " li has tret a " + partida.Bot.Nom + " 75 punts de vida.");
+                        lstBoxActivitatPartida.Items.Add(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[2].Nom + " li has tret a " + partida.Bot.Nom + " 75 punts de vida.");
+                        lblVidaBot.Content = (int.Parse(lblVidaBot.Content.ToString()) - 75).ToString();
+                        HabilitatRandomBot();
+                    }
+                    else
+                    {
+                        HabilitatRandomBot();
+                        lstBoxActivitatPartida.Items.Add("TORN DE: " + partida.Usuari.Alias);
+                        MessageBox.Show(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[2].Nom + " li has tret a " + partida.Bot.Nom + " 75 punts de vida.");
+                        lstBoxActivitatPartida.Items.Add(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[2].Nom + " li has tret a " + partida.Bot.Nom + " 75 punts de vida.");
+                        lblVidaBot.Content = (int.Parse(lblVidaBot.Content.ToString()) - 75).ToString();
+                    }
+                    HabilitatsSeleccionades.LListahabilitats[2].Cooldown--;
+                    ContinuarPartida();
+                }
+                else
+                {
+                    MessageBox.Show("No pots utilitzar més aquesta habilitat.");
+                }
+
             }
             catch (Exception ex)
             {
@@ -333,12 +401,34 @@ namespace Principal
         {
             try
             {
-                lstBoxActivitatPartida.Items.Add("TORN DE: " + partida.Usuari.Alias);
-                MessageBox.Show(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[3].Nom + " li has tret a " + partida.Bot.Nom + " 125 punts de vida.");
-                lstBoxActivitatPartida.Items.Add(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[3].Nom + " li has tret a " + partida.Bot.Nom + " 125 punts de vida.");
-                lblVidaBot.Content = (int.Parse(lblVidaBot.Content.ToString()) - 125).ToString();
-                HabilitatRandomBot();
-                ContinuarPartida();
+                if (HabilitatsSeleccionades.LListahabilitats[2].Cooldown > 0)
+                {
+                    Random random = new();
+                    int sort = random.Next(1, 3);
+                    if (sort == 1)
+                    {
+                        lstBoxActivitatPartida.Items.Add("TORN DE: " + partida.Usuari.Alias);
+                        MessageBox.Show(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[3].Nom + " li has tret a " + partida.Bot.Nom + " 125 punts de vida.");
+                        lstBoxActivitatPartida.Items.Add(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[3].Nom + " li has tret a " + partida.Bot.Nom + " 125 punts de vida.");
+                        lblVidaBot.Content = (int.Parse(lblVidaBot.Content.ToString()) - 125).ToString();
+                        HabilitatRandomBot();
+                    }
+                    else
+                    {
+                        HabilitatRandomBot();
+                        lstBoxActivitatPartida.Items.Add("TORN DE: " + partida.Usuari.Alias);
+                        MessageBox.Show(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[3].Nom + " li has tret a " + partida.Bot.Nom + " 125 punts de vida.");
+                        lstBoxActivitatPartida.Items.Add(partida.Usuari.Alias + " ha utilitzat " + HabilitatsSeleccionades.LListahabilitats[3].Nom + " li has tret a " + partida.Bot.Nom + " 125 punts de vida.");
+                        lblVidaBot.Content = (int.Parse(lblVidaBot.Content.ToString()) - 125).ToString();
+
+                    }
+                    HabilitatsSeleccionades.LListahabilitats[3].Cooldown--;
+                    ContinuarPartida();
+                }
+                else
+                {
+                    MessageBox.Show("No pots utilitzar més aquesta habilitat.");
+                }
             }
             catch (Exception ex)
             {
@@ -381,7 +471,6 @@ namespace Principal
         private void AmagarBotons(string resultat)
         {
             lblEstatPartida.Content = resultat;
-            lblEstatPartida.Width = 500;
             lblEstatPartida.Foreground = Brushes.Green;
             lblEstatPartida.FontSize = 50;
             lstBoxActivitatPartida.Visibility = Visibility.Hidden;

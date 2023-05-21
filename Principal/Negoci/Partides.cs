@@ -12,7 +12,7 @@ namespace Principal.Negoci
         //Atribut
         private List<Partida> llistaPartides;
         public Cartes TotesCartes { get; set; }
-        public int Quantitat { get; set; }
+        public int TotalPartides { get; set; }
         //Constructors
         /// <summary>
         /// Constructor buit
@@ -43,9 +43,10 @@ namespace Principal.Negoci
         /// Metode per afegir partida
         /// </summary>
 
-        public void AfegirPartida()
+        public void AfegirPartida(Cartes cartes, Partida partida)
         {
-
+            PartidesDB partidesdb = new(cartes,partida);
+            partidesdb.AfegirPartidaBD(partida);
         }
         /// <summary>
         /// Metode per eliminar partida
@@ -63,10 +64,12 @@ namespace Principal.Negoci
         }
         public Partides RecuperarPartides(Usuari usuari)
         {
-            PartidesDB partidesdb = new(TotesCartes);
+            Bot bot = new(TotesCartes);
+            Partida partida = new(0,bot,1500,usuari,1500,"Empat");
+            PartidesDB partidesdb = new(TotesCartes,partida);
             partidesdb.RecuperarPartides(usuari);
-            Quantitat = partidesdb.Quantitat;
-            return partidesdb.RecuperarPartides(usuari);
+            TotalPartides = partidesdb.TotalPartides;
+            return partidesdb.Partides;
         }
     }
 }

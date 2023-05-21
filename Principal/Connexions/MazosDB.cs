@@ -53,7 +53,7 @@ namespace Principal.Connexions
             }
             catch (Exception ex)
             {
-                MessageBox.Show("No s'ha pogut afegir l'usuari." + ex.Message);
+                MessageBox.Show("No s'ha pogut afegir el mazo." + ex.Message);
             }
             finally
             {

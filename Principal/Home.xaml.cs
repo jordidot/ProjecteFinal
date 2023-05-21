@@ -23,7 +23,8 @@ namespace Principal
     {
         //Atributs
         private Usuari usuari;
-        public Cartes Cartes { get; set; }
+        public Cartes TotesCartes { get; set; }
+  
         //Constructors
         /// <summary>
         /// Constructor del Home que rep l'usuari.
@@ -32,7 +33,7 @@ namespace Principal
         public Home(Usuari usuari, Cartes cartes)
         {
             InitializeComponent();
-            Cartes = cartes;
+            TotesCartes = cartes;
             this.usuari = usuari;
             if (this.usuari.EsAdministrador == 1) btnAdministracio.Visibility = Visibility.Visible;
             lblAliasBenvingut.Content = usuari.Alias;
@@ -271,9 +272,9 @@ namespace Principal
         /// <param name="e">Event intern.</param>
         private void BtnPartidaNova_Click(object sender, RoutedEventArgs e)
         {
-            Bot bot = new(this.Cartes);
-            Partida partida = new(Usuari.Partides.Quantitat +1,bot,1500,this.Usuari,1500,"Perduda");
-            CampBatalla camp = new(partida);
+            Bot bot = new(this.TotesCartes);
+            Partida partida = new(Usuari.Partides.TotalPartides +1,bot,1500,this.Usuari,1500,"Perduda");
+            CampBatalla camp = new(partida,this.TotesCartes);
             this.Close();
             camp.Show();
 
@@ -285,7 +286,7 @@ namespace Principal
         /// <param name="e">Event intern.</param>
         private void btnAfegirMazoRow1_Click(object sender, RoutedEventArgs e)
         {
-            AfegirUnNouMazo nouMazo = new(Usuari, Cartes);
+            AfegirUnNouMazo nouMazo = new(Usuari, TotesCartes);
             nouMazo.Show();
             this.Close();
         }
@@ -296,13 +297,13 @@ namespace Principal
             try
             {
                 Usuari.Mazos.LlistaMazos.Remove(Usuari.Mazos.LlistaMazos[0]);
-                Home home = new(Usuari, Cartes);
+                Home home = new(Usuari, TotesCartes);
                 this.Close();
                 home.Show();
             }
             catch (Exception ex)
             {
-                Home home = new(Usuari, Cartes);
+                Home home = new(Usuari, TotesCartes);
                 this.Close();
                 home.Show();
             }
@@ -329,14 +330,14 @@ namespace Principal
                 Usuaris usuaris = new Usuaris();
                 Usuari.Alias = txtBoxAliasNouModificar.Text;
                 usuaris.ModificarUsuari(Usuari);
-                Home home = new(Usuari, Cartes);
+                Home home = new(Usuari, TotesCartes);
                 this.Close();
                 home.Show();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("No s'ha modificat l'usuari.");
-                Home home = new(Usuari, Cartes);
+                Home home = new(Usuari, TotesCartes);
                 this.Close();
                 home.Show();
             }
@@ -348,7 +349,7 @@ namespace Principal
         private void btnAdministracio_Click(object sender, RoutedEventArgs e)
         {
             Partides partides = new();
-            Administracio panell = new(this.Usuari,this.Cartes, partides);
+            Administracio panell = new(this.Usuari,this.TotesCartes, partides);
             this.Close();
             panell.Show();
         }

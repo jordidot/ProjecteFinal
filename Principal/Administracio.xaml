@@ -7,6 +7,29 @@
         mc:Ignorable="d"
         Title="Administracio" Height="450" Width="800" Closing="windowsAdministracio_Closing">
     <Grid>
-        
+        <TabControl>
+            <TabItem Header="Usuaris">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="dataGridUsuaris" d:ItemsSource="{d:SampleData ItemCount=5}" Loaded="dataGridUsuaris_Loaded"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Cartes">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="dataGridCartes" d:ItemsSource="{d:SampleData ItemCount=5}" Loaded="dataGridCartes_Loaded"/>
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Habilitats">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="dataGridHabilitats" d:ItemsSource="{d:SampleData ItemCount=5}" Loaded="dataGridHabilitats_Loaded"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Partides">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="dataGridPartides" d:ItemsSource="{d:SampleData ItemCount=5}" Loaded="dataGridPartides_Loaded"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
     </Grid>
 </Window>

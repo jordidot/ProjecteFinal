@@ -53,6 +53,7 @@ namespace Principal
         {
             try
             {
+                Habilitats habilitats = new();
                 Mazo mazo = new(this.Id, this.Cartes, txtBoxNomMazo.Text, this.Usuari);
                 this.Usuari.Mazos.LlistaMazos.Add(mazo);
                 MessageBox.Show("Mazo afegit correctament.");

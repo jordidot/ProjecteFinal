@@ -46,13 +46,19 @@ namespace Principal.Negoci
             UsuarisDB usuarisdb = new();
             usuarisdb.AfegirUsuariBD(usuari);
         }
+        public void AfegirUsuaris(Usuaris usuaris)
+        {
+            UsuarisDB usuarisdb = new();
+            usuarisdb.AfegirUsuarisBD(usuaris);
+        }
         /// <summary>
         /// Metode per eliminar usuari
         /// </summary>
         /// <param name="usuari">usuari a eliminar</param>
-        public void EliminarUsuari(Usuari usuari)
+        public void EliminarUsuaris()
         {
-
+            UsuarisDB usuarisdb = new();
+            usuarisdb.EliminarUsarisBD();
         }
         /// <summary>
         /// Metode per modificar usuari

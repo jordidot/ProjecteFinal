@@ -99,14 +99,6 @@ namespace Principal.Connexions
                 ConnexioBD.Connectar().Close();
             }
         }
-        /// <summary>
-        /// Metode per modificar un mazo de la bd
-        /// </summary>
-        /// <param name="Mazo">Mazo per modificar</param>
-        public void ModificarMazoBD(Mazo Mazo)
-        {
-
-        }
 
         /// <summary>
         /// Metode per recuperar mazos

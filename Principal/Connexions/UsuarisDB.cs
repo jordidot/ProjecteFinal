@@ -35,7 +35,7 @@ namespace Principal.Connexions
             get { return usuaris; }
             set { usuaris = value; }
         }
- 
+
         /// <summary>
         /// Propietat de l'atribut connexioBD
         /// </summary>
@@ -50,7 +50,7 @@ namespace Principal.Connexions
         {
             try
             {
-                var comanda = new MySqlCommand("INSERT INTO usuaris VALUES(" + usuari.Id + ",'" + usuari.NomUsuari + "','" + usuari.Contrasenya + "','" + usuari.ImatgePerfil + "','" + usuari.Alias + "'," + usuari.EsAdministrador + "," + usuari.Punts+ ");", ConnexioBD.Connectar());
+                var comanda = new MySqlCommand("INSERT INTO usuaris VALUES(" + usuari.Id + ",'" + usuari.NomUsuari + "','" + usuari.Contrasenya + "','" + usuari.ImatgePerfil + "','" + usuari.Alias + "'," + usuari.EsAdministrador + "," + usuari.Punts + ");", ConnexioBD.Connectar());
                 comanda.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -62,11 +62,48 @@ namespace Principal.Connexions
                 ConnexioBD.Connectar().Close();
             }
         }
+        public void AfegirUsuarisBD(Usuaris usuaris)
+        {
+            foreach (Usuari usuari in usuaris.Llistausuaris)
+            {
+                try
+                {
+                    var comanda = new MySqlCommand("INSERT INTO usuaris VALUES(" + usuari.Id + ",'" + usuari.NomUsuari + "','" + usuari.Contrasenya + "','" + usuari.ImatgePerfil + "','" + usuari.Alias + "'," + usuari.EsAdministrador + "," + usuari.Punts + ");", ConnexioBD.Connectar());
+                    comanda.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No s'ha pogut afegir l'usuari." + ex.Message);
+                }
+                finally
+                {
+                    ConnexioBD.Connectar().Close();
+                }
+            }
+
+        }
         /// <summary>
         /// Metode per eliminar usaris
         /// </summary>
         /// <param name="usari">usuari a eliminar</param>
-        public void EliminarUsariBD(Usuari usari) { }
+        public void EliminarUsarisBD()
+        {
+            try
+            {
+                var comanda = new MySqlCommand("TRUNCATE usuaris;", ConnexioBD.Connectar());
+                comanda.ExecuteNonQuery();
+                ConnexioBD.Connectar().Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut afegir l'usuari." + ex.Message);
+            }
+            finally
+            {
+                ConnexioBD.Connectar().Close();
+            }
+        }
 
         /// <summary>
         /// Metode per modificar usuaris
@@ -76,7 +113,7 @@ namespace Principal.Connexions
         {
             try
             {
-                var comanda = new MySqlCommand("UPDATE usuaris SET imatgeperfil ='"+usuari.ImatgePerfil+ "', alias='" + usuari.Alias + "',esAdministrador="+ usuari.EsAdministrador+ ",punts="+usuari.Punts+" WHERE id="+usuari.Id+";", ConnexioBD.Connectar());
+                var comanda = new MySqlCommand("UPDATE usuaris SET imatgeperfil ='" + usuari.ImatgePerfil + "', alias='" + usuari.Alias + "',esAdministrador=" + usuari.EsAdministrador + ",punts=" + usuari.Punts + " WHERE id=" + usuari.Id + ";", ConnexioBD.Connectar());
                 comanda.ExecuteNonQuery();
             }
             catch (Exception ex)

@@ -105,5 +105,10 @@ namespace Principal.Connexions
             }
             return habilitats;
         }
+        /// <summary>
+        /// Metode per recuperar habilitat de la bd
+        /// </summary>
+        /// <returns></returns>
+        
     }
 }

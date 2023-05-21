@@ -26,6 +26,8 @@ namespace Principal
         private Usuaris usuaris;
         private Cartes cartes;
         private Mazos mazos;
+        private Partides totesPartides;
+        private Usuaris totsUsuaris;
         //Constructor
         public MainWindow()
         {
@@ -33,6 +35,8 @@ namespace Principal
             usuaris = new();
             cartes = new();
             mazos = new();
+            totesPartides = new();
+            totsUsuaris = new();
         }
 
         //Métodes
@@ -59,18 +63,21 @@ namespace Principal
                 MessageBox.Show("No has introduït dades.");
             else
             {
-                usuaris.Llistausuaris = usuaris.RecuperarUsuaris().FindAll(x => x.NomUsuari == txtBoxNomUsuari.Text && x.Contrasenya == pwdBoxContrasenyaUsuari.Password);
+                totsUsuaris.Llistausuaris = usuaris.RecuperarUsuaris();
+                usuaris.Llistausuaris = totsUsuaris.Llistausuaris.FindAll(x => x.NomUsuari == txtBoxNomUsuari.Text && x.Contrasenya == pwdBoxContrasenyaUsuari.Password);
                 //Miro si hi han usuaris amb les seguents dades.
                 if (usuaris.Llistausuaris.Count == 0)
                     MessageBox.Show("Usuari o contrasenya incorrecte.");
                 else
                 {
                     cartes = cartes.RecuperarTotesCartes();
+                    HabilitatsDB habilitats = new();
                     usuaris.Llistausuaris[0].Partides.TotesCartes = cartes;
-                    usuaris.Llistausuaris[0].Partides.LlistaPartides = usuaris.Llistausuaris[0].Partides.RecuperarPartides(usuaris.Llistausuaris[0], cartes).FindAll(x=>x.Usuari.Id == usuaris.Llistausuaris[0].Id);
+                    this.totesPartides.LlistaPartides = usuaris.Llistausuaris[0].Partides.RecuperarPartides(usuaris.Llistausuaris[0], cartes);
+                    usuaris.Llistausuaris[0].Partides.LlistaPartides = usuaris.Llistausuaris[0].Partides.RecuperarPartides(usuaris.Llistausuaris[0], cartes).FindAll(x => x.Usuari.Id == usuaris.Llistausuaris[0].Id);
                     usuaris.Llistausuaris[0].Mazos = mazos.RecuperarMazos(usuaris.Llistausuaris[0], cartes);
                     //Li passo l'usuari al constructor de la finestra del home per tenir les seves dades.
-                    Home home = new(usuaris.Llistausuaris[0], cartes);
+                    Home home = new(usuaris.Llistausuaris[0], cartes, habilitats.RecuperarHabilitats(cartes.LlistaCartes[0]),this.totesPartides,this.totsUsuaris);
                     this.Close();
                     home.Show();
 

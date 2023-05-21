@@ -24,6 +24,9 @@ namespace Principal
         //Atributs
         private Usuari usuari;
         public Cartes TotesCartes { get; set; }
+        public Habilitats TotesHabilitats { get; set; }
+        public Partides TotesPartides { get; set; }
+        public Usuaris TotsUsuaris { get; set; }
   
         //Constructors
         /// <summary>
@@ -35,13 +38,24 @@ namespace Principal
             InitializeComponent();
             TotesCartes = cartes;
             this.usuari = usuari;
-      
             if (this.usuari.EsAdministrador == 1) btnAdministracio.Visibility = Visibility.Visible;
             lblTotalPuntsUsuari.Content = this.usuari.Punts + " Punts";
             lblAliasBenvingut.Content = usuari.Alias;
             imageProfile.Source = new BitmapImage(new Uri(usuari.ImatgePerfil));
         }
-
+        public Home(Usuari usuari, Cartes cartes, Habilitats habilitats, Partides partides,Usuaris usuaris)
+        {
+            InitializeComponent();
+            TotesCartes = cartes;
+            this.usuari = usuari;
+            this.TotesPartides = partides;
+            this.TotesHabilitats = habilitats;
+            this.TotsUsuaris = usuaris;
+            if (this.usuari.EsAdministrador == 1) btnAdministracio.Visibility = Visibility.Visible;
+            lblTotalPuntsUsuari.Content = this.usuari.Punts + " Punts";
+            lblAliasBenvingut.Content = usuari.Alias;
+            imageProfile.Source = new BitmapImage(new Uri(usuari.ImatgePerfil));
+        }
         //Propietats
         /// <summary>
         /// Propietat de l'usuari del home.
@@ -352,7 +366,7 @@ namespace Principal
         private void btnAdministracio_Click(object sender, RoutedEventArgs e)
         {
             Partides partides = new();
-            Administracio panell = new(this.Usuari,this.TotesCartes, partides);
+            Administracio panell = new(this.Usuari,this.TotesCartes,this.TotesPartides,TotesHabilitats,this.TotsUsuaris);
             this.Close();
             panell.Show();
         }

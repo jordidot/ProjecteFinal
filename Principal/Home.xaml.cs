@@ -79,15 +79,15 @@ namespace Principal
         /// </summary>
         /// <param name="sender">Objecte rebut.</param>
         /// <param name="e">Event intern.</param>
-        private void tabItemMazos_GotFocus(object sender, RoutedEventArgs e)
+        private void tabItemMazos_Loaded(object sender, RoutedEventArgs e)
         {
 
             //Miro cuants mazos té l'usuari i depenent dels mazos vaig fent visibles els botons.
             if (Usuari.Mazos.LlistaMazos.Count == 1)
             {
+                lblNomMazo1.Content = Usuari.Mazos.LlistaMazos[0].Nom;
                 btnAfegirMazoRow1.Visibility = Visibility.Hidden;
                 btnEliminarMazoRow1.Visibility = Visibility.Visible;
-                btnModificarMazoRow1.Visibility = Visibility.Visible;
 
                 lblNomMazo1.Content = Usuari.Mazos.LlistaMazos[0].Nom;
                 //Carta 1 Mazo 1
@@ -120,7 +120,7 @@ namespace Principal
             {
                 btnAfegirMazoRow1.Visibility = Visibility.Visible;
                 btnEliminarMazoRow1.Visibility = Visibility.Hidden;
-                btnModificarMazoRow1.Visibility = Visibility.Hidden;
+      
             }
 
         }
@@ -159,6 +159,7 @@ namespace Principal
         }
         public ListBox CrearListBoxHabilitats(List<Habilitat> habilitats, int carta)
         {
+            //Recorro totes les habilitats de totes les cartes i les vaig afegint a cada carta les que li pertoquen.
             ListBox list = new();
             if (carta == 1)
             {
@@ -242,10 +243,26 @@ namespace Principal
         /// </summary>
         /// <param name="sender">Objecte rebut.</param>
         /// <param name="e">Event intern.</param>
-        private void tabItemPartides_GotFocus(object sender, RoutedEventArgs e)
+        private void tabItemPartides_Loaded(object sender, RoutedEventArgs e)
         {
-            dataGridPartides.ItemsSource = Usuari.Partides.LlistaPartides;
-            //Busco el total de punts que té l'usuari per guanyar partides i li afegeixo al label.
+            //Inicialitzo la llista de PartidaLlista que son les dades de cada partida.
+            List<PartidaLLista> llistaPartides = new();
+            foreach(Partida partida in Usuari.Partides.LlistaPartides)
+            {
+                //Vaig llegint les partides de l'usuari i creo la classe PartidaLlista amb les dades de la partida.
+                PartidaLLista partidaLlista = new();
+                partidaLlista.Usuari = Usuari.Alias;
+                partidaLlista.Bot = partida.Bot.Nom;
+                if(partida.EstatPartida == "Guanyada")
+                    partidaLlista.Punts = "400";
+                else
+                    partidaLlista.Punts = "0";
+                partidaLlista.Resultat = partida.EstatPartida;
+                llistaPartides.Add(partidaLlista);
+            }
+            //Introdueixo les partides de l'usuari al data grid.
+            dataGridPartides.ItemsSource = llistaPartides;
+            
 
         }
         /// <summary>
@@ -327,12 +344,6 @@ namespace Principal
 
         }
 
-        private void btnModificarMazoRow1_Click(object sender, RoutedEventArgs e)
-        {
-            AfegirUnNouMazo nouMazo = new(Usuari, Cartes);
-            nouMazo.Show();
-            this.Close();
-        }
     }
     //Classe que utilitzo per el Data grid de Partides així hem mostra les següents dades de partides al data grid.
     public class PartidaLLista

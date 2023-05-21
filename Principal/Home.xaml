@@ -37,7 +37,7 @@
                     <Rectangle Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="658" Stroke="Black" VerticalAlignment="Center" Width="198" Fill="#FF1C7FCC"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabItemMazos" Header="Els meus mazos" GotFocus="tabItemMazos_GotFocus">
+            <TabItem x:Name="tabItemMazos" Header="Els meus mazos" Loaded="tabItemMazos_Loaded">
                 <Grid Background="#FFE5E5E5">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -46,38 +46,40 @@
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="118*"></RowDefinition>
-                            <RowDefinition Height="429*"></RowDefinition>
-                            <RowDefinition Height="109*"></RowDefinition>
+                            <RowDefinition Height="111*"></RowDefinition>
+                            <RowDefinition Height="547*"></RowDefinition>
                         </Grid.RowDefinitions>
                         <!--Titols mazos-->
-                        <Label x:Name="lblNomMazo1" Content="" HorizontalAlignment="Left" Margin="32,48,0,0" Grid.Row="0" VerticalAlignment="Top" Height="26" Width="10"/>
+                        <Label x:Name="lblNomMazo1" Content="" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="0" VerticalAlignment="Center" Height="26" Width="10"/>
 
                         <!--Cartes Fila 1-->
-                        <ListBox x:Name="listBoxRow1Col1" HorizontalContentAlignment="Center" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,36,0,0"/>
-                        <ListBox x:Name="listBoxRow1Col2" HorizontalContentAlignment="Center" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="3" Margin="170,36,170,0"/>
-                        <ListBox x:Name="listBoxRow1Col3" HorizontalContentAlignment="Center" Grid.Column="3" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,36,0,0"/>
-                        <ListBox x:Name="listBoxRow1Col4" HorizontalContentAlignment="Center" Grid.Column="3" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.ColumnSpan="3" Margin="170,36,170,0"/>
-                        <ListBox x:Name="listBoxRow1Col5" HorizontalContentAlignment="Center" Grid.Column="5" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,36,0,0"/>
-
-                        <!--Botons modificar-->
-                        <Button Visibility="Hidden" x:Name="btnModificarMazoRow1"  Grid.Row="1" Grid.Column="6" Padding="5" Content="Modificar" HorizontalAlignment="Center" VerticalAlignment="Center" Height="28" Width="62" Click="btnModificarMazoRow1_Click"/>
+                        <ListBox x:Name="listBoxRow1Col1" HorizontalContentAlignment="Center" Grid.Column="0" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,239,0" Grid.ColumnSpan="2"/>
+                        <ListBox x:Name="listBoxRow1Col2" HorizontalContentAlignment="Center" Grid.Column="1" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,238,0" Grid.ColumnSpan="2"/>
+                        <ListBox x:Name="listBoxRow1Col3" HorizontalContentAlignment="Center" Grid.Column="2" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+                        <ListBox x:Name="listBoxRow1Col4" HorizontalContentAlignment="Center" Grid.Column="2" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="238,0,0,0" Grid.ColumnSpan="2"/>
+                        <ListBox x:Name="listBoxRow1Col5" HorizontalContentAlignment="Center" Grid.Column="3" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="239,0,0,0" Grid.ColumnSpan="2"/>
 
                         <!--Botons eliminar-->
-                        <Button x:Name="btnEliminarMazoRow1" Grid.Column="6" Padding="5" Content="Eliminar" HorizontalAlignment="Center" Margin="0,36,0,0" Grid.Row="1" VerticalAlignment="Top" Width="62" Height="28" Click="btnEliminarMazoRow1_Click"/>
+                        <Button x:Name="btnEliminarMazoRow1" Grid.Column="3" Padding="5" Content="Eliminar el mazo" HorizontalAlignment="Center" VerticalAlignment="Center" Width="158" Height="28" Click="btnEliminarMazoRow1_Click">
+                            <Button.Effect>
+                                <DropShadowEffect/>
+                            </Button.Effect>
+                        </Button>
 
                         <!--Botons afegir-->
-                        <Button x:Name="btnAfegirMazoRow1" Padding="5" Content="Afegir mazo" HorizontalAlignment="Center" Margin="0,45,0,0" Grid.Row="1" VerticalAlignment="Top" Width="106" Click="btnAfegirMazoRow1_Click" Height="28"/>
+                        <Button x:Name="btnAfegirMazoRow1" Padding="5" Content="Crear el meu mazo" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Center" Width="155" Click="btnAfegirMazoRow1_Click" Height="28">
+                            <Button.Effect>
+                                <DropShadowEffect/>
+                            </Button.Effect>
+                        </Button>
 
                     </Grid>
 
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabItemPartides" Header="Les meves partides" GotFocus="tabItemPartides_GotFocus">
+            <TabItem x:Name="tabItemPartides" Header="Les meves partides" Loaded="tabItemPartides_Loaded">
                 <Grid Background="#FFE5E5E5">
                     <Label Content="Totes les meves partides realitzades" HorizontalAlignment="Center" Margin="0,36,0,0" VerticalAlignment="Top"/>
                     <DataGrid x:Name="dataGridPartides" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="102,67,102,90"/>

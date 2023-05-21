@@ -58,11 +58,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jordi\\Desktop\\ProjecteFinal\\Principal\\Principal.csproj",
+      "projectUniqueName": "C:\\xampp\\htdocs\\ProjecteFinal\\Principal\\Principal.csproj",
       "projectName": "Principal",
-      "projectPath": "C:\\Users\\jordi\\Desktop\\ProjecteFinal\\Principal\\Principal.csproj",
+      "projectPath": "C:\\xampp\\htdocs\\ProjecteFinal\\Principal\\Principal.csproj",
       "packagesPath": "C:\\Users\\jordi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jordi\\Desktop\\ProjecteFinal\\Principal\\obj\\",
+      "outputPath": "C:\\xampp\\htdocs\\ProjecteFinal\\Principal\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

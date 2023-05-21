@@ -72,12 +72,13 @@ namespace Principal.Connexions
             Partides partides = new Partides();
             try
             {
-                MySqlCommand command = new MySqlCommand("SELECT * FROM partides;", ConnexioBD.Connectar());
+                MySqlCommand command = new MySqlCommand("SELECT * FROM partides WHERE id_usuari="+usuari.Id+";", ConnexioBD.Connectar());
                 MySqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    Bot bot = new Bot();
+                    Cartes cartes = new();
+                    Bot bot = new Bot(cartes);
                     bot.Nom = reader.GetString(1);
 
                     Cartes cartesBot = new Cartes();

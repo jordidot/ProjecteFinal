@@ -62,7 +62,6 @@ namespace Principal.Negoci
         public Partides RecuperarPartides(Usuari usuari)
         {
             PartidesDB partidesdb = new();
-            partidesdb.RecuperarPartides(usuari);
             return partidesdb.RecuperarPartides(usuari);
         }
     }

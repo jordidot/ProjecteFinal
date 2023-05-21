@@ -36,10 +36,7 @@ namespace Principal
             InitializeComponent();
             TotesCartes = totesCartes;
             this.usuari = usuari;
-            this.bot = new();
-            this.bot.GenerarNom();
-            this.bot.GenerarImatge();
-            this.bot.GenerarCartes();
+            this.bot = new(totesCartes);
         }
         //Propietats
         /// <summary>
@@ -64,15 +61,15 @@ namespace Principal
         /// </summary>
         /// <param name="mazo">Un número enter que es el index del mazo de la llista.</param>
         /// <returns>Retorna la partida ja creada.</returns>
-        public Partida CrearPartida(int mazo)
+        public void /* Aqui va Partida no void*/ CrearPartida(int mazo)
         {
             //Crear una partida nova
             Partides partides = new();
-            PartidesDB partidesdb = new();
-            partidesdb.RecuperarPartides(this.Usuari);
-            partides.LlistaPartides = partidesdb.Partides.LlistaPartides;
-            Partida partidaNova = new(partides.LlistaPartides.Count + 1, this.Bot, 1500, this.Bot.Cartes, this.Usuari.Mazos.LlistaMazos[mazo], this.Usuari, 1500, "Perduda");
-            return partidaNova;
+            partides.RecuperarPartides(this.Usuari);
+            partides.LlistaPartides = partides.RecuperarPartides(this.Usuari).LlistaPartides;
+            //Partida partidaNova = new();
+            ////Partida partidaNova = new(partides.LlistaPartides.Count + 1, this.Bot, 1500, this.Bot.Cartes, this.Usuari.Mazos.LlistaMazos[mazo], this.Usuari, 1500, "Perduda");
+            //return partidaNova;
         }
         /// <summary>
         /// Métode que obre el camp de batalla amb el primer mazo si ha sigut escollit.
@@ -81,9 +78,9 @@ namespace Principal
         /// <param name="e">Evenet intern.</param>
         private void BtnMazo1_Click(object sender, RoutedEventArgs e)
         {
-            CampBatalla camp = new(this.Usuari, CrearPartida(0),TotesCartes);
-            camp.Show();
-            this.Close();
+            //CampBatalla camp = new(this.Usuari, CrearPartida(0),TotesCartes);
+            //camp.Show();
+            //this.Close();
         }
         
         /// <summary>

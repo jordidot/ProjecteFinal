@@ -11,7 +11,8 @@ namespace Principal.Negoci
     {
         //Atribut
         private List<Partida> llistaPartides;
-
+        public Cartes TotesCartes { get; set; }
+        public int Quantitat { get; set; }
         //Constructors
         /// <summary>
         /// Constructor buit
@@ -28,6 +29,7 @@ namespace Principal.Negoci
         {
             llistaPartides = llistapartides;
         }
+
         //Propietats
         /// <summary>
         /// Propietat del atribut llistapartides
@@ -61,7 +63,9 @@ namespace Principal.Negoci
         }
         public Partides RecuperarPartides(Usuari usuari)
         {
-            PartidesDB partidesdb = new();
+            PartidesDB partidesdb = new(TotesCartes);
+            partidesdb.RecuperarPartides(usuari);
+            Quantitat = partidesdb.Quantitat;
             return partidesdb.RecuperarPartides(usuari);
         }
     }

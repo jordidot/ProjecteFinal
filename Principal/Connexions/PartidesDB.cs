@@ -14,15 +14,19 @@ namespace Principal.Connexions
         //Atributs 
         private Partides partides;
         private ConnexioDB connexioBD;
+        public Cartes TotesCartes { get; set; }
+        public int Quantitat { get; set; }
+
 
         //Constructors
         /// <summary>
         /// Constructor buit
         /// </summary>
-        public PartidesDB()
+        public PartidesDB(Cartes cartes)
         {
             connexioBD = new ConnexioDB("", "127.0.0.1", "cartesdb", "root");
             partides = new Partides();
+            this.TotesCartes = cartes;
         }
 
         //Propietats
@@ -63,8 +67,9 @@ namespace Principal.Connexions
         public void ModificarPartidaBD(Partida partida)
         {
         }
+  
         /// <summary>
-        /// Metode per recuperar partides de la bd
+        /// Metode per recuperar partides d'un usuari de la bd
         /// </summary>
         /// <returns></returns>
         public Partides RecuperarPartides(Usuari usuari)
@@ -72,22 +77,21 @@ namespace Principal.Connexions
             Partides partides = new Partides();
             try
             {
-                MySqlCommand command = new MySqlCommand("SELECT * FROM partides WHERE id_usuari="+usuari.Id+";", ConnexioBD.Connectar());
+                MySqlCommand command = new MySqlCommand("SELECT *,(SELECT count(*) FROM partides) FROM partides WHERE id_usuari="+usuari.Id+";", ConnexioBD.Connectar());
                 MySqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    Cartes cartes = new();
-                    Bot bot = new Bot(cartes);
+                    Bot bot = new Bot(TotesCartes);
                     bot.Nom = reader.GetString(1);
 
                     Cartes cartesBot = new Cartes();
 
                     Mazo mazoUsuari = new(reader.GetInt32(2), cartesBot, "MazoUsuari", usuari);
 
-                    Partida partida = new Partida(reader.GetInt32(0), bot, 1500, cartesBot, mazoUsuari, usuari, 1500, reader.GetString(3));
+                    Partida partida = new Partida(reader.GetInt32(0), bot, 1500,usuari, 1500, reader.GetString(3));
                     partides.LlistaPartides.Add(partida);
-
+                    Quantitat = reader.GetInt32(4);
                 }
 
             }
@@ -102,5 +106,6 @@ namespace Principal.Connexions
             }
             return partides;
         }
+        
     }
 }

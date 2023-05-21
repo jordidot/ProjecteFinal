@@ -34,6 +34,7 @@ namespace Principal
             InitializeComponent();
             Cartes = cartes;
             this.usuari = usuari;
+            if (this.usuari.EsAdministrador == 1) btnAdministracio.Visibility = Visibility.Visible;
             lblAliasBenvingut.Content = usuari.Alias;
             imageProfile.Source = new BitmapImage(new Uri(usuari.ImatgePerfil));
         }
@@ -88,8 +89,6 @@ namespace Principal
                 lblNomMazo1.Content = Usuari.Mazos.LlistaMazos[0].Nom;
                 btnAfegirMazoRow1.Visibility = Visibility.Hidden;
                 btnEliminarMazoRow1.Visibility = Visibility.Visible;
-
-                lblNomMazo1.Content = Usuari.Mazos.LlistaMazos[0].Nom;
                 //Carta 1 Mazo 1
                 listBoxRow1Col1.Items.Add(CrearLabelCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0].Nom));
                 listBoxRow1Col1.Items.Add(CrearImatgeCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0].Imatge));
@@ -272,9 +271,11 @@ namespace Principal
         /// <param name="e">Event intern.</param>
         private void BtnPartidaNova_Click(object sender, RoutedEventArgs e)
         {
-            TriarMazo triarMazo = new(this.Usuari, Cartes);
-            triarMazo.Show();
+            Bot bot = new(this.Cartes);
+            Partida partida = new(Usuari.Partides.Quantitat +1,bot,1500,this.Usuari,1500,"Perduda");
+            CampBatalla camp = new(partida);
             this.Close();
+            camp.Show();
 
         }
         /// <summary>
@@ -344,6 +345,13 @@ namespace Principal
 
         }
 
+        private void btnAdministracio_Click(object sender, RoutedEventArgs e)
+        {
+            Partides partides = new();
+            Administracio panell = new(this.Usuari,this.Cartes, partides);
+            this.Close();
+            panell.Show();
+        }
     }
     //Classe que utilitzo per el Data grid de Partides així hem mostra les següents dades de partides al data grid.
     public class PartidaLLista

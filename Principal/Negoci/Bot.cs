@@ -10,6 +10,7 @@ namespace Principal.Negoci
     {
         //Atributs
         private Cartes cartes;
+        public Cartes TotesCartes { get; set; }
         private string imatge;
         private string nom;
 
@@ -19,10 +20,12 @@ namespace Principal.Negoci
         /// </summary>
         public Bot(Cartes cartes)
         {
+            this.cartes = new();
+            this.TotesCartes = cartes;
             //Cada vegada que inicialitzo el Bot li asigno tots els atributs random, el nom, l'imatge i les cartes.
             GenerarNom();
             GenerarImatge();
-            GenerarCartes(cartes);
+            GenerarCartes(TotesCartes);
         }
         /// <summary>
         /// Propietat de Cartes

@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "BGdGJyQH5RWmGxZp5bgFbSSTfTziPRKp8ca2j1oXpggpt+PeRCsk8OcOGVNIsLtkEf1VjELr64RQAspph0tIOQ==",
+  "dgSpecHash": "FOd07k5QgXoMZ8cPdMR467vwfKjTf88spQdBx9JbYxcnuAfzV6l9pET5Uh15aHK6FskvVzOZE27L6yXmDfEotg==",
   "success": true,
-  "projectFilePath": "C:\\xampp\\htdocs\\ProjecteFinal\\Principal\\Principal.csproj",
+  "projectFilePath": "A:\\ProjecteFinal\\Principal\\Principal.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\jordi\\.nuget\\packages\\mysqlconnector\\2.2.6\\mysqlconnector.2.2.6.nupkg.sha512"
+    "C:\\Users\\jscll\\.nuget\\packages\\mysqlconnector\\2.2.6\\mysqlconnector.2.2.6.nupkg.sha512"
   ],
   "logs": []
 }

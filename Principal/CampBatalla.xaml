@@ -12,5 +12,104 @@
                 <BitmapImage UriSource="https://i.pinimg.com/736x/d3/3b/54/d33b5402e9b8fc1dd6c6d4bb5ab2ac2e.jpg" />
             </Image.Source>
         </Image>
+        <Grid x:Name="gridCampBatalla" Loaded="gridCampBatalla_Loaded">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="192*"></ColumnDefinition>
+                <ColumnDefinition Width="357*"></ColumnDefinition>
+                <ColumnDefinition Width="274*"></ColumnDefinition>
+                <ColumnDefinition Width="274*"></ColumnDefinition>
+                <ColumnDefinition Width="274*"></ColumnDefinition>
+                <ColumnDefinition Width="344*"></ColumnDefinition>
+                <ColumnDefinition Width="204*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--Vida Usuari-->
+            <Label Content="Vida de l'usuari" HorizontalContentAlignment="Center" Grid.Column="3" Grid.Row="0" Foreground="White" FontSize="30" FontFamily="Bahnschrift"></Label>
+            <Label x:Name="lblVidaUsuari"  Content="1500" HorizontalContentAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.Row="0" Foreground="White" FontSize="50" FontFamily="Bahnschrift">
+                <Label.Effect>
+                    <DropShadowEffect/>
+                </Label.Effect>
+            </Label>
+            <!--Vida Usuari-->
+            <Label Content="Vida del bot" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Grid.Column="3" Grid.Row="6" Foreground="White" FontSize="30" FontFamily="Bahnschrift"/>
+            <Label x:Name="lblVidaBot"  Content="1500" HorizontalContentAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.Row="6" FontSize="50" FontFamily="Bahnschrift" Foreground="White">
+                <Label.Effect>
+                    <DropShadowEffect/>
+                </Label.Effect>
+            </Label>
+
+            <!--Cartes Usuari-->
+            <ListBox x:Name="lstBoxCartaUsuari1" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="0" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}" GotFocus="lstBoxCartaUsuari1_GotFocus"/>
+            <ListBox x:Name="lstBoxCartaUsuari2" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="1" Grid.Column="0" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}" GotFocus="lstBoxCartaUsuari2_GotFocus"></ListBox>
+            <ListBox x:Name="lstBoxCartaUsuari3" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="2" Grid.Column="0" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}" GotFocus="lstBoxCartaUsuari3_GotFocus"></ListBox>
+            <ListBox x:Name="lstBoxCartaUsuari4" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="3" Grid.Column="0" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}" GotFocus="lstBoxCartaUsuari4_GotFocus"></ListBox>
+            <ListBox x:Name="lstBoxCartaUsuari5" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="4" Grid.Column="0" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}" GotFocus="lstBoxCartaUsuari5_GotFocus"></ListBox>
+            <!--Cartes Bot-->
+            <ListBox x:Name="lstBoxCartaBot1" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="6" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}"/>
+            <ListBox x:Name="lstBoxCartaBot2" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="1" Grid.Column="6" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}"></ListBox>
+            <ListBox x:Name="lstBoxCartaBot3" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="2" Grid.Column="6" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}"></ListBox>
+            <ListBox x:Name="lstBoxCartaBot4" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="3" Grid.Column="6" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}"></ListBox>
+            <ListBox x:Name="lstBoxCartaBot5" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="4" Grid.Column="6" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}"></ListBox>
+            <!--Carta Usuari Seleccionada-->
+            <ListBox x:Name="lstBoxCartaUsuariSeleccionada" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="2" Grid.ColumnSpan="3" Margin="274,152,274,0" Grid.RowSpan="2" Background="{x:Null}"/>
+            <!--Carta Bot Seleccionada-->
+            <ListBox x:Name="lstBoxCartaBotSeleccionada" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" Margin="274,152,274,0" Grid.RowSpan="2" Background="{x:Null}"></ListBox>
+
+            <!--Habilitats Carta Seleccionada-->
+            <Button x:Name="btnHabilitat1" Visibility="Hidden" Content="" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" FontSize="20" FontFamily="Bahnschrift" Background="Black" Foreground="White" Click="btnHabilitat1_Click">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+            <Button x:Name="btnHabilitat2" Visibility="Hidden" Content="" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2" FontSize="20" FontFamily="Bahnschrift" Background="Black" Foreground="White" Click="btnHabilitat2_Click">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+            <Button x:Name="btnHabilitat3" Visibility="Hidden" Content="" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.Row="2" FontSize="20" FontFamily="Bahnschrift" Background="Black" Foreground="White" Click="btnHabilitat3_Click">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+            <Button x:Name="btnHabilitat4" Visibility="Hidden" Content="" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4" Grid.Row="2" FontSize="20" FontFamily="Bahnschrift" Background="Black" Foreground="White" Click="btnHabilitat4_Click">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+            <!--Boto començar-->
+            <Button x:Name="btnComençaPartida" Visibility="Hidden" Content="Començar partida" Grid.Column="3" Grid.Row="3" FontSize="25" FontFamily="Bahnschrift" Background="#FF95E081" Click="btnComençaPartida_Click">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+            <!--Estat de la partida-->
+            <Label x:Name="lblEstatPartida" Content="" Grid.Row="3" Grid.Column="2"  Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red" FontSize="20"></Label>
+            <Button x:Name="btnComençaPartidaSeleccionar"  Visibility="Hidden" Content="Començar partida" Grid.Column="3" Grid.Row="3" VerticalContentAlignment="Bottom"  HorizontalAlignment="Center" FontSize="25" FontFamily="Bahnschrift" Background="#FF95E081" Click="btnComençaPartida_Click" Margin="0,99,0,10" Width="254">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+            <!--Contador-->
+            <Label x:Name="lblContadorTemps"  Content="" Visibility="Hidden" Grid.Row="3" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Bahnschrift" FontSize="15" Background="#FFDED03D" Foreground="Black" Margin="199,19,0,0" Height="27" Width="120">
+                <Label.Effect>
+                    <DropShadowEffect/>
+                </Label.Effect>
+            </Label>
+
+            <!--Llançament habilitats-->
+            <ListBox x:Name="lstBoxActivitatPartida" Visibility="Hidden" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalContentAlignment="Center" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="5" Grid.RowSpan="2" Margin="197,46,226,0" Height="150" VerticalAlignment="Top" FontFamily="Bahnschrift" Background="#FFAB9E82" Foreground="#FF375822" FontSize="20">
+                <ListBox.Effect>
+                    <DropShadowEffect/>
+                </ListBox.Effect>
+            </ListBox>
+        </Grid>
     </Grid>
 </Window>

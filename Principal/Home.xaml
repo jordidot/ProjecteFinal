@@ -19,6 +19,11 @@
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
+                    <Button x:Name="btnAdministracio" Content="Panell d'administració"  Visibility="Hidden" HorizontalAlignment="Left" Margin="749,389,0,0" Padding="10" VerticalAlignment="Top" Grid.Column="1" FontFamily="Bahnschrift" Height="46" Width="230" FontSize="20" Background="Red" Foreground="White" BorderBrush="Black" Click="btnAdministracio_Click">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
                     <Image x:Name="imageProfile" HorizontalAlignment="Left" Height="259" Margin="195,21,0,0" VerticalAlignment="Top" Width="485" Grid.Column="1"/>
                     <Label Content="Nom usuari: " HorizontalAlignment="Left" Margin="270,309,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.158,1.159" Grid.Column="1"/>
                     <Label x:Name="lblAliasBenvingut" Content="" HorizontalAlignment="Left" Margin="352,311,0,0" VerticalAlignment="Top" Width="94" Grid.Column="1"/>

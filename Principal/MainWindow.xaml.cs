@@ -67,8 +67,9 @@ namespace Principal
                     MessageBox.Show("Usuari o contrasenya incorrecte.");
                 else
                 {
-                    usuaris.Llistausuaris[0].Partides = usuaris.Llistausuaris[0].Partides.RecuperarPartides(usuaris.Llistausuaris[0]);
                     cartes = cartes.RecuperarTotesCartes();
+                    usuaris.Llistausuaris[0].Partides.TotesCartes = cartes;
+                    usuaris.Llistausuaris[0].Partides = usuaris.Llistausuaris[0].Partides.RecuperarPartides(usuaris.Llistausuaris[0]);
                     usuaris.Llistausuaris[0].Mazos = mazos.RecuperarMazos(usuaris.Llistausuaris[0], cartes);
                     //Li passo l'usuari al constructor de la finestra del home per tenir les seves dades.
                     Home home = new(usuaris.Llistausuaris[0], cartes);

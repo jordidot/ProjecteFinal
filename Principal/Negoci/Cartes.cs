@@ -91,7 +91,6 @@ namespace Principal.Negoci
         public Cartes RecuperarTotesCartes()
         {
             CartesDB cartesdb = new();
-            cartesdb.RecuperarTotesCartes();
             return cartesdb.RecuperarTotesCartes();
         }
     }

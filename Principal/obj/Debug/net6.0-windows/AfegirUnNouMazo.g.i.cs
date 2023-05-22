@@ -69,7 +69,7 @@ namespace Principal {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Principal;V1.0.0.0;component/afegirunnoumazo.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Principal;component/afegirunnoumazo.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\AfegirUnNouMazo.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

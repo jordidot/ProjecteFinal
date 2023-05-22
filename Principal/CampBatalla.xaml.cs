@@ -445,7 +445,7 @@ namespace Principal
         {
             lstBoxActivitatPartida.Items.Add("TORN DE: " + partida.Bot.Nom);
             Random random = new();
-            int idHabilitat = random.Next(0, CartaSeleccionadaBot.Habilitats.LListahabilitats.Count);
+            int idHabilitat = random.Next(0, 4);
             if (idHabilitat == 0)
             {
                 MessageBox.Show(partida.Bot.Nom + " ha utilitzat " + CartaSeleccionadaBot.Habilitats.LListahabilitats[idHabilitat].Nom + " li ha tret a " + partida.Usuari.Alias + " 25 punts de vida.");
@@ -464,7 +464,7 @@ namespace Principal
                 lstBoxActivitatPartida.Items.Add(partida.Bot.Nom + " ha utilitzat " + CartaSeleccionadaBot.Habilitats.LListahabilitats[idHabilitat].Nom + " li ha tret a " + partida.Usuari.Alias + " 75 punts de vida.");
                 lblVidaUsuari.Content = (int.Parse(lblVidaUsuari.Content.ToString()) - 75).ToString();
             }
-            else
+            else if (idHabilitat == 3)
             {
                 MessageBox.Show(partida.Bot.Nom + " ha utilitzat " + CartaSeleccionadaBot.Habilitats.LListahabilitats[idHabilitat].Nom + " li ha tret a " + partida.Usuari.Alias + " 125 punts de vida.");
                 lstBoxActivitatPartida.Items.Add(partida.Bot.Nom + " ha utilitzat " + CartaSeleccionadaBot.Habilitats.LListahabilitats[idHabilitat].Nom + " li ha tret a " + partida.Usuari.Alias + " 125 punts de vida.");

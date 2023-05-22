@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-A:\ProjecteJordiEloi\Principal\obj\Debug\net6.0-windows\
+C:\xampp\htdocs\ProjecteFinal\Principal\obj\Debug\net6.0-windows\
 Principal
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-A:\ProjecteJordiEloi\Principal\App.xaml
+C:\xampp\htdocs\ProjecteFinal\Principal\App.xaml
 6-761662670
 
 27-256603954
-195387250497
+194101785492
 Administracio.xaml;CampBatalla.xaml;Home.xaml;MainWindow.xaml;Registre.xaml;TriarMazo.xaml;
 
-False
+True
 

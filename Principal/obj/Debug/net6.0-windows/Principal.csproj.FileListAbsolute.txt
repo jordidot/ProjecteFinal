@@ -156,7 +156,6 @@ C:\xampp\htdocs\ProjecteFinal\Principal\obj\Debug\net6.0-windows\CampBatalla.g.c
 C:\xampp\htdocs\ProjecteFinal\Principal\obj\Debug\net6.0-windows\Home.g.cs
 C:\xampp\htdocs\ProjecteFinal\Principal\obj\Debug\net6.0-windows\MainWindow.g.cs
 C:\xampp\htdocs\ProjecteFinal\Principal\obj\Debug\net6.0-windows\Registre.g.cs
-C:\xampp\htdocs\ProjecteFinal\Principal\obj\Debug\net6.0-windows\TriarMazo.g.cs
 C:\xampp\htdocs\ProjecteFinal\Principal\obj\Debug\net6.0-windows\App.g.cs
 C:\xampp\htdocs\ProjecteFinal\Principal\obj\Debug\net6.0-windows\Principal_MarkupCompile.cache
 C:\xampp\htdocs\ProjecteFinal\Principal\obj\Debug\net6.0-windows\Principal_MarkupCompile.lref
@@ -167,7 +166,6 @@ C:\xampp\htdocs\ProjecteFinal\Principal\obj\Debug\net6.0-windows\CampBatalla.bam
 C:\xampp\htdocs\ProjecteFinal\Principal\obj\Debug\net6.0-windows\Home.baml
 C:\xampp\htdocs\ProjecteFinal\Principal\obj\Debug\net6.0-windows\MainWindow.baml
 C:\xampp\htdocs\ProjecteFinal\Principal\obj\Debug\net6.0-windows\Registre.baml
-C:\xampp\htdocs\ProjecteFinal\Principal\obj\Debug\net6.0-windows\TriarMazo.baml
 C:\xampp\htdocs\ProjecteFinal\Principal\obj\Debug\net6.0-windows\Principal.g.resources
 C:\xampp\htdocs\ProjecteFinal\Principal\obj\Debug\net6.0-windows\Principal.GeneratedMSBuildEditorConfig.editorconfig
 C:\xampp\htdocs\ProjecteFinal\Principal\obj\Debug\net6.0-windows\Principal.AssemblyInfoInputs.cache

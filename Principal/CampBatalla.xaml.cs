@@ -55,9 +55,9 @@ namespace Principal
         /// <param name="e">Event intern que relitza per tancar la finestra.</param>
         private void campBatallaWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Habilitats habilitats = new();
             Partides partides = new();
             partides.AfegirPartida(this.TotesCartes, this.partida);
+            this.partida.Usuari.Partides.LlistaPartides.Add(this.partida);
             Home home = new(this.partida.Usuari,this.TotesCartes);
             home.Show();
         }

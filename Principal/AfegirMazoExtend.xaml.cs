@@ -1,4 +1,5 @@
-﻿using Principal.Negoci;
+﻿using Principal.Connexions;
+using Principal.Negoci;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,7 +56,14 @@ namespace Principal
             {
                 Habilitats habilitats = new();
                 Mazo mazo = new(this.Id, this.Cartes, txtBoxNomMazo.Text, this.Usuari);
+                this.Usuari.Mazos.LlistaMazos.Clear();
                 this.Usuari.Mazos.LlistaMazos.Add(mazo);
+                if (this.Usuari.Mazos.LlistaMazos.Count == 1)
+                {
+                    MazosDB afegir = new();
+                    afegir.EliminarMazoUsuariBD(Usuari);
+                    afegir.AfegirMazoBD(this.Usuari.Mazos.LlistaMazos[0]);
+                }
                 MessageBox.Show("Mazo afegit correctament.");
                 Home home = new(this.usuari,TotesCartes);
                 this.finestra.Close();

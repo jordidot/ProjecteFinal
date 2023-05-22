@@ -26,7 +26,6 @@ namespace Principal
         public Cartes TotesCartes { get; set; }
         public Partides TotesPartides { get; set; }
         public Habilitats TotesHabilitats { get; set; }
-        public Mazos TotsMazos { get; set; }
         public Administracio( Usuari usuari,Cartes cartes, Partides partides, Habilitats habilitats,Usuaris usuaris)
         {
             InitializeComponent();
@@ -35,28 +34,15 @@ namespace Principal
             this.TotesCartes = cartes;
             this.TotesPartides = partides;
             this.TotesHabilitats = habilitats;
-            this.TotsMazos = new();
-            foreach(Usuari u in TotsUsuaris.Llistausuaris)
-            {
-                if (u.Mazos.LlistaMazos.Count == 1)
-                    TotsMazos.LlistaMazos.Add(u.Mazos.LlistaMazos[0]);
-            }
         }
 
         private void windowsAdministracio_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            MazosDB mazos = new();
-            foreach(Mazo mazo in this.TotsMazos.LlistaMazos)
+            foreach (Usuari usuari in this.TotsUsuaris.Llistausuaris)
             {
-                mazos.EliminarMazoBD(mazo);
+                this.TotsUsuaris.ModificarUsuari(usuari);
             }
-            foreach (Mazo mazo in this.TotsMazos.LlistaMazos)
-            {
-                mazos.AfegirMazoBD(mazo);
-            }
-            this.TotsUsuaris.EliminarUsuaris();
-            this.TotsUsuaris.AfegirUsuaris(this.TotsUsuaris);
-            Home home = new(this.Administrador,this.TotesCartes);
+            Home home = new(this.Administrador,this.TotesCartes,this.TotesHabilitats,this.TotesPartides,this.TotsUsuaris);
             home.Show();
         }
 

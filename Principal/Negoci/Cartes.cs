@@ -45,24 +45,9 @@ namespace Principal.Negoci
         /// <summary>
         /// Metode per afegir cartes
         /// </summary>
-        public void AfegirCarta(Carta c)
+        public void AfegirCarta(Usuari usuari, Carta carta)
         {
-            CartesDB cartesbd = new CartesDB();
-            bool cartaTrobada = false;
-            cartesbd.RecuperarCartes();
-            foreach (Carta carta in cartesbd.Cartes.LlistaCartes)
-            {
-                if (c.Id == carta.Id)
-                    cartaTrobada = true;
-            }
-
-            if (cartaTrobada)
-            {
-                MessageBox.Show("L'id es el mateix, no es pot afegir.");
-            }
-            else
-                llistacartes.Add(c);
-
+            
         }
         /// <summary>
         /// Metode per eliminar cartes
@@ -71,21 +56,7 @@ namespace Principal.Negoci
         public void EliminarCarta(Carta c)
         {
 
-            CartesDB cartesbd = new CartesDB();
-            bool cartaTrobada = false;
-            cartesbd.RecuperarCartes();
-            foreach (Carta carta in cartesbd.Cartes.LlistaCartes)
-            {
-                if (c.Id != carta.Id)
-                    cartaTrobada = true;
-            }
-
-            if (cartaTrobada)
-            {
-                MessageBox.Show("No s'ha trobat l'id, no es pot afegir.");
-            }
-            else llistacartes.Remove(c);
-
+           
         }
         /// <summary>
         /// Metode per modificar cartes
@@ -112,11 +83,15 @@ namespace Principal.Negoci
 
         }
 
-        public List<Carta> RecuperarCartes()
+        public Cartes RecuperarCartes(Mazo mazo)
         {
             CartesDB cartesdb = new();
-            cartesdb.RecuperarCartes();
-            return cartesdb.Cartes.LlistaCartes;
+            return cartesdb.RecuperarCartes(mazo);
+        }
+        public Cartes RecuperarTotesCartes()
+        {
+            CartesDB cartesdb = new();
+            return cartesdb.RecuperarTotesCartes();
         }
     }
 }

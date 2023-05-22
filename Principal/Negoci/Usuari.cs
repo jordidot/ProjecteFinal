@@ -18,7 +18,6 @@ namespace Principal.Negoci
         private int punts;
         private string imatgePerfil;
         private int esAdministrador;
-
         //Constructors
         /// <summary>
         /// Constructor buit

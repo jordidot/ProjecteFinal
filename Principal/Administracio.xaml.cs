@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Principal.Connexions;
+using Principal.Negoci;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,53 @@ namespace Principal
     /// </summary>
     public partial class Administracio : Window
     {
-        public Administracio()
+        public Usuari Administrador { get; set; }
+        public Usuaris TotsUsuaris { get; set; }
+        public Cartes TotesCartes { get; set; }
+        public Partides TotesPartides { get; set; }
+        public Habilitats TotesHabilitats { get; set; }
+        public Administracio( Usuari usuari,Cartes cartes, Partides partides, Habilitats habilitats,Usuaris usuaris)
         {
             InitializeComponent();
+            this.Administrador = usuari;
+            this.TotsUsuaris = usuaris;
+            this.TotesCartes = cartes;
+            this.TotesPartides = partides;
+            this.TotesHabilitats = habilitats;
+        }
+
+        private void windowsAdministracio_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            foreach (Usuari usuari in this.TotsUsuaris.Llistausuaris)
+            {
+                this.TotsUsuaris.ModificarUsuari(usuari);
+            }
+            Home home = new(this.Administrador,this.TotesCartes,this.TotesHabilitats,this.TotesPartides,this.TotsUsuaris);
+            home.Show();
+        }
+
+        private void dataGridUsuaris_Loaded(object sender, RoutedEventArgs e)
+        {
+            dataGridUsuaris.ItemsSource = null;
+            dataGridUsuaris.ItemsSource = this.TotsUsuaris.Llistausuaris;
+        }
+
+        private void dataGridCartes_Loaded(object sender, RoutedEventArgs e)
+        {
+            dataGridCartes.ItemsSource = null;
+            dataGridCartes.ItemsSource = this.TotesCartes.LlistaCartes;
+        }
+
+        private void dataGridHabilitats_Loaded(object sender, RoutedEventArgs e)
+        {
+            dataGridHabilitats.ItemsSource = null;
+            dataGridHabilitats.ItemsSource = this.TotesHabilitats.LListahabilitats;
+        }
+
+        private void dataGridPartides_Loaded(object sender, RoutedEventArgs e)
+        {
+            dataGridHabilitats.ItemsSource = null;
+            dataGridPartides.ItemsSource = this.TotesPartides.LlistaPartides;
         }
     }
 }

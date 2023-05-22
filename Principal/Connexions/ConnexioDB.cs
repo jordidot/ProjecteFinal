@@ -79,7 +79,6 @@ namespace Principal.Connexions
         /// <returns></returns>
         public MySqlConnection Connectar()
         {
-
             string connectar = "Server=" + this.DireccioHost + ";User ID=" + this.UsuariBD + ";Password=" + this.ContrasenyaBD + ";Database=" + this.NomBD;
             var connexio = new MySqlConnection(connectar);
             connexio.Open();

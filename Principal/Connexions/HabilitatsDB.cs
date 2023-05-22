@@ -81,9 +81,9 @@ namespace Principal.Connexions
         /// Metode per recuperar habilitat de la bd
         /// </summary>
         /// <returns></returns>
-        public void RecuperarHabilitats()
+        public Habilitats RecuperarHabilitats(Carta carta)
         {
-            List<Habilitat> habilitats = new List<Habilitat>();
+            Habilitats habilitats = new();
             try
             {
                 MySqlCommand command = new MySqlCommand("SELECT * FROM habilitats;", ConnexioBD.Connectar());
@@ -91,11 +91,8 @@ namespace Principal.Connexions
                 while (reader.Read())
                 {
                     Habilitat habilitat = new Habilitat(reader.GetInt32(0), reader.GetInt32(3), reader.GetInt32(4), reader.GetString(2), reader.GetString(1));
-                    habilitats.Add(habilitat);
-
+                    habilitats.LListahabilitats.Add(habilitat);
                 }
-                Habilitats.LListahabilitats = habilitats;
-
             }
             catch (Exception ex)
             {
@@ -104,7 +101,14 @@ namespace Principal.Connexions
             finally
             {
                 ConnexioBD.Connectar().Close();
+                MySqlConnection.ClearAllPools();
             }
+            return habilitats;
         }
+        /// <summary>
+        /// Metode per recuperar habilitat de la bd
+        /// </summary>
+        /// <returns></returns>
+        
     }
 }

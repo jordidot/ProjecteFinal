@@ -22,11 +22,23 @@ namespace Principal
     /// </summary>
     public partial class MainWindow : Window
     {
+        //Atributs
+        private Usuaris usuaris;
+        private Cartes cartes;
+        private Mazos mazos;
+        private Partides totesPartides;
+        private Usuaris totsUsuaris;
         //Constructor
         public MainWindow()
         {
             InitializeComponent();
+            usuaris = new();
+            cartes = new();
+            mazos = new();
+            totesPartides = new();
+            totsUsuaris = new();
         }
+
         //Métodes
         /// <summary>
         /// Metode que obre la finestra de Registre i tanca la actual.
@@ -46,31 +58,35 @@ namespace Principal
         /// <param name="e"></param>
         private void BtnIniciarSessio_Click(object sender, RoutedEventArgs e)
         {
+
             if (txtBoxNomUsuari.Text == "" || pwdBoxContrasenyaUsuari.Password == "")
                 MessageBox.Show("No has introduït dades.");
             else
             {
-                Usuaris usuaris = new();
-                usuaris.Llistausuaris = usuaris.RecuperarUsuaris();
-               
-                //Miro si hi9 han usuaris.
+                totsUsuaris.Llistausuaris = usuaris.RecuperarUsuaris();
+                usuaris.Llistausuaris = totsUsuaris.Llistausuaris.FindAll(x => x.NomUsuari == txtBoxNomUsuari.Text && x.Contrasenya == pwdBoxContrasenyaUsuari.Password);
+                //Miro si hi han usuaris amb les seguents dades.
                 if (usuaris.Llistausuaris.Count == 0)
-                    MessageBox.Show("No hi ha cap usuari a la base de dades.");
+                    MessageBox.Show("Usuari o contrasenya incorrecte.");
                 else
                 {
-                    foreach (Usuari usuari in usuaris.Llistausuaris)
-                    {
-                        if (usuari.NomUsuari == txtBoxNomUsuari.Text && usuari.Contrasenya == pwdBoxContrasenyaUsuari.Password)
-                        {
-                            //Li passo l'usuari al constructor de la finestra del home per tenir les seves dades.
-                            Home home = new(usuari);
-                            home.Show();
-                            this.Close();
-                        }
-                        else MessageBox.Show("Usuari o contrasenya incorrecte.");
-                    }
+                    cartes = cartes.RecuperarTotesCartes();
+                    HabilitatsDB habilitats = new();
+                    usuaris.Llistausuaris[0].Partides.TotesCartes = cartes;
+                    this.totesPartides.LlistaPartides = usuaris.Llistausuaris[0].Partides.RecuperarPartides(usuaris.Llistausuaris[0], cartes);
+                    usuaris.Llistausuaris[0].Partides.LlistaPartides = usuaris.Llistausuaris[0].Partides.RecuperarPartides(usuaris.Llistausuaris[0], cartes).FindAll(x => x.Usuari.Id == usuaris.Llistausuaris[0].Id);
+                    usuaris.Llistausuaris[0].Mazos = mazos.RecuperarMazos(usuaris.Llistausuaris[0], cartes);
+                    //Li passo l'usuari al constructor de la finestra del home per tenir les seves dades.
+                    Home home = new(usuaris.Llistausuaris[0], cartes, habilitats.RecuperarHabilitats(cartes.LlistaCartes[0]),this.totesPartides,this.totsUsuaris);
+                    this.Close();
+                    home.Show();
+
                 }
             }
+
+
+
         }
     }
 }
+

@@ -14,6 +14,7 @@ namespace Principal.Connexions
         //Atributs
         private Usuaris usuaris;
         private ConnexioDB connexioBD;
+        public int QuantitatTotal { get; set; }
 
         //Constructors
         /// <summary>
@@ -34,6 +35,7 @@ namespace Principal.Connexions
             get { return usuaris; }
             set { usuaris = value; }
         }
+
         /// <summary>
         /// Propietat de l'atribut connexioBD
         /// </summary>
@@ -44,28 +46,85 @@ namespace Principal.Connexions
         /// Metode per afegir usuari
         /// </summary>
         /// <param name="usuaris">usuari a afegir</param>
-        public void AfegirUsuariBD(Usuari usuaris)
+        public void AfegirUsuariBD(Usuari usuari)
         {
-
+            try
+            {
+                var comanda = new MySqlCommand("INSERT INTO usuaris VALUES(" + usuari.Id + ",'" + usuari.NomUsuari + "','" + usuari.Contrasenya + "','" + usuari.ImatgePerfil + "','" + usuari.Alias + "'," + usuari.EsAdministrador + "," + usuari.Punts + ");", ConnexioBD.Connectar());
+                comanda.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut afegir l'usuari." + ex.Message);
+            }
+            finally
+            {
+                ConnexioBD.Connectar().Close();
+            }
         }
-        /// <summary>
-        /// Metode per afegir Usuaris
-        /// </summary>
-        /// <param name="usuaris">Usuaris a afegir</param>
         public void AfegirUsuarisBD(Usuaris usuaris)
         {
+            foreach (Usuari usuari in usuaris.Llistausuaris)
+            {
+                try
+                {
+                    var comanda = new MySqlCommand("INSERT INTO usuaris VALUES(" + usuari.Id + ",'" + usuari.NomUsuari + "','" + usuari.Contrasenya + "','" + usuari.ImatgePerfil + "','" + usuari.Alias + "'," + usuari.EsAdministrador + "," + usuari.Punts + ");", ConnexioBD.Connectar());
+                    comanda.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No s'ha pogut afegir l'usuari." + ex.Message);
+                }
+                finally
+                {
+                    ConnexioBD.Connectar().Close();
+                }
+            }
+
         }
         /// <summary>
         /// Metode per eliminar usaris
         /// </summary>
         /// <param name="usari">usuari a eliminar</param>
-        public void EliminarUsariBD(Usuari usari) { }
+        public void EliminarUsarisBD()
+        {
+            try
+            {
+                var comanda = new MySqlCommand("TRUNCATE usuaris;", ConnexioBD.Connectar());
+                comanda.ExecuteNonQuery();
+                ConnexioBD.Connectar().Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut afegir l'usuari." + ex.Message);
+            }
+            finally
+            {
+                ConnexioBD.Connectar().Close();
+            }
+        }
 
         /// <summary>
         /// Metode per modificar usuaris
         /// </summary>
         /// <param name="usari">usuari a modificar</param>
-        public void ModificarUsuari(Usuari usari) { }
+        public void ModificarUsuari(Usuari usuari)
+        {
+            try
+            {
+                var comanda = new MySqlCommand("UPDATE usuaris SET imatgeperfil ='" + usuari.ImatgePerfil + "', alias='" + usuari.Alias + "',esAdministrador=" + usuari.EsAdministrador + ",punts=" + usuari.Punts + " WHERE id=" + usuari.Id + ";", ConnexioBD.Connectar());
+                comanda.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut modificar l'usuari." + ex.Message);
+            }
+            finally
+            {
+                ConnexioBD.Connectar().Close();
+            }
+        }
 
         /// <summary>
         /// Metode per recuperar usuariBD
@@ -81,27 +140,13 @@ namespace Principal.Connexions
 
                 while (reader.Read())
                 {
-
-                    Partides partides = new Partides();
-                    //PartidesDB partidesdb = new PartidesDB();
-                    //partidesdb.RecuperarPartides();
-                    //foreach (Partida p in partidesdb.Partides.LlistaPartides)
-                    //{
-                    //    if (p.Usuari.Id == reader.GetInt32(0)) partides.LlistaPartides.Add(p);
-                    //}
-
                     Mazos mazos = new();
-                    //MazosDB mazosdb = new MazosDB();
-                    //mazosdb.RecuperarMazos();
-                    //foreach (Mazo m in mazosdb.Mazos.LlistaMazos)
-                    //{
-                    //    if (m.Usuari.Id == reader.GetInt32(2)) mazos.LlistaMazos.Add(m);
-                    //}
-
+                    Partides partides = new();
                     Usuari usuari = new Usuari(reader.GetInt32(0), reader.GetString(4), reader.GetString(2), reader.GetString(1), mazos, partides, reader.GetInt32(6), reader.GetString(3), reader.GetInt32(5));
                     usuaris.Add(usuari);
                 }
                 Usuaris.Llistausuaris = usuaris;
+                this.QuantitatTotal = Usuaris.Llistausuaris.Count;
             }
             catch (Exception ex)
             {
@@ -110,6 +155,7 @@ namespace Principal.Connexions
             finally
             {
                 ConnexioBD.Connectar().Close();
+                MySqlConnection.ClearAllPools();
             }
         }
     }

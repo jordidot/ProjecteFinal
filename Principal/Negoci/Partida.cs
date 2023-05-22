@@ -27,7 +27,7 @@ namespace Principal.Negoci
         /// <param name="mazoUsuari">atribut mazousuari, prove de la classe mazo</param>
         /// <param name="usuari">atribut usuari, prove de la classe usuari </param>
         /// <param name="usuariVida">atribut usuarivida, indica la vida del usuari</param>
-        public Partida(int id, Bot bot, int botVida, Cartes cartesBot, Mazo mazoUsuari, Usuari usuari, int usuariVida, string estatPartida)
+        public Partida(int id, Bot bot, int botVida,Usuari usuari, int usuariVida, string estatPartida)
         {
             this.id = id;
             this.bot = bot;

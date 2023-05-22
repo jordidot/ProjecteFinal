@@ -10,11 +10,11 @@
         <Rectangle HorizontalAlignment="Left" Height="434" VerticalAlignment="Center" Width="213" Fill="#FF1C7FCC"/>
         <StackPanel Margin="252,74,0,74" HorizontalAlignment="Left">
             <Label Content="Nom d'usuari"/>
-            <TextBox x:Name="txtBoxNomUsuari" TextWrapping="Wrap" Width="348" BorderBrush="{x:Null}" FontSize="20" FontFamily="Russo One"/>
+            <TextBox x:Name="txtBoxNomUsuari" Text="jordi" TextWrapping="Wrap" Width="348" BorderBrush="{x:Null}" FontSize="20" FontFamily="Russo One"/>
             <Label Content="" Background="Black" Height="1" Width="400"/>
             <Label/>
             <Label Content="Contrasenya"/>
-            <PasswordBox x:Name="pwdBoxContrasenyaUsuari" Width="350" BorderBrush="{x:Null}" FontSize="20" FontFamily="Russo One"/>
+            <PasswordBox x:Name="pwdBoxContrasenyaUsuari" Password="123456" Width="350" BorderBrush="{x:Null}" FontSize="20" FontFamily="Russo One"/>
             <Label Content="" Background="Black" Height="1" Width="400"/>
             <Label/>
             <Label/>

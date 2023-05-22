@@ -23,20 +23,39 @@ namespace Principal
     {
         //Atributs
         private Usuari usuari;
-
+        public Cartes TotesCartes { get; set; }
+        public Habilitats TotesHabilitats { get; set; }
+        public Partides TotesPartides { get; set; }
+        public Usuaris TotsUsuaris { get; set; }
+  
         //Constructors
         /// <summary>
         /// Constructor del Home que rep l'usuari.
         /// </summary>
         /// <param name="usuari">Usuari identificat al login.</param>
-        public Home(Usuari usuari)
+        public Home(Usuari usuari, Cartes cartes)
         {
             InitializeComponent();
+            TotesCartes = cartes;
             this.usuari = usuari;
+            if (this.usuari.EsAdministrador == 1) btnAdministracio.Visibility = Visibility.Visible;
+            lblTotalPuntsUsuari.Content = this.usuari.Punts + " Punts";
             lblAliasBenvingut.Content = usuari.Alias;
             imageProfile.Source = new BitmapImage(new Uri(usuari.ImatgePerfil));
         }
-
+        public Home(Usuari usuari, Cartes cartes, Habilitats habilitats, Partides partides,Usuaris usuaris)
+        {
+            InitializeComponent();
+            TotesCartes = cartes;
+            this.usuari = usuari;
+            this.TotesPartides = partides;
+            this.TotesHabilitats = habilitats;
+            this.TotsUsuaris = usuaris;
+            if (this.usuari.EsAdministrador == 1) btnAdministracio.Visibility = Visibility.Visible;
+            lblTotalPuntsUsuari.Content = this.usuari.Punts + " Punts";
+            lblAliasBenvingut.Content = usuari.Alias;
+            imageProfile.Source = new BitmapImage(new Uri(usuari.ImatgePerfil));
+        }
         //Propietats
         /// <summary>
         /// Propietat de l'usuari del home.
@@ -54,7 +73,7 @@ namespace Principal
         private void BtnModificarAliasBefore_Click(object sender, RoutedEventArgs e)
         {
             btnModificarAliasBefore.Visibility = Visibility.Hidden;
-            txtBoxAliasNouModificar.Text = Usuari.NomUsuari;
+            txtBoxAliasNouModificar.Text = Usuari.Alias;
             txtBoxAliasNouModificar.Visibility = Visibility.Visible;
             btnModificarAliasAfter.Visibility = Visibility.Visible;
         }
@@ -65,8 +84,12 @@ namespace Principal
         /// <param name="e">Event intern.</param>
         private void BtnTancarSessioBenvingut_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new();
-            main.Show();
+            if (this.Usuari.Mazos.LlistaMazos.Count == 1)
+            {
+                MazosDB afegir = new();
+                afegir.EliminarMazoUsuariBD(Usuari);
+                afegir.AfegirMazoBD(this.Usuari.Mazos.LlistaMazos[0]);
+            }
             this.Close();
         }
         /// <summary>
@@ -74,86 +97,48 @@ namespace Principal
         /// </summary>
         /// <param name="sender">Objecte rebut.</param>
         /// <param name="e">Event intern.</param>
-        private void TabItemMazos_Loaded(object sender, RoutedEventArgs e)
+        private void tabItemMazos_Loaded(object sender, RoutedEventArgs e)
         {
-            //Instancio la classe mazos
-            Mazos mazos = new();
-            mazos.LlistaMazos = mazos.RecuperarMazos();
-            //Inicialitzo un contador.
-            int contador = 1;
-            //Els filtro amb un Find All per l'id del usuari.
-            mazos.LlistaMazos = mazos.LlistaMazos.FindAll(x => x.Usuari.Id == this.Usuari.Id);
-            //Recorro tots el mazos buscant els del Usuari loggejat.
-            foreach (Mazo mazo in mazos.LlistaMazos)
-            {
-                //Afegeixo el primer mazo trobat i incremento la i per buscar el seguent mazo.
-                //Tamb´´e afegeixo el mazo a la primer fila de list box.
-                if (contador == 1)
-                {
-                    lblNomMazo1.Content = mazo.Nom;
-                    //Carta 1 Mazo 1
-                    listBoxRow1Col1.Items.Add(CrearLabelCarta(mazo.Cartes.LlistaCartes[0].Nom));
-                    listBoxRow1Col1.Items.Add(CrearImatgeCarta(mazo.Cartes.LlistaCartes[0].Imatge));
-                    //Carta 2 Mazo 1
-                    listBoxRow1Col2.Items.Add(CrearLabelCarta(mazo.Cartes.LlistaCartes[1].Nom));
-                    listBoxRow1Col2.Items.Add(CrearImatgeCarta(mazo.Cartes.LlistaCartes[1].Imatge));
-                    //Carta 3 Mazo 1
-                    listBoxRow1Col3.Items.Add(CrearLabelCarta(mazo.Cartes.LlistaCartes[2].Nom));
-                    listBoxRow1Col3.Items.Add(CrearImatgeCarta(mazo.Cartes.LlistaCartes[2].Imatge));
-                    //Carta 4 Mazo 1
-                    listBoxRow1Col4.Items.Add(CrearLabelCarta(mazo.Cartes.LlistaCartes[3].Nom));
-                    listBoxRow1Col4.Items.Add(CrearImatgeCarta(mazo.Cartes.LlistaCartes[3].Imatge));
-                    //Carta 5 Mazo 1
-                    listBoxRow1Col5.Items.Add(CrearLabelCarta(mazo.Cartes.LlistaCartes[4].Nom));
-                    listBoxRow1Col5.Items.Add(CrearImatgeCarta(mazo.Cartes.LlistaCartes[4].Imatge));
-                    contador++;
-                }
-                //Si el troba l'afegeixo a els list box de la segona fila.
-                //Incremento el contador en un per buscar el tercer.
-                else if (contador == 2)
-                {
-                    lblNomMazo2.Content = mazo.Nom;
-                    //Carta 1 Mazo 2
-                    listBoxRow2Col1.Items.Add(CrearLabelCarta(mazo.Cartes.LlistaCartes[0].Nom));
-                    listBoxRow2Col1.Items.Add(CrearImatgeCarta(mazo.Cartes.LlistaCartes[0].Imatge));
-                    //Carta 2 Mazo 2
-                    listBoxRow2Col2.Items.Add(CrearLabelCarta(mazo.Cartes.LlistaCartes[1].Nom));
-                    listBoxRow2Col2.Items.Add(CrearImatgeCarta(mazo.Cartes.LlistaCartes[1].Imatge));
-                    //Carta 3 Mazo 2
-                    listBoxRow2Col3.Items.Add(CrearLabelCarta(mazo.Cartes.LlistaCartes[2].Nom));
-                    listBoxRow2Col3.Items.Add(CrearImatgeCarta(mazo.Cartes.LlistaCartes[2].Imatge));
-                    //Carta 4 Mazo 2
-                    listBoxRow2Col4.Items.Add(CrearLabelCarta(mazo.Cartes.LlistaCartes[3].Nom));
-                    listBoxRow2Col4.Items.Add(CrearImatgeCarta(mazo.Cartes.LlistaCartes[3].Imatge));
-                    //Carta 5 Mazo 2
-                    listBoxRow2Col5.Items.Add(CrearLabelCarta(mazo.Cartes.LlistaCartes[4].Nom));
-                    listBoxRow2Col5.Items.Add(CrearImatgeCarta(mazo.Cartes.LlistaCartes[4].Imatge));
-                    contador++;
-                }
-                //Si troba el tercer l'afegeixo a el list box de la tercera fila.
-                //Reinicio el contador a 1 per si haig de tornar a carregarlos.
-                else if (contador == 3)
-                {
-                    lblNomMazo3.Content = mazo.Nom;
-                    //Carta 1 Mazo 3
-                    listBoxRow3Col1.Items.Add(CrearLabelCarta(mazo.Cartes.LlistaCartes[0].Nom));
-                    listBoxRow3Col1.Items.Add(CrearImatgeCarta(mazo.Cartes.LlistaCartes[0].Imatge));
-                    //Carta 2 Mazo 3
-                    listBoxRow3Col2.Items.Add(CrearLabelCarta(mazo.Cartes.LlistaCartes[0].Nom));
-                    listBoxRow3Col2.Items.Add(CrearImatgeCarta(mazo.Cartes.LlistaCartes[0].Imatge));
-                    //Carta 3 Mazo 3
-                    listBoxRow3Col3.Items.Add(CrearLabelCarta(mazo.Cartes.LlistaCartes[0].Nom));
-                    listBoxRow3Col3.Items.Add(CrearImatgeCarta(mazo.Cartes.LlistaCartes[0].Imatge));
-                    //Carta 4 Mazo 3
-                    listBoxRow3Col4.Items.Add(CrearLabelCarta(mazo.Cartes.LlistaCartes[0].Nom));
-                    listBoxRow3Col4.Items.Add(CrearImatgeCarta(mazo.Cartes.LlistaCartes[0].Imatge));
-                    //Carta 5 Mazo 3
-                    listBoxRow3Col5.Items.Add(CrearLabelCarta(mazo.Cartes.LlistaCartes[0].Nom));
-                    listBoxRow3Col5.Items.Add(CrearImatgeCarta(mazo.Cartes.LlistaCartes[0].Imatge));
-                    contador = 1;
-                }
 
+            //Miro cuants mazos té l'usuari i depenent dels mazos vaig fent visibles els botons.
+            if (Usuari.Mazos.LlistaMazos.Count == 1)
+            {
+                lblNomMazo1.Content = Usuari.Mazos.LlistaMazos[0].Nom;
+                btnAfegirMazoRow1.Visibility = Visibility.Hidden;
+                btnEliminarMazoRow1.Visibility = Visibility.Visible;
+                //Carta 1 Mazo 1
+                listBoxRow1Col1.Items.Add(CrearLabelCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0].Nom));
+                listBoxRow1Col1.Items.Add(CrearImatgeCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0].Imatge));
+                listBoxRow1Col1.Items.Add(CrearLabelCartaDescripcio(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0].Descripcio));
+                listBoxRow1Col1.Items.Add(CrearListBoxHabilitats(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0].Habilitats.LListahabilitats, 1));
+                //Carta 2 Mazo 1
+                listBoxRow1Col2.Items.Add(CrearLabelCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1].Nom));
+                listBoxRow1Col2.Items.Add(CrearImatgeCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1].Imatge));
+                listBoxRow1Col2.Items.Add(CrearLabelCartaDescripcio(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1].Descripcio));
+                listBoxRow1Col2.Items.Add(CrearListBoxHabilitats(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1].Habilitats.LListahabilitats, 2));
+                //Carta 3 Mazo 1
+                listBoxRow1Col3.Items.Add(CrearLabelCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2].Nom));
+                listBoxRow1Col3.Items.Add(CrearImatgeCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2].Imatge));
+                listBoxRow1Col3.Items.Add(CrearLabelCartaDescripcio(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2].Descripcio));
+                listBoxRow1Col3.Items.Add(CrearListBoxHabilitats(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2].Habilitats.LListahabilitats, 3));
+                //Carta 4 Mazo 1
+                listBoxRow1Col4.Items.Add(CrearLabelCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3].Nom));
+                listBoxRow1Col4.Items.Add(CrearImatgeCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3].Imatge));
+                listBoxRow1Col4.Items.Add(CrearLabelCartaDescripcio(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3].Descripcio));
+                listBoxRow1Col4.Items.Add(CrearListBoxHabilitats(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3].Habilitats.LListahabilitats, 4));
+                //Carta 5 Mazo 1
+                listBoxRow1Col5.Items.Add(CrearLabelCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4].Nom));
+                listBoxRow1Col5.Items.Add(CrearImatgeCarta(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4].Imatge));
+                listBoxRow1Col5.Items.Add(CrearLabelCartaDescripcio(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4].Descripcio));
+                listBoxRow1Col5.Items.Add(CrearListBoxHabilitats(Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4].Habilitats.LListahabilitats, 5));
             }
+            else
+            {
+                btnAfegirMazoRow1.Visibility = Visibility.Visible;
+                btnEliminarMazoRow1.Visibility = Visibility.Hidden;
+      
+            }
+
         }
         /// <summary>
         /// Crea un objecte Label per posar el nom de la carta.
@@ -167,6 +152,14 @@ namespace Principal
             nomCarta.HorizontalContentAlignment = HorizontalAlignment.Center;
             return nomCarta;
         }
+        public Label CrearLabelCartaDescripcio(string descripcio)
+        {
+            Label descripcioCarta = new();
+            descripcioCarta.Width = 130;
+            descripcioCarta.Content = descripcio;
+            descripcioCarta.HorizontalContentAlignment = HorizontalAlignment.Center;
+            return descripcioCarta;
+        }
         /// <summary>
         /// Creo un objecte Imatge de la carta.
         /// </summary>
@@ -176,37 +169,117 @@ namespace Principal
         {
             Image imageCarta = new();
             imageCarta.Source = new BitmapImage(new Uri(path));
-            imageCarta.Width = 100;
-            imageCarta.Height = 100;
+            imageCarta.Width = 130;
+            imageCarta.Height = 130;
             return imageCarta;
+        }
+        public ListBox CrearListBoxHabilitats(List<Habilitat> habilitats, int carta)
+        {
+            //Recorro totes les habilitats de totes les cartes i les vaig afegint a cada carta les que li pertoquen.
+            ListBox list = new();
+            if (carta == 1)
+            {
+                Label label = new();
+                label.Content = habilitats[0].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[1].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[2].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[3].Nom;
+                list.Items.Add(label);
+            }else if(carta == 2)
+            {
+                Label label = new();
+                label.Content = habilitats[4].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[5].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[6].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[7].Nom;
+                list.Items.Add(label);
+            }else if (carta == 3)
+            {
+                Label label = new();
+                label.Content = habilitats[8].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[9].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[10].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[11].Nom;
+                list.Items.Add(label);
+            }else if(carta == 4)
+            {
+                Label label = new();
+                label.Content = habilitats[12].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[13].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[14].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[15].Nom;
+                list.Items.Add(label);
+            }
+            else
+            {
+                Label label = new();
+                label.Content = habilitats[16].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[17].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[18].Nom;
+                list.Items.Add(label);
+                label = new();
+                label.Content = habilitats[19].Nom;
+                list.Items.Add(label);
+            }
+
+
+            list.Width = 130;
+            return list;
         }
         /// <summary>
         /// Metode que carrega el data grid de la pestanya partides amb les partides de l'usuari.
         /// </summary>
         /// <param name="sender">Objecte rebut.</param>
         /// <param name="e">Event intern.</param>
-        private void DataGridPartides_Loaded(object sender, RoutedEventArgs e)
+        private void tabItemPartides_Loaded(object sender, RoutedEventArgs e)
         {
-            Partides partides = new();
-            partides.LlistaPartides = partides.RecuperarPartides();
-            List<PartidaLLista> llistat = new List<PartidaLLista>();
-            //Els filtro amb un Find All per l'id del usuari.
-            partides.LlistaPartides = partides.LlistaPartides.FindAll(x => x.Usuari.Id == this.Usuari.Id);
-            foreach (Partida partida in partides.LlistaPartides)
+            //Inicialitzo la llista de PartidaLlista que son les dades de cada partida.
+            List<PartidaLLista> llistaPartides = new();
+            foreach(Partida partida in Usuari.Partides.LlistaPartides)
             {
-                PartidaLLista llistatPartida = new();
-                llistatPartida.Bot = partida.Bot.Nom.ToString();
-                llistatPartida.Usuari = Usuari.Alias.ToString();
-                llistatPartida.Resultat = partida.EstatPartida.ToString();
-                if (partida.EstatPartida == "Guanyada")
-                    llistatPartida.Punts = "400 punts";
+                //Vaig llegint les partides de l'usuari i creo la classe PartidaLlista amb les dades de la partida.
+                PartidaLLista partidaLlista = new();
+                partidaLlista.Usuari = Usuari.Alias;
+                partidaLlista.Bot = partida.Bot.Nom;
+                if(partida.EstatPartida == "Guanyada")
+                    partidaLlista.Punts = "400";
                 else
-                    llistatPartida.Punts = "0 punts";
-                llistat.Add(llistatPartida);
+                    partidaLlista.Punts = "0";
+                partidaLlista.Resultat = partida.EstatPartida;
+                llistaPartides.Add(partidaLlista);
             }
-            dataGridPartides.ItemsSource = llistat;
-            //Busco el total de punts que té l'usuari per guanyar partides i li afegeixo al label.
-            lblPuntuacioUsuari.Content = Usuari.Punts + " punts.";
+            //Introdueixo les partides de l'usuari al data grid.
+            dataGridPartides.ItemsSource = llistaPartides;
+            
+
         }
         /// <summary>
         /// Metode que obre la finestra de triar el Mazo, per poder jugar la partida.
@@ -215,10 +288,87 @@ namespace Principal
         /// <param name="e">Event intern.</param>
         private void BtnPartidaNova_Click(object sender, RoutedEventArgs e)
         {
-            TriarMazo triarMazo = new(this.Usuari);
-            triarMazo.Show();
+            Bot bot = new(this.TotesCartes);
+            Partida partida = new(Usuari.Partides.Quantitat +1,bot,1500,this.Usuari,1500,"Perduda");
+            CampBatalla camp = new(partida,this.TotesCartes);
             this.Close();
+            camp.Show();
 
+        }
+        /// <summary>
+        /// Metode que obre la finestra de afegir un nou Mazo.
+        /// </summary>
+        /// <param name="sender">Objecte rebut.</param>
+        /// <param name="e">Event intern.</param>
+        private void btnAfegirMazoRow1_Click(object sender, RoutedEventArgs e)
+        {
+            AfegirUnNouMazo nouMazo = new(Usuari, TotesCartes);
+            nouMazo.Show();
+            this.Close();
+        }
+
+
+        private void btnEliminarMazoRow1_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Usuari.Mazos.LlistaMazos.Remove(Usuari.Mazos.LlistaMazos[0]);
+                Home home = new(Usuari, TotesCartes);
+                this.Close();
+                home.Show();
+            }
+            catch (Exception ex)
+            {
+                Home home = new(Usuari, TotesCartes);
+                this.Close();
+                home.Show();
+            }
+
+
+        }
+
+        private void windowHome_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (this.Usuari.Mazos.LlistaMazos.Count == 1)
+            {
+                MazosDB afegir = new();
+                afegir.EliminarMazoUsuariBD(Usuari);
+                afegir.AfegirMazoBD(this.Usuari.Mazos.LlistaMazos[0]);
+            }
+            UsuarisDB usuari = new();
+            usuari.ModificarUsuari(this.Usuari);
+
+        }
+
+        private void btnModificarAliasAfter_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Usuaris usuaris = new Usuaris();
+                Usuari.Alias = txtBoxAliasNouModificar.Text;
+                usuaris.ModificarUsuari(Usuari);
+                Home home = new(Usuari, TotesCartes);
+                this.Close();
+                home.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No s'ha modificat l'usuari.");
+                Home home = new(Usuari, TotesCartes);
+                this.Close();
+                home.Show();
+            }
+
+
+
+        }
+
+        private void btnAdministracio_Click(object sender, RoutedEventArgs e)
+        {
+            Partides partides = new();
+            Administracio panell = new(this.Usuari,this.TotesCartes,this.TotesPartides,TotesHabilitats,this.TotsUsuaris);
+            this.Close();
+            panell.Show();
         }
     }
     //Classe que utilitzo per el Data grid de Partides així hem mostra les següents dades de partides al data grid.

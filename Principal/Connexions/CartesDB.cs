@@ -40,51 +40,26 @@ namespace Principal.Connexions
             cartes.LlistaCartes.Add(carta);
         }
 
-        public void RecuperarCartes()
+        public Cartes RecuperarCartes(Mazo mazo)
         {
-            List<Carta> cartes = new List<Carta>();
+            Cartes cartes = new();
             try
             {
                 //Obro amb el using i realitzo la query passant-li la connexio i tanco un cop llegit.
                 var comanda = new MySqlCommand("SELECT * FROM cartes;", ConnexioBD.Connectar());
                 //Executo la query i guardo totes les dades en un MySqlDataReader.
-
                 var llegir = comanda.ExecuteReader();
                 //Començo bucle per anar recuperant els camps de cada fila.
                 while (llegir.Read())
                 {
-                    //Creo habilitats pero poder afegir-li a Carta.
-                    Habilitats habilitats = new Habilitats();
-                    //Busco les habilitats que hi han a la base de dades.
-                    HabilitatsDB habilitatsBD = new HabilitatsDB();
-                    habilitatsBD.RecuperarHabilitats();
-                    //Recorro aquestes habilitats i vaig afegint-les a la llista habilitats que li passaré a la carta.
-                    foreach (Habilitat h in habilitatsBD.Habilitats.LListahabilitats)
-                    {
-                        if (h.Id == llegir.GetInt32(4)) habilitats.LListahabilitats.Add(h);
-                    }
-                    foreach (Habilitat h in habilitatsBD.Habilitats.LListahabilitats)
-                    {
-                        if (h.Id == llegir.GetInt32(5)) habilitats.LListahabilitats.Add(h);
-                    }
-                    foreach (Habilitat h in habilitatsBD.Habilitats.LListahabilitats)
-                    {
-                        if (h.Id == llegir.GetInt32(6)) habilitats.LListahabilitats.Add(h);
-                    }
-                    foreach (Habilitat h in habilitatsBD.Habilitats.LListahabilitats)
-                    {
-                        if (h.Id == llegir.GetInt32(7)) habilitats.LListahabilitats.Add(h);
-                    }
-
+                    HabilitatsDB habilitats  = new();
                     //Creo la carta i li passo tots els parametres.
-                    Carta carta = new(llegir.GetInt32(0), llegir.GetString(1), llegir.GetString(2), llegir.GetString(3), habilitats);
+                    Carta carta = new(llegir.GetInt32(0), llegir.GetString(1), llegir.GetString(2), llegir.GetString(3), habilitats.Habilitats);
+                    carta.Habilitats = habilitats.RecuperarHabilitats(carta);
                     //Afegeixo la carta a la llista de cartes.
-                    cartes.Add(carta);
+                    cartes.LlistaCartes.Add(carta);
 
                 }
-                //Assigno la llista de cartes recuperada de la base de dades a la de la classe.
-                Cartes.LlistaCartes = cartes;
-
             }
             catch (Exception ex)
             {
@@ -96,6 +71,41 @@ namespace Principal.Connexions
                 //Tanco la connexio a la BD.
                 ConnexioBD.Connectar().Close();
             }
+            return cartes;
+        }
+        public Cartes RecuperarTotesCartes()
+        {
+            Cartes cartes = new();
+            try
+            {
+                //Obro amb el using i realitzo la query passant-li la connexio i tanco un cop llegit.
+                var comanda = new MySqlCommand("SELECT * FROM cartes;", ConnexioBD.Connectar());
+                //Executo la query i guardo totes les dades en un MySqlDataReader.
+                var llegir = comanda.ExecuteReader();
+                //Començo bucle per anar recuperant els camps de cada fila.
+                while (llegir.Read())
+                {
+                    HabilitatsDB habilitats = new();
+                    //Creo la carta i li passo tots els parametres.
+                    Carta carta = new(llegir.GetInt32(0), llegir.GetString(1), llegir.GetString(2), llegir.GetString(3), habilitats.Habilitats);
+                    carta.Habilitats = habilitats.RecuperarHabilitats(carta);
+                    //Afegeixo la carta a la llista de cartes.
+                    cartes.LlistaCartes.Add(carta);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                //Capturo el missatge d'error.
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                //Tanco la connexio a la BD.
+                ConnexioBD.Connectar().Close();
+                MySqlConnection.ClearAllPools();
+            }
+            return cartes;
         }
     }
 }

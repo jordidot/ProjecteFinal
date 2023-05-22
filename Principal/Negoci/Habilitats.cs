@@ -51,21 +51,7 @@ namespace Principal.Negoci
         /// <param name="habilitat">Parametre de la llista habilitats </param>
         public void Afegir(Habilitat h)
         {
-            HabilitatsDB habilitatsdb = new HabilitatsDB();
-            bool habilitatTrobada = false;
-            habilitatsdb.RecuperarHabilitats();
-            foreach (Habilitat habilitat in habilitatsdb.Habilitats.LListahabilitats)
-            {
-                if (h.Id == habilitat.Id)
-                    habilitatTrobada = true;
-            }
-
-            if (habilitatTrobada)
-            {
-                MessageBox.Show("L'id es el mateix, no es pot afegir.");
-            }
-            else
-                llistahabilitats.Add(h);
+            
 
         }
         /// <summary>
@@ -74,20 +60,7 @@ namespace Principal.Negoci
         /// <param name="habilitat">Parametre per eliminar la llista</param>
         public void Eliminar(Habilitat habilitat)
         {
-            HabilitatsDB habilitatsbd = new HabilitatsDB();
-            bool habilitatTrobada = false;
-            habilitatsbd.RecuperarHabilitats();
-            foreach (Habilitat h in habilitatsbd.Habilitats.LListahabilitats)
-            {
-                if (habilitat.Id != h.Id)
-                    habilitatTrobada = true;
-            }
-
-            if (habilitatTrobada)
-            {
-                MessageBox.Show("No s'ha trobat l'id, no es pot afegir.");
-            }
-            else llistahabilitats.Remove(habilitat);
+            
         }
         /// <summary>
         /// Metode per modificar habilitats de la llista
@@ -114,10 +87,10 @@ namespace Principal.Negoci
                     llistahabilitats[index] = habilitatnova;
             }
         }
-        public List<Habilitat> RecuperarHabilitats()
+        public List<Habilitat> RecuperarHabilitats(Carta carta)
         {
             HabilitatsDB habilitatsdb = new();
-            habilitatsdb.RecuperarHabilitats();
+            habilitatsdb.RecuperarHabilitats(carta);
             return habilitatsdb.Habilitats.LListahabilitats;
         }
     }

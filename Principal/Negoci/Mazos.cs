@@ -12,7 +12,7 @@ namespace Principal.Negoci
     {
         //Atributs
         private List<Mazo> llistaMazos;
-
+        public Cartes TotesCartes { get; set; }
         //Constructors
         /// <summary>
         /// Constructor buit
@@ -42,28 +42,42 @@ namespace Principal.Negoci
         /// <summary>
         ///Metode per afegir mazos
         /// </summary>
-        public void AfegirMazo(Mazo m)
+        public void AfegirMazoBD(Usuari usuari, Mazo m)
         {
-            MazosDB mazobd = new MazosDB();
+            string nomvalidar = m.Nom;
             bool mazoTrobada = false;
-            mazobd.RecuperarMazos();
-            foreach (Mazo mazo in mazobd.Mazos.LlistaMazos)
-            {
-                if (m.Id == mazo.Id)
-                    mazoTrobada = true;
-            }
-            if (mazoTrobada)
-            {
-                MessageBox.Show("L'id es el mateix, no es pot afegir.");
-            }
+            bool nomvalid = true;
+
+            //Aquest foreach recorre la llista de mazos de la base de dades, per buscar si el
+            if (usuari.Mazos.LlistaMazos.Contains(m)) mazoTrobada = true;
+            if (mazoTrobada) MessageBox.Show("No es pot afegir aquest mazo.");
             else
-                llistaMazos.Add(m);
+            {
+                for (int i = 0; i < nomvalidar.Length; i++)
+                    if (i > 16) nomvalid = false;
+
+                if (nomvalid)
+                {
+                    MazosDB mazosdb = new();
+                    mazosdb.AfegirMazoBD(m);
+                }
+
+            }
         }
         /// <summary>
         /// Metode per eliminar mazo
         /// </summary>
-        public void EliminarMazo()
+        public void EliminarMazo(Mazo mazo)
         {
+            try
+            {
+                MazosDB mazosdb = new();
+                mazosdb.EliminarMazoBD(mazo);
+            }catch(Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut eliminar el mazo.");
+            }
+
 
         }
         /// <summary>
@@ -74,11 +88,16 @@ namespace Principal.Negoci
 
 
         }
-        public List<Mazo> RecuperarMazos()
+        public int RecuperarId()
+        {
+            MazosDB mazos = new();
+            return mazos.Quantitat;
+        }
+        public Mazos RecuperarMazos(Usuari usuari,Cartes cartes)
         {
             MazosDB mazosdb = new();
-            mazosdb.RecuperarMazos();
-            return mazosdb.Mazos.LlistaMazos;
+            mazosdb.TotesCartes = cartes;
+            return mazosdb.RecuperarMazos(usuari);
         }
     }
 }

@@ -83,7 +83,11 @@ namespace Principal.Negoci
             }
 
         }
-
+        public void ModificarCartes(Cartes cartes)
+        {
+            CartesDB cartesdb = new();
+            cartesdb.ModificarCartes(cartes);
+        }
         public Cartes RecuperarCartes(Mazo mazo)
         {
             CartesDB cartesdb = new();

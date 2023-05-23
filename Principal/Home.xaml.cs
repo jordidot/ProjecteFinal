@@ -362,7 +362,7 @@ namespace Principal
                 mazos.EliminarMazoUsuariBD(Usuari);
             }
             UsuarisDB usuari = new();
-            usuari.ModificarUsuari(this.Usuari);
+            usuari.ModificarUsuari(this.Usuari); 
 
         }
 

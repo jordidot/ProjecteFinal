@@ -67,6 +67,26 @@ namespace Principal.Connexions
                 ConnexioBD.Connectar().Close();
             }
         }
+        public void ModificarCartes(Cartes cartes)
+        {
+            //foreach (Carta carta in cartes.LlistaCartes)
+            //{
+            //    try
+            //    {
+            //        var comanda = new MySqlCommand("UPDATE cartes SET nom ='" + carta.Nom + "', descripcio ='" + carta.Descripcio + "', imatge ='" + carta.Imatge + "', habilitat1 =" + carta.Habilitats.LListahabilitats[0].Id + ", habilitat2 =" + carta.Habilitats.LListahabilitats[1].Id + ", habilitat3 =" + carta.Habilitats.LListahabilitats[2].Id + ", habilitat4 =" + carta.Habilitats.LListahabilitats[3].Id + " WHERE id =" + carta.Id + " ;", ConnexioBD.Connectar());
+            //        comanda.ExecuteNonQuery();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show("No s'ha pogut modificar la carta." + ex.Message);
+            //    }
+            //    finally
+            //    {
+            //        ConnexioBD.Connectar().Close();
+            //    }
+            //}
+
+        }
         public Cartes RecuperarCartes(Mazo mazo)
         {
             Cartes cartes = new();
@@ -79,7 +99,7 @@ namespace Principal.Connexions
                 //Començo bucle per anar recuperant els camps de cada fila.
                 while (llegir.Read())
                 {
-                    HabilitatsDB habilitats  = new();
+                    HabilitatsDB habilitats = new();
                     //Creo la carta i li passo tots els parametres.
                     Carta carta = new(llegir.GetInt32(0), llegir.GetString(1), llegir.GetString(2), llegir.GetString(3), habilitats.Habilitats);
                     carta.Habilitats = habilitats.RecuperarHabilitats(carta);

@@ -45,6 +45,7 @@ namespace Principal
         {
             Home home = new(this.Administrador, this.TotesCartes, this.TotesHabilitats, this.TotesPartides, this.TotsUsuaris);
             home.Show();
+            this.TotesCartes.ModificarCartes(this.TotesCartes);
         }
 
         private void dataGridUsuaris_Loaded(object sender, RoutedEventArgs e)
@@ -316,10 +317,10 @@ namespace Principal
         {
             try
             {
-                this.TotesPartides.EliminarPartida(this.TotesCartes,this.TotesPartides.LlistaPartides[dataGridPartides.SelectedIndex]);
-                this.TotesPartides.LlistaPartides.Remove(this.TotesPartides.LlistaPartides[dataGridPartides.SelectedIndex]);
                 if (this.Administrador.Partides.LlistaPartides.Contains(this.TotesPartides.LlistaPartides[dataGridPartides.SelectedIndex]))
                     this.Administrador.Partides.LlistaPartides.Remove(this.TotesPartides.LlistaPartides[dataGridPartides.SelectedIndex]);
+                this.TotesPartides.EliminarPartida(this.TotesCartes,this.TotesPartides.LlistaPartides[dataGridPartides.SelectedIndex]);
+                this.TotesPartides.LlistaPartides.Remove(this.TotesPartides.LlistaPartides[dataGridPartides.SelectedIndex]);
                 dataGridPartides.ItemsSource = null;
                 dataGridPartides.ItemsSource = this.TotesPartides.LlistaPartides;
                 MessageBox.Show("Partida eliminada correctament.");

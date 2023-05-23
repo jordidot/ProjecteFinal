@@ -49,18 +49,20 @@ namespace Principal.Negoci
         /// Metode per afegir habilitats a la llista
         /// </summary>
         /// <param name="habilitat">Parametre de la llista habilitats </param>
-        public void Afegir(Habilitat h)
+        public void AfegirHabilitat(Habilitat habilitat)
         {
-            
+            HabilitatsDB habilitatsdb = new();
+            habilitatsdb.AfegirHabilitatBD(habilitat);
 
         }
         /// <summary>
         /// Metode per eliminar habilitats de la llista
         /// </summary>
         /// <param name="habilitat">Parametre per eliminar la llista</param>
-        public void Eliminar(Habilitat habilitat)
+        public void EliminarHabilitat(Habilitat habilitat)
         {
-            
+            HabilitatsDB habilitatsdb = new();
+            habilitatsdb.EliminarHabilitatBD(habilitat);
         }
         /// <summary>
         /// Metode per modificar habilitats de la llista

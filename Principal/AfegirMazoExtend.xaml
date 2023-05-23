@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Principal"
         mc:Ignorable="d"
-        Title="AfegirMazoExtend" Height="204" Width="272">
+        Title="AfegirMazoExtend" Height="204" Width="272" Icon="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/LoL_icon.svg/2048px-LoL_icon.svg.png">
     <Grid>
         <Label Content="Nom del mazo" HorizontalAlignment="Center" Margin="0,27,0,0" VerticalAlignment="Top" Width="136" HorizontalContentAlignment="Center"/>
         <TextBox x:Name="txtBoxNomMazo" HorizontalAlignment="Center" Margin="0,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="164"/>

@@ -28,14 +28,20 @@ namespace Principal
         private Cartes cartesMazoNou;
         private Cartes totesCartes;
         private int contador;
+        public Usuaris TotsUsuaris { get; set; }
+        public Partides TotesPartides { get; set; }
+        public Habilitats TotesHabilitats { get; set; }
         //Constructors
         /// <summary>
         /// Constructor d'afegir mazo que rep un usuari.
         /// </summary>
         /// <param name="usuari">Usuari logejat a l'aplicació.</param>
-        public AfegirUnNouMazo(Usuari usuari,Cartes totesCartes)
+        public AfegirUnNouMazo(Usuari usuari,Cartes totesCartes, Habilitats habilitats, Partides partides, Usuaris usuaris)
         {
             InitializeComponent();
+            this.TotesHabilitats = habilitats;
+            this.TotesPartides = partides;
+            this.TotsUsuaris = usuaris;
             this.totesCartes = totesCartes;
             Usuari = usuari;
             CartesMazoNou = new();
@@ -127,7 +133,7 @@ namespace Principal
                     lblCartesAfegides.Content += " " + totesCartes.LlistaCartes[id - 1].Nom;
 
 
-                    AfegirMazoExtend extend = new(CartesMazoNou, Usuari, usuari.Mazos.RecuperarId(), this,this.totesCartes);
+                    AfegirMazoExtend extend = new(CartesMazoNou, Usuari, usuari.Mazos.RecuperarId(), this,this.totesCartes, this.TotesHabilitats, this.TotesPartides, this.TotsUsuaris);
                     extend.Show();
 
                 }

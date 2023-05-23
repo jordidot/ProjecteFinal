@@ -45,18 +45,19 @@ namespace Principal.Negoci
         /// <summary>
         /// Metode per afegir cartes
         /// </summary>
-        public void AfegirCarta(Usuari usuari, Carta carta)
+        public void AfegirCarta(Carta carta)
         {
-            
+            CartesDB cartesdb = new();
+            cartesdb.AfegirCartaBD(carta);
         }
         /// <summary>
         /// Metode per eliminar cartes
         /// </summary>
 
-        public void EliminarCarta(Carta c)
+        public void EliminarCarta(Carta carta)
         {
-
-           
+            CartesDB cartesdb = new();
+            cartesdb.EliminarCarta(carta);
         }
         /// <summary>
         /// Metode per modificar cartes

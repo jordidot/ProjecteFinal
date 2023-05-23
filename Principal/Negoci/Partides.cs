@@ -52,9 +52,10 @@ namespace Principal.Negoci
         /// <summary>
         /// Metode per eliminar partida
         /// </summary>
-        public void EliminarPartida()
+        public void EliminarPartida(Cartes cartes, Partida partida)
         {
-
+            PartidesDB partidesdb = new(cartes, partida);
+            partidesdb.EliminarPartidaBD(partida);
         }
         /// <summary>
         /// Metode per modificar partida

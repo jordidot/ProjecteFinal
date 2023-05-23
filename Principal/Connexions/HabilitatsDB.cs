@@ -50,24 +50,40 @@ namespace Principal.Connexions
         /// <param name="habilitat">habilitat a afegir</param>
         public void AfegirHabilitatBD(Habilitat habilitat)
         {
-
+            try
+            {
+                var comanda = new MySqlCommand("INSERT INTO habilitats VALUES(" + habilitat.Id + ",'" + habilitat.Nom + "','" + habilitat.Descripcio + "',"+habilitat.Cooldown+ ","+habilitat.Dany+");", ConnexioBD.Connectar());
+                comanda.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut afegir l'habilitat." + ex.Message);
+            }
+            finally
+            {
+                ConnexioBD.Connectar().Close();
+            }
         }
 
-        /// <summary>
-        /// Metode per afegir habilitats
-        /// </summary>
-        /// <param name="habilitats">habilitats a afegir</param>
-        public void AfegirHabilitatsBD(List<Habilitat> habilitats)
-        {
-
-        }
         /// <summary>
         /// Metode per eliminar habilitat
         /// </summary>
         /// <param name="habilitat">habilitat a eliminar </param>
         public void EliminarHabilitatBD(Habilitat habilitat)
         {
-
+            try
+            {
+                var comanda = new MySqlCommand("DELETE FROM habilitats WHERE id=" + habilitat.Id, ConnexioBD.Connectar());
+                comanda.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut eliminar l'habilitat." + ex.Message);
+            }
+            finally
+            {
+                ConnexioBD.Connectar().Close();
+            }
         }
         /// <summary>
         /// Metode per modificar habilitat a la BD

@@ -71,9 +71,21 @@ namespace Principal.Connexions
         /// Metode per eliminar una partida de la bd
         /// </summary>
         /// <param name="Partida">partida a eliminar</param>
-        public void EliminarPartidaBD(Partida Partida)
+        public void EliminarPartidaBD(Partida partida)
         {
-
+            try
+            {
+                var comanda = new MySqlCommand("DELETE FROM partides WHERE id=" + partida.Id, ConnexioBD.Connectar());
+                comanda.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut eliminar la partida." + ex.Message);
+            }
+            finally
+            {
+                ConnexioBD.Connectar().Close();
+            }
         }
         /// <summary>
         /// Metode per modificar una partida de la bd
@@ -82,45 +94,6 @@ namespace Principal.Connexions
         public void ModificarPartidaBD(Partida partida)
         {
         }
-  
-        ///// <summary>
-        ///// Metode per recuperar partides d'un usuari de la bd
-        ///// </summary>
-        ///// <returns></returns>
-        //public Partides RecuperarPartides(Usuari usuari)
-        //{
-        //    Partides partides = new Partides();
-        //    try
-        //    {
-        //        MySqlCommand command = new MySqlCommand("SELECT *,(SELECT count(*) FROM partides) FROM partides WHERE id_usuari="+usuari.Id+";", ConnexioBD.Connectar());
-        //        MySqlDataReader reader = command.ExecuteReader();
-        //        while (reader.Read())
-        //        {
-        //            Bot bot = new Bot(TotesCartes);
-        //            bot.Nom = reader.GetString(1);
-
-        //            Cartes cartesBot = new Cartes();
-
-        //            Mazo mazoUsuari = new(reader.GetInt32(2), cartesBot, "MazoUsuari", usuari);
-
-        //            Partida partida = new Partida(reader.GetInt32(0), bot, 1500,usuari, 1500, reader.GetString(3));
-        //            partides.LlistaPartides.Add(partida);
-        //            Quantitat = reader.GetInt32(4);
-        //        }
-        //        this.Partides = partides;
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        ConnexioBD.Connectar().Close();
-        //        MySqlConnection.ClearAllPools();
-        //    }
-        //    return partides;
-        //}
         /// <summary>
         /// Metode per recuperar usuariBD
         /// </summary>

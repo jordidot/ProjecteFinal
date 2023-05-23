@@ -26,10 +26,16 @@ namespace Principal
         private int id;
         private AfegirUnNouMazo finestra;
         public Cartes TotesCartes { get; set; }
-        public AfegirMazoExtend(Cartes cartes,Usuari usuari, int id, AfegirUnNouMazo finestra,Cartes totesCartes)
+        public Usuaris TotsUsuaris { get; set; }
+        public Partides TotesPartides { get; set; }
+        public Habilitats TotesHabilitats { get; set; }
+        public AfegirMazoExtend(Cartes cartes,Usuari usuari, int id, AfegirUnNouMazo finestra,Cartes totesCartes, Habilitats habilitats, Partides partides, Usuaris usuaris)
         {
             InitializeComponent();
             this.TotesCartes = totesCartes;
+            this.TotesHabilitats = habilitats;
+            this.TotesPartides = partides;
+            this.TotsUsuaris = usuaris;
             this.cartes = cartes;
             this.usuari = usuari;
             this.id = id;
@@ -65,7 +71,7 @@ namespace Principal
                     afegir.AfegirMazoBD(this.Usuari.Mazos.LlistaMazos[0]);
                 }
                 MessageBox.Show("Mazo afegit correctament.");
-                Home home = new(this.usuari,TotesCartes);
+                Home home = new(this.usuari,TotesCartes, this.TotesHabilitats, this.TotesPartides, this.TotsUsuaris);
                 this.finestra.Close();
                 this.Close();
                 home.Show();
@@ -73,7 +79,7 @@ namespace Principal
             }catch(Exception ex)
             {
                 MessageBox.Show("No s'ha pogut afegir el mazo.");
-                AfegirUnNouMazo finestraNova = new(this.usuari, cartes);
+                AfegirUnNouMazo finestraNova = new(this.usuari, cartes,this.TotesHabilitats, this.TotesPartides, this.TotsUsuaris);
                 this.finestra.Close();
                 this.Close();
                 finestraNova.Show();

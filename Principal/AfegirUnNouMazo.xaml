@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Principal"
         mc:Ignorable="d"
-        Title="Afegir Mazo" Height="700" Width="1000">
+        Title="Afegir Mazo" Height="700" Width="1000" Icon="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/LoL_icon.svg/2048px-LoL_icon.svg.png">
     <Grid>
         <Label x:Name="lblCartesAfegides" Content="Cartes afegides: " Panel.ZIndex="3" HorizontalAlignment="Center" Margin="0,600,0,0" VerticalAlignment="Top" Height="24" Width="662"/>
         <ScrollViewer HorizontalScrollBarVisibility="Visible" Margin="0,0,0,89">

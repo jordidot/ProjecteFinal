@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using MySqlConnector;
+using System.Security.Cryptography;
 
 namespace Principal.Connexions
 {
@@ -82,29 +83,38 @@ namespace Principal.Connexions
             }
 
         }
-        /// <summary>
-        /// Metode per eliminar usaris
-        /// </summary>
-        /// <param name="usari">usuari a eliminar</param>
-        public void EliminarUsarisBD()
+        public void EliminarUsuari(Usuari usuari)
         {
             try
             {
-                var comanda = new MySqlCommand("TRUNCATE usuaris;", ConnexioBD.Connectar());
+                var comanda = new MySqlCommand("DELETE FROM usuaris WHERE id="+usuari.Id, ConnexioBD.Connectar());
                 comanda.ExecuteNonQuery();
-                ConnexioBD.Connectar().Close();
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show("No s'ha pogut afegir l'usuari." + ex.Message);
+                MessageBox.Show("No s'ha pogut eliminar l'usuari." + ex.Message);
             }
             finally
             {
                 ConnexioBD.Connectar().Close();
             }
         }
-
+        public void CanviarImatge(Usuari usuari)
+        {
+            try
+            {
+                var comanda = new MySqlCommand("UPDATE usuaris SET imatgeperfil ='" + usuari.ImatgePerfil + "' WHERE id="+usuari.Id + ";", ConnexioBD.Connectar());
+                comanda.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut modificar l'usuari." + ex.Message);
+            }
+            finally
+            {
+                ConnexioBD.Connectar().Close();
+            }
+        }
         /// <summary>
         /// Metode per modificar usuaris
         /// </summary>

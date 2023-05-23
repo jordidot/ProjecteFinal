@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Principal"
         mc:Ignorable="d"
-        Title="CampBatalla" Height="1080" Width="1920" Closing="campBatallaWindow_Closing">
+        Title="Cartes - Camp de batalla" Height="1080" Width="1920" Closing="campBatallaWindow_Closing" Icon="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/LoL_icon.svg/2048px-LoL_icon.svg.png">
     <Grid>
         <Image   Name="image1"  Stretch="Fill" >
             <Image.Source>
@@ -47,43 +47,149 @@
             </Label>
 
             <!--Cartes Usuari-->
-            <ListBox x:Name="lstBoxCartaUsuari1" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="0" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}" GotFocus="lstBoxCartaUsuari1_GotFocus"/>
-            <ListBox x:Name="lstBoxCartaUsuari2" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="1" Grid.Column="0" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}" GotFocus="lstBoxCartaUsuari2_GotFocus"></ListBox>
-            <ListBox x:Name="lstBoxCartaUsuari3" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="2" Grid.Column="0" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}" GotFocus="lstBoxCartaUsuari3_GotFocus"></ListBox>
-            <ListBox x:Name="lstBoxCartaUsuari4" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="3" Grid.Column="0" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}" GotFocus="lstBoxCartaUsuari4_GotFocus"></ListBox>
-            <ListBox x:Name="lstBoxCartaUsuari5" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="4" Grid.Column="0" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}" GotFocus="lstBoxCartaUsuari5_GotFocus"></ListBox>
+            <ListBox x:Name="lstBoxCartaUsuari1" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="0" Margin="0,152,0,0" Grid.RowSpan="2" GotFocus="lstBoxCartaUsuari1_GotFocus" BorderBrush="White">
+                <ListBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ListBox.Background>
+            </ListBox>
+            <ListBox x:Name="lstBoxCartaUsuari2" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="1" Grid.Column="0" Margin="0,152,0,0" Grid.RowSpan="2" GotFocus="lstBoxCartaUsuari2_GotFocus" BorderBrush="White">
+                <ListBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ListBox.Background>
+            </ListBox>
+            <ListBox x:Name="lstBoxCartaUsuari3" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="2" Grid.Column="0" Margin="0,152,0,0" Grid.RowSpan="2" GotFocus="lstBoxCartaUsuari3_GotFocus" BorderBrush="White">
+                <ListBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ListBox.Background>
+            </ListBox>
+            <ListBox x:Name="lstBoxCartaUsuari4" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="3" Grid.Column="0" Margin="0,152,0,0" Grid.RowSpan="2" GotFocus="lstBoxCartaUsuari4_GotFocus" BorderBrush="White">
+                <ListBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ListBox.Background>
+            </ListBox>
+            <ListBox x:Name="lstBoxCartaUsuari5" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="4" Grid.Column="0" Margin="0,152,0,0" Grid.RowSpan="2" GotFocus="lstBoxCartaUsuari5_GotFocus" BorderBrush="White">
+                <ListBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ListBox.Background>
+            </ListBox>
             <!--Cartes Bot-->
-            <ListBox x:Name="lstBoxCartaBot1" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="6" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}"/>
-            <ListBox x:Name="lstBoxCartaBot2" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="1" Grid.Column="6" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}"></ListBox>
-            <ListBox x:Name="lstBoxCartaBot3" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="2" Grid.Column="6" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}"></ListBox>
-            <ListBox x:Name="lstBoxCartaBot4" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="3" Grid.Column="6" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}"></ListBox>
-            <ListBox x:Name="lstBoxCartaBot5" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="4" Grid.Column="6" Margin="0,152,0,0" Grid.RowSpan="2" Background="{x:Null}"></ListBox>
+            <ListBox x:Name="lstBoxCartaBot1" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="6" Margin="0,152,0,0" Grid.RowSpan="2" BorderBrush="White">
+                <ListBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ListBox.Background>
+            </ListBox>
+            <ListBox x:Name="lstBoxCartaBot2" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="1" Grid.Column="6" Margin="0,152,0,0" Grid.RowSpan="2" BorderBrush="White">
+                <ListBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ListBox.Background>
+            </ListBox>
+            <ListBox x:Name="lstBoxCartaBot3" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="2" Grid.Column="6" Margin="0,152,0,0" Grid.RowSpan="2" BorderBrush="White">
+                <ListBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ListBox.Background>
+            </ListBox>
+            <ListBox x:Name="lstBoxCartaBot4" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="3" Grid.Column="6" Margin="0,152,0,0" Grid.RowSpan="2" BorderBrush="White">
+                <ListBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ListBox.Background>
+            </ListBox>
+            <ListBox x:Name="lstBoxCartaBot5" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="4" Grid.Column="6" Margin="0,152,0,0" Grid.RowSpan="2" BorderBrush="White">
+                <ListBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </ListBox.Background>
+            </ListBox>
             <!--Carta Usuari Seleccionada-->
-            <ListBox x:Name="lstBoxCartaUsuariSeleccionada" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="2" Grid.ColumnSpan="3" Margin="274,152,274,0" Grid.RowSpan="2" Background="{x:Null}"/>
+            <ListBox x:Name="lstBoxCartaUsuariSeleccionada" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="2" Grid.ColumnSpan="3" Margin="274,152,274,0" Grid.RowSpan="2" BorderBrush="#FF115200">
+                <ListBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FF62E682" Offset="1"/>
+                    </LinearGradientBrush>
+                </ListBox.Background>
+            </ListBox>
             <!--Carta Bot Seleccionada-->
-            <ListBox x:Name="lstBoxCartaBotSeleccionada" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" Margin="274,152,274,0" Grid.RowSpan="2" Background="{x:Null}"></ListBox>
+            <ListBox x:Name="lstBoxCartaBotSeleccionada" HorizontalContentAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3" Margin="274,152,274,0" Grid.RowSpan="2" BorderBrush="#FFA42828">
+                <ListBox.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FFD66565" Offset="1"/>
+                    </LinearGradientBrush>
+                </ListBox.Background>
+            </ListBox>
 
             <!--Habilitats Carta Seleccionada-->
-            <Button x:Name="btnHabilitat1" Visibility="Hidden" Content="" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" FontSize="20" FontFamily="Bahnschrift" Background="Black" Foreground="White" Click="btnHabilitat1_Click">
+            <Button x:Name="btnHabilitat1" Visibility="Hidden" Content="" Panel.ZIndex="1" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" FontSize="20" FontFamily="Bahnschrift" Background="Black" Foreground="White" Click="btnHabilitat1_Click">
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>
             </Button>
-            <Button x:Name="btnHabilitat2" Visibility="Hidden" Content="" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2" FontSize="20" FontFamily="Bahnschrift" Background="Black" Foreground="White" Click="btnHabilitat2_Click">
+            <Button x:Name="btnHabilitat2"  Visibility="Hidden" Content="" Panel.ZIndex="1" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2" FontSize="20" FontFamily="Bahnschrift" Background="Black" Foreground="White" Click="btnHabilitat2_Click">
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>
             </Button>
-            <Button x:Name="btnHabilitat3" Visibility="Hidden" Content="" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.Row="2" FontSize="20" FontFamily="Bahnschrift" Background="Black" Foreground="White" Click="btnHabilitat3_Click">
+            <Button x:Name="btnHabilitat3" Visibility="Hidden" Content="" Panel.ZIndex="1" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.Row="2" FontSize="20" FontFamily="Bahnschrift" Background="Black" Foreground="White" Click="btnHabilitat3_Click">
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>
             </Button>
-            <Button x:Name="btnHabilitat4" Visibility="Hidden" Content="" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4" Grid.Row="2" FontSize="20" FontFamily="Bahnschrift" Background="Black" Foreground="White" Click="btnHabilitat4_Click">
+            <Button x:Name="btnHabilitat4" Visibility="Hidden" Content="" Panel.ZIndex="1" Padding="10" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4" Grid.Row="2" FontSize="20" FontFamily="Bahnschrift" Background="Black" Foreground="White" Click="btnHabilitat4_Click">
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>
             </Button>
+            <!--Danys habilitats-->
+            <Label x:Name="lblDanyHabilitat1" Visibility="Hidden" Content="Dany habilitat: 25" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Foreground="White" FontFamily="Bahnschrift" FontSize="25" FontWeight="Bold">
+                <Label.Effect>
+                    <DropShadowEffect/>
+                </Label.Effect>
+            </Label>
+            <Label x:Name="lblDanyHabilitat2" Visibility="Hidden" Content="Dany habilitat: 50" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" Foreground="White" FontFamily="Bahnschrift" FontSize="25" FontWeight="Bold">
+                <Label.Effect>
+                    <DropShadowEffect/>
+                </Label.Effect>
+            </Label>
+            <Label x:Name="lblDanyHabilitat3" Visibility="Hidden" Content="Dany habilitat: 75" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" Foreground="White" FontFamily="Bahnschrift" FontSize="25" FontWeight="Bold">
+                <Label.Effect>
+                    <DropShadowEffect/>
+                </Label.Effect>
+            </Label>
+            <Label x:Name="lblDanyHabilitat4" Visibility="Hidden" Content="Dany habilitat: 125" Grid.Row="2" Grid.Column="4" HorizontalAlignment="Center" Foreground="White" FontFamily="Bahnschrift" FontSize="25" FontWeight="Bold">
+                <Label.Effect>
+                    <DropShadowEffect/>
+                </Label.Effect>
+            </Label>
+
             <!--Boto començar-->
             <Button x:Name="btnComençaPartida" Visibility="Hidden" Content="Començar partida" Grid.Column="3" Grid.Row="3" FontSize="25" FontFamily="Bahnschrift" Background="#FF95E081" Click="btnComençaPartida_Click">
                 <Button.Effect>
@@ -111,5 +217,17 @@
                 </ListBox.Effect>
             </ListBox>
         </Grid>
+        <!--Labels noms dels mazos a qui pertany cada un d'ells-->
+        <Label Content="Mazo usuari" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift" FontSize="30" FontWeight="Bold" Foreground="White">
+            <Label.Effect>
+                <DropShadowEffect/>
+            </Label.Effect>
+        </Label>
+        <Label Content="Mazo bot" HorizontalAlignment="Left" Margin="1755,922,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift" FontSize="30" FontWeight="Bold" Foreground="White">
+            <Label.Effect>
+                <DropShadowEffect/>
+            </Label.Effect>
+        </Label>
+        <Image HorizontalAlignment="Left" Height="136" Margin="10,-13,0,0" VerticalAlignment="Top" Width="222" Source="https://1000logos.net/wp-content/uploads/2020/09/League-of-Legends-Logo-2008.png"/>
     </Grid>
 </Window>

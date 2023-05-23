@@ -5,47 +5,67 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Principal"
         mc:Ignorable="d"
-        Title="Home" Height="700" Width="1200" Closing="windowHome_Closing" FontFamily="Bahnschrift">
+        Title="Cartes - Panell d'usuari" Height="700" Width="1200" Closing="windowHome_Closing" FontFamily="Doppio One" Icon="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/LoL_icon.svg/2048px-LoL_icon.svg.png" WindowStyle="ToolWindow" ResizeMode="NoResize">
     <Grid>
         <TabControl>
-            <TabItem Header="Benvingut">
-                <Grid Background="White">
+            <TabItem x:Name="tabItemBenvingut" Header="Benvingut" GotFocus="tabItemBenvingut_GotFocus">
+                <Grid Background="#FF4E4E4E" Height="659">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="37*"/>
                         <ColumnDefinition Width="361*"/>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="btnPartidaNova" Content="Jugar partida nova" HorizontalAlignment="Left" Margin="687,459,0,0" Padding="10" VerticalAlignment="Top" Click="BtnPartidaNova_Click" Grid.Column="1" FontFamily="Bahnschrift" Height="75" Width="292" FontSize="30" Background="#FFA0E483" Foreground="#FF2B312B" BorderBrush="#FF65FF00">
+                    <Button x:Name="btnPartidaNova" Content="Jugar partida nova" HorizontalAlignment="Left" Margin="718,372,0,0" Padding="10" VerticalAlignment="Top" Click="BtnPartidaNova_Click" Grid.Column="1" FontFamily="Bahnschrift" Height="75" Width="292" FontSize="30" Background="#FFA0E483" Foreground="#FF2B312B" BorderBrush="#FF65FF00">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
-                    <Button x:Name="btnAdministracio" Content="Panell d'administració"  Visibility="Hidden" HorizontalAlignment="Left" Margin="749,389,0,0" Padding="10" VerticalAlignment="Top" Grid.Column="1" FontFamily="Bahnschrift" Height="46" Width="230" FontSize="20" Background="Red" Foreground="White" BorderBrush="Black" Click="btnAdministracio_Click">
+                    <Button x:Name="btnAdministracio" Content="Panell d'administració"  Visibility="Hidden" HorizontalAlignment="Left" Margin="749,309,0,0" Padding="10" VerticalAlignment="Top" Grid.Column="1" FontFamily="Bahnschrift" Height="46" Width="230" FontSize="20" Background="Red" Foreground="White" BorderBrush="Black" Click="btnAdministracio_Click">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
-                    <Image x:Name="imageProfile" HorizontalAlignment="Left" Height="259" Margin="195,21,0,0" VerticalAlignment="Top" Width="485" Grid.Column="1"/>
-                    <Label Content="Nom usuari: " HorizontalAlignment="Left" Margin="270,309,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.158,1.159" Grid.Column="1"/>
-                    <Label x:Name="lblAliasBenvingut" Content="" HorizontalAlignment="Left" Margin="352,311,0,0" VerticalAlignment="Top" Width="94" Grid.Column="1"/>
-                    <Button x:Name="btnModificarAliasBefore" Content="Modificar el meu alias" Padding="5" HorizontalAlignment="Left" Margin="486,309,0,0" VerticalAlignment="Top" Click="BtnModificarAliasBefore_Click" Grid.Column="1">
+                    <Image x:Name="imageProfile" HorizontalAlignment="Left" Height="258" Margin="467,10,0,0" VerticalAlignment="Top" Width="485" Grid.Column="1"/>
+                    <Label Content="Nom usuari: " Foreground="White" HorizontalAlignment="Left" Margin="320,309,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.158,1.159" Grid.Column="1"/>
+                    <Label x:Name="lblAliasBenvingut" Foreground="White" Content="" HorizontalAlignment="Left" Margin="430,309,0,0" VerticalAlignment="Top" Width="94" Grid.Column="1"/>
+                    <Button x:Name="btnModificarAliasBefore" Content="Modificar el meu alias" Padding="10" HorizontalAlignment="Left" Margin="541,303,0,0" VerticalAlignment="Top" Click="BtnModificarAliasBefore_Click" Grid.Column="1" Background="White">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
-                    <TextBox x:Name="txtBoxAliasNouModificar"  Visibility="Hidden" HorizontalAlignment="Left" Margin="352,315,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-                    <Button  x:Name="btnModificarAliasAfter" Visibility="Hidden" Padding="5" Content="Modificar" HorizontalAlignment="Left" Margin="519,309,0,0" VerticalAlignment="Top" Grid.Column="1" Click="btnModificarAliasAfter_Click"/>
-                    <Button x:Name="btnTancarSessioBenvingut" Content="Sortir de l'aplicació" Padding="10" HorizontalAlignment="Left" Margin="854,560,0,0" VerticalAlignment="Top" Click="BtnTancarSessioBenvingut_Click" Grid.Column="1" Background="White">
+                    <TextBox x:Name="txtBoxAliasNouModificar" Visibility="Hidden" HorizontalAlignment="Left" Margin="409,313,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Button  x:Name="btnModificarAliasAfter" Visibility="Hidden" Padding="10" Content="Modificar" HorizontalAlignment="Left" Margin="575,301,0,0" VerticalAlignment="Top" Grid.Column="1" Click="btnModificarAliasAfter_Click" Background="White">
                         <Button.Effect>
                             <DropShadowEffect/>
                         </Button.Effect>
                     </Button>
-                    <Rectangle Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="658" Stroke="Black" VerticalAlignment="Center" Width="198" Fill="#FF1C7FCC"/>
-                    <Label Grid.Column="1" Content="Punts guanyats de l'usuari: " HorizontalAlignment="Left" Margin="231,443,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lblTotalPuntsUsuari" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="432,439,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="btnTancarSessioBenvingut" Content="Tancar la sessió" Padding="10" HorizontalAlignment="Left" Margin="810,467,0,0" VerticalAlignment="Top" Click="BtnTancarSessioBenvingut_Click" Grid.Column="1" Background="White">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+                    <Label Grid.Column="1" Foreground="White" Content="Punts guanyats de l'usuari: " HorizontalAlignment="Left" Margin="320,527,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="lblTotalPuntsUsuari" Foreground="White" Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="519,527,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="txtBoxImatgePerfilCanviar" Grid.Column="1" HorizontalAlignment="Left" Margin="320,405,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="351" Height="46"/>
+                    <Label Content="Canviar imatge perfil: " Foreground="White" HorizontalAlignment="Left" Margin="413,372,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.158,1.159" Grid.Column="1"/>
+                    <Button x:Name="btnCanviarImatge" Padding="10" Grid.Column="1" Content="Canviar imatge" HorizontalAlignment="Left" Margin="420,468,0,0" VerticalAlignment="Top" Width="118" Click="btnCanviarImatge_Click" Background="White">
+                        <Button.Effect>
+                            <DropShadowEffect/>
+                        </Button.Effect>
+                    </Button>
+                    <Image Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="374" Margin="-170,157,0,0" VerticalAlignment="Top" Width="698" Source="https://www.leagueoflegends.com/static/open-graph-2e582ae9fae8b0b396ca46ff21fd47a8.jpg" RenderTransformOrigin="0.5,0.5">
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-90.547"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabItemMazos" Header="Els meus mazos" Loaded="tabItemMazos_Loaded">
-                <Grid Background="#FFE5E5E5">
+            <TabItem x:Name="tabItemMazos" Header="Els meus mazos" Loaded="tabItemMazos_Loaded" GotFocus="tabItemMazos_GotFocus">
+                <Grid Background="#FF545353">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition></ColumnDefinition>
@@ -69,14 +89,14 @@
                         <ListBox x:Name="listBoxRow1Col5" HorizontalContentAlignment="Center" Grid.Column="3" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="239,0,0,0" Grid.ColumnSpan="2"/>
 
                         <!--Botons eliminar-->
-                        <Button x:Name="btnEliminarMazoRow1" Grid.Column="3" Padding="5" Content="Eliminar el mazo" HorizontalAlignment="Center" VerticalAlignment="Center" Width="158" Height="28" Click="btnEliminarMazoRow1_Click">
+                        <Button x:Name="btnEliminarMazoRow1" Grid.Column="3" Padding="5" Content="Eliminar el mazo" HorizontalAlignment="Center" VerticalAlignment="Center" Width="158" Height="28" Click="btnEliminarMazoRow1_Click" Background="White">
                             <Button.Effect>
                                 <DropShadowEffect/>
                             </Button.Effect>
                         </Button>
 
                         <!--Botons afegir-->
-                        <Button x:Name="btnAfegirMazoRow1" Padding="5" Content="Crear el meu mazo" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Center" Width="155" Click="btnAfegirMazoRow1_Click" Height="28">
+                        <Button x:Name="btnAfegirMazoRow1" Padding="5" Content="Crear el meu mazo" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Center" Width="155" Click="btnAfegirMazoRow1_Click" Height="28" Background="White">
                             <Button.Effect>
                                 <DropShadowEffect/>
                             </Button.Effect>
@@ -86,10 +106,10 @@
 
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabItemPartides" Header="Les meves partides" Loaded="tabItemPartides_Loaded">
-                <Grid Background="#FFE5E5E5">
+            <TabItem x:Name="tabItemPartides" Header="Les meves partides" Loaded="tabItemPartides_Loaded" GotFocus="tabItemPartides_GotFocus">
+                <Grid Background="#FF4E4E4E">
                     <Label Content="Totes les meves partides realitzades" HorizontalAlignment="Center" Margin="0,36,0,0" VerticalAlignment="Top"/>
-                    <DataGrid x:Name="dataGridPartides" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="102,67,102,90" HorizontalAlignment="Center"/>
+                    <DataGrid x:Name="dataGridPartides" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,0,0,0"/>
                 </Grid>
             </TabItem>
         </TabControl>

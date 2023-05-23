@@ -27,7 +27,7 @@ namespace Principal
         public Habilitats TotesHabilitats { get; set; }
         public Partides TotesPartides { get; set; }
         public Usuaris TotsUsuaris { get; set; }
-  
+
         //Constructors
         /// <summary>
         /// Constructor del Home que rep l'usuari.
@@ -36,18 +36,18 @@ namespace Principal
         public Home(Usuari usuari, Cartes cartes)
         {
             InitializeComponent();
-            TotesCartes = cartes;
+            this.TotesCartes = cartes;
             this.usuari = usuari;
             if (this.usuari.EsAdministrador == 1) btnAdministracio.Visibility = Visibility.Visible;
             lblTotalPuntsUsuari.Content = this.usuari.Punts + " Punts";
             lblAliasBenvingut.Content = usuari.Alias;
             imageProfile.Source = new BitmapImage(new Uri(usuari.ImatgePerfil));
         }
-        public Home(Usuari usuari, Cartes cartes, Habilitats habilitats, Partides partides,Usuaris usuaris)
+        public Home(Usuari usuari, Cartes cartes, Habilitats habilitats, Partides partides, Usuaris usuaris)
         {
             InitializeComponent();
-            TotesCartes = cartes;
             this.usuari = usuari;
+            this.TotesCartes = cartes;
             this.TotesPartides = partides;
             this.TotesHabilitats = habilitats;
             this.TotsUsuaris = usuaris;
@@ -90,7 +90,16 @@ namespace Principal
                 afegir.EliminarMazoUsuariBD(Usuari);
                 afegir.AfegirMazoBD(this.Usuari.Mazos.LlistaMazos[0]);
             }
+            else
+            {
+                MazosDB mazos = new();
+                mazos.EliminarMazoUsuariBD(Usuari);
+            }
+            UsuarisDB usuari = new();
+            usuari.ModificarUsuari(this.Usuari);
+            MainWindow login = new();
             this.Close();
+            login.Show();
         }
         /// <summary>
         /// Metode que carrega els Mazos de l'Usuari loggejat un cop carregada la pestanya.
@@ -136,7 +145,7 @@ namespace Principal
             {
                 btnAfegirMazoRow1.Visibility = Visibility.Visible;
                 btnEliminarMazoRow1.Visibility = Visibility.Hidden;
-      
+
             }
 
         }
@@ -191,7 +200,8 @@ namespace Principal
                 label = new();
                 label.Content = habilitats[3].Nom;
                 list.Items.Add(label);
-            }else if(carta == 2)
+            }
+            else if (carta == 2)
             {
                 Label label = new();
                 label.Content = habilitats[4].Nom;
@@ -205,7 +215,8 @@ namespace Principal
                 label = new();
                 label.Content = habilitats[7].Nom;
                 list.Items.Add(label);
-            }else if (carta == 3)
+            }
+            else if (carta == 3)
             {
                 Label label = new();
                 label.Content = habilitats[8].Nom;
@@ -219,7 +230,8 @@ namespace Principal
                 label = new();
                 label.Content = habilitats[11].Nom;
                 list.Items.Add(label);
-            }else if(carta == 4)
+            }
+            else if (carta == 4)
             {
                 Label label = new();
                 label.Content = habilitats[12].Nom;
@@ -263,13 +275,13 @@ namespace Principal
         {
             //Inicialitzo la llista de PartidaLlista que son les dades de cada partida.
             List<PartidaLLista> llistaPartides = new();
-            foreach(Partida partida in Usuari.Partides.LlistaPartides)
+            foreach (Partida partida in Usuari.Partides.LlistaPartides)
             {
                 //Vaig llegint les partides de l'usuari i creo la classe PartidaLlista amb les dades de la partida.
                 PartidaLLista partidaLlista = new();
                 partidaLlista.Usuari = Usuari.Alias;
                 partidaLlista.Bot = partida.Bot.Nom;
-                if(partida.EstatPartida == "Guanyada")
+                if (partida.EstatPartida == "Guanyada")
                     partidaLlista.Punts = "400";
                 else
                     partidaLlista.Punts = "0";
@@ -278,7 +290,7 @@ namespace Principal
             }
             //Introdueixo les partides de l'usuari al data grid.
             dataGridPartides.ItemsSource = llistaPartides;
-            
+
 
         }
         /// <summary>
@@ -288,11 +300,19 @@ namespace Principal
         /// <param name="e">Event intern.</param>
         private void BtnPartidaNova_Click(object sender, RoutedEventArgs e)
         {
-            Bot bot = new(this.TotesCartes);
-            Partida partida = new(Usuari.Partides.Quantitat +1,bot,1500,this.Usuari,1500,"Perduda");
-            CampBatalla camp = new(partida,this.TotesCartes);
-            this.Close();
-            camp.Show();
+            if (this.Usuari.Mazos.LlistaMazos.Count == 1)
+            {
+                Bot bot = new(this.TotesCartes);
+                Partida partida = new(Usuari.Partides.Quantitat + 1, bot, 1500, this.Usuari, 1500, "Perduda");
+                CampBatalla camp = new(partida, this.TotesCartes, this.TotsUsuaris, this.TotesPartides, this.TotesHabilitats);
+                this.Close();
+                camp.Show();
+            }
+            else
+            {
+                MessageBox.Show("Has de crear el teu mazo abans de poder jugar.");
+            }
+
 
         }
         /// <summary>
@@ -302,7 +322,7 @@ namespace Principal
         /// <param name="e">Event intern.</param>
         private void btnAfegirMazoRow1_Click(object sender, RoutedEventArgs e)
         {
-            AfegirUnNouMazo nouMazo = new(Usuari, TotesCartes);
+            AfegirUnNouMazo nouMazo = new(this.Usuari, this.TotesCartes,this.TotesHabilitats,this.TotesPartides,this.TotsUsuaris);
             nouMazo.Show();
             this.Close();
         }
@@ -313,13 +333,14 @@ namespace Principal
             try
             {
                 Usuari.Mazos.LlistaMazos.Remove(Usuari.Mazos.LlistaMazos[0]);
-                Home home = new(Usuari, TotesCartes);
+                Usuari.Mazos.EliminarMazo(Usuari.Mazos.LlistaMazos[0]);
+                Home home = new(this.Usuari, this.TotesCartes,this.TotesHabilitats, this.TotesPartides, this.TotsUsuaris);
                 this.Close();
                 home.Show();
             }
             catch (Exception ex)
             {
-                Home home = new(Usuari, TotesCartes);
+                Home home = new(this.Usuari, this.TotesCartes, this.TotesHabilitats, this.TotesPartides, this.TotsUsuaris);
                 this.Close();
                 home.Show();
             }
@@ -335,6 +356,11 @@ namespace Principal
                 afegir.EliminarMazoUsuariBD(Usuari);
                 afegir.AfegirMazoBD(this.Usuari.Mazos.LlistaMazos[0]);
             }
+            else
+            {
+                MazosDB mazos = new();
+                mazos.EliminarMazoUsuariBD(Usuari);
+            }
             UsuarisDB usuari = new();
             usuari.ModificarUsuari(this.Usuari);
 
@@ -344,19 +370,21 @@ namespace Principal
         {
             try
             {
+
                 Usuaris usuaris = new Usuaris();
                 Usuari.Alias = txtBoxAliasNouModificar.Text;
+                txtBoxAliasNouModificar.Text = Usuari.Alias;
+                txtBoxAliasNouModificar.Visibility = Visibility.Hidden;
+                lblAliasBenvingut.Content = Usuari.Alias;
+                lblAliasBenvingut.Visibility = Visibility.Visible;
+                btnModificarAliasAfter.Visibility = Visibility.Hidden;
+                btnModificarAliasBefore.Visibility = Visibility.Visible;
                 usuaris.ModificarUsuari(Usuari);
-                Home home = new(Usuari, TotesCartes);
-                this.Close();
-                home.Show();
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("No s'ha modificat l'usuari.");
-                Home home = new(Usuari, TotesCartes);
-                this.Close();
-                home.Show();
             }
 
 
@@ -366,9 +394,44 @@ namespace Principal
         private void btnAdministracio_Click(object sender, RoutedEventArgs e)
         {
             Partides partides = new();
-            Administracio panell = new(this.Usuari,this.TotesCartes,this.TotesPartides,TotesHabilitats,this.TotsUsuaris);
-            this.Close();
+            Administracio panell = new(this.Usuari, this.TotesCartes, this.TotesPartides, this.TotesHabilitats, this.TotsUsuaris);
             panell.Show();
+            this.Close();
+        }
+
+        private void btnCanviarImatge_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                imageProfile.Source = new BitmapImage(new Uri(txtBoxImatgePerfilCanviar.Text));
+                this.Usuari.ImatgePerfil = txtBoxImatgePerfilCanviar.Text;
+                this.Usuari.CambiarImatge(Usuari);
+                txtBoxImatgePerfilCanviar.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut actualitzar l'imatge.");
+            }
+
+
+        }
+
+        private void tabItemPartides_GotFocus(object sender, RoutedEventArgs e)
+        {
+            this.Width = 500;
+            this.Height = 500;
+        }
+
+        private void tabItemBenvingut_GotFocus(object sender, RoutedEventArgs e)
+        {
+            this.Width = 1200;
+            this.Height = 700;
+        }
+
+        private void tabItemMazos_GotFocus(object sender, RoutedEventArgs e)
+        {
+            this.Width = 1200;
+            this.Height = 700;
         }
     }
     //Classe que utilitzo per el Data grid de Partides així hem mostra les següents dades de partides al data grid.

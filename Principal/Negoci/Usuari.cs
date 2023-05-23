@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Principal.Connexions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -124,13 +125,6 @@ namespace Principal.Negoci
         }
         //Metodes
         /// <summary>
-        /// Metode canviar alies
-        /// </summary>
-        /// <param name="nouAlias"></param>
-        public void CambiarAlias(string nouAlias)
-        {
-        }
-        /// <summary>
         /// Metode per canviar contrasenya
         /// </summary>
         /// <param name="novaContrasenya"></param>
@@ -142,9 +136,10 @@ namespace Principal.Negoci
         /// Metode per canviar la Imatge
         /// </summary>
         /// <param name="pathNovaImatge"></param>
-        public void CambiarImatge(string pathNovaImatge)
+        public void CambiarImatge(Usuari usuari)
         {
-
+            UsuarisDB usuaris = new();
+            usuaris.CanviarImatge(usuari);
         }
     }
 }

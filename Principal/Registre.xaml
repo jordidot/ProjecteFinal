@@ -5,33 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Principal"
         mc:Ignorable="d"
-        Title="Registre" Height="600" Width="800">
+        Title="Cartes - Registre " Height="600" Width="812" FontFamily="Doppio One"  Icon="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/LoL_icon.svg/2048px-LoL_icon.svg.png" WindowStyle="ToolWindow" ResizeMode="NoResize" Background="#FF4E4E4E">
     <Grid>
-        <Rectangle HorizontalAlignment="Left" Height="784" VerticalAlignment="Center" Width="213" Fill="#FF1C7FCC"/>
-        <StackPanel Margin="256,68,0,10" HorizontalAlignment="Left">
-            <Label Content="Nom d'usuari"/>
-            <TextBox x:Name="txtBoxNomUsuari" TextWrapping="Wrap" Width="348" BorderBrush="{x:Null}" FontSize="20" FontFamily="Russo One"/>
-            <Label Content="" Background="Black" Height="1" Width="400"/>
+        <StackPanel Margin="355,68,0,44" HorizontalAlignment="Left">
+            <Label Content="Nom d'usuari" Foreground="White"/>
+            <TextBox x:Name="txtBoxNomUsuari" TextWrapping="Wrap" Width="348" BorderBrush="{x:Null}" FontSize="20" FontFamily="Russo One" Background="#FF4E4E4E"/>
+            <Label Content="" Background="White" Height="1" Width="400"/>
             <Label/>
-            <Label Content="Contrasenya"/>
-            <PasswordBox x:Name="pwdBoxContrasenyaUsuari" Width="350" BorderBrush="{x:Null}" FontSize="20" FontFamily="Russo One"/>
-            <Label Content="" Background="Black" Height="1" Width="400"/>
+            <Label Content="Contrasenya" Foreground="White"/>
+            <PasswordBox x:Name="pwdBoxContrasenyaUsuari" Width="350" BorderBrush="{x:Null}" FontSize="20" FontFamily="Russo One" Background="#FF4E4E4E"/>
+            <Label Content="" Background="White" Height="1" Width="400"/>
             <Label/>
-            <Label Content="Alias"/>
-            <TextBox x:Name="txtBoxAliasUsuari" TextWrapping="Wrap" Width="348" BorderBrush="{x:Null}" FontSize="20" FontFamily="Russo One"/>
-            <Label Content="" Background="Black" Height="1" Width="400"/>
+            <Label Content="Alias" Height="26" Foreground="White"/>
+            <TextBox x:Name="txtBoxAliasUsuari" TextWrapping="Wrap" Width="348" BorderBrush="{x:Null}" FontSize="20" FontFamily="Russo One" Background="#FF4E4E4E"/>
             <Label/>
-            <Label Content="Url de l'imatge de perfil"/>
-            <TextBox x:Name="txtBoxImatgeUsuari" TextWrapping="Wrap" Width="348" BorderBrush="{x:Null}" FontSize="20" FontFamily="Russo One"/>
-            <Label Content="" Background="Black" Height="1" Width="400"/>
+            <Label Content="" Background="White" Height="1" Width="400"/>
+            <Label Content="Url de l'imatge de perfil" Foreground="White"/>
+            <TextBox x:Name="txtBoxImatgeUsuari" TextWrapping="Wrap" Width="348" BorderBrush="{x:Null}" FontSize="20" FontFamily="Russo One" Background="#FF4E4E4E"/>
+            <Label Content="" Background="White" Height="1" Width="400"/>
             <Label/>
-            <Button x:Name="btnRegistre" Content="Registrarme" Width="400" FontFamily="Russo One" Click="btnRegistre_Click"/>
+            <Button x:Name="btnRegistre" Content="Registrarme" Width="150" FontFamily="Russo One" Click="btnRegistre_Click" Padding="5,5,5,5"/>
 
         </StackPanel>
-        <Image HorizontalAlignment="Left" Height="17" Margin="257,161,0,0" VerticalAlignment="Top" Width="21" Source="https://www.pngall.com/wp-content/uploads/2016/03/Key-PNG-Pic.png"/>
-        <Image HorizontalAlignment="Left" Height="18" Margin="257,97,0,0" VerticalAlignment="Top" Width="20" Source="https://cdn-icons-png.flaticon.com/512/16/16363.png"/>
-        <Image HorizontalAlignment="Left" Height="18" Margin="258,222,0,0" VerticalAlignment="Top" Width="20" Source="https://cdn-icons-png.flaticon.com/512/16/16363.png"/>
-        <Image HorizontalAlignment="Left" Height="18" Margin="258,292,0,0" VerticalAlignment="Top" Width="20" Source="https://www.freepnglogos.com/uploads/logo-internet-png/logo-internet-chemiphase-updated-website-goes-live-chemiphase-ltd-12.png"/>
-        <Button x:Name="btntornarLogin" Content="Tornar a inicar sessió" HorizontalAlignment="Left" Margin="399,23,0,0" VerticalAlignment="Top" Click="BtntornarLogin_Click"/>
+        <Image HorizontalAlignment="Left" Height="18" Margin="356,162,0,0" VerticalAlignment="Top" Width="20" Source="https://www.pngall.com/wp-content/uploads/2016/03/Key-PNG-Pic.png"/>
+        <Image HorizontalAlignment="Left" Height="18" Margin="356,97,0,0" VerticalAlignment="Top" Width="20" Source="https://cdn-icons-png.flaticon.com/512/16/16363.png"/>
+        <Image HorizontalAlignment="Left" Height="18" Margin="356,229,0,0" VerticalAlignment="Top" Width="20" Source="https://cdn-icons-png.flaticon.com/512/16/16363.png"/>
+        <Image HorizontalAlignment="Left" Height="18" Margin="356,286,0,0" VerticalAlignment="Top" Width="20" Source="https://www.freepnglogos.com/uploads/logo-internet-png/logo-internet-chemiphase-updated-website-goes-live-chemiphase-ltd-12.png"/>
+        <Button x:Name="btntornarLogin" Content="Tornar a inicar sessió" HorizontalAlignment="Left" Margin="473,35,0,0" VerticalAlignment="Top" Click="BtntornarLogin_Click" Padding="5,5,5,5"/>
+        <Image HorizontalAlignment="Left" Height="349" Margin="-140,139,0,0" VerticalAlignment="Top" Width="585" Source="https://www.leagueoflegends.com/static/open-graph-2e582ae9fae8b0b396ca46ff21fd47a8.jpg" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-89.855"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
     </Grid>
 </Window>

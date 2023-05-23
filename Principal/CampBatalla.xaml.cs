@@ -31,14 +31,20 @@ namespace Principal
         public int Turnos { get; set; }
         public bool HaComençatPartida { get; set; }
         public Cartes TotesCartes { get; set; }
+        public Usuaris TotsUsuaris { get; set; }
+        public Partides TotesPartides { get; set; }
+        public Habilitats TotesHabilitats { get; set; }
         /// <summary>
         /// Constructor del camp de batalla que rep l'usuari i la partida.
         /// </summary>
         /// <param name="usuari">Usuari que juga.</param>
         /// <param name="partida">Dades de la partida, cartes, etc..</param>
-        public CampBatalla(Partida partida, Cartes cartes)
+        public CampBatalla(Partida partida, Cartes cartes,Usuaris usuaris,Partides partides,Habilitats habilitats)
         {
             InitializeComponent();
+            this.TotsUsuaris = usuaris;
+            this.TotesPartides = partides;
+            this.TotesHabilitats = habilitats;
             this.TotesCartes = cartes;
             HaComençatPartida = false;
             Turnos = 40;
@@ -58,7 +64,9 @@ namespace Principal
             Partides partides = new();
             partides.AfegirPartida(this.TotesCartes, this.partida);
             this.partida.Usuari.Partides.LlistaPartides.Add(this.partida);
-            Home home = new(this.partida.Usuari,this.TotesCartes);
+            this.TotesPartides.LlistaPartides.Add(this.partida);
+            this.partida.Usuari.Partides.Quantitat++;
+            Home home = new(this.partida.Usuari, this.TotesCartes,this.TotesHabilitats,this.TotesPartides,this.TotsUsuaris);
             home.Show();
         }
 
@@ -263,12 +271,16 @@ namespace Principal
             lblContadorTemps.Content = "Torns totals: " + Turnos.ToString();
             lblEstatPartida.Content = "";
             btnHabilitat1.Visibility = Visibility.Visible;
+            lblDanyHabilitat1.Visibility = Visibility.Visible;
             btnHabilitat1.Content = HabilitatsSeleccionades.LListahabilitats[0].Nom;
             btnHabilitat2.Visibility = Visibility.Visible;
+            lblDanyHabilitat2.Visibility = Visibility.Visible;
             btnHabilitat2.Content = HabilitatsSeleccionades.LListahabilitats[1].Nom;
             btnHabilitat3.Visibility = Visibility.Visible;
+            lblDanyHabilitat3.Visibility = Visibility.Visible;
             btnHabilitat3.Content = HabilitatsSeleccionades.LListahabilitats[2].Nom;
             btnHabilitat4.Visibility = Visibility.Visible;
+            lblDanyHabilitat4.Visibility = Visibility.Visible;
             btnHabilitat4.Content = HabilitatsSeleccionades.LListahabilitats[3].Nom;
         }
         private void btnHabilitat1_Click(object sender, RoutedEventArgs e)
@@ -404,7 +416,7 @@ namespace Principal
         {
             try
             {
-                if (HabilitatsSeleccionades.LListahabilitats[2].Cooldown > 0)
+                if (HabilitatsSeleccionades.LListahabilitats[3].Cooldown > 0)
                 {
                     Random random = new();
                     int sort = random.Next(1, 3);

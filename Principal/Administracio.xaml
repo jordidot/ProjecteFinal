@@ -5,31 +5,122 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Principal"
         mc:Ignorable="d"
-        Title="Administracio" Height="450" Width="800" Closing="windowsAdministracio_Closing">
+        Title="Administracio" Height="450" Width="860" Closing="windowsAdministracio_Closing" Icon="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/LoL_icon.svg/2048px-LoL_icon.svg.png" Background="#FF292525">
     <Grid>
-        <TabControl>
-            <TabItem Header="Usuaris">
-                <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="dataGridUsuaris" d:ItemsSource="{d:SampleData ItemCount=5}" Loaded="dataGridUsuaris_Loaded"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Cartes">
-                <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="dataGridCartes" d:ItemsSource="{d:SampleData ItemCount=5}" Loaded="dataGridCartes_Loaded"/>
-                </Grid>
-
-            </TabItem>
-            <TabItem Header="Habilitats">
-                <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="dataGridHabilitats" d:ItemsSource="{d:SampleData ItemCount=5}" Loaded="dataGridHabilitats_Loaded"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Partides">
-                <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="dataGridPartides" d:ItemsSource="{d:SampleData ItemCount=5}" Loaded="dataGridPartides_Loaded"/>
-                </Grid>
-            </TabItem>
-        </TabControl>
-
+        <!--STACK PANEL USUARIS-->
+        <StackPanel x:Name="stckPanelMostrarUsuaris" Margin="171,0,0,0" Visibility="Hidden">
+            <DataGrid x:Name="dataGridUsuaris" d:ItemsSource="{d:SampleData ItemCount=5}" Loaded="dataGridUsuaris_Loaded" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" Height="284" Width="638"/>
+            <Label></Label>
+            <Label></Label>
+            <Button x:Name="btnAfegirNouUsuariPrincipal" Content="Afegir nou usuari" Width="317" Click="btnAfegirNouUsuariPrincipal_Click"/>
+            <Label></Label>
+            <Label></Label>
+            <Button x:Name="btnEliminarUsuari" Content="Eliminar Usuari" Width="317" Click="btnEliminarUsuari_Click"/>
+        </StackPanel>
+        <!--STACK PANEL CARTES-->
+        <StackPanel x:Name="stckPanelMostrarCartes" Margin="171,0,0,0" Visibility="Hidden">
+            <DataGrid x:Name="dataGridCartes" d:ItemsSource="{d:SampleData ItemCount=5}" Loaded="dataGridCartes_Loaded" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" Height="284" Width="638"/>
+            <Label></Label>
+            <Label></Label>
+            <Button x:Name="btnAfegirNovaCartaPrincipal" Content="Afegir nova Carta" Width="317" Click="btnAfegirNovaCartaPrincipal_Click"/>
+            <Label></Label>
+            <Label></Label>
+            <Button x:Name="btnEliminarCarta" Content="Eliminar Carta" Width="317" Click="btnEliminarCarta_Click"/>
+        </StackPanel>
+        <!--STACK PANEL HABILITATS-->
+        <StackPanel x:Name="stckPanelMostrarHabilitats" Margin="171,0,0,0" Visibility="Hidden">
+            <DataGrid x:Name="dataGridHabilitats" d:ItemsSource="{d:SampleData ItemCount=5}" Loaded="dataGridHabilitats_Loaded" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" Height="284" Width="638"/>
+            <Label></Label>
+            <Label></Label>
+            <Button x:Name="btnAfegirNovaHabilitatPrincipal" Content="Afegir nova Habilitat" Width="317" Click="btnAfegirNovaHabilitatPrincipal_Click"/>
+            <Label></Label>
+            <Label></Label>
+            <Button x:Name="btnEliminarHabilitat" Content="Eliminar Habilitat" Width="317" Click="btnEliminarHabilitat_Click"/>
+        </StackPanel>
+        <!--STACK PANEL PARTIDES-->
+        <StackPanel x:Name="stckPanelMostrarPartides" Margin="171,0,0,0" Visibility="Hidden" >
+            <DataGrid x:Name="dataGridPartides" d:ItemsSource="{d:SampleData ItemCount=5}" Loaded="dataGridPartides_Loaded" CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False" Height="284" Width="638"/>
+            <Label></Label>
+            <Label></Label>
+            <Button x:Name="btnEliminarPartida" Content="Eliminar Partida" Width="317" Click="btnEliminarPartida_Click"/>
+        </StackPanel>
+        <!--MENU DE BOTONS-->
+        <StackPanel x:Name="stckPanelMenuBotons" Margin="0,0,689,0">
+            <Label></Label>
+            <Button x:Name="btnUsuarisMenu" Content="Usuaris" Width="142" Background="White" Click="btnUsuarisMenu_Click">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+            <Label></Label>
+            <Button x:Name="btnCartesMenu" Content="Cartes" Width="142" Background="White" Click="btnCartesMenu_Click">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+            <Label></Label>
+            <Button x:Name="btnHabilitatsMenu" Content="Habilitats" Width="142" Background="White" Click="btnHabilitatsMenu_Click">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+            <Label></Label>
+            <Button x:Name="btnPartidesMenu" Content="Partides" Width="142" Background="White" Click="btnPartidesMenu_Click">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+        </StackPanel>
+        <!--AFEGIR NOU USUARI STACKPANEL-->
+        <StackPanel x:Name="stckPanelAfegirNouUsuari" Visibility="Hidden" Margin="176,0,0,0">
+            <Label/>
+            <Label Content="Nom usuari" Foreground="White" HorizontalAlignment="Center"/>
+            <TextBox x:Name="txtBoxNomUsuari" TextWrapping="Wrap" Text="" HorizontalContentAlignment="Center"/>
+            <Label Content="Contrasenya" Foreground="White" HorizontalAlignment="Center"/>
+            <PasswordBox x:Name="pwdBoxContrasenyaUsuari" Password="" HorizontalContentAlignment="Center"/>
+            <Label Content="Alias" Foreground="White" HorizontalAlignment="Center"/>
+            <TextBox x:Name="txtBoxAliasUsuari" TextWrapping="Wrap" Text="" HorizontalContentAlignment="Center"/>
+            <Label Content="Imatge de perfil" Foreground="White" HorizontalAlignment="Center"/>
+            <TextBox x:Name="txtBoxImatgeUsuari" TextWrapping="Wrap" Text="" HorizontalContentAlignment="Center"/>
+            <Label/>
+            <Label/>
+            <Label/>
+            <Button x:Name="btnAfegirNouUsuari" Content="Afegir nou usuari" Click="btnAfegirNouUsuari_Click"/>
+        </StackPanel>
+        <!--AFEGIR NOVA CARTA STACKPANEL-->
+        <StackPanel x:Name="stckPanelAfegirNovaCarta" Visibility="Hidden" Margin="207,0,46,0">
+            <Label Content="Nom carta" Foreground="White" HorizontalAlignment="Center"/>
+            <TextBox x:Name="txtBoxNomCarta" TextWrapping="Wrap" Text="" HorizontalContentAlignment="Center" Width="354"/>
+            <Label Content="Descripcio" Foreground="White" HorizontalAlignment="Center"/>
+            <TextBox x:Name="txtBoxDescripcioCarta" TextWrapping="Wrap" Text="" HorizontalContentAlignment="Center" Height="40" Width="354"/>
+            <Label Content="Imatge de la carta" Foreground="White" HorizontalAlignment="Center"/>
+            <TextBox x:Name="txtBoxImatgeCarta" TextWrapping="Wrap" Text="" HorizontalContentAlignment="Center" Height="33" Width="354"/>
+            <Label Content="Habilitat 1 de la carta" Foreground="White" HorizontalAlignment="Center"/>
+            <ComboBox x:Name="comboBoxHabilitat1" Width="354" Loaded="comboBoxHabilitat1_Loaded"/>
+            <Label Content="Habilitat 2 de la carta" Foreground="White" HorizontalAlignment="Center"/>
+            <ComboBox x:Name="comboBoxHabilitat2" Width="354" Loaded="comboBoxHabilitat2_Loaded"/>
+            <Label Content="Habilitat 3 de la carta" Foreground="White" HorizontalAlignment="Center"/>
+            <ComboBox x:Name="comboBoxHabilitat3" Width="354" Loaded="comboBoxHabilitat3_Loaded"/>
+            <Label Content="Habilitat 4 de la carta" Foreground="White" HorizontalAlignment="Center"/>
+            <ComboBox x:Name="comboBoxHabilitat4" Width="354" Loaded="comboBoxHabilitat4_Loaded"/>
+            <Label/>
+            <Label/>
+            <Label/>
+            <Button x:Name="btnAfegirNovaCarta" Content="Afegir nova carta" Width="181" Click="btnAfegirNovaCarta_Click"/>
+        </StackPanel>
+        <!--AFEGIR NOVA HABILITAT STACKPANEL-->
+        <StackPanel x:Name="stckPanelAfegirNovaHabilitat" Visibility="Hidden" Margin="207,0,46,0">
+            <Label Content="Nom habilitat" Foreground="White" HorizontalAlignment="Center"/>
+            <TextBox x:Name="txtBoxNomHabilitat" TextWrapping="Wrap" Text="" HorizontalContentAlignment="Center" Width="354"/>
+            <Label Content="Descripcio de la habilitat" Foreground="White" HorizontalAlignment="Center"/>
+            <TextBox x:Name="txtBoxDescripcioHabilitat" TextWrapping="Wrap" Text="" HorizontalContentAlignment="Center" Height="40" Width="354"/>
+            <Label Content="Cooldown de la carta" Foreground="White" HorizontalAlignment="Center"/>
+            <TextBox x:Name="txtBoxCooldownHabilitat" TextWrapping="Wrap" Text="" HorizontalContentAlignment="Center" Height="33" Width="354"/>
+            <Label Content="Dany de la carta" Foreground="White" HorizontalAlignment="Center"/>
+            <ComboBox x:Name="comboBoxDanyHabilitat" Width="354" Loaded="comboBoxDanyHabilitat_Loaded"/>
+            <Label/>
+            <Label/>
+            <Button x:Name="btnAfegirNovaHabilitat" Content="Afegir nova carta" Width="181" Click="btnAfegirNovaHabilitat_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

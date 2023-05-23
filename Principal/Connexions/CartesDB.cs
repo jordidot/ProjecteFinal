@@ -37,9 +37,36 @@ namespace Principal.Connexions
         //Mètodes
         public void AfegirCartaBD(Carta carta)
         {
-            cartes.LlistaCartes.Add(carta);
+            try
+            {
+                var comanda = new MySqlCommand("INSERT INTO cartes VALUES(" + carta.Id + ",'" + carta.Nom + "','" + carta.Descripcio + "','" + carta.Imatge + "'," + carta.Habilitats.LListahabilitats[0].Id + "," + carta.Habilitats.LListahabilitats[1].Id + "," + carta.Habilitats.LListahabilitats[2].Id + "," + carta.Habilitats.LListahabilitats[3].Id + ");", ConnexioBD.Connectar());
+                comanda.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut afegir la carta." + ex.Message);
+            }
+            finally
+            {
+                ConnexioBD.Connectar().Close();
+            }
         }
-
+        public void EliminarCarta(Carta carta)
+        {
+            try
+            {
+                var comanda = new MySqlCommand("DELETE FROM cartes WHERE id=" + carta.Id, ConnexioBD.Connectar());
+                comanda.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut eliminar la carta." + ex.Message);
+            }
+            finally
+            {
+                ConnexioBD.Connectar().Close();
+            }
+        }
         public Cartes RecuperarCartes(Mazo mazo)
         {
             Cartes cartes = new();

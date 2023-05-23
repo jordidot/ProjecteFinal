@@ -5,30 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Principal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Cartes - Iniciar sessió" Height="450" Width="677" Icon="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/LoL_icon.svg/2048px-LoL_icon.svg.png" FontFamily="Doppio One" Opacity="0.995" WindowStyle="ToolWindow" ResizeMode="NoResize" ShowInTaskbar="False" Background="#FF4E4E4E">
+    <Window.Effect>
+        <DropShadowEffect/>
+    </Window.Effect>
     <Grid>
-        <Rectangle HorizontalAlignment="Left" Height="434" VerticalAlignment="Center" Width="213" Fill="#FF1C7FCC"/>
-        <StackPanel Margin="252,74,0,74" HorizontalAlignment="Left">
-            <Label Content="Nom d'usuari"/>
-            <TextBox x:Name="txtBoxNomUsuari" Text="jordi" TextWrapping="Wrap" Width="348" BorderBrush="{x:Null}" FontSize="20" FontFamily="Russo One"/>
-            <Label Content="" Background="Black" Height="1" Width="400"/>
+
+        <StackPanel Margin="252,74,0,42" HorizontalAlignment="Left">
+            <Label Content="Nom d'usuari" Foreground="White"/>
+            <TextBox x:Name="txtBoxNomUsuari" Text="jordi" TextWrapping="Wrap" Foreground="White" Background="#FF4E4E4E" Width="348" BorderBrush="{x:Null}" FontSize="20" FontFamily="Doppio One" />
+            <Label Content="" Background="white" Height="1" Width="400"/>
             <Label/>
-            <Label Content="Contrasenya"/>
-            <PasswordBox x:Name="pwdBoxContrasenyaUsuari" Password="123456" Width="350" BorderBrush="{x:Null}" FontSize="20" FontFamily="Russo One"/>
-            <Label Content="" Background="Black" Height="1" Width="400"/>
-            <Label/>
-            <Label/>
-            <Label/>
-            <Button x:Name="btnIniciarSessio" Content="Iniciar sessió" Width="400" FontFamily="Russo One" Click="BtnIniciarSessio_Click"/>
+            <Label Content="Contrasenya" Foreground="White"/>
+            <PasswordBox x:Name="pwdBoxContrasenyaUsuari" Password="123456" Width="350"  Foreground="White" Background="#FF4E4E4E" BorderBrush="{x:Null}" FontSize="20" FontFamily="Doppio One" />
+            <Label Content="" Background="White" Height="1" Width="400"/>
             <Label/>
             <Label/>
-            <Label Content="No tens usuari? Registra't aquí." HorizontalAlignment="Center" FontFamily="Russo One"/>
             <Label/>
-            <Button x:Name="btnRegistrarmeLogin" Content="Registrarme" Width="200" FontFamily="Russo One" Click="BtnRegistrarmeLogin_Click"/>
+            <Button x:Name="btnIniciarSessio" Content="Iniciar sessió" Width="129" FontFamily="Doppio One"  Click="BtnIniciarSessio_Click" Padding="5,5,5,5"/>
+            <Label/>
+            <Label/>
+            <Label Content="No tens usuari? Registra't aquí." HorizontalAlignment="Center" FontFamily="Doppio One" Foreground="White"/>
+            <Label/>
+            <Button x:Name="btnRegistrarmeLogin" Content="Registrarme" Width="116" FontFamily="Doppio One"  Click="BtnRegistrarmeLogin_Click" Padding="1,5,5,5"/>
 
 
         </StackPanel>
         <Image HorizontalAlignment="Left" Height="17" Margin="256,166,0,0" VerticalAlignment="Top" Width="21" Source="https://www.pngall.com/wp-content/uploads/2016/03/Key-PNG-Pic.png"/>
-        <Image HorizontalAlignment="Left" Height="18" Margin="256,105,0,0" VerticalAlignment="Top" Width="20" Source="https://cdn-icons-png.flaticon.com/512/16/16363.png"/>
+        <Image HorizontalAlignment="Left" Height="18" Margin="256,105,0,0" VerticalAlignment="Top" Width="20" Source="https://cdn-icons-png.flaticon.com/512/16/16363.png" />
+        <Image HorizontalAlignment="Left" Height="245" Margin="-106,103,0,0" VerticalAlignment="Top" Width="438" Source="https://www.leagueoflegends.com/static/open-graph-2e582ae9fae8b0b396ca46ff21fd47a8.jpg" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-89.874"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
     </Grid>
 </Window>

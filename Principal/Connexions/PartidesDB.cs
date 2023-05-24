@@ -12,45 +12,25 @@ namespace Principal.Connexions
     public class PartidesDB
     {
         //Atributs 
-        private Partides partides;
-
-        private ConnexioDB connexioBD;
-        public Cartes TotesCartes { get; set; }
         public int Quantitat { get; set; }
+        public ConnexioDB ConnexioBD { get; set; }
+        public Cartes TotesCartes { get; set; }
         public Partides TotesPartides { get; set; }
-
+        public Usuaris TotsUsuaris { get; set; }
 
         //Constructors
-        /// <summary>
-        /// Constructor buit
-        /// </summary>
-        public PartidesDB(Cartes cartes,Partida partida)
+        public PartidesDB(Cartes cartes,Partida partida, Usuaris usuaris)
         {
-            TotesPartides = new();
-            connexioBD = new ConnexioDB("", "127.0.0.1", "cartesdb", "root");
-            partides = new Partides();
+            ConnexioBD = new ConnexioDB("", "127.0.0.1", "cartesdb", "root");
+            this.TotsUsuaris = usuaris;
+            this.TotesPartides = new(this.TotsUsuaris);
             this.TotesCartes = cartes;
         }
-
-        //Propietats
-        /// <summary>
-        /// Propietat de l'atribut partides
-        /// </summary>
-        public Partides Partides
-        {
-            get { return partides; }
-            set { partides = value; }
-        }
-        /// <summary>
-        /// Propietat del atribut connexioBD
-        /// </summary>
-        public ConnexioDB ConnexioBD
-        { get { return connexioBD; } set { connexioBD = value; } }
-
         //Metodes
         /// <summary>
-        /// Metode per afegir partida a la bd
+        /// Mètode de la classe PartidesDB que afegeix una partida a la base de dades.
         /// </summary>
+        /// <param name="partida">Classe Partida que conté tota l'informació d'aquesta.</param>
         public void AfegirPartidaBD(Partida partida)
         {
             try
@@ -68,9 +48,9 @@ namespace Principal.Connexions
             }
         }
         /// <summary>
-        /// Metode per eliminar una partida de la bd
+        /// Mètode de la classe PartidesDB que elimina una partida a la base de dades.
         /// </summary>
-        /// <param name="Partida">partida a eliminar</param>
+        /// <param name="partida">Classe Partida que conté tota l'informació d'aquesta.</param>
         public void EliminarPartidaBD(Partida partida)
         {
             try
@@ -88,16 +68,9 @@ namespace Principal.Connexions
             }
         }
         /// <summary>
-        /// Metode per modificar una partida de la bd
+        /// Mètode de la classe PartidesDB que recupera les partides de la base de dades.
         /// </summary>
-        /// <param name="partida">Partida a modifcar</param>
-        public void ModificarPartidaBD(Partida partida)
-        {
-        }
-        /// <summary>
-        /// Metode per recuperar usuariBD
-        /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna una llista de Partida amb l'informació d'aquestes.</returns>
         public List<Partida> RecuperarPartides(Usuari usuari, Cartes cartes)
         {
             List<Partida> partidesList = new List<Partida>();
@@ -111,12 +84,9 @@ namespace Principal.Connexions
                     Bot bot = new(cartes);
                     bot.Nom = reader.GetString(1);
                     Mazos mazos = new();
-                    Partides partides = new();
-                    usuari.Id = reader.GetInt32(2);
-                    Partida partida = new(reader.GetInt32(0),bot,1500,usuari,1500,reader.GetString(3));
+                    Partida partida = new(reader.GetInt32(0), bot, 1500,usuari,1500,reader.GetString(3));
                     partidesList.Add(partida);
                 }
-                
                 TotesPartides.LlistaPartides = partidesList;
                 this.Quantitat = TotesPartides.LlistaPartides.Count;
             }

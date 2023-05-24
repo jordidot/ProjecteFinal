@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace Principal
 {
-    /// <summary>
-    /// Lógica de interacción para Registre.xaml
-    /// </summary>
     public partial class Registre : Window
     {
         //Constructors
@@ -28,7 +25,7 @@ namespace Principal
         }
         //Métodes 
         /// <summary>
-        /// Métode que tanca la finestra actual i obre la finestra del login.
+        /// Métode de la finestra Registre que tanca la finestra actual i obre la finestra del login.
         /// </summary>
         /// <param name="sender">Objecte que rep.</param>
         /// <param name="e">Event intern.</param>
@@ -37,9 +34,12 @@ namespace Principal
             MainWindow login = new MainWindow();
             this.Close();
             login.Show();
-
         }
-
+        /// <summary>
+        /// Métode de la finestra Registre que si totes les dades estan correctes inserta l'usuari nou registrat a la base de dades.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void btnRegistre_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -47,7 +47,7 @@ namespace Principal
                 Usuaris usuaris = new();
                 usuaris.RecuperarUsuaris();
                 Mazos mazos = new();
-                Partides partides = new();
+                Partides partides = new(usuaris);
                 Usuari usuari = new(usuaris.QuantitatUsuaris + 1, txtBoxAliasUsuari.Text, pwdBoxContrasenyaUsuari.Password, txtBoxNomUsuari.Text, mazos, partides, 0, txtBoxImatgeUsuari.Text, 0);
                 usuaris.AfegirUsuari(usuari);
                 MessageBox.Show("Usuari afegit correctament, ja pots iniciar sessió.");
@@ -58,8 +58,6 @@ namespace Principal
             {
                 MessageBox.Show("L'usuari no s'ha registrat.");
             }
-
-
         }
     }
 }

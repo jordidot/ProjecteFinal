@@ -10,45 +10,22 @@ namespace Principal.Negoci
 {
     public class Habilitats
     {
-        //Atributs
-        private List<Habilitat> llistahabilitats;
+        //Atributs i propietats
+        public List<Habilitat> LListahabilitats { get; set; }
         //Constructors
-        /// <summary>
-        /// Creacio de contructor buit per emplenar habilitats
-        /// </summary>
         public Habilitats()
         {
-            llistahabilitats = new List<Habilitat>();
-
+            LListahabilitats = new List<Habilitat>();
         }
-        /// <summary>
-        /// Creacio de contructor ple per emplenar habilitats
-        /// </summary>
-        /// <param name="list">Paramatra per emplenar la llista </param>
         public Habilitats(List<Habilitat> list)
         {
-            this.llistahabilitats = list;
+            this.LListahabilitats = list;
         }
-
-        //Propietats 
-        /// <summary>
-        /// Crreacio de propietats llistahabilitats , per tenir una llista de habilitats
-        /// </summary>
-        public List<Habilitat> LListahabilitats
-        {
-            get { return llistahabilitats; }
-
-
-            set { llistahabilitats = value; }
-
-        }
-
         //Metodes 
-
         /// <summary>
-        /// Metode per afegir habilitats a la llista
+        /// Mètode de la classe Habilitats que crida a la classe HabilitatsDB per afegir una habilitat a la base de dades.
         /// </summary>
-        /// <param name="habilitat">Parametre de la llista habilitats </param>
+        /// <param name="habilitat">Classe Habilitat amb l'informació d'aquesta.</param>
         public void AfegirHabilitat(Habilitat habilitat)
         {
             HabilitatsDB habilitatsdb = new();
@@ -56,27 +33,31 @@ namespace Principal.Negoci
 
         }
         /// <summary>
-        /// Metode per eliminar habilitats de la llista
+        /// Mètode de la classe Habilitats que crida a la classe HabilitatsDB per eliminar una habilitat a la base de dades.
         /// </summary>
-        /// <param name="habilitat">Parametre per eliminar la llista</param>
+        /// <param name="habilitat">Classe Habilitat amb l'informació d'aquesta.</param>
         public void EliminarHabilitat(Habilitat habilitat)
         {
             HabilitatsDB habilitatsdb = new();
             habilitatsdb.EliminarHabilitatBD(habilitat);
         }
         /// <summary>
-        /// Metode per modificar habilitats de la llista
+        /// Mètode de la classe Habilitats que crida a la classe HabilitatsDB per modificar habilitats a la base de dades.
         /// </summary>
-        /// <param name="habilitat">Parametre per modificar la llista</param>
+        /// <param name="habilitats">Classe Habilitats amb una llista de Habilitat amb l'informació d'aquestes.</param>
         public void ModificarHabilitats(Habilitats habilitats)
         {
             HabilitatsDB habilitatsdb = new();
             habilitatsdb.ModificarHabilitats(habilitats);
         }
-        public List<Habilitat> RecuperarHabilitats(Carta carta)
+        /// <summary>
+        /// Mètode de la classe Habilitats que crida a la classe HabilitatsDB per recuperar totes les habilitats de la base de dades.
+        /// </summary>
+        /// <returns>Retorna una llista d'Habilitat amb imformació de la base de dades.</returns>
+        public List<Habilitat> RecuperarHabilitats()
         {
             HabilitatsDB habilitatsdb = new();
-            habilitatsdb.RecuperarHabilitats(carta);
+            habilitatsdb.RecuperarHabilitats();
             return habilitatsdb.Habilitats.LListahabilitats;
         }
     }

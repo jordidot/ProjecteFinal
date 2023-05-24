@@ -17,9 +17,6 @@ using System.Windows.Threading;
 
 namespace Principal
 {
-    /// <summary>
-    /// Lógica de interacción para CampBatalla.xaml
-    /// </summary>
     public partial class CampBatalla : Window
     {
         //Atributs
@@ -34,11 +31,6 @@ namespace Principal
         public Usuaris TotsUsuaris { get; set; }
         public Partides TotesPartides { get; set; }
         public Habilitats TotesHabilitats { get; set; }
-        /// <summary>
-        /// Constructor del camp de batalla que rep l'usuari i la partida.
-        /// </summary>
-        /// <param name="usuari">Usuari que juga.</param>
-        /// <param name="partida">Dades de la partida, cartes, etc..</param>
         public CampBatalla(Partida partida, Cartes cartes,Usuaris usuaris,Partides partides,Habilitats habilitats)
         {
             InitializeComponent();
@@ -47,21 +39,22 @@ namespace Principal
             this.TotesHabilitats = habilitats;
             this.TotesCartes = cartes;
             HaComençatPartida = false;
+            //Inicialitzo els torna a 40
             Turnos = 40;
             HabilitatsSeleccionades = new();
             this.partida = partida;
             btnComençaPartida.Visibility = Visibility.Visible;
 
         }
-
+        //Mètodes
         /// <summary>
-        /// Metode que s'executa quan es tanca la finestra.
+        /// Metode de la finestra CampBatalla que guarda la partida a la base de dades i l'assigna a l'usuari un cop tanca la finestra.
         /// </summary>
         /// <param name="sender">Objecte que rep per parametre</param>
         /// <param name="e">Event intern que relitza per tancar la finestra.</param>
         private void campBatallaWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Partides partides = new();
+            Partides partides = new(this.TotsUsuaris);
             partides.AfegirPartida(this.TotesCartes, this.partida);
             this.partida.Usuari.Partides.LlistaPartides.Add(this.partida);
             this.TotesPartides.LlistaPartides.Add(this.partida);
@@ -69,32 +62,32 @@ namespace Principal
             Home home = new(this.partida.Usuari, this.TotesCartes,this.TotesHabilitats,this.TotesPartides,this.TotsUsuaris);
             home.Show();
         }
-
+        /// <summary>
+        /// Metode de la finestra CampBatalla que Carrega les cartes del bot i de l'usuari.
+        /// </summary>
+        /// <param name="sender">Objecte que rep per parametre</param>
+        /// <param name="e">Event intern que relitza per tancar la finestra.</param>
         private void gridCampBatalla_Loaded(object sender, RoutedEventArgs e)
         {
             // Miro cuants mazos té l'usuari i depenent dels mazos vaig fent visibles els botons.
             if (partida.Usuari.Mazos.LlistaMazos.Count == 1 && partida.Bot.Cartes.LlistaCartes.Count == 5)
             {
-
                 //Cartes del usuari
                 lstBoxCartaUsuari1.Items.Add(CrearImatgeCarta(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0].Imatge));
                 lstBoxCartaUsuari2.Items.Add(CrearImatgeCarta(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1].Imatge));
                 lstBoxCartaUsuari3.Items.Add(CrearImatgeCarta(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2].Imatge));
                 lstBoxCartaUsuari4.Items.Add(CrearImatgeCarta(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3].Imatge));
                 lstBoxCartaUsuari5.Items.Add(CrearImatgeCarta(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4].Imatge));
-
                 //Cartes del bot
                 lstBoxCartaBot1.Items.Add(CrearImatgeCarta(partida.Bot.Cartes.LlistaCartes[0].Imatge));
                 lstBoxCartaBot2.Items.Add(CrearImatgeCarta(partida.Bot.Cartes.LlistaCartes[1].Imatge));
                 lstBoxCartaBot3.Items.Add(CrearImatgeCarta(partida.Bot.Cartes.LlistaCartes[2].Imatge));
                 lstBoxCartaBot4.Items.Add(CrearImatgeCarta(partida.Bot.Cartes.LlistaCartes[3].Imatge));
                 lstBoxCartaBot5.Items.Add(CrearImatgeCarta(partida.Bot.Cartes.LlistaCartes[4].Imatge));
-
             }
-
         }
         /// <summary>
-        /// Creo un objecte Imatge de la carta.
+        /// Metode de la finestra CampBatalla que crea un objecte Imatge de la carta.
         /// </summary>
         /// <param name="path">Rep el path de l'imatge com a parametre.</param>
         /// <returns>Retorna la Imatge creada amb el BitMapImage.</returns>
@@ -106,16 +99,16 @@ namespace Principal
             imageCarta.Height = 150;
             return imageCarta;
         }
-
-        //CARTES DEL USUARI AL SELCCIONAR
-
+        /// <summary>
+        /// Metode de la finestra CampBatalla que carrega la Carta 1 de l'usuari a la carta principal.
+        /// </summary>
+        /// <param name="sender">Objecte que rep per parametre</param>
+        /// <param name="e">Event intern que relitza per tancar la finestra.</param>
         private void lstBoxCartaUsuari1_GotFocus(object sender, RoutedEventArgs e)
         {
             lstBoxCartaUsuariSeleccionada.Items.Clear();
             lstBoxCartaUsuariSeleccionada.Items.Add(CrearImatgeCarta(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0].Imatge));
             this.CartaSeleccionadaUsuari = partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0];
-
-
             this.HabilitatsSeleccionades.LListahabilitats.Clear();
             this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0].Habilitats.LListahabilitats[0]);
             this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0].Habilitats.LListahabilitats[1]);
@@ -123,8 +116,12 @@ namespace Principal
             this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[0].Habilitats.LListahabilitats[3]);
             if (HaComençatPartida)
                 JugarPartida();
-
         }
+        /// <summary>
+        /// Metode de la finestra CampBatalla que carrega la Carta 2 de l'usuari a la carta principal.
+        /// </summary>
+        /// <param name="sender">Objecte que rep per parametre</param>
+        /// <param name="e">Event intern que relitza per tancar la finestra.</param>
         private void lstBoxCartaUsuari2_GotFocus(object sender, RoutedEventArgs e)
         {
             lstBoxCartaUsuariSeleccionada.Items.Clear();
@@ -137,8 +134,12 @@ namespace Principal
             this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[1].Habilitats.LListahabilitats[7]);
             if (HaComençatPartida)
                 JugarPartida();
-
         }
+        /// <summary>
+        /// Metode de la finestra CampBatalla que carrega la Carta 3 de l'usuari a la carta principal.
+        /// </summary>
+        /// <param name="sender">Objecte que rep per parametre</param>
+        /// <param name="e">Event intern que relitza per tancar la finestra.</param>
         private void lstBoxCartaUsuari3_GotFocus(object sender, RoutedEventArgs e)
         {
             lstBoxCartaUsuariSeleccionada.Items.Clear();
@@ -151,8 +152,12 @@ namespace Principal
             this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[2].Habilitats.LListahabilitats[11]);
             if (HaComençatPartida)
                 JugarPartida();
-
         }
+        /// <summary>
+        /// Metode de la finestra CampBatalla que carrega la Carta 4 de l'usuari a la carta principal.
+        /// </summary>
+        /// <param name="sender">Objecte que rep per parametre</param>
+        /// <param name="e">Event intern que relitza per tancar la finestra.</param>
         private void lstBoxCartaUsuari4_GotFocus(object sender, RoutedEventArgs e)
         {
             lstBoxCartaUsuariSeleccionada.Items.Clear();
@@ -165,8 +170,12 @@ namespace Principal
             this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[3].Habilitats.LListahabilitats[15]);
             if (HaComençatPartida)
                 JugarPartida();
-
         }
+        /// <summary>
+        /// Metode de la finestra CampBatalla que carrega la Carta 5 de l'usuari a la carta principal.
+        /// </summary>
+        /// <param name="sender">Objecte que rep per parametre</param>
+        /// <param name="e">Event intern que relitza per tancar la finestra.</param>
         private void lstBoxCartaUsuari5_GotFocus(object sender, RoutedEventArgs e)
         {
             lstBoxCartaUsuariSeleccionada.Items.Clear();
@@ -179,9 +188,12 @@ namespace Principal
             this.HabilitatsSeleccionades.LListahabilitats.Add(partida.Usuari.Mazos.LlistaMazos[0].Cartes.LlistaCartes[4].Habilitats.LListahabilitats[19]);
             if (HaComençatPartida)
                 JugarPartida();
-
         }
-
+        /// <summary>
+        /// Metode de la finestra CampBatalla que fa que la partida s'iniciï.
+        /// </summary>
+        /// <param name="sender">Objecte que rep per parametre</param>
+        /// <param name="e">Event intern que relitza per tancar la finestra.</param>
         private void btnComençaPartida_Click(object sender, RoutedEventArgs e)
         {
 
@@ -192,11 +204,13 @@ namespace Principal
             lblEstatPartida.Visibility = Visibility.Visible;
             ContinuarPartida();
         }
+        /// <summary>
+        /// Metode de la finestra CampBatalla que fa calculs de la partida i que inicia les habilitats random del bot un cop ataques.(Va restant els torns també)
+        /// </summary>
         private void ContinuarPartida()
         {
             if (this.Turnos != 0)
             {
-
                 if (int.Parse(lblVidaUsuari.Content.ToString()) <= 0)
                 {
                     lblVidaUsuari.Content = "0";
@@ -224,9 +238,7 @@ namespace Principal
                     {
                         btnComençaPartidaSeleccionar.Visibility = Visibility.Hidden;
                         lblContadorTemps.Visibility = Visibility.Visible;
-
                         JugarPartida();
-
                         //Seleccionar carta del bot
                         lstBoxCartaBotSeleccionada.Items.Clear();
                         Random random = new();
@@ -234,14 +246,11 @@ namespace Principal
                         CartaSeleccionadaBot = partida.Bot.Cartes.LlistaCartes[IdCartaSelecciondaBot];
                         lstBoxCartaBotSeleccionada.Items.Add(CrearImatgeCarta(CartaSeleccionadaBot.Imatge));
                     }
-
                     Turnos--;
                 }
-
             }
             else
             {
-
                 if (int.Parse(lblVidaUsuari.Content.ToString()) > 0 && int.Parse(lblVidaBot.Content.ToString()) == 0)
                 {
                     AmagarBotons("Has guanyat la partida, sumes 400 punts!");
@@ -252,20 +261,17 @@ namespace Principal
                 {
                     AmagarBotons("En "+this.partida.Bot.Nom+" ha guanyat la partida, sumes 0 punts!");
                     this.partida.EstatPartida = "Perduda";
-                    
                 }
                 else if (int.Parse(lblVidaBot.Content.ToString()) == 0 && int.Parse(lblVidaUsuari.Content.ToString()) == 0)
                 {
                     AmagarBotons("Has perdut no has pogut vencer a "+this.partida.Bot.Nom +" , sumes 0 punts!");
                     this.partida.EstatPartida = "Perduda";
-                    
                 }
             }
-
-
-
         }
-
+        /// <summary>
+        /// Metode de la finestra CampBatalla que va mostrant les diferents habilitats de les cartes un cop es van seleccionant, també inciia els torns.
+        /// </summary>
         private void JugarPartida()
         {
             lblContadorTemps.Content = "Torns totals: " + Turnos.ToString();
@@ -283,6 +289,11 @@ namespace Principal
             lblDanyHabilitat4.Visibility = Visibility.Visible;
             btnHabilitat4.Content = HabilitatsSeleccionades.LListahabilitats[3].Nom;
         }
+        /// <summary>
+        /// Metode de la finestra CampBatalla que resta la vida al bot de l'habilitat 1 i fa que el bot t'ataqui, va carregant les dades al listbox de el que va succeiint.
+        /// </summary>
+        /// <param name="sender">Objecte que rep per parametre</param>
+        /// <param name="e">Event intern que relitza per tancar la finestra.</param>
         private void btnHabilitat1_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -314,7 +325,6 @@ namespace Principal
                 {
                     MessageBox.Show("No pots utilitzar més aquesta habilitat.");
                 }
-
             }
             catch (Exception ex)
             {
@@ -323,11 +333,12 @@ namespace Principal
                 lstBoxActivitatPartida.Visibility = Visibility.Hidden;
                 MessageBox.Show("No has començat la partida! Dona-li click al botó de 'Començar la partida'");
             }
-
-
-
         }
-
+        /// <summary>
+        /// Metode de la finestra CampBatalla que resta la vida al bot de l'habilitat 2 i fa que el bot t'ataqui, va carregant les dades al listbox de el que va succeiint.
+        /// </summary>
+        /// <param name="sender">Objecte que rep per parametre</param>
+        /// <param name="e">Event intern que relitza per tancar la finestra.</param>
         private void btnHabilitat2_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -369,7 +380,11 @@ namespace Principal
                 MessageBox.Show("No has començat la partida! Dona-li click al botó de 'Començar la partida'");
             }
         }
-
+        /// <summary>
+        /// Metode de la finestra CampBatalla que resta la vida al bot de l'habilitat 3 i fa que el bot t'ataqui, va carregant les dades al listbox de el que va succeiint.
+        /// </summary>
+        /// <param name="sender">Objecte que rep per parametre</param>
+        /// <param name="e">Event intern que relitza per tancar la finestra.</param>
         private void btnHabilitat3_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -411,7 +426,11 @@ namespace Principal
                 MessageBox.Show("No has començat la partida! Dona-li click al botó de 'Començar la partida'");
             }
         }
-
+        /// <summary>
+        /// Metode de la finestra CampBatalla que resta la vida al bot de l'habilitat 4 i fa que el bot t'ataqui, va carregant les dades al listbox de el que va succeiint.
+        /// </summary>
+        /// <param name="sender">Objecte que rep per parametre</param>
+        /// <param name="e">Event intern que relitza per tancar la finestra.</param>
         private void btnHabilitat4_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -453,6 +472,9 @@ namespace Principal
                 MessageBox.Show("No has començat la partida! Dona-li click al botó de 'Començar la partida'");
             }
         }
+        /// <summary>
+        /// Metode de la finestra CampBatalla que fa els calculs de la habilitat Random que utilitza el bot de la carta que té seleccionada.
+        /// </summary>
         private void HabilitatRandomBot()
         {
             lstBoxActivitatPartida.Items.Add("TORN DE: " + partida.Bot.Nom);
@@ -483,6 +505,10 @@ namespace Principal
                 lblVidaUsuari.Content = (int.Parse(lblVidaUsuari.Content.ToString()) - 125).ToString();
             }
         }
+        /// <summary>
+        /// Métode que amaga els botons un cop acabada la partida i mostrá si has guanyat o perdut.
+        /// </summary>
+        /// <param name="resultat">String amb el resultat de si has guanyat o has perdut.</param>
         private void AmagarBotons(string resultat)
         {
             lblEstatPartida.Content = resultat;

@@ -9,53 +9,28 @@ namespace Principal.Negoci
     public class Bot
     {
         //Atributs
-        private Cartes cartes;
+        public string Imatge { get; set; }
+        public string Nom { get; set; }
+        public Cartes Cartes { get; set; }
         public Cartes TotesCartes { get; set; }
-        private string imatge;
-        private string nom;
 
         //Constructors
-        /// <summary>
-        /// Constructor buit 
-        /// </summary>
         public Bot(Cartes cartes)
         {
-            this.cartes = new();
+            this.Imatge = "";
+            this.Nom = "";
+            this.Cartes = new();
             this.TotesCartes = cartes;
-            //Cada vegada que inicialitzo el Bot li asigno tots els atributs random, el nom, l'imatge i les cartes.
+            //Cada vegada que inicialitzo el Bot li assigno tots els atributs random, el nom, l'imatge i les cartes.
             GenerarNom();
             GenerarImatge();
             GenerarCartes(TotesCartes);
         }
-        /// <summary>
-        /// Propietat de Cartes
-        /// </summary>
-        public Cartes Cartes
-        {
-            get { return cartes; }
-            set { cartes = value; }
-        }
-        /// <summary>
-        /// Propietat de imatges
-        /// </summary>
-
-        public string Imatge
-        {
-            get { return imatge; }
-            set { imatge = value; }
-        }
-        /// <summary>
-        /// Nom propietat
-        /// </summary>
-        public string Nom
-        {
-            get { return nom; }
-            set { nom = value; }
-        }
         //Metodes
         /// <summary>
-        /// Metode per generar cartes random
+        /// Mètode de la classe Bot que genera les cartes d'aquest de manera random.
         /// </summary>
+        /// <param name="cartes">Classe Cartes que conté una llista de totes les cartes.</param>
         public void GenerarCartes(Cartes cartes)
         {
             //Creo un random per poder asignar cartes random  a la llista de cartes de l'usuari.
@@ -68,7 +43,7 @@ namespace Principal.Negoci
 
         }
         /// <summary>
-        /// Metode per generar imatges random
+        /// Mètode de la classe Bot que genera l'imatge d'aquest.
         /// </summary>
         public void GenerarImatge()
         {
@@ -76,7 +51,7 @@ namespace Principal.Negoci
             this.Imatge = "https://picsum.photos/200/300?random=1";
         }
         /// <summary>
-        /// Metode per generar un nom random
+        /// Mètode de la classe Bot que genera el nom d'aquest.
         /// </summary>
         public void GenerarNom()
         {

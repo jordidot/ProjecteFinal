@@ -16,54 +16,38 @@ using System.Windows.Shapes;
 
 namespace Principal
 {
-    /// <summary>
-    /// Lógica de interacción para Home.xaml
-    /// </summary>
     public partial class Home : Window
     {
-        //Atributs
-        private Usuari usuari;
+        //Atributs i propietats
+        public Usuari Usuari { get; set; }
         public Cartes TotesCartes { get; set; }
         public Habilitats TotesHabilitats { get; set; }
         public Partides TotesPartides { get; set; }
         public Usuaris TotsUsuaris { get; set; }
 
         //Constructors
-        /// <summary>
-        /// Constructor del Home que rep l'usuari.
-        /// </summary>
-        /// <param name="usuari">Usuari identificat al login.</param>
         public Home(Usuari usuari, Cartes cartes)
         {
             InitializeComponent();
             this.TotesCartes = cartes;
-            this.usuari = usuari;
-            if (this.usuari.EsAdministrador == 1) btnAdministracio.Visibility = Visibility.Visible;
-            lblTotalPuntsUsuari.Content = this.usuari.Punts + " Punts";
+            this.Usuari = usuari;
+            if (this.Usuari.EsAdministrador == 1) btnAdministracio.Visibility = Visibility.Visible;
+            lblTotalPuntsUsuari.Content = this.Usuari.Punts + " Punts";
             lblAliasBenvingut.Content = usuari.Alias;
             imageProfile.Source = new BitmapImage(new Uri(usuari.ImatgePerfil));
         }
         public Home(Usuari usuari, Cartes cartes, Habilitats habilitats, Partides partides, Usuaris usuaris)
         {
             InitializeComponent();
-            this.usuari = usuari;
+            this.Usuari = usuari;
             this.TotesCartes = cartes;
             this.TotesPartides = partides;
             this.TotesHabilitats = habilitats;
             this.TotsUsuaris = usuaris;
-            if (this.usuari.EsAdministrador == 1) btnAdministracio.Visibility = Visibility.Visible;
-            lblTotalPuntsUsuari.Content = this.usuari.Punts + " Punts";
+            if (this.Usuari.EsAdministrador == 1) btnAdministracio.Visibility = Visibility.Visible;
+            lblTotalPuntsUsuari.Content = this.Usuari.Punts + " Punts";
             lblAliasBenvingut.Content = usuari.Alias;
             imageProfile.Source = new BitmapImage(new Uri(usuari.ImatgePerfil));
-        }
-        //Propietats
-        /// <summary>
-        /// Propietat de l'usuari del home.
-        /// </summary>
-        public Usuari Usuari
-        {
-            get { return usuari; }
-            set { this.usuari = value; }
         }
         /// <summary>
         /// Metode que amaga el botó de modificar l'alias de l'usuari i fa visibles els que criden a la classe per modificarlo.
@@ -86,13 +70,13 @@ namespace Principal
         {
             if (this.Usuari.Mazos.LlistaMazos.Count == 1)
             {
-                MazosDB afegir = new();
+                MazosDB afegir = new(this.TotesCartes);
                 afegir.EliminarMazoUsuariBD(Usuari);
                 afegir.AfegirMazoBD(this.Usuari.Mazos.LlistaMazos[0]);
             }
             else
             {
-                MazosDB mazos = new();
+                MazosDB mazos = new(this.TotesCartes);
                 mazos.EliminarMazoUsuariBD(Usuari);
             }
             UsuarisDB usuari = new();
@@ -108,7 +92,6 @@ namespace Principal
         /// <param name="e">Event intern.</param>
         private void tabItemMazos_Loaded(object sender, RoutedEventArgs e)
         {
-
             //Miro cuants mazos té l'usuari i depenent dels mazos vaig fent visibles els botons.
             if (Usuari.Mazos.LlistaMazos.Count == 1)
             {
@@ -145,12 +128,10 @@ namespace Principal
             {
                 btnAfegirMazoRow1.Visibility = Visibility.Visible;
                 btnEliminarMazoRow1.Visibility = Visibility.Hidden;
-
             }
-
         }
         /// <summary>
-        /// Crea un objecte Label per posar el nom de la carta.
+        /// Mètode de la finestra Home que crea un objecte Label per posar el nom de la carta.
         /// </summary>
         /// <param name="nom">Li paso el nom de la carta.</param>
         /// <returns>Retorna el Label amb el nom de la carta.</returns>
@@ -161,6 +142,11 @@ namespace Principal
             nomCarta.HorizontalContentAlignment = HorizontalAlignment.Center;
             return nomCarta;
         }
+        /// <summary>
+        /// Mètode de la finestra Home que crea un objecte Imatge de la carta.
+        /// </summary>
+        /// <param name="descripcio">Rep la descripcio de la carta.</param>
+        /// <returns>Retorna la Imatge creada amb el BitMapImage.</returns>
         public Label CrearLabelCartaDescripcio(string descripcio)
         {
             Label descripcioCarta = new();
@@ -170,7 +156,7 @@ namespace Principal
             return descripcioCarta;
         }
         /// <summary>
-        /// Creo un objecte Imatge de la carta.
+        /// Mètode de la finestra Home que crea un objecte Imatge de la carta.
         /// </summary>
         /// <param name="path">Rep el path de l'imatge com a parametre.</param>
         /// <returns>Retorna la Imatge creada amb el BitMapImage.</returns>
@@ -182,6 +168,12 @@ namespace Principal
             imageCarta.Height = 130;
             return imageCarta;
         }
+        /// <summary>
+        /// Mètode de la finestra Home que afegeix les habilitats de les cartes.
+        /// </summary>
+        /// <param name="habilitats">Llista d'habilitats.</param>
+        /// <param name="carta">Id de la carta.</param>
+        /// <returns>Retorna un List Box amb les habilitats de la carta.</returns>
         public ListBox CrearListBoxHabilitats(List<Habilitat> habilitats, int carta)
         {
             //Recorro totes les habilitats de totes les cartes i les vaig afegint a cada carta les que li pertoquen.
@@ -267,7 +259,7 @@ namespace Principal
             return list;
         }
         /// <summary>
-        /// Metode que carrega el data grid de la pestanya partides amb les partides de l'usuari.
+        /// Mètode de la finestra Home que carrega el data grid de la pestanya partides amb les partides de l'usuari.
         /// </summary>
         /// <param name="sender">Objecte rebut.</param>
         /// <param name="e">Event intern.</param>
@@ -290,11 +282,9 @@ namespace Principal
             }
             //Introdueixo les partides de l'usuari al data grid.
             dataGridPartides.ItemsSource = llistaPartides;
-
-
         }
         /// <summary>
-        /// Metode que obre la finestra de triar el Mazo, per poder jugar la partida.
+        /// Mètode de la finestra Home que obre la finestra de triar el Mazo, per poder jugar la partida.
         /// </summary>
         /// <param name="sender">Objecte rebut.</param>
         /// <param name="e">Event intern.</param>
@@ -312,11 +302,9 @@ namespace Principal
             {
                 MessageBox.Show("Has de crear el teu mazo abans de poder jugar.");
             }
-
-
         }
         /// <summary>
-        /// Metode que obre la finestra de afegir un nou Mazo.
+        /// Mètode de la finestra Home que obre la finestra de afegir un nou Mazo.
         /// </summary>
         /// <param name="sender">Objecte rebut.</param>
         /// <param name="e">Event intern.</param>
@@ -324,11 +312,13 @@ namespace Principal
         {
             AfegirUnNouMazo nouMazo = new(this.Usuari, this.TotesCartes,this.TotesHabilitats,this.TotesPartides,this.TotsUsuaris);
             this.Close();
-            nouMazo.Show();
-            
+            nouMazo.Show(); 
         }
-
-
+        /// <summary>
+        /// Mètode de la finestra Home que elimina el mazo de l'usuari.
+        /// </summary>
+        /// <param name="sender">Objecte rebut.</param>
+        /// <param name="e">Event intern.</param>
         private void btnEliminarMazoRow1_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -345,33 +335,37 @@ namespace Principal
                 this.Close();
                 home.Show();
             }
-
-
         }
-
+        /// <summary>
+        /// Mètode de la finestra Home que guarda les dades al tancar la finestra.
+        /// </summary>
+        /// <param name="sender">Objecte rebut.</param>
+        /// <param name="e">Event intern.</param>
         private void windowHome_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (this.Usuari.Mazos.LlistaMazos.Count == 1)
             {
-                MazosDB afegir = new();
+                MazosDB afegir = new(this.TotesCartes);
                 afegir.EliminarMazoUsuariBD(Usuari);
                 afegir.AfegirMazoBD(this.Usuari.Mazos.LlistaMazos[0]);
             }
             else
             {
-                MazosDB mazos = new();
+                MazosDB mazos = new(this.TotesCartes);
                 mazos.EliminarMazoUsuariBD(Usuari);
             }
             UsuarisDB usuari = new();
             usuari.ModificarUsuari(this.Usuari);
-
         }
-
+        /// <summary>
+        /// Mètode de la finestra Home que activa els botons y modifica l'alias de l'usuari.
+        /// </summary>
+        /// <param name="sender">Objecte rebut.</param>
+        /// <param name="e">Event intern.</param>
         private void btnModificarAliasAfter_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-
                 Usuaris usuaris = new Usuaris();
                 Usuari.Alias = txtBoxAliasNouModificar.Text;
                 txtBoxAliasNouModificar.Text = Usuari.Alias;
@@ -381,25 +375,29 @@ namespace Principal
                 btnModificarAliasAfter.Visibility = Visibility.Hidden;
                 btnModificarAliasBefore.Visibility = Visibility.Visible;
                 usuaris.ModificarUsuari(Usuari);
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("No s'ha modificat l'usuari.");
             }
-
-
-
         }
-
+        /// <summary>
+        /// Mètode de la finestra Home que obre la finestra d'Administració i li passa totes les dades.
+        /// </summary>
+        /// <param name="sender">Objecte rebut.</param>
+        /// <param name="e">Event intern.</param>
         private void btnAdministracio_Click(object sender, RoutedEventArgs e)
         {
-            Partides partides = new();
+            Partides partides = new(this.TotsUsuaris);
             Administracio panell = new(this.Usuari, this.TotesCartes, this.TotesPartides, this.TotesHabilitats, this.TotsUsuaris);
             panell.Show();
             this.Close();
         }
-
+        /// <summary>
+        /// Mètode de la finestra Home que canvia l'imatge de l'usuari i l'actualitza a la base de dades.
+        /// </summary>
+        /// <param name="sender">Objecte rebut.</param>
+        /// <param name="e">Event intern.</param>
         private void btnCanviarImatge_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -413,22 +411,32 @@ namespace Principal
             {
                 MessageBox.Show("No s'ha pogut actualitzar l'imatge.");
             }
-
-
         }
-
+        /// <summary>
+        /// Mètode de la finestra Home que al fer click en la pestanya Partides redimensiona el tamany de la finestra.
+        /// </summary>
+        /// <param name="sender">Objecte rebut.</param>
+        /// <param name="e">Event intern.</param>
         private void tabItemPartides_GotFocus(object sender, RoutedEventArgs e)
         {
             this.Width = 500;
             this.Height = 500;
         }
-
+        /// <summary>
+        /// Mètode de la finestra Home que al fer click en la pestanya Benvingut redimensiona el tamany de la finestra.
+        /// </summary>
+        /// <param name="sender">Objecte rebut.</param>
+        /// <param name="e">Event intern.</param>
         private void tabItemBenvingut_GotFocus(object sender, RoutedEventArgs e)
         {
             this.Width = 1200;
             this.Height = 700;
         }
-
+        /// <summary>
+        /// Mètode de la finestra Home que al fer click en la pestanya Mazos redimensiona el tamany de la finestra.
+        /// </summary>
+        /// <param name="sender">Objecte rebut.</param>
+        /// <param name="e">Event intern.</param>
         private void tabItemMazos_GotFocus(object sender, RoutedEventArgs e)
         {
             this.Width = 1200;

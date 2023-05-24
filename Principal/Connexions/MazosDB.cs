@@ -13,37 +13,22 @@ namespace Principal.Connexions
     public class MazosDB
     {
         //Atributs
-        private Mazos mazos;
-        private ConnexioDB connexioBD;
-        public Cartes TotesCartes { get; set; }
         public int Quantitat { get; set; }
-
+        public Mazos Mazos { get; set; }
+        public ConnexioDB ConnexioBD { get; set; }
+        public Cartes TotesCartes { get; set; }
         //Constructors
-        /// <summary>
-        /// Constructor buit
-        /// </summary>
-        public MazosDB()
+        public MazosDB(Cartes cartes)
         {
-            connexioBD = new ConnexioDB("", "127.0.0.1", "cartesdb", "root");
-            mazos = new Mazos();
+            this.TotesCartes = cartes;
+            ConnexioBD = new ConnexioDB("", "127.0.0.1", "cartesdb", "root");
+            Mazos = new Mazos();
         }
-
-        //Propietats
-        /// <summary>
-        /// Propietat de l'atribut mazosbd
-        /// </summary>
-        public Mazos Mazos
-        { get { return mazos; } set { mazos = value; } }
-        /// <summary>
-        /// Propietat de l'atribut connexiobd
-        /// </summary>
-        public ConnexioDB ConnexioBD { get { return connexioBD; } set { connexioBD = value; } }
-
         //Metodes
         /// <summary>
-        /// Metode per afegir mazo a la bd
+        /// Mètode de la classe MazosDB que afegeix un mazo a la base de dades.
         /// </summary>
-        /// <param name="mazo">mazo a afegir</param>
+        /// <param name="mazo">Classe Mazo que conté tota l'informació d'aquest.</param>
         public void AfegirMazoBD(Mazo mazo)
         {
             try
@@ -62,7 +47,10 @@ namespace Principal.Connexions
 
 
         }
-
+        /// <summary>
+        /// Mètode de la classe MazosDB que eliminar un mazo a la base de dades per l'id de l'usuari.
+        /// </summary>
+        /// <param name="usuari">Classe Usuari que conté informació d'aquest.</param>
         public void EliminarMazoUsuariBD(Usuari usuari)
         {
             try
@@ -80,9 +68,9 @@ namespace Principal.Connexions
             }
         }
         /// <summary>
-        /// Metode per eliminar mazo a la bd
+        /// Mètode de la classe MazosDB que eliminar un mazo a la base de dades per l'id del mazo.
         /// </summary>
-        /// <param name="Mazo">mazo a eliminar</param>
+        /// <param name="usuari">Classe Mazo que conté informació d'aquest.</param>
         public void EliminarMazoBD(Mazo mazo)
         {
             try
@@ -99,11 +87,11 @@ namespace Principal.Connexions
                 ConnexioBD.Connectar().Close();
             }
         }
-
         /// <summary>
-        /// Metode per recuperar mazos
+        /// Mètode de la classe MazosDB que recupera el mazo d'un Usuari.
         /// </summary>
-        /// <returns></returns>
+        /// <param name="usuari">Classe Usuari que conté les dades d'aquest.</param>
+        /// <returns>Retorn un classe Mazo amb l'informació d'aquest.</returns>
         public Mazos RecuperarMazos(Usuari usuari)
         {
             Mazos mazos = new();

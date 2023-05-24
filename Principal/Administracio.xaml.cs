@@ -17,9 +17,6 @@ using System.Windows.Shapes;
 
 namespace Principal
 {
-    /// <summary>
-    /// Lógica de interacción para Administracio.xaml
-    /// </summary>
     public partial class Administracio : Window
     {
         public Usuari Administrador { get; set; }
@@ -37,42 +34,61 @@ namespace Principal
             this.TotesHabilitats = habilitats;
         }
         /// <summary>
-        /// 
+        /// Métode de la finestra Administració que guarda les dades a la base de dades quan es tanca la finestra.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void windowsAdministracio_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             this.TotesCartes.ModificarCartes(this.TotesCartes);
-            this.TotesHabilitats.ModificarHabilitats(this.TotesHabilitats);
             Home home = new(this.Administrador, this.TotesCartes, this.TotesHabilitats, this.TotesPartides, this.TotsUsuaris);
             home.Show();
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració que carrega els usuaris al datagrid un cop oberta la finestra.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void dataGridUsuaris_Loaded(object sender, RoutedEventArgs e)
         {
             dataGridUsuaris.ItemsSource = null;
             dataGridUsuaris.ItemsSource = this.TotsUsuaris.Llistausuaris;
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració que carrega les cartes al datagrid un cop oberta la finestra.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void dataGridCartes_Loaded(object sender, RoutedEventArgs e)
         {
             dataGridCartes.ItemsSource = null;
             dataGridCartes.ItemsSource = this.TotesCartes.LlistaCartes;
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració que carrega les habilitats al datagrid un cop oberta la finestra.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void dataGridHabilitats_Loaded(object sender, RoutedEventArgs e)
         {
             dataGridHabilitats.ItemsSource = null;
             dataGridHabilitats.ItemsSource = this.TotesHabilitats.LListahabilitats;
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració que carrega les partides al datagrid un cop oberta la finestra.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void dataGridPartides_Loaded(object sender, RoutedEventArgs e)
         {
             dataGridPartides.ItemsSource = null;
             dataGridPartides.ItemsSource = this.TotesPartides.LlistaPartides;
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració que carrega la vista dels usuaris.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void btnUsuarisMenu_Click(object sender, RoutedEventArgs e)
         {
             stckPanelMostrarUsuaris.Visibility = Visibility.Visible;
@@ -84,7 +100,11 @@ namespace Principal
             stckPanelAfegirNovaCarta.Visibility = Visibility.Hidden;
             stckPanelAfegirNovaHabilitat.Visibility = Visibility.Hidden;
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració que carrega la vista de les cartes.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void btnCartesMenu_Click(object sender, RoutedEventArgs e)
         {
             stckPanelMostrarUsuaris.Visibility = Visibility.Hidden;
@@ -96,7 +116,11 @@ namespace Principal
             stckPanelAfegirNovaCarta.Visibility = Visibility.Hidden;
             stckPanelAfegirNovaHabilitat.Visibility = Visibility.Hidden;
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració que carrega la vista de les habilitats.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void btnHabilitatsMenu_Click(object sender, RoutedEventArgs e)
         {
             stckPanelMostrarUsuaris.Visibility = Visibility.Hidden;
@@ -108,7 +132,11 @@ namespace Principal
             stckPanelAfegirNovaCarta.Visibility = Visibility.Hidden;
             stckPanelAfegirNovaHabilitat.Visibility = Visibility.Hidden;
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració que carrega la vista de les partides.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void btnPartidesMenu_Click(object sender, RoutedEventArgs e)
         {
             stckPanelMostrarUsuaris.Visibility = Visibility.Hidden;
@@ -120,19 +148,27 @@ namespace Principal
             stckPanelAfegirNovaCarta.Visibility = Visibility.Hidden;
             stckPanelAfegirNovaHabilitat.Visibility = Visibility.Hidden;
         }
-
-
+        /// <summary>
+        /// Métode de la finestra Administració que carrega la vista de creació d'usuaris.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void btnAfegirNouUsuariPrincipal_Click(object sender, RoutedEventArgs e)
         {
             stckPanelMostrarUsuaris.Visibility = Visibility.Hidden;
             stckPanelAfegirNouUsuari.Visibility = Visibility.Visible;
         }
+        /// <summary>
+        /// Métode de la finestra Administració afegeix l'usuari creat a la base de dades.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void btnAfegirNouUsuari_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 Mazos mazos = new();
-                Partides partides = new();
+                Partides partides = new(this.TotsUsuaris);
                 Usuari usuari = new(this.TotsUsuaris.Llistausuaris.Count + 1, txtBoxAliasUsuari.Text, pwdBoxContrasenyaUsuari.Password, txtBoxNomUsuari.Text, mazos, partides, 0, txtBoxImatgeUsuari.Text, 0);
                 this.TotsUsuaris.AfegirUsuari(usuari);
                 this.TotsUsuaris.Llistausuaris.Add(usuari);
@@ -147,7 +183,11 @@ namespace Principal
                 MessageBox.Show("No s'ha pogut afegir l'usuari.");
             }
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració elimina l'usuari de la base de dades.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void btnEliminarUsuari_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -163,13 +203,21 @@ namespace Principal
                 MessageBox.Show("No s'ha pogut eliminar l'usuari.");
             }
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració que crida a la vista de la creació de una carta nova.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void btnAfegirNovaCartaPrincipal_Click(object sender, RoutedEventArgs e)
         {
             stckPanelMostrarCartes.Visibility = Visibility.Hidden;
             stckPanelAfegirNovaCarta.Visibility = Visibility.Visible;
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració carrega totes les habilitats al ComboBox 1.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void comboBoxHabilitat1_Loaded(object sender, RoutedEventArgs e)
         {
             comboBoxHabilitat1.Items.Clear();
@@ -177,9 +225,12 @@ namespace Principal
             {
                 comboBoxHabilitat1.Items.Add(habilitat.Nom);
             }
-
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració carrega totes les habilitats al ComboBox 2.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void comboBoxHabilitat2_Loaded(object sender, RoutedEventArgs e)
         {
             comboBoxHabilitat2.Items.Clear();
@@ -188,7 +239,11 @@ namespace Principal
                 comboBoxHabilitat2.Items.Add(habilitat.Nom);
             }
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració carrega totes les habilitats al ComboBox 3.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void comboBoxHabilitat3_Loaded(object sender, RoutedEventArgs e)
         {
             comboBoxHabilitat3.Items.Clear();
@@ -197,7 +252,11 @@ namespace Principal
                 comboBoxHabilitat3.Items.Add(habilitat.Nom);
             }
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració carrega totes les habilitats al ComboBox 4.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void comboBoxHabilitat4_Loaded(object sender, RoutedEventArgs e)
         {
             comboBoxHabilitat4.Items.Clear();
@@ -206,7 +265,11 @@ namespace Principal
                 comboBoxHabilitat4.Items.Add(habilitat.Nom);
             }
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració que afegeix noves cartes a la base de dades.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void btnAfegirNovaCarta_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -230,7 +293,11 @@ namespace Principal
                 MessageBox.Show("No s'ha pogut afegir la carta.");
             }
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració elimina la carta seleccionada del data grid.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void btnEliminarCarta_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -251,7 +318,11 @@ namespace Principal
                 MessageBox.Show("No s'ha pogut eliminar la carta.");
             }
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració carrega els dany de les habilitats al ComboBox.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void comboBoxDanyHabilitat_Loaded(object sender, RoutedEventArgs e)
         {
             comboBoxDanyHabilitat.Items.Clear();
@@ -260,13 +331,21 @@ namespace Principal
             comboBoxDanyHabilitat.Items.Add(75);
             comboBoxDanyHabilitat.Items.Add(125);
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració que crida al StackPanel que mostra la creació d'habilitats.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void btnAfegirNovaHabilitatPrincipal_Click(object sender, RoutedEventArgs e)
         {
             stckPanelMostrarHabilitats.Visibility = Visibility.Hidden;
             stckPanelAfegirNovaHabilitat.Visibility = Visibility.Visible;
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració que afegeix una nova habilitat a la base de dades.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void btnAfegirNovaHabilitat_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -290,7 +369,11 @@ namespace Principal
                 MessageBox.Show("No s'ha pogut afegir l'habilitat.");
             }
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració que elimina una habilitat de la base de dades.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void btnEliminarHabilitat_Click(object sender, RoutedEventArgs e)
         {
             foreach (Carta carta in this.TotesCartes.LlistaCartes)
@@ -321,7 +404,11 @@ namespace Principal
                 MessageBox.Show("No s'ha pogut eliminar l'habilitat.");
             }
         }
-
+        /// <summary>
+        /// Métode de la finestra Administració que elimina una partida de la base de dades.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
         private void btnEliminarPartida_Click(object sender, RoutedEventArgs e)
         {
             try

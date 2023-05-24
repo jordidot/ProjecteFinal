@@ -13,40 +13,21 @@ namespace Principal.Connexions
     public class UsuarisDB
     {
         //Atributs
-        private Usuaris usuaris;
-        private ConnexioDB connexioBD;
         public int QuantitatTotal { get; set; }
-
+        public Usuaris Usuaris { get; set; }
+        public ConnexioDB ConnexioBD { get; set; }
+       
         //Constructors
-        /// <summary>
-        /// Constructor buit
-        /// </summary>
         public UsuarisDB()
         {
-            connexioBD = new ConnexioDB("", "127.0.0.1", "cartesdb", "root");
-            usuaris = new Usuaris();
+            ConnexioBD = new ConnexioDB("", "127.0.0.1", "cartesdb", "root");
+            Usuaris = new Usuaris();
         }
-
-        //Propietats
-        /// <summary>
-        ///Propietat de l'atribut Usuaris
-        /// </summary>
-        public Usuaris Usuaris
-        {
-            get { return usuaris; }
-            set { usuaris = value; }
-        }
-
-        /// <summary>
-        /// Propietat de l'atribut connexioBD
-        /// </summary>
-        public ConnexioDB ConnexioBD { get { return connexioBD; } set { connexioBD = value; } }
-
         //Metodes
         /// <summary>
-        /// Metode per afegir usuari
+        /// Mètode de la classe UsuarisDB que afegeix un usuari a la base de dades.
         /// </summary>
-        /// <param name="usuaris">usuari a afegir</param>
+        /// <param name="usuari">Classe Usuari amb tota l'informació d'aquest.</param>
         public void AfegirUsuariBD(Usuari usuari)
         {
             try
@@ -63,6 +44,10 @@ namespace Principal.Connexions
                 ConnexioBD.Connectar().Close();
             }
         }
+        /// <summary>
+        /// Mètode de la classe UsuarisDB que afegeix varis usuaris a la base de dades.
+        /// </summary>
+        /// <param name="usuaris">Classe Usuaris amb una llista d'Usuari amb tota l'informació d'aquests.</param>
         public void AfegirUsuarisBD(Usuaris usuaris)
         {
             foreach (Usuari usuari in usuaris.Llistausuaris)
@@ -83,6 +68,10 @@ namespace Principal.Connexions
             }
 
         }
+        /// <summary>
+        /// Mètode de la classe UsuarisDB que elimina un usuari de la base de dades.
+        /// </summary>
+        /// <param name="usuari">Classe Usuari amb tota l'informació d'aquest.</param>
         public void EliminarUsuari(Usuari usuari)
         {
             try
@@ -99,26 +88,10 @@ namespace Principal.Connexions
                 ConnexioBD.Connectar().Close();
             }
         }
-        public void CanviarImatge(Usuari usuari)
-        {
-            try
-            {
-                var comanda = new MySqlCommand("UPDATE usuaris SET imatgeperfil ='" + usuari.ImatgePerfil + "' WHERE id="+usuari.Id + ";", ConnexioBD.Connectar());
-                comanda.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No s'ha pogut modificar l'usuari." + ex.Message);
-            }
-            finally
-            {
-                ConnexioBD.Connectar().Close();
-            }
-        }
         /// <summary>
-        /// Metode per modificar usuaris
+        /// Mètode de la classe UsuarisDB que modifica un usuari de la base de dades.
         /// </summary>
-        /// <param name="usari">usuari a modificar</param>
+        /// <param name="usuari">Classe Usuari amb tota l'informació d'aquest nou usuari.</param>
         public void ModificarUsuari(Usuari usuari)
         {
             try
@@ -135,11 +108,9 @@ namespace Principal.Connexions
                 ConnexioBD.Connectar().Close();
             }
         }
-
         /// <summary>
-        /// Metode per recuperar usuariBD
+        /// Mètode de la classe UsuarisDB que recupera tots els usuaris de la base de dades.
         /// </summary>
-        /// <returns></returns>
         public void RecuperarUsuariBD()
         {
             List<Usuari> usuaris = new List<Usuari>();
@@ -151,7 +122,8 @@ namespace Principal.Connexions
                 while (reader.Read())
                 {
                     Mazos mazos = new();
-                    Partides partides = new();
+                    Usuaris usuariss = new();
+                    Partides partides = new(usuariss);
                     Usuari usuari = new Usuari(reader.GetInt32(0), reader.GetString(4), reader.GetString(2), reader.GetString(1), mazos, partides, reader.GetInt32(6), reader.GetString(3), reader.GetInt32(5));
                     usuaris.Add(usuari);
                 }
@@ -166,6 +138,26 @@ namespace Principal.Connexions
             {
                 ConnexioBD.Connectar().Close();
                 MySqlConnection.ClearAllPools();
+            }
+        }
+        /// <summary>
+        /// Mètode de la classe UsuarisDB que modifica l'imatge d'un usuari de la base de dades.
+        /// </summary>
+        /// <param name="usuari">Classe Usuari amb tota l'informació d'aquest usuari i l'imatge nova.</param>
+        public void CanviarImatge(Usuari usuari)
+        {
+            try
+            {
+                var comanda = new MySqlCommand("UPDATE usuaris SET imatgeperfil ='" + usuari.ImatgePerfil + "' WHERE id=" + usuari.Id + ";", ConnexioBD.Connectar());
+                comanda.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut modificar l'usuari." + ex.Message);
+            }
+            finally
+            {
+                ConnexioBD.Connectar().Close();
             }
         }
     }

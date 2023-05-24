@@ -12,42 +12,19 @@ namespace Principal.Connexions
     public class HabilitatsDB
     {
         //Atributs
-        private Habilitats habilitats;
-        private ConnexioDB connexioBD;
+        public Habilitats Habilitats { get; set; }
+        public ConnexioDB ConnexioBD { get; set; }
         //Constructors
-        /// <summary>
-        /// Constructor buit
-        /// </summary>
         public HabilitatsDB()
         {
-            habilitats = new Habilitats();
-            connexioBD = new ConnexioDB("", "localhost", "cartesdb", "root");
+            Habilitats = new Habilitats();
+            ConnexioBD = new ConnexioDB("", "localhost", "cartesdb", "root");
         }
-
-        //Propietats
-        /// <summary>
-        /// Propietat del atribut habilitats
-        /// </summary>
-        public Habilitats Habilitats
-        {
-            get { return habilitats; }
-            set { habilitats = value; }
-        }
-        /// <summary>
-        /// Propietat de l'atribut Connexio
-        /// </summary>
-        public ConnexioDB ConnexioBD
-        {
-            get { return connexioBD; }
-            set { connexioBD = value; }
-        }
-
-
         //Metodes
         /// <summary>
-        /// Metode per afegir habilitat a la BD
+        /// Mètode de la classe HabilitatsDB que afegeix una habilitat a la base de dades.
         /// </summary>
-        /// <param name="habilitat">habilitat a afegir</param>
+        /// <param name="habilitat">Habilitat que té totes les dades d'aquesta.</param>
         public void AfegirHabilitatBD(Habilitat habilitat)
         {
             try
@@ -66,9 +43,9 @@ namespace Principal.Connexions
         }
 
         /// <summary>
-        /// Metode per eliminar habilitat
+        /// Mètode de la classe HabilitatsDB que elimina una habilitat a la base de dades.
         /// </summary>
-        /// <param name="habilitat">habilitat a eliminar </param>
+        /// <param name="habilitat">Habilitat que té totes les dades d'aquesta.</param>
         public void EliminarHabilitatBD(Habilitat habilitat)
         {
             try
@@ -86,35 +63,34 @@ namespace Principal.Connexions
             }
         }
         /// <summary>
-        /// Metode per modificar habilitat a la BD
+        /// Mètode de la classe HabilitatsDB que modifica moltes habilitats a la base de dades.
         /// </summary>
-        /// <param name="habilitat">habilitat a modificar</param>
+        /// <param name="habilitat">Classe Habilitats que té una llista amb totes les habilitats.</param>
         public void ModificarHabilitats(Habilitats habilitats)
         {
-            
-            //foreach (Habilitat habilitat in habilitats.LListahabilitats)
-            //{
-            
-            //    //try
-            //    //{
-            //    //    var comanda = new MySqlCommand("UPDATE habilitats SET nom='" + habilitat.Nom + "', cooldown=" + habilitat.Cooldown + ", dany=" + habilitat.Dany + " WHERE id=" + habilitat.Id + " ;", ConnexioBD.Connectar());
-            //    //    comanda.ExecuteNonQuery();
-            //    //}
-            //    //catch (Exception ex)
-            //    //{
-            //    //    MessageBox.Show("No s'ha pogut modificar l'habilitat." + ex.Message);
-            //    //}
-            //    //finally
-            //    //{
-            //    //    ConnexioBD.Connectar().Close();
-            //    //}
-            //}
+
+            foreach (Habilitat habilitat in habilitats.LListahabilitats)
+            {
+                try
+                {
+                    var comanda = new MySqlCommand("UPDATE habilitats SET nom='" + habilitat.Nom + "', cooldown=" + habilitat.Cooldown + ", dany=" + habilitat.Dany + " WHERE id=" + habilitat.Id + " ;", ConnexioBD.Connectar());
+                    comanda.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No s'ha pogut modificar l'habilitat." + ex.Message);
+                }
+                finally
+                {
+                    ConnexioBD.Connectar().Close();
+                }
+            }
         }
         /// <summary>
-        /// Metode per recuperar habilitat de la bd
+        /// Mètode de la classe HabilitatsDB que recupera totes les habilitats de la base de dades.
         /// </summary>
-        /// <returns></returns>
-        public Habilitats RecuperarHabilitats(Carta carta)
+        /// <returns>Retorna una classe Habilitats abm una llista de totes les habilitats.</returns>
+        public Habilitats RecuperarHabilitats()
         {
             Habilitats habilitats = new();
             try
@@ -137,11 +113,6 @@ namespace Principal.Connexions
                 MySqlConnection.ClearAllPools();
             }
             return habilitats;
-        }
-        /// <summary>
-        /// Metode per recuperar habilitat de la bd
-        /// </summary>
-        /// <returns></returns>
-        
+        }   
     }
 }

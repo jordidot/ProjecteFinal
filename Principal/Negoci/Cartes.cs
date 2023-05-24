@@ -11,89 +11,49 @@ namespace Principal.Negoci
     public class Cartes
     {
         //Atributs
-        private List<Carta> llistacartes;
+        public List<Carta> LlistaCartes { get; set; }
 
         //Constructors
-        /// <summary>
-        /// Constructor buit
-        /// </summary>
         public Cartes()
         {
-            this.llistacartes = new List<Carta>();
+            this.LlistaCartes = new List<Carta>();
         }
-
-        /// <summary>
-        /// Constructor ple
-        /// </summary>
-        /// <param name="llistacartes">LLista del atribut per emplenar les cartes</param>
         public Cartes(List<Carta> llistacartes)
         {
-            this.llistacartes = llistacartes;
-
-        }
-        //Propietat
-        /// <summary>
-        /// Propietat de la Cartes
-        /// </summary>
-        public List<Carta> LlistaCartes
-        {
-            get { return llistacartes; }
-            set { llistacartes = value; }
+            this.LlistaCartes = llistacartes;
         }
         //Metodes
-
         /// <summary>
-        /// Metode per afegir cartes
+        /// Mètode de la classe Cartes que crida a la classe CartesDb per afegir una carta.
         /// </summary>
+        /// <param name="carta">Classe Carta que rep l'informació d'aquesta.</param>
         public void AfegirCarta(Carta carta)
         {
             CartesDB cartesdb = new();
             cartesdb.AfegirCartaBD(carta);
         }
         /// <summary>
-        /// Metode per eliminar cartes
+        /// Mètode de la classe Cartes que crida a la classe CartesDb per eliminar una carta.
         /// </summary>
-
+        /// <param name="carta">Classe Carta que rep l'informació d'aquesta.</param>
         public void EliminarCarta(Carta carta)
         {
             CartesDB cartesdb = new();
             cartesdb.EliminarCarta(carta);
         }
         /// <summary>
-        /// Metode per modificar cartes
+        /// Mètode de la classe Cartes que crida a la classe CartesDb per modificar unes cartes.
         /// </summary>
-        public void ModificarCarta(Carta cartaanterior, Carta cartanova)
-        {
-            CartesDB cartesDB = new CartesDB();
-            bool cartesbd = false;
-            int index = llistacartes.FindIndex(carta => carta.Equals(cartaanterior));
-            if (index != -1)
-            {
-                foreach (Carta carta in cartesDB.Cartes.LlistaCartes)
-                {
-                    if (cartanova.Id == carta.Id)
-                        cartesbd = true;
-                }
-                if (cartesbd)
-                {
-                    MessageBox.Show("L'id es el mateix, no es pot afegir.");
-                }
-                else
-                    llistacartes[index] = cartanova;
-            }
-
-        }
-    
+        /// <param name="cartes">Classe Cartes que rep una llista amb l'informació d'aquestes.</param>
         public void ModificarCartes(Cartes cartes)
         {
             CartesDB cartesdb = new();
             cartesdb.ModificarCartes(cartes);
         }
-        //public Cartes RecuperarCartes(Mazo mazo)
-        //{
-        //    CartesDB cartesdb = new();
-        //    return cartesdb.RecuperarCartes(mazo);
-        //}
+        /// <summary>
+        /// Mètode de la classe Cartes que crida a la classe CartesDb per recuperar totes les cartes.
+        /// </summary>
+        /// <returns>Retorna una classe Cartes amb una llista de totes les cartes recuperades de la BD.</returns>
         public Cartes RecuperarTotesCartes()
         {
             CartesDB cartesdb = new();

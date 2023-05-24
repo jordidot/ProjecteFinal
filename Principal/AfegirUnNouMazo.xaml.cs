@@ -18,59 +18,38 @@ using System.Windows.Shapes;
 
 namespace Principal
 {
-    /// <summary>
-    /// Lógica de interacción para AfegirMazo.xaml
-    /// </summary>
     public partial class AfegirUnNouMazo : Window
     {
-        //Atributs
-        private Usuari usuari;
-        private Cartes cartesMazoNou;
-        private Cartes totesCartes;
-        private int contador;
+        //Atributs i propietats
+        public int Contador { get; set; }
+        public Usuari Usuari { get; set; }
+        public Cartes CartesMazoNou { get; set; }
+        public Cartes TotesCartes { get; set; }
         public Usuaris TotsUsuaris { get; set; }
         public Partides TotesPartides { get; set; }
         public Habilitats TotesHabilitats { get; set; }
         //Constructors
-        /// <summary>
-        /// Constructor d'afegir mazo que rep un usuari.
-        /// </summary>
-        /// <param name="usuari">Usuari logejat a l'aplicació.</param>
         public AfegirUnNouMazo(Usuari usuari,Cartes totesCartes, Habilitats habilitats, Partides partides, Usuaris usuaris)
         {
             InitializeComponent();
             this.TotesHabilitats = habilitats;
             this.TotesPartides = partides;
             this.TotsUsuaris = usuaris;
-            this.totesCartes = totesCartes;
+            this.TotesCartes = totesCartes;
             Usuari = usuari;
             CartesMazoNou = new();
-            contador = 0;
+            Contador = 0;
         }
-        //Propietats
+        //Mètodes
         /// <summary>
-        /// Propietat de l'usuari.
-        /// </summary>
-        public Usuari Usuari
-        {
-            get { return this.usuari; }
-            set { this.usuari = value; }
-        }
-        public Cartes CartesMazoNou
-        {
-            get { return this.cartesMazoNou; }
-            set { this.cartesMazoNou = value; }
-        }
-        /// <summary>
-        /// Métode que carrega totes les cartes al stackpanel.
+        /// Métode de la finestra AfegirUnNouMazo que carrega totes les cartes al stackpanel quan es carrega. (Va creant les cartes i les va afegint)
         /// </summary>
         /// <param name="sender">Objecte que rep.</param>
         /// <param name="e">Event intern.</param>
-
         private void stckPanelCartes_Loaded(object sender, RoutedEventArgs e)
         {
 
-            foreach (Carta carta in totesCartes.LlistaCartes)
+            foreach (Carta carta in TotesCartes.LlistaCartes)
             {
                 ListBox cartaList = new();
                 cartaList.HorizontalContentAlignment = HorizontalAlignment.Center;
@@ -84,7 +63,6 @@ namespace Principal
                 imatgeCarta.Source = new BitmapImage(new Uri(carta.Imatge));
                 imatgeCarta.Width = 500;
                 imatgeCarta.Height = 150;
-
                 //Afegeixo descripcio de la carta.
                 Label descripcioCarta = new();
                 descripcioCarta.Content = carta.Descripcio;
@@ -112,32 +90,35 @@ namespace Principal
                 botoMazo.Click += (sendr, EventArgs) => { AfegirCarta(sendr, EventArgs, carta.Id); };
 
             }
-
-
         }
-
-        //Métodes
+        /// <summary>
+        /// Mètode de la finestra AfegirUnNouMazo que afegeix les cartes a l'usuari i puja el mazo a la base de dades un cop té les 5 cartes escollides.
+        /// </summary>
+        /// <param name="sender">Objecte que rep.</param>
+        /// <param name="e">Event intern.</param>
+        /// <param name="id">Li passo l'id de la carta seleccionada.</param>
         private void AfegirCarta(object sender, RoutedEventArgs e, int id)
         {
             try
             {
-                if (contador < 4)
+                //Va afegint a la llista de el mazo nou les cartes fins que no arriba a 5 cartes, un cop arriba a 5 cartes les assigna a l'usuari i les afegeix a la base de dades.
+                if (Contador < 4)
                 {
-                    CartesMazoNou.LlistaCartes.Add(totesCartes.LlistaCartes[id - 1]);
-                    lblCartesAfegides.Content += " " + totesCartes.LlistaCartes[id - 1].Nom + ",";
-                    contador++;
+                    CartesMazoNou.LlistaCartes.Add(TotesCartes.LlistaCartes[id - 1]);
+                    lblCartesAfegides.Content += " " + TotesCartes.LlistaCartes[id - 1].Nom + ",";
+                    Contador++;
                 }
-                else if (contador == 4)
+                else if (Contador == 4)
                 {
-                    CartesMazoNou.LlistaCartes.Add(totesCartes.LlistaCartes[id - 1]);
-                    lblCartesAfegides.Content += " " + totesCartes.LlistaCartes[id - 1].Nom;
+                    CartesMazoNou.LlistaCartes.Add(TotesCartes.LlistaCartes[id - 1]);
+                    lblCartesAfegides.Content += " " + TotesCartes.LlistaCartes[id - 1].Nom;
                     try
                     {
-                        Mazo mazo = new(usuari.Mazos.RecuperarId(), CartesMazoNou,"Mazo" + this.Usuari.Alias, this.Usuari);
+                        Mazo mazo = new(Usuari.Mazos.RecuperaQuantitat(), CartesMazoNou,"Mazo" + this.Usuari.Alias, this.Usuari);
                         this.Usuari.Mazos.LlistaMazos.Clear();
                         this.Usuari.Mazos.LlistaMazos.Add(mazo);
                         MessageBox.Show("Mazo afegit correctament.");
-                        Home home = new(this.usuari, this.totesCartes, this.TotesHabilitats, this.TotesPartides, this.TotsUsuaris);
+                        Home home = new(this.Usuari, this.TotesCartes, this.TotesHabilitats, this.TotesPartides, this.TotsUsuaris);
                         home.Show();
                         this.Close();
 
@@ -145,13 +126,11 @@ namespace Principal
                     catch (Exception ex)
                     {
                         MessageBox.Show("No s'ha pogut afegir el mazo.");
-                        Home home = new(this.usuari, this.totesCartes, this.TotesHabilitats, this.TotesPartides, this.TotsUsuaris);
+                        Home home = new(this.Usuari, this.TotesCartes, this.TotesHabilitats, this.TotesPartides, this.TotsUsuaris);
                         home.Show();
                         this.Close();
                     }
-
                 }
-
             }
             catch (Exception ex)
             {

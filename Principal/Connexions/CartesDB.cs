@@ -92,7 +92,10 @@ namespace Principal.Connexions
             }
 
         }
-        
+        /// <summary>
+        /// Mètode de la classe CartesDB que recupera totes les cartes de la base de dades.
+        /// </summary>
+        /// <returns>Retorna una classe Cartes amb una llista de cartes.</returns>
         public Cartes RecuperarTotesCartes()
         {
             Cartes cartes = new();
@@ -108,7 +111,7 @@ namespace Principal.Connexions
                     HabilitatsDB habilitats = new();
                     //Creo la carta i li passo tots els parametres.
                     Carta carta = new(llegir.GetInt32(0), llegir.GetString(1), llegir.GetString(2), llegir.GetString(3), habilitats.Habilitats);
-                    carta.Habilitats = habilitats.RecuperarHabilitats(carta);
+                    carta.Habilitats = habilitats.RecuperarHabilitats();
                     //Afegeixo la carta a la llista de cartes.
                     cartes.LlistaCartes.Add(carta);
 

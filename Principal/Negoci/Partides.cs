@@ -9,69 +9,52 @@ namespace Principal.Negoci
 {
     public class Partides
     {
-        //Atribut
-        private List<Partida> llistaPartides;
-        public Cartes TotesCartes { get; set; }
+        //Atributs i propietats
         public int Quantitat { get; set; }
-        //Constructors
-        /// <summary>
-        /// Constructor buit
-        /// </summary>
-        public Partides()
+        public List<Partida> LlistaPartides { get; set; }
+        public Cartes TotesCartes { get; set; }
+        public Usuaris TotsUsuaris { get; set; }
+        //Constructors  
+        public Partides(Usuaris usuaris)
         {
-            TotesCartes = new Cartes();
-            llistaPartides = new List<Partida>();
+            this.TotsUsuaris = usuaris;
+            this.TotesCartes = new Cartes();
+            this.LlistaPartides = new List<Partida>();
         }
         /// <summary>
-        /// Constructor ple
+        /// Mètode de la classe Partides que crida a la classe PartidesDB per afegir una partida a la base de dades.
         /// </summary>
-        /// <param name="llistapartides">LLista partides on es guarden partides</param>
-        public Partides(List<Partida> llistapartides)
-        {
-            llistaPartides = llistapartides;
-        }
-
-        //Propietats
-        /// <summary>
-        /// Propietat del atribut llistapartides
-        /// </summary>
-        public List<Partida> LlistaPartides
-        {
-            get { return llistaPartides; }
-            set { llistaPartides = value; }
-        }
-        /// <summary>
-        /// Metode per afegir partida
-        /// </summary>
-
+        /// <param name="cartes">Classe Cartes que conté una llista de Carta amb tota l'informació d'aquestes.</param>
+        /// <param name="partida">Classe Partida que conté tota l'informació d'aquesta.</param>
         public void AfegirPartida(Cartes cartes, Partida partida)
         {
-            PartidesDB partidesdb = new(cartes,partida);
+            PartidesDB partidesdb = new(cartes,partida,this.TotsUsuaris);
             partidesdb.AfegirPartidaBD(partida);
         }
         /// <summary>
-        /// Metode per eliminar partida
+        /// Mètode de la classe Partides que crida a la classe PartidesDB per eliminar una partida a la base de dades.
         /// </summary>
+        /// <param name="cartes">Classe Cartes que conté una llista de Carta amb tota l'informació d'aquestes.</param>
+        /// <param name="partida">Classe Partida que conté tota l'informació d'aquesta.</param>
         public void EliminarPartida(Cartes cartes, Partida partida)
         {
-            PartidesDB partidesdb = new(cartes, partida);
+            PartidesDB partidesdb = new(cartes, partida, this.TotsUsuaris);
             partidesdb.EliminarPartidaBD(partida);
         }
         /// <summary>
-        /// Metode per modificar partida
+        /// Mètode de la classe Partides que crida a la classe PartidesDB per recuperar les partides.
         /// </summary>
-        public void ModificarPartida()
-        {
-
-        }
+        /// <param name="usuari">Classe Usuari que conté tota l'informació d'aquest.</param>
+        /// <param name="cartes">Classe Cartes que conté una llista de Carta amb tota l'informació d'aquestes.</param>
+        /// <returns></returns>
         public List<Partida> RecuperarPartides(Usuari usuari, Cartes cartes)
         {
             Bot bot = new(TotesCartes);
             Partida partida = new(0,bot,1500,usuari,1500,"Empat");
-            PartidesDB partidesdb = new(TotesCartes,partida);
+            PartidesDB partidesdb = new(TotesCartes,partida, this.TotsUsuaris);
             partidesdb.RecuperarPartides(usuari,cartes);
             this.Quantitat = partidesdb.Quantitat;
-            return partidesdb.RecuperarPartides(usuari, cartes);
+            return partidesdb.RecuperarPartides(usuari,cartes);
         }
     }
 }

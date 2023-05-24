@@ -131,10 +131,24 @@ namespace Principal
                 {
                     CartesMazoNou.LlistaCartes.Add(totesCartes.LlistaCartes[id - 1]);
                     lblCartesAfegides.Content += " " + totesCartes.LlistaCartes[id - 1].Nom;
+                    try
+                    {
+                        Mazo mazo = new(usuari.Mazos.RecuperarId(), CartesMazoNou,"Mazo" + this.Usuari.Alias, this.Usuari);
+                        this.Usuari.Mazos.LlistaMazos.Clear();
+                        this.Usuari.Mazos.LlistaMazos.Add(mazo);
+                        MessageBox.Show("Mazo afegit correctament.");
+                        Home home = new(this.usuari, this.totesCartes, this.TotesHabilitats, this.TotesPartides, this.TotsUsuaris);
+                        home.Show();
+                        this.Close();
 
-
-                    AfegirMazoExtend extend = new(CartesMazoNou, Usuari, usuari.Mazos.RecuperarId(), this,this.totesCartes, this.TotesHabilitats, this.TotesPartides, this.TotsUsuaris);
-                    extend.Show();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("No s'ha pogut afegir el mazo.");
+                        Home home = new(this.usuari, this.totesCartes, this.TotesHabilitats, this.TotesPartides, this.TotsUsuaris);
+                        home.Show();
+                        this.Close();
+                    }
 
                 }
 
@@ -146,6 +160,7 @@ namespace Principal
 
 
         }
-       
+
+ 
     }
 }

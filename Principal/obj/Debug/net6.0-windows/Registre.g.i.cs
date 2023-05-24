@@ -101,7 +101,7 @@ namespace Principal {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Principal;component/registre.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Principal;V1.0.0.0;component/registre.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Registre.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

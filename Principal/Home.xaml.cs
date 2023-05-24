@@ -323,8 +323,9 @@ namespace Principal
         private void btnAfegirMazoRow1_Click(object sender, RoutedEventArgs e)
         {
             AfegirUnNouMazo nouMazo = new(this.Usuari, this.TotesCartes,this.TotesHabilitats,this.TotesPartides,this.TotsUsuaris);
-            nouMazo.Show();
             this.Close();
+            nouMazo.Show();
+            
         }
 
 
@@ -362,7 +363,7 @@ namespace Principal
                 mazos.EliminarMazoUsuariBD(Usuari);
             }
             UsuarisDB usuari = new();
-            usuari.ModificarUsuari(this.Usuari); 
+            usuari.ModificarUsuari(this.Usuari);
 
         }
 

@@ -68,26 +68,10 @@ namespace Principal.Negoci
         /// Metode per modificar habilitats de la llista
         /// </summary>
         /// <param name="habilitat">Parametre per modificar la llista</param>
-        public void Modificar(Habilitat habilitatanterior, Habilitat habilitatnova)
+        public void ModificarHabilitats(Habilitats habilitats)
         {
-            HabilitatsDB habilitatsdb = new HabilitatsDB();
-            bool habilitatTrobada = false;
-
-            int index = llistahabilitats.FindIndex(carta => carta.Equals(habilitatanterior));
-            if (index != -1)
-            {
-                foreach (Habilitat habilitat in habilitatsdb.Habilitats.LListahabilitats)
-                {
-                    if (habilitatnova.Id == habilitat.Id)
-                        habilitatTrobada = true;
-                }
-                if (habilitatTrobada)
-                {
-                    MessageBox.Show("L'id es el mateix, no es pot afegir.");
-                }
-                else
-                    llistahabilitats[index] = habilitatnova;
-            }
+            HabilitatsDB habilitatsdb = new();
+            habilitatsdb.ModificarHabilitats(habilitats);
         }
         public List<Habilitat> RecuperarHabilitats(Carta carta)
         {

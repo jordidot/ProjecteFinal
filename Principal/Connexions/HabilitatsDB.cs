@@ -89,9 +89,26 @@ namespace Principal.Connexions
         /// Metode per modificar habilitat a la BD
         /// </summary>
         /// <param name="habilitat">habilitat a modificar</param>
-        public void ModificarHabilitatBD(Habilitat habilitat)
+        public void ModificarHabilitats(Habilitats habilitats)
         {
-
+            
+            //foreach (Habilitat habilitat in habilitats.LListahabilitats)
+            //{
+            
+            //    //try
+            //    //{
+            //    //    var comanda = new MySqlCommand("UPDATE habilitats SET nom='" + habilitat.Nom + "', cooldown=" + habilitat.Cooldown + ", dany=" + habilitat.Dany + " WHERE id=" + habilitat.Id + " ;", ConnexioBD.Connectar());
+            //    //    comanda.ExecuteNonQuery();
+            //    //}
+            //    //catch (Exception ex)
+            //    //{
+            //    //    MessageBox.Show("No s'ha pogut modificar l'habilitat." + ex.Message);
+            //    //}
+            //    //finally
+            //    //{
+            //    //    ConnexioBD.Connectar().Close();
+            //    //}
+            //}
         }
         /// <summary>
         /// Metode per recuperar habilitat de la bd

@@ -84,5 +84,12 @@ namespace Principal.Connexions
             connexio.Open();
             return connexio;
         }
+        public MySqlConnection ConnectarAsync()
+        {
+            string connectar = "Server=" + this.DireccioHost + ";User ID=" + this.UsuariBD + ";Password=" + this.ContrasenyaBD + ";Database=" + this.NomBD;
+            var connexio = new MySqlConnection(connectar);
+            connexio.OpenAsync();
+            return connexio;
+        }
     }
 }

@@ -43,9 +43,10 @@ namespace Principal
         /// <param name="e"></param>
         private void windowsAdministracio_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            this.TotesCartes.ModificarCartes(this.TotesCartes);
+            this.TotesHabilitats.ModificarHabilitats(this.TotesHabilitats);
             Home home = new(this.Administrador, this.TotesCartes, this.TotesHabilitats, this.TotesPartides, this.TotsUsuaris);
             home.Show();
-            this.TotesCartes.ModificarCartes(this.TotesCartes);
         }
 
         private void dataGridUsuaris_Loaded(object sender, RoutedEventArgs e)
@@ -80,6 +81,8 @@ namespace Principal
             stckPanelMostrarPartides.Visibility = Visibility.Hidden;
 
             stckPanelAfegirNouUsuari.Visibility = Visibility.Hidden;
+            stckPanelAfegirNovaCarta.Visibility = Visibility.Hidden;
+            stckPanelAfegirNovaHabilitat.Visibility = Visibility.Hidden;
         }
 
         private void btnCartesMenu_Click(object sender, RoutedEventArgs e)
@@ -90,6 +93,8 @@ namespace Principal
             stckPanelMostrarPartides.Visibility = Visibility.Hidden;
 
             stckPanelAfegirNouUsuari.Visibility = Visibility.Hidden;
+            stckPanelAfegirNovaCarta.Visibility = Visibility.Hidden;
+            stckPanelAfegirNovaHabilitat.Visibility = Visibility.Hidden;
         }
 
         private void btnHabilitatsMenu_Click(object sender, RoutedEventArgs e)
@@ -100,6 +105,8 @@ namespace Principal
             stckPanelMostrarPartides.Visibility = Visibility.Hidden;
 
             stckPanelAfegirNouUsuari.Visibility = Visibility.Hidden;
+            stckPanelAfegirNovaCarta.Visibility = Visibility.Hidden;
+            stckPanelAfegirNovaHabilitat.Visibility = Visibility.Hidden;
         }
 
         private void btnPartidesMenu_Click(object sender, RoutedEventArgs e)
@@ -110,6 +117,8 @@ namespace Principal
             stckPanelMostrarPartides.Visibility = Visibility.Visible;
 
             stckPanelAfegirNouUsuari.Visibility = Visibility.Hidden;
+            stckPanelAfegirNovaCarta.Visibility = Visibility.Hidden;
+            stckPanelAfegirNovaHabilitat.Visibility = Visibility.Hidden;
         }
 
 
@@ -267,7 +276,7 @@ namespace Principal
                 else if (comboBoxDanyHabilitat.SelectedIndex == 2) dany = 50;
                 else if (comboBoxDanyHabilitat.SelectedIndex == 3) dany = 75;
                 else if (comboBoxDanyHabilitat.SelectedIndex == 4) dany = 125;
-                Habilitat habilitat = new(this.TotesHabilitats.LListahabilitats.Count +1,int.Parse(txtBoxCooldownHabilitat.Text),dany,txtBoxDescripcioHabilitat.Text,txtBoxNomHabilitat.Text);
+                Habilitat habilitat = new(this.TotesHabilitats.LListahabilitats.Count + 1, int.Parse(txtBoxCooldownHabilitat.Text), dany, txtBoxDescripcioHabilitat.Text, txtBoxNomHabilitat.Text);
                 this.TotesHabilitats.AfegirHabilitat(habilitat);
                 this.TotesHabilitats.LListahabilitats.Add(habilitat);
                 dataGridHabilitats.ItemsSource = null;
@@ -284,7 +293,7 @@ namespace Principal
 
         private void btnEliminarHabilitat_Click(object sender, RoutedEventArgs e)
         {
-            foreach(Carta carta in this.TotesCartes.LlistaCartes)
+            foreach (Carta carta in this.TotesCartes.LlistaCartes)
             {
                 if (carta.Habilitats.LListahabilitats.Contains(this.TotesHabilitats.LListahabilitats[dataGridHabilitats.SelectedIndex]))
                 {
@@ -319,7 +328,7 @@ namespace Principal
             {
                 if (this.Administrador.Partides.LlistaPartides.Contains(this.TotesPartides.LlistaPartides[dataGridPartides.SelectedIndex]))
                     this.Administrador.Partides.LlistaPartides.Remove(this.TotesPartides.LlistaPartides[dataGridPartides.SelectedIndex]);
-                this.TotesPartides.EliminarPartida(this.TotesCartes,this.TotesPartides.LlistaPartides[dataGridPartides.SelectedIndex]);
+                this.TotesPartides.EliminarPartida(this.TotesCartes, this.TotesPartides.LlistaPartides[dataGridPartides.SelectedIndex]);
                 this.TotesPartides.LlistaPartides.Remove(this.TotesPartides.LlistaPartides[dataGridPartides.SelectedIndex]);
                 dataGridPartides.ItemsSource = null;
                 dataGridPartides.ItemsSource = this.TotesPartides.LlistaPartides;
@@ -330,5 +339,7 @@ namespace Principal
                 MessageBox.Show("No s'ha pogut eliminar la partida.");
             }
         }
+
+
     }
 }

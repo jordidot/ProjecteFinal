@@ -245,3 +245,5 @@ A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\Programa Cartes\ProjecteFinal\Princi
 A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\Programa Cartes\ProjecteFinal\Principal\obj\Debug\net6.0-windows\Principal.pdb
 A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\Programa Cartes\ProjecteFinal\Principal\obj\Debug\net6.0-windows\Principal.genruntimeconfig.cache
 A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\Programa Cartes\ProjecteFinal\Principal\obj\Debug\net6.0-windows\ref\Principal.dll
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\Programa Cartes\ProjecteFinal\Principal\bin\Debug\net6.0-windows\Principal.xml
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\Programa Cartes\ProjecteFinal\Principal\obj\Debug\net6.0-windows\Principal.xml

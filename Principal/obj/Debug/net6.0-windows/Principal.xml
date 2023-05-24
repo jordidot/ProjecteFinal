@@ -1,0 +1,817 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Principal</name>
+    </assembly>
+    <members>
+        <member name="T:Principal.Administracio">
+            <summary>
+            Administracio
+            </summary>
+        </member>
+        <member name="M:Principal.Administracio.windowsAdministracio_Closing(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Métode de la finestra Administració que guarda les dades a la base de dades quan es tanca la finestra.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.dataGridUsuaris_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració que carrega els usuaris al datagrid un cop oberta la finestra.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.dataGridCartes_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració que carrega les cartes al datagrid un cop oberta la finestra.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.dataGridHabilitats_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració que carrega les habilitats al datagrid un cop oberta la finestra.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.dataGridPartides_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració que carrega les partides al datagrid un cop oberta la finestra.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.btnUsuarisMenu_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració que carrega la vista dels usuaris.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.btnCartesMenu_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració que carrega la vista de les cartes.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.btnHabilitatsMenu_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració que carrega la vista de les habilitats.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.btnPartidesMenu_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració que carrega la vista de les partides.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.btnAfegirNouUsuariPrincipal_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració que carrega la vista de creació d'usuaris.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.btnAfegirNouUsuari_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració afegeix l'usuari creat a la base de dades.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.btnEliminarUsuari_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració elimina l'usuari de la base de dades.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.btnAfegirNovaCartaPrincipal_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració que crida a la vista de la creació de una carta nova.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.comboBoxHabilitat1_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració carrega totes les habilitats al ComboBox 1.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.comboBoxHabilitat2_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració carrega totes les habilitats al ComboBox 2.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.comboBoxHabilitat3_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració carrega totes les habilitats al ComboBox 3.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.comboBoxHabilitat4_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració carrega totes les habilitats al ComboBox 4.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.btnAfegirNovaCarta_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració que afegeix noves cartes a la base de dades.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.btnEliminarCarta_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració elimina la carta seleccionada del data grid.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.comboBoxDanyHabilitat_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració carrega els dany de les habilitats al ComboBox.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.btnAfegirNovaHabilitatPrincipal_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració que crida al StackPanel que mostra la creació d'habilitats.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.btnAfegirNovaHabilitat_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració que afegeix una nova habilitat a la base de dades.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.btnEliminarHabilitat_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració que elimina una habilitat de la base de dades.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.btnEliminarPartida_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Administració que elimina una partida de la base de dades.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Administracio.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Principal.AfegirUnNouMazo">
+            <summary>
+            AfegirUnNouMazo
+            </summary>
+        </member>
+        <member name="M:Principal.AfegirUnNouMazo.stckPanelCartes_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra AfegirUnNouMazo que carrega totes les cartes al stackpanel quan es carrega. (Va creant les cartes i les va afegint)
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.AfegirUnNouMazo.AfegirCarta(System.Object,System.Windows.RoutedEventArgs,System.Int32)">
+            <summary>
+            Mètode de la finestra AfegirUnNouMazo que afegeix les cartes a l'usuari i puja el mazo a la base de dades un cop té les 5 cartes escollides.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+            <param name="id">Li passo l'id de la carta seleccionada.</param>
+        </member>
+        <member name="M:Principal.AfegirUnNouMazo.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Principal.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:Principal.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Principal.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:Principal.CampBatalla">
+            <summary>
+            CampBatalla
+            </summary>
+        </member>
+        <member name="M:Principal.CampBatalla.campBatallaWindow_Closing(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Metode de la finestra CampBatalla que guarda la partida a la base de dades i l'assigna a l'usuari un cop tanca la finestra.
+            </summary>
+            <param name="sender">Objecte que rep per parametre</param>
+            <param name="e">Event intern que relitza per tancar la finestra.</param>
+        </member>
+        <member name="M:Principal.CampBatalla.gridCampBatalla_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metode de la finestra CampBatalla que Carrega les cartes del bot i de l'usuari.
+            </summary>
+            <param name="sender">Objecte que rep per parametre</param>
+            <param name="e">Event intern que relitza per tancar la finestra.</param>
+        </member>
+        <member name="M:Principal.CampBatalla.CrearImatgeCarta(System.String)">
+            <summary>
+            Metode de la finestra CampBatalla que crea un objecte Imatge de la carta.
+            </summary>
+            <param name="path">Rep el path de l'imatge com a parametre.</param>
+            <returns>Retorna la Imatge creada amb el BitMapImage.</returns>
+        </member>
+        <member name="M:Principal.CampBatalla.lstBoxCartaUsuari1_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metode de la finestra CampBatalla que carrega la Carta 1 de l'usuari a la carta principal.
+            </summary>
+            <param name="sender">Objecte que rep per parametre</param>
+            <param name="e">Event intern que relitza per tancar la finestra.</param>
+        </member>
+        <member name="M:Principal.CampBatalla.lstBoxCartaUsuari2_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metode de la finestra CampBatalla que carrega la Carta 2 de l'usuari a la carta principal.
+            </summary>
+            <param name="sender">Objecte que rep per parametre</param>
+            <param name="e">Event intern que relitza per tancar la finestra.</param>
+        </member>
+        <member name="M:Principal.CampBatalla.lstBoxCartaUsuari3_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metode de la finestra CampBatalla que carrega la Carta 3 de l'usuari a la carta principal.
+            </summary>
+            <param name="sender">Objecte que rep per parametre</param>
+            <param name="e">Event intern que relitza per tancar la finestra.</param>
+        </member>
+        <member name="M:Principal.CampBatalla.lstBoxCartaUsuari4_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metode de la finestra CampBatalla que carrega la Carta 4 de l'usuari a la carta principal.
+            </summary>
+            <param name="sender">Objecte que rep per parametre</param>
+            <param name="e">Event intern que relitza per tancar la finestra.</param>
+        </member>
+        <member name="M:Principal.CampBatalla.lstBoxCartaUsuari5_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metode de la finestra CampBatalla que carrega la Carta 5 de l'usuari a la carta principal.
+            </summary>
+            <param name="sender">Objecte que rep per parametre</param>
+            <param name="e">Event intern que relitza per tancar la finestra.</param>
+        </member>
+        <member name="M:Principal.CampBatalla.btnComençaPartida_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metode de la finestra CampBatalla que fa que la partida s'iniciï.
+            </summary>
+            <param name="sender">Objecte que rep per parametre</param>
+            <param name="e">Event intern que relitza per tancar la finestra.</param>
+        </member>
+        <member name="M:Principal.CampBatalla.ContinuarPartida">
+            <summary>
+            Metode de la finestra CampBatalla que fa calculs de la partida i que inicia les habilitats random del bot un cop ataques.(Va restant els torns també)
+            </summary>
+        </member>
+        <member name="M:Principal.CampBatalla.JugarPartida">
+            <summary>
+            Metode de la finestra CampBatalla que va mostrant les diferents habilitats de les cartes un cop es van seleccionant, també inciia els torns.
+            </summary>
+        </member>
+        <member name="M:Principal.CampBatalla.btnHabilitat1_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metode de la finestra CampBatalla que resta la vida al bot de l'habilitat 1 i fa que el bot t'ataqui, va carregant les dades al listbox de el que va succeiint.
+            </summary>
+            <param name="sender">Objecte que rep per parametre</param>
+            <param name="e">Event intern que relitza per tancar la finestra.</param>
+        </member>
+        <member name="M:Principal.CampBatalla.btnHabilitat2_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metode de la finestra CampBatalla que resta la vida al bot de l'habilitat 2 i fa que el bot t'ataqui, va carregant les dades al listbox de el que va succeiint.
+            </summary>
+            <param name="sender">Objecte que rep per parametre</param>
+            <param name="e">Event intern que relitza per tancar la finestra.</param>
+        </member>
+        <member name="M:Principal.CampBatalla.btnHabilitat3_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metode de la finestra CampBatalla que resta la vida al bot de l'habilitat 3 i fa que el bot t'ataqui, va carregant les dades al listbox de el que va succeiint.
+            </summary>
+            <param name="sender">Objecte que rep per parametre</param>
+            <param name="e">Event intern que relitza per tancar la finestra.</param>
+        </member>
+        <member name="M:Principal.CampBatalla.btnHabilitat4_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metode de la finestra CampBatalla que resta la vida al bot de l'habilitat 4 i fa que el bot t'ataqui, va carregant les dades al listbox de el que va succeiint.
+            </summary>
+            <param name="sender">Objecte que rep per parametre</param>
+            <param name="e">Event intern que relitza per tancar la finestra.</param>
+        </member>
+        <member name="M:Principal.CampBatalla.HabilitatRandomBot">
+            <summary>
+            Metode de la finestra CampBatalla que fa els calculs de la habilitat Random que utilitza el bot de la carta que té seleccionada.
+            </summary>
+        </member>
+        <member name="M:Principal.CampBatalla.AmagarBotons(System.String)">
+            <summary>
+            Métode que amaga els botons un cop acabada la partida i mostrá si has guanyat o perdut.
+            </summary>
+            <param name="resultat">String amb el resultat de si has guanyat o has perdut.</param>
+        </member>
+        <member name="M:Principal.CampBatalla.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Principal.Connexions.CartesDB.AfegirCartaBD(Principal.Negoci.Carta)">
+            <summary>
+            Métode de la classe CartesDB que afegeix una carta a la taula cartes de la BD.
+            </summary>
+            <param name="carta">Classe carta que porta informació d'una carta.</param>
+        </member>
+        <member name="M:Principal.Connexions.CartesDB.EliminarCarta(Principal.Negoci.Carta)">
+            <summary>
+            Métode de la classe CartesDB que eliminar una carta a la taula cartes de la BD.
+            </summary>
+            <param name="carta">Classe carta que porta informació d'una carta.</param>
+        </member>
+        <member name="M:Principal.Connexions.CartesDB.ModificarCartes(Principal.Negoci.Cartes)">
+            <summary>
+            Métode de la classe CartesDB que modifica les cartes a la taula cartes de la BD.
+            </summary>
+            <param name="cartes">Classe carta que porta informació d'un list de cartes.</param>
+        </member>
+        <member name="M:Principal.Connexions.CartesDB.RecuperarTotesCartes">
+            <summary>
+            Mètode de la classe CartesDB que recupera totes les cartes de la base de dades.
+            </summary>
+            <returns>Retorna una classe Cartes amb una llista de cartes.</returns>
+        </member>
+        <member name="M:Principal.Connexions.ConnexioDB.Connectar">
+            <summary>
+            Mètode de la classe ConnexioBD que obre la conexió amb la base de dades.
+            </summary>
+            <returns>Retorna un MYsqlConnection amb la connexió oberta.</returns>
+        </member>
+        <member name="M:Principal.Connexions.HabilitatsDB.AfegirHabilitatBD(Principal.Negoci.Habilitat)">
+            <summary>
+            Mètode de la classe HabilitatsDB que afegeix una habilitat a la base de dades.
+            </summary>
+            <param name="habilitat">Habilitat que té totes les dades d'aquesta.</param>
+        </member>
+        <member name="M:Principal.Connexions.HabilitatsDB.EliminarHabilitatBD(Principal.Negoci.Habilitat)">
+            <summary>
+            Mètode de la classe HabilitatsDB que elimina una habilitat a la base de dades.
+            </summary>
+            <param name="habilitat">Habilitat que té totes les dades d'aquesta.</param>
+        </member>
+        <member name="M:Principal.Connexions.HabilitatsDB.ModificarHabilitats(Principal.Negoci.Habilitats)">
+            <summary>
+            Mètode de la classe HabilitatsDB que modifica moltes habilitats a la base de dades.
+            </summary>
+            <param name="habilitat">Classe Habilitats que té una llista amb totes les habilitats.</param>
+        </member>
+        <member name="M:Principal.Connexions.HabilitatsDB.RecuperarHabilitats">
+            <summary>
+            Mètode de la classe HabilitatsDB que recupera totes les habilitats de la base de dades.
+            </summary>
+            <returns>Retorna una classe Habilitats abm una llista de totes les habilitats.</returns>
+        </member>
+        <member name="M:Principal.Connexions.MazosDB.AfegirMazoBD(Principal.Negoci.Mazo)">
+            <summary>
+            Mètode de la classe MazosDB que afegeix un mazo a la base de dades.
+            </summary>
+            <param name="mazo">Classe Mazo que conté tota l'informació d'aquest.</param>
+        </member>
+        <member name="M:Principal.Connexions.MazosDB.EliminarMazoUsuariBD(Principal.Negoci.Usuari)">
+            <summary>
+            Mètode de la classe MazosDB que eliminar un mazo a la base de dades per l'id de l'usuari.
+            </summary>
+            <param name="usuari">Classe Usuari que conté informació d'aquest.</param>
+        </member>
+        <member name="M:Principal.Connexions.MazosDB.EliminarMazoBD(Principal.Negoci.Mazo)">
+            <summary>
+            Mètode de la classe MazosDB que eliminar un mazo a la base de dades per l'id del mazo.
+            </summary>
+            <param name="usuari">Classe Mazo que conté informació d'aquest.</param>
+        </member>
+        <member name="M:Principal.Connexions.MazosDB.RecuperarMazos(Principal.Negoci.Usuari)">
+            <summary>
+            Mètode de la classe MazosDB que recupera el mazo d'un Usuari.
+            </summary>
+            <param name="usuari">Classe Usuari que conté les dades d'aquest.</param>
+            <returns>Retorn un classe Mazo amb l'informació d'aquest.</returns>
+        </member>
+        <member name="M:Principal.Connexions.PartidesDB.AfegirPartidaBD(Principal.Negoci.Partida)">
+            <summary>
+            Mètode de la classe PartidesDB que afegeix una partida a la base de dades.
+            </summary>
+            <param name="partida">Classe Partida que conté tota l'informació d'aquesta.</param>
+        </member>
+        <member name="M:Principal.Connexions.PartidesDB.EliminarPartidaBD(Principal.Negoci.Partida)">
+            <summary>
+            Mètode de la classe PartidesDB que elimina una partida a la base de dades.
+            </summary>
+            <param name="partida">Classe Partida que conté tota l'informació d'aquesta.</param>
+        </member>
+        <member name="M:Principal.Connexions.PartidesDB.RecuperarPartides(Principal.Negoci.Usuari,Principal.Negoci.Cartes)">
+            <summary>
+            Mètode de la classe PartidesDB que recupera les partides de la base de dades.
+            </summary>
+            <returns>Retorna una llista de Partida amb l'informació d'aquestes.</returns>
+        </member>
+        <member name="M:Principal.Connexions.UsuarisDB.AfegirUsuariBD(Principal.Negoci.Usuari)">
+            <summary>
+            Mètode de la classe UsuarisDB que afegeix un usuari a la base de dades.
+            </summary>
+            <param name="usuari">Classe Usuari amb tota l'informació d'aquest.</param>
+        </member>
+        <member name="M:Principal.Connexions.UsuarisDB.AfegirUsuarisBD(Principal.Negoci.Usuaris)">
+            <summary>
+            Mètode de la classe UsuarisDB que afegeix varis usuaris a la base de dades.
+            </summary>
+            <param name="usuaris">Classe Usuaris amb una llista d'Usuari amb tota l'informació d'aquests.</param>
+        </member>
+        <member name="M:Principal.Connexions.UsuarisDB.EliminarUsuari(Principal.Negoci.Usuari)">
+            <summary>
+            Mètode de la classe UsuarisDB que elimina un usuari de la base de dades.
+            </summary>
+            <param name="usuari">Classe Usuari amb tota l'informació d'aquest.</param>
+        </member>
+        <member name="M:Principal.Connexions.UsuarisDB.ModificarUsuari(Principal.Negoci.Usuari)">
+            <summary>
+            Mètode de la classe UsuarisDB que modifica un usuari de la base de dades.
+            </summary>
+            <param name="usuari">Classe Usuari amb tota l'informació d'aquest nou usuari.</param>
+        </member>
+        <member name="M:Principal.Connexions.UsuarisDB.RecuperarUsuariBD">
+            <summary>
+            Mètode de la classe UsuarisDB que recupera tots els usuaris de la base de dades.
+            </summary>
+        </member>
+        <member name="M:Principal.Connexions.UsuarisDB.CanviarImatge(Principal.Negoci.Usuari)">
+            <summary>
+            Mètode de la classe UsuarisDB que modifica l'imatge d'un usuari de la base de dades.
+            </summary>
+            <param name="usuari">Classe Usuari amb tota l'informació d'aquest usuari i l'imatge nova.</param>
+        </member>
+        <member name="T:Principal.Home">
+            <summary>
+            Home
+            </summary>
+        </member>
+        <member name="M:Principal.Home.BtnModificarAliasBefore_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metode que amaga el botó de modificar l'alias de l'usuari i fa visibles els que criden a la classe per modificarlo.
+            </summary>
+            <param name="sender">Objecte rebut.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Home.BtnTancarSessioBenvingut_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metode que tanca la finestra actual i torna a obrir la del main.
+            </summary>
+            <param name="sender">Objecte rebut.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Home.tabItemMazos_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Metode que carrega els Mazos de l'Usuari loggejat un cop carregada la pestanya.
+            </summary>
+            <param name="sender">Objecte rebut.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Home.CrearLabelCarta(System.String)">
+            <summary>
+            Mètode de la finestra Home que crea un objecte Label per posar el nom de la carta.
+            </summary>
+            <param name="nom">Li paso el nom de la carta.</param>
+            <returns>Retorna el Label amb el nom de la carta.</returns>
+        </member>
+        <member name="M:Principal.Home.CrearLabelCartaDescripcio(System.String)">
+            <summary>
+            Mètode de la finestra Home que crea un objecte Imatge de la carta.
+            </summary>
+            <param name="descripcio">Rep la descripcio de la carta.</param>
+            <returns>Retorna la Imatge creada amb el BitMapImage.</returns>
+        </member>
+        <member name="M:Principal.Home.CrearImatgeCarta(System.String)">
+            <summary>
+            Mètode de la finestra Home que crea un objecte Imatge de la carta.
+            </summary>
+            <param name="path">Rep el path de l'imatge com a parametre.</param>
+            <returns>Retorna la Imatge creada amb el BitMapImage.</returns>
+        </member>
+        <member name="M:Principal.Home.CrearListBoxHabilitats(System.Collections.Generic.List{Principal.Negoci.Habilitat},System.Int32)">
+            <summary>
+            Mètode de la finestra Home que afegeix les habilitats de les cartes.
+            </summary>
+            <param name="habilitats">Llista d'habilitats.</param>
+            <param name="carta">Id de la carta.</param>
+            <returns>Retorna un List Box amb les habilitats de la carta.</returns>
+        </member>
+        <member name="M:Principal.Home.tabItemPartides_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Mètode de la finestra Home que carrega el data grid de la pestanya partides amb les partides de l'usuari.
+            </summary>
+            <param name="sender">Objecte rebut.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Home.BtnPartidaNova_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Mètode de la finestra Home que obre la finestra de triar el Mazo, per poder jugar la partida.
+            </summary>
+            <param name="sender">Objecte rebut.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Home.btnAfegirMazoRow1_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Mètode de la finestra Home que obre la finestra de afegir un nou Mazo.
+            </summary>
+            <param name="sender">Objecte rebut.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Home.btnEliminarMazoRow1_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Mètode de la finestra Home que elimina el mazo de l'usuari.
+            </summary>
+            <param name="sender">Objecte rebut.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Home.windowHome_Closing(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            Mètode de la finestra Home que guarda les dades al tancar la finestra.
+            </summary>
+            <param name="sender">Objecte rebut.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Home.btnModificarAliasAfter_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Mètode de la finestra Home que activa els botons y modifica l'alias de l'usuari.
+            </summary>
+            <param name="sender">Objecte rebut.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Home.btnAdministracio_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Mètode de la finestra Home que obre la finestra d'Administració i li passa totes les dades.
+            </summary>
+            <param name="sender">Objecte rebut.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Home.btnCanviarImatge_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Mètode de la finestra Home que canvia l'imatge de l'usuari i l'actualitza a la base de dades.
+            </summary>
+            <param name="sender">Objecte rebut.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Home.tabItemPartides_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Mètode de la finestra Home que al fer click en la pestanya Partides redimensiona el tamany de la finestra.
+            </summary>
+            <param name="sender">Objecte rebut.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Home.tabItemBenvingut_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Mètode de la finestra Home que al fer click en la pestanya Benvingut redimensiona el tamany de la finestra.
+            </summary>
+            <param name="sender">Objecte rebut.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Home.tabItemMazos_GotFocus(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Mètode de la finestra Home que al fer click en la pestanya Mazos redimensiona el tamany de la finestra.
+            </summary>
+            <param name="sender">Objecte rebut.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Home.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Principal.MainWindow">
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:Principal.MainWindow.BtnRegistrarmeLogin_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Mètode de la finestra MainWindow(Login) que obre la finestra de Registre i tanca la actual.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.MainWindow.BtnIniciarSessio_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Mètode de la finestra MainWindow(Login) que comprova si l'usuari existeix a la base de dades. Si existeix obre la finestra Home i tanca aquesta.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Principal.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Bot.GenerarCartes(Principal.Negoci.Cartes)">
+            <summary>
+            Mètode de la classe Bot que genera les cartes d'aquest de manera random.
+            </summary>
+            <param name="cartes">Classe Cartes que conté una llista de totes les cartes.</param>
+        </member>
+        <member name="M:Principal.Negoci.Bot.GenerarImatge">
+            <summary>
+            Mètode de la classe Bot que genera l'imatge d'aquest.
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Bot.GenerarNom">
+            <summary>
+            Mètode de la classe Bot que genera el nom d'aquest.
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Cartes.AfegirCarta(Principal.Negoci.Carta)">
+            <summary>
+            Mètode de la classe Cartes que crida a la classe CartesDb per afegir una carta.
+            </summary>
+            <param name="carta">Classe Carta que rep l'informació d'aquesta.</param>
+        </member>
+        <member name="M:Principal.Negoci.Cartes.EliminarCarta(Principal.Negoci.Carta)">
+            <summary>
+            Mètode de la classe Cartes que crida a la classe CartesDb per eliminar una carta.
+            </summary>
+            <param name="carta">Classe Carta que rep l'informació d'aquesta.</param>
+        </member>
+        <member name="M:Principal.Negoci.Cartes.ModificarCartes(Principal.Negoci.Cartes)">
+            <summary>
+            Mètode de la classe Cartes que crida a la classe CartesDb per modificar unes cartes.
+            </summary>
+            <param name="cartes">Classe Cartes que rep una llista amb l'informació d'aquestes.</param>
+        </member>
+        <member name="M:Principal.Negoci.Cartes.RecuperarTotesCartes">
+            <summary>
+            Mètode de la classe Cartes que crida a la classe CartesDb per recuperar totes les cartes.
+            </summary>
+            <returns>Retorna una classe Cartes amb una llista de totes les cartes recuperades de la BD.</returns>
+        </member>
+        <member name="M:Principal.Negoci.Habilitats.AfegirHabilitat(Principal.Negoci.Habilitat)">
+            <summary>
+            Mètode de la classe Habilitats que crida a la classe HabilitatsDB per afegir una habilitat a la base de dades.
+            </summary>
+            <param name="habilitat">Classe Habilitat amb l'informació d'aquesta.</param>
+        </member>
+        <member name="M:Principal.Negoci.Habilitats.EliminarHabilitat(Principal.Negoci.Habilitat)">
+            <summary>
+            Mètode de la classe Habilitats que crida a la classe HabilitatsDB per eliminar una habilitat a la base de dades.
+            </summary>
+            <param name="habilitat">Classe Habilitat amb l'informació d'aquesta.</param>
+        </member>
+        <member name="M:Principal.Negoci.Habilitats.ModificarHabilitats(Principal.Negoci.Habilitats)">
+            <summary>
+            Mètode de la classe Habilitats que crida a la classe HabilitatsDB per modificar habilitats a la base de dades.
+            </summary>
+            <param name="habilitats">Classe Habilitats amb una llista de Habilitat amb l'informació d'aquestes.</param>
+        </member>
+        <member name="M:Principal.Negoci.Habilitats.RecuperarHabilitats">
+            <summary>
+            Mètode de la classe Habilitats que crida a la classe HabilitatsDB per recuperar totes les habilitats de la base de dades.
+            </summary>
+            <returns>Retorna una llista d'Habilitat amb imformació de la base de dades.</returns>
+        </member>
+        <member name="M:Principal.Negoci.Mazos.AfegirMazoBD(Principal.Negoci.Usuari,Principal.Negoci.Mazo)">
+            <summary>
+            Mètode de la classe Mazos que comprova si l'usuari té el mateix mazo i si el nom del mazo es correcte si es així crida a la classe MazosDB per afegir el mazo a la base de dades.
+            </summary>
+            <param name="usuari">Classe Usuari amb l'informació d'aquest.</param>
+            <param name="m">Classe Mazo amb l'informació d'aquest.</param>
+        </member>
+        <member name="M:Principal.Negoci.Mazos.EliminarMazo(Principal.Negoci.Mazo)">
+            <summary>
+            Mètode de la classe Mazos que crida a la classe MazosDb per eliminar un mazo.
+            </summary>
+            <param name="mazo">Classe Mazo amb l'informació d'aquest.</param>
+        </member>
+        <member name="M:Principal.Negoci.Mazos.RecuperaQuantitat">
+            <summary>
+            Mètode de la classe Mazos que crida a la classe MazosDB per saber la quantitat que hi ha a la base de dades.        
+            </summary>
+            <returns>Retorna un integer amb la quantitat de mazos.</returns>
+        </member>
+        <member name="M:Principal.Negoci.Mazos.RecuperarMazos(Principal.Negoci.Usuari,Principal.Negoci.Cartes)">
+            <summary>
+            Mètode de la classe Mazos que crida a la classe MazosDB per recuperar tots els mazos.
+            </summary>
+            <param name="usuari">Classe Usuariq que conté ifnromació d'aquest.</param>
+            <param name="cartes">Classe Cartes que conté una llista amb totes les cartes.</param>
+            <returns>Retorna una classe Mazos amb el Mazo de l'usuari.</returns>
+        </member>
+        <member name="M:Principal.Negoci.Partides.AfegirPartida(Principal.Negoci.Cartes,Principal.Negoci.Partida)">
+            <summary>
+            Mètode de la classe Partides que crida a la classe PartidesDB per afegir una partida a la base de dades.
+            </summary>
+            <param name="cartes">Classe Cartes que conté una llista de Carta amb tota l'informació d'aquestes.</param>
+            <param name="partida">Classe Partida que conté tota l'informació d'aquesta.</param>
+        </member>
+        <member name="M:Principal.Negoci.Partides.EliminarPartida(Principal.Negoci.Cartes,Principal.Negoci.Partida)">
+            <summary>
+            Mètode de la classe Partides que crida a la classe PartidesDB per eliminar una partida a la base de dades.
+            </summary>
+            <param name="cartes">Classe Cartes que conté una llista de Carta amb tota l'informació d'aquestes.</param>
+            <param name="partida">Classe Partida que conté tota l'informació d'aquesta.</param>
+        </member>
+        <member name="M:Principal.Negoci.Partides.RecuperarPartides(Principal.Negoci.Usuari,Principal.Negoci.Cartes)">
+            <summary>
+            Mètode de la classe Partides que crida a la classe PartidesDB per recuperar les partides.
+            </summary>
+            <param name="usuari">Classe Usuari que conté tota l'informació d'aquest.</param>
+            <param name="cartes">Classe Cartes que conté una llista de Carta amb tota l'informació d'aquestes.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Principal.Negoci.Usuari.CambiarImatge(Principal.Negoci.Usuari)">
+            <summary>
+            Mètode de la classe Usuari que crida a la classe UsuarisDB per canviar l'imatge del usuari.
+            </summary>
+            <param name="usuari">Classe Usuari que conté l'informació d'aquest.</param>
+        </member>
+        <member name="M:Principal.Negoci.Usuaris.AfegirUsuari(Principal.Negoci.Usuari)">
+            <summary>
+            Mètode de la classe Usuaris que crida a la classe UsuarisDB per poder afegir un usuari.
+            </summary>
+            <param name="usuari">Classe Usuari que conté l'informació d'aquest.</param>
+        </member>
+        <member name="M:Principal.Negoci.Usuaris.AfegirUsuaris(Principal.Negoci.Usuaris)">
+            <summary>
+            Mètode de la classe Usuaris que crida a la classe UsuarisDB per poder afegir molts usuaris.
+            </summary>
+            <param name="usuaris">Classe Usuaris que conté una llista d'Usuari amb l'informació d'aquests.</param>
+        </member>
+        <member name="M:Principal.Negoci.Usuaris.EliminarUsuari(Principal.Negoci.Usuari)">
+            <summary>
+            Mètode de la classe Usuaris que crida a la classe UsuarisDB per poder eliminar un usuari.
+            </summary>
+            <param name="usuari">Classe Usuari que conté l'informació d'aquest.</param>
+        </member>
+        <member name="M:Principal.Negoci.Usuaris.ModificarUsuari(Principal.Negoci.Usuari)">
+            <summary>
+            Mètode de la classe Usuaris que crida a la classe UsuarisDB per poder modificar un usuari.
+            </summary>
+            <param name="usuari">Classe Usuari que conté l'informació d'aquest.</param>
+        </member>
+        <member name="M:Principal.Negoci.Usuaris.RecuperarUsuaris">
+            <summary>
+            Mètode de la classe Usuaris que crida a la classe UsuarisDB per poder recuperar usuaris de la base de dades.
+            </summary>
+            <returns>Retorna una llista d'Usuari amb tots l'informació d'aquests.</returns>
+        </member>
+        <member name="T:Principal.Registre">
+            <summary>
+            Registre
+            </summary>
+        </member>
+        <member name="M:Principal.Registre.BtntornarLogin_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Registre que tanca la finestra actual i obre la finestra del login.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Registre.btnRegistre_Click(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Métode de la finestra Registre que si totes les dades estan correctes inserta l'usuari nou registrat a la base de dades.
+            </summary>
+            <param name="sender">Objecte que rep.</param>
+            <param name="e">Event intern.</param>
+        </member>
+        <member name="M:Principal.Registre.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>

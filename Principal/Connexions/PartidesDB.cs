@@ -21,7 +21,7 @@ namespace Principal.Connexions
         //Constructors
         public PartidesDB(Cartes cartes,Partida partida, Usuaris usuaris)
         {
-            ConnexioBD = new ConnexioDB("", "127.0.0.1", "cartesdb", "root");
+            ConnexioBD = new ConnexioDB();
             this.TotsUsuaris = usuaris;
             this.TotesPartides = new(this.TotsUsuaris);
             this.TotesCartes = cartes;
@@ -45,6 +45,7 @@ namespace Principal.Connexions
             finally
             {
                 ConnexioBD.Connectar().Close();
+                MySqlConnection.ClearAllPools();
             }
         }
         /// <summary>
@@ -65,6 +66,7 @@ namespace Principal.Connexions
             finally
             {
                 ConnexioBD.Connectar().Close();
+                MySqlConnection.ClearAllPools();
             }
         }
         /// <summary>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "A:\\GSDAW-Asignaturas\\ProjecteFinalEloiJordi\\Programa Cartes\\ProjecteFinal\\Principal\\Principal.csproj": {}
+    "A:\\GSDAW-Asignaturas\\ProjecteFinalEloiJordi\\ProgramaCartes\\Principal\\Principal.csproj": {}
   },
   "projects": {
-    "A:\\GSDAW-Asignaturas\\ProjecteFinalEloiJordi\\Programa Cartes\\ProjecteFinal\\Principal\\Principal.csproj": {
+    "A:\\GSDAW-Asignaturas\\ProjecteFinalEloiJordi\\ProgramaCartes\\Principal\\Principal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\GSDAW-Asignaturas\\ProjecteFinalEloiJordi\\Programa Cartes\\ProjecteFinal\\Principal\\Principal.csproj",
+        "projectUniqueName": "A:\\GSDAW-Asignaturas\\ProjecteFinalEloiJordi\\ProgramaCartes\\Principal\\Principal.csproj",
         "projectName": "Principal",
-        "projectPath": "A:\\GSDAW-Asignaturas\\ProjecteFinalEloiJordi\\Programa Cartes\\ProjecteFinal\\Principal\\Principal.csproj",
+        "projectPath": "A:\\GSDAW-Asignaturas\\ProjecteFinalEloiJordi\\ProgramaCartes\\Principal\\Principal.csproj",
         "packagesPath": "C:\\Users\\jscll\\.nuget\\packages\\",
-        "outputPath": "A:\\GSDAW-Asignaturas\\ProjecteFinalEloiJordi\\Programa Cartes\\ProjecteFinal\\Principal\\obj\\",
+        "outputPath": "A:\\GSDAW-Asignaturas\\ProjecteFinalEloiJordi\\ProgramaCartes\\Principal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jscll\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,6 +43,10 @@
             "MySqlConnector": {
               "target": "Package",
               "version": "[2.2.6, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             }
           },
           "imports": [

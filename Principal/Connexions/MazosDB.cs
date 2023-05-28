@@ -21,7 +21,7 @@ namespace Principal.Connexions
         public MazosDB(Cartes cartes)
         {
             this.TotesCartes = cartes;
-            ConnexioBD = new ConnexioDB("", "127.0.0.1", "cartesdb", "root");
+            ConnexioBD = new ConnexioDB();
             Mazos = new Mazos();
         }
         //Metodes
@@ -43,6 +43,7 @@ namespace Principal.Connexions
             finally
             {
                 ConnexioBD.Connectar().Close();
+                MySqlConnection.ClearAllPools();
             }
 
 
@@ -65,6 +66,7 @@ namespace Principal.Connexions
             finally
             {
                 ConnexioBD.Connectar().Close();
+                MySqlConnection.ClearAllPools();
             }
         }
         /// <summary>
@@ -85,6 +87,7 @@ namespace Principal.Connexions
             finally
             {
                 ConnexioBD.Connectar().Close();
+                MySqlConnection.ClearAllPools();
             }
         }
         /// <summary>

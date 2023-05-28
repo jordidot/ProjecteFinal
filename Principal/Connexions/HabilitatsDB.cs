@@ -18,7 +18,7 @@ namespace Principal.Connexions
         public HabilitatsDB()
         {
             Habilitats = new Habilitats();
-            ConnexioBD = new ConnexioDB("", "localhost", "cartesdb", "root");
+            ConnexioBD = new ConnexioDB();
         }
         //Metodes
         /// <summary>
@@ -39,6 +39,7 @@ namespace Principal.Connexions
             finally
             {
                 ConnexioBD.Connectar().Close();
+                MySqlConnection.ClearAllPools();
             }
         }
 
@@ -60,6 +61,7 @@ namespace Principal.Connexions
             finally
             {
                 ConnexioBD.Connectar().Close();
+                MySqlConnection.ClearAllPools();
             }
         }
         /// <summary>
@@ -73,7 +75,7 @@ namespace Principal.Connexions
             {
                 try
                 {
-                    var comanda = new MySqlCommand("UPDATE habilitats SET nom='" + habilitat.Nom + "', cooldown=" + habilitat.Cooldown + ", dany=" + habilitat.Dany + " WHERE id=" + habilitat.Id + " ;", ConnexioBD.Connectar());
+                    var comanda = new MySqlCommand("UPDATE habilitats SET nom='" + habilitat.Nom + "', cooldown=" + habilitat.Cooldown + ", dany=" + habilitat.Dany + ",descripcio='"+habilitat.Descripcio+"' WHERE id=" + habilitat.Id + " ;", ConnexioBD.Connectar());
                     comanda.ExecuteNonQuery();
                 }
                 catch (Exception ex)
@@ -83,6 +85,7 @@ namespace Principal.Connexions
                 finally
                 {
                     ConnexioBD.Connectar().Close();
+                    MySqlConnection.ClearAllPools();
                 }
             }
         }

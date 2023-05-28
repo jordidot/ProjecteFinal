@@ -40,7 +40,8 @@ namespace Principal
         /// <param name="e">Event intern.</param>
         private void windowsAdministracio_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            this.TotesCartes.ModificarCartes(this.TotesCartes);
+            try{this.TotesCartes.ModificarCartes(this.TotesCartes);} catch (Exception ex) { }
+            try{this.TotesHabilitats.ModificarHabilitats(this.TotesHabilitats);}catch (Exception ex) { }
             Home home = new(this.Administrador, this.TotesCartes, this.TotesHabilitats, this.TotesPartides, this.TotsUsuaris);
             home.Show();
         }

@@ -18,6 +18,11 @@ namespace Principal.Negoci
         {
             this.LlistaMazos = new List<Mazo>();
         }
+        public Mazos(Cartes cartes)
+        {
+            this.TotesCartes = cartes;
+            this.LlistaMazos = new List<Mazo>();
+        }
         public Mazos(List<Mazo> llistaMazos)
         {
             this.LlistaMazos = llistaMazos;
@@ -28,25 +33,16 @@ namespace Principal.Negoci
         /// </summary>
         /// <param name="usuari">Classe Usuari amb l'informació d'aquest.</param>
         /// <param name="m">Classe Mazo amb l'informació d'aquest.</param>
-        public void AfegirMazoBD(Usuari usuari, Mazo m)
+        public void AfegirMazoBD(Mazo mazo)
         {
-            string nomvalidar = m.Nom;
-            bool mazoTrobada = false;
-            bool nomvalid = true;
-
-            //Aquest foreach recorre la llista de mazos de la base de dades, per buscar si el mazo existeix.
-            if (usuari.Mazos.LlistaMazos.Contains(m)) mazoTrobada = true;
-            if (mazoTrobada) MessageBox.Show("No es pot afegir aquest mazo.");
-            else
+            try
             {
-                for (int i = 0; i < nomvalidar.Length; i++)
-                    if (i > 16) nomvalid = false;
-                if (nomvalid)
-                {
-                    MazosDB mazosdb = new(this.TotesCartes);
-                    mazosdb.AfegirMazoBD(m);
-                }
-
+                MazosDB mazosdb = new(this.TotesCartes);
+                mazosdb.AfegirMazoBD(mazo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut afegir el mazo.");
             }
         }
         /// <summary>
@@ -59,7 +55,26 @@ namespace Principal.Negoci
             {
                 MazosDB mazosdb = new(this.TotesCartes);
                 mazosdb.EliminarMazoBD(mazo);
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No s'ha pogut eliminar el mazo.");
+            }
+
+
+        }
+        /// <summary>
+        /// Mètode de la classe Mazos que crida a la classe MazosDb per eliminar un mazo.
+        /// </summary>
+        /// <param name="usuari">Classe Usuari amb l'informació d'aquest.</param>
+        public void EliminarMazoUsuari(Usuari usuari)
+        {
+            try
+            {
+                MazosDB mazosdb = new(this.TotesCartes);
+                mazosdb.EliminarMazoUsuariBD(usuari);
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("No s'ha pogut eliminar el mazo.");
             }
@@ -81,7 +96,7 @@ namespace Principal.Negoci
         /// <param name="usuari">Classe Usuariq que conté ifnromació d'aquest.</param>
         /// <param name="cartes">Classe Cartes que conté una llista amb totes les cartes.</param>
         /// <returns>Retorna una classe Mazos amb el Mazo de l'usuari.</returns>
-        public Mazos RecuperarMazos(Usuari usuari,Cartes cartes)
+        public Mazos RecuperarMazos(Usuari usuari, Cartes cartes)
         {
             MazosDB mazosdb = new(cartes);
             return mazosdb.RecuperarMazos(usuari);

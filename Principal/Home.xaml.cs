@@ -345,16 +345,16 @@ namespace Principal
         {
             if (this.Usuari.Mazos.LlistaMazos.Count == 1)
             {
-                MazosDB afegir = new(this.TotesCartes);
-                afegir.EliminarMazoUsuariBD(Usuari);
+                Mazos afegir = new(this.TotesCartes);
+                afegir.EliminarMazoUsuari(Usuari);
                 afegir.AfegirMazoBD(this.Usuari.Mazos.LlistaMazos[0]);
             }
             else
             {
-                MazosDB mazos = new(this.TotesCartes);
-                mazos.EliminarMazoUsuariBD(Usuari);
+                Mazos mazos = new(this.TotesCartes);
+                mazos.EliminarMazoUsuari(Usuari);
             }
-            UsuarisDB usuari = new();
+            Usuaris usuari = new();
             usuari.ModificarUsuari(this.Usuari);
         }
         /// <summary>

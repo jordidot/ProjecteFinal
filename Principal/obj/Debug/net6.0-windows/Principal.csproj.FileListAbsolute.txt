@@ -247,3 +247,39 @@ A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\Programa Cartes\ProjecteFinal\Princi
 A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\Programa Cartes\ProjecteFinal\Principal\obj\Debug\net6.0-windows\ref\Principal.dll
 A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\Programa Cartes\ProjecteFinal\Principal\bin\Debug\net6.0-windows\Principal.xml
 A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\Programa Cartes\ProjecteFinal\Principal\obj\Debug\net6.0-windows\Principal.xml
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\bin\Debug\net6.0-windows\Principal.exe
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\bin\Debug\net6.0-windows\Principal.deps.json
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\bin\Debug\net6.0-windows\Principal.runtimeconfig.json
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\bin\Debug\net6.0-windows\Principal.dll
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\bin\Debug\net6.0-windows\Principal.pdb
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\bin\Debug\net6.0-windows\Principal.xml
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\bin\Debug\net6.0-windows\MySqlConnector.dll
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\Principal.csproj.AssemblyReference.cache
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\Administracio.g.cs
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\AfegirUnNouMazo.g.cs
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\CampBatalla.g.cs
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\Home.g.cs
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\MainWindow.g.cs
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\Registre.g.cs
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\App.g.cs
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\Principal_MarkupCompile.cache
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\Principal_MarkupCompile.lref
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\Administracio.baml
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\AfegirUnNouMazo.baml
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\CampBatalla.baml
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\Home.baml
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\MainWindow.baml
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\Registre.baml
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\Principal.g.resources
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\Principal.GeneratedMSBuildEditorConfig.editorconfig
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\Principal.AssemblyInfoInputs.cache
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\Principal.AssemblyInfo.cs
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\Principal.csproj.CoreCompileInputs.cache
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\Principal.csproj.CopyComplete
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\Principal.dll
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\refint\Principal.dll
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\Principal.xml
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\Principal.pdb
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\Principal.genruntimeconfig.cache
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\obj\Debug\net6.0-windows\ref\Principal.dll
+A:\GSDAW-Asignaturas\ProjecteFinalEloiJordi\ProgramaCartes\Principal\bin\Debug\net6.0-windows\Newtonsoft.Json.dll

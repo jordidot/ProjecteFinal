@@ -704,7 +704,7 @@
             </summary>
             <returns>Retorna una llista d'Habilitat amb imformació de la base de dades.</returns>
         </member>
-        <member name="M:Principal.Negoci.Mazos.AfegirMazoBD(Principal.Negoci.Usuari,Principal.Negoci.Mazo)">
+        <member name="M:Principal.Negoci.Mazos.AfegirMazoBD(Principal.Negoci.Mazo)">
             <summary>
             Mètode de la classe Mazos que comprova si l'usuari té el mateix mazo i si el nom del mazo es correcte si es així crida a la classe MazosDB per afegir el mazo a la base de dades.
             </summary>
@@ -716,6 +716,12 @@
             Mètode de la classe Mazos que crida a la classe MazosDb per eliminar un mazo.
             </summary>
             <param name="mazo">Classe Mazo amb l'informació d'aquest.</param>
+        </member>
+        <member name="M:Principal.Negoci.Mazos.EliminarMazoUsuari(Principal.Negoci.Usuari)">
+            <summary>
+            Mètode de la classe Mazos que crida a la classe MazosDb per eliminar un mazo.
+            </summary>
+            <param name="usuari">Classe Usuari amb l'informació d'aquest.</param>
         </member>
         <member name="M:Principal.Negoci.Mazos.RecuperaQuantitat">
             <summary>

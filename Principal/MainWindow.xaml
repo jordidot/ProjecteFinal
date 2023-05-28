@@ -13,11 +13,11 @@
 
         <StackPanel Margin="252,74,0,42" HorizontalAlignment="Left">
             <Label Content="Nom d'usuari" Foreground="White"/>
-            <TextBox x:Name="txtBoxNomUsuari" Text="jordi" TextWrapping="Wrap" Foreground="White" Background="#FF4E4E4E" Width="348" BorderBrush="{x:Null}" FontSize="20" FontFamily="Doppio One" />
+            <TextBox x:Name="txtBoxNomUsuari" Text="" TextWrapping="Wrap" Foreground="White" Background="#FF4E4E4E" Width="348" BorderBrush="{x:Null}" FontSize="20" FontFamily="Doppio One" />
             <Label Content="" Background="white" Height="1" Width="400"/>
             <Label/>
             <Label Content="Contrasenya" Foreground="White"/>
-            <PasswordBox x:Name="pwdBoxContrasenyaUsuari" Password="123456" Width="350"  Foreground="White" Background="#FF4E4E4E" BorderBrush="{x:Null}" FontSize="20" FontFamily="Doppio One" />
+            <PasswordBox x:Name="pwdBoxContrasenyaUsuari" Password="" Width="350"  Foreground="White" Background="#FF4E4E4E" BorderBrush="{x:Null}" FontSize="20" FontFamily="Doppio One" />
             <Label Content="" Background="White" Height="1" Width="400"/>
             <Label/>
             <Label/>

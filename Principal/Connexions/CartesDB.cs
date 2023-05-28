@@ -19,7 +19,7 @@ namespace Principal.Connexions
         //Inicialitzo la connexio a la base de dades.
         public CartesDB()
         {
-            connexioBD = new ConnexioDB("", "localhost", "cartesdb", "root");
+            connexioBD = new ConnexioDB();
             cartes = new Cartes();
         }
         public Cartes Cartes { get { return cartes; } set { this.cartes = value; } }
@@ -45,6 +45,7 @@ namespace Principal.Connexions
             finally
             {
                 ConnexioBD.Connectar().Close();
+                MySqlConnection.ClearAllPools();
             }
         }
         /// <summary>
@@ -65,6 +66,7 @@ namespace Principal.Connexions
             finally
             {
                 ConnexioBD.Connectar().Close();
+                MySqlConnection.ClearAllPools();
             }
         }
         /// <summary>
@@ -88,6 +90,7 @@ namespace Principal.Connexions
                 finally
                 {
                     ConnexioBD.Connectar().Close();
+                    MySqlConnection.ClearAllPools();
                 }
             }
 
@@ -110,7 +113,7 @@ namespace Principal.Connexions
                 {
                     HabilitatsDB habilitats = new();
                     //Creo la carta i li passo tots els parametres.
-                    Carta carta = new(llegir.GetInt32(0), llegir.GetString(1), llegir.GetString(2), llegir.GetString(3), habilitats.Habilitats);
+                    Carta carta = new(llegir.GetInt32(0), llegir.GetString(1), llegir.GetString(2).Replace('´', '\''), llegir.GetString(3), habilitats.Habilitats);
                     carta.Habilitats = habilitats.RecuperarHabilitats();
                     //Afegeixo la carta a la llista de cartes.
                     cartes.LlistaCartes.Add(carta);

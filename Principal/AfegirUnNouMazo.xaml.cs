@@ -48,7 +48,7 @@ namespace Principal
         /// <param name="e">Event intern.</param>
         private void stckPanelCartes_Loaded(object sender, RoutedEventArgs e)
         {
-
+            int contadorHabilitats = 0;
             foreach (Carta carta in TotesCartes.LlistaCartes)
             {
                 ListBox cartaList = new();
@@ -69,12 +69,17 @@ namespace Principal
                 descripcioCarta.Padding = new Thickness(10);
                 //Afegeixo un listbox amb les habilitats.
                 ListBox habilitatsCarta = new();
+                
                 habilitatsCarta.HorizontalContentAlignment = HorizontalAlignment.Center;
                 habilitatsCarta.Width = 200;
-                habilitatsCarta.Items.Add(carta.Habilitats.LListahabilitats[0].Nom);
-                habilitatsCarta.Items.Add(carta.Habilitats.LListahabilitats[1].Nom);
-                habilitatsCarta.Items.Add(carta.Habilitats.LListahabilitats[2].Nom);
-                habilitatsCarta.Items.Add(carta.Habilitats.LListahabilitats[3].Nom);
+                habilitatsCarta.Items.Add(carta.Habilitats.LListahabilitats[contadorHabilitats].Nom);
+                contadorHabilitats++;
+                habilitatsCarta.Items.Add(carta.Habilitats.LListahabilitats[contadorHabilitats].Nom);
+                contadorHabilitats++;
+                habilitatsCarta.Items.Add(carta.Habilitats.LListahabilitats[contadorHabilitats].Nom);
+                contadorHabilitats++;
+                habilitatsCarta.Items.Add(carta.Habilitats.LListahabilitats[contadorHabilitats].Nom);
+                contadorHabilitats++;
                 //Botó que fará que s'afegeixi la carta.
                 Button botoMazo = new();
                 botoMazo.Content = "Afegir " + carta.Nom;
@@ -118,16 +123,11 @@ namespace Principal
                         this.Usuari.Mazos.LlistaMazos.Clear();
                         this.Usuari.Mazos.LlistaMazos.Add(mazo);
                         MessageBox.Show("Mazo afegit correctament.");
-                        Home home = new(this.Usuari, this.TotesCartes, this.TotesHabilitats, this.TotesPartides, this.TotsUsuaris);
-                        home.Show();
                         this.Close();
-
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show("No s'ha pogut afegir el mazo.");
-                        Home home = new(this.Usuari, this.TotesCartes, this.TotesHabilitats, this.TotesPartides, this.TotsUsuaris);
-                        home.Show();
                         this.Close();
                     }
                 }
@@ -136,10 +136,12 @@ namespace Principal
             {
                 MessageBox.Show("No s'ha pogut afegir la carta selccionada.");
             }
-
-
         }
 
- 
+        private void windowAfegirNouMazo_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Home home = new(this.Usuari, this.TotesCartes, this.TotesHabilitats, this.TotesPartides, this.TotsUsuaris);
+            home.Show();
+        }
     }
 }

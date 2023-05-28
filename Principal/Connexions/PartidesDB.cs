@@ -9,16 +9,40 @@ using MySqlConnector;
 
 namespace Principal.Connexions
 {
+    /// <summary>
+    /// Classe PartidesDB
+    /// </summary>
     public class PartidesDB
     {
         //Atributs 
+        /// <summary>
+        /// Quantiat de Partides
+        /// </summary>
         public int Quantitat { get; set; }
+        /// <summary>
+        /// Connexio a la base de dades
+        /// </summary>
         public ConnexioDB ConnexioBD { get; set; }
+        /// <summary>
+        /// Llista de totes les cartes
+        /// </summary>
         public Cartes TotesCartes { get; set; }
+        /// <summary>
+        /// Llista de Totes les partides
+        /// </summary>
         public Partides TotesPartides { get; set; }
+        /// <summary>
+        /// Llista de tots els Usuaris
+        /// </summary>
         public Usuaris TotsUsuaris { get; set; }
 
         //Constructors
+        /// <summary>
+        /// Constructor Partides DB
+        /// </summary>
+        /// <param name="cartes">Llista de cartes</param>
+        /// <param name="partida">Partida</param>
+        /// <param name="usuaris">Llista d'uusaris</param>
         public PartidesDB(Cartes cartes,Partida partida, Usuaris usuaris)
         {
             ConnexioBD = new ConnexioDB();

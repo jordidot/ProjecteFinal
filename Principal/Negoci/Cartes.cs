@@ -8,16 +8,29 @@ using System.Windows;
 
 namespace Principal.Negoci
 {
+    /// <summary>
+    /// Classe Cartes
+    /// </summary>
     public class Cartes
     {
         //Atributs
+        /// <summary>
+        /// Llista de Cartes
+        /// </summary>
         public List<Carta> LlistaCartes { get; set; }
 
         //Constructors
+        /// <summary>
+        /// Constructor Cartes
+        /// </summary>
         public Cartes()
         {
             this.LlistaCartes = new List<Carta>();
         }
+        /// <summary>
+        /// Constructor Cartes
+        /// </summary>
+        /// <param name="llistacartes"></param>
         public Cartes(List<Carta> llistacartes)
         {
             this.LlistaCartes = llistacartes;

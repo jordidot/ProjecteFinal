@@ -8,31 +8,52 @@ using System.Windows;
 
 namespace Principal.Negoci
 {
+    /// <summary>
+    /// Classe Mazos
+    /// </summary>
     public class Mazos
     {
-        //Atributs i propietats
+        //Atributs i propietatss
+        /// <summary>
+        /// LLista de Mazos
+        /// </summary>
         public List<Mazo> LlistaMazos { get; set; }
+        /// <summary>
+        /// Totes les cartes
+        /// </summary>
         public Cartes TotesCartes { get; set; }
         //Constructors
+        /// <summary>
+        /// Constructor Mazos
+        /// </summary>
         public Mazos()
         {
+            this.TotesCartes = new();
             this.LlistaMazos = new List<Mazo>();
         }
+        /// <summary>
+        /// Constructor Mazos
+        /// </summary>
+        /// <param name="cartes"></param>
         public Mazos(Cartes cartes)
         {
             this.TotesCartes = cartes;
             this.LlistaMazos = new List<Mazo>();
         }
+        /// <summary>
+        /// Constructor amb llista de Mazos
+        /// </summary>
+        /// <param name="llistaMazos"></param>
         public Mazos(List<Mazo> llistaMazos)
         {
+            this.TotesCartes = new();
             this.LlistaMazos = llistaMazos;
         }
         //Metodes
         /// <summary>
         /// Mètode de la classe Mazos que comprova si l'usuari té el mateix mazo i si el nom del mazo es correcte si es així crida a la classe MazosDB per afegir el mazo a la base de dades.
         /// </summary>
-        /// <param name="usuari">Classe Usuari amb l'informació d'aquest.</param>
-        /// <param name="m">Classe Mazo amb l'informació d'aquest.</param>
+        /// <param name="mazo">Classe Mazo amb l'informació d'aquest.</param>
         public void AfegirMazoBD(Mazo mazo)
         {
             try

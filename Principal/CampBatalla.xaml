@@ -32,14 +32,14 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <!--Vida Usuari-->
-            <Label Content="Vida de l'usuari" HorizontalContentAlignment="Center" Grid.Column="3" Grid.Row="0" Foreground="White" FontSize="30" FontFamily="Bahnschrift"></Label>
+            <Label x:Name="lblVidaUsuariNom" Content="" HorizontalContentAlignment="Center" Grid.Column="3" Grid.Row="0" Foreground="White" FontSize="30" FontFamily="Bahnschrift"></Label>
             <Label x:Name="lblVidaUsuari"  Content="1500" HorizontalContentAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.Row="0" Foreground="White" FontSize="50" FontFamily="Bahnschrift">
                 <Label.Effect>
                     <DropShadowEffect/>
                 </Label.Effect>
             </Label>
             <!--Vida Usuari-->
-            <Label Content="Vida del bot" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Grid.Column="3" Grid.Row="6" Foreground="White" FontSize="30" FontFamily="Bahnschrift"/>
+            <Label x:Name="lblVidaBotNom" Content="" HorizontalContentAlignment="Center" VerticalAlignment="Bottom" Grid.Column="2" Grid.Row="6" Foreground="White" FontSize="30" FontFamily="Bahnschrift" Grid.ColumnSpan="3" Margin="224,0,220,0"/>
             <Label x:Name="lblVidaBot"  Content="1500" HorizontalContentAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.Row="6" FontSize="50" FontFamily="Bahnschrift" Foreground="White">
                 <Label.Effect>
                     <DropShadowEffect/>
@@ -218,16 +218,34 @@
             </ListBox>
         </Grid>
         <!--Labels noms dels mazos a qui pertany cada un d'ells-->
-        <Label Content="Mazo usuari" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift" FontSize="30" FontWeight="Bold" Foreground="White">
+        <Label x:Name="lblMazoUsuariNom" Content="" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift" FontSize="30" FontWeight="Bold" Foreground="White">
             <Label.Effect>
                 <DropShadowEffect/>
             </Label.Effect>
         </Label>
-        <Label Content="Mazo bot" HorizontalAlignment="Left" Margin="1755,922,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift" FontSize="30" FontWeight="Bold" Foreground="White">
+        <Label x:Name="lblMazoBotNom" HorizontalContentAlignment="Right" Content="" Margin="0,100,0,0" VerticalAlignment="Top" FontFamily="Bahnschrift" FontSize="30" FontWeight="Bold" Foreground="White">
             <Label.Effect>
                 <DropShadowEffect/>
             </Label.Effect>
         </Label>
+        <!--Logo League of legends-->
         <Image HorizontalAlignment="Left" Height="136" Margin="10,-13,0,0" VerticalAlignment="Top" Width="222" Source="https://1000logos.net/wp-content/uploads/2020/09/League-of-Legends-Logo-2008.png"/>
+        <!--Imatges de perfil-->
+        <Ellipse Margin="1752,870,10,10">
+            <Ellipse.Effect>
+                <DropShadowEffect/>
+            </Ellipse.Effect>
+            <Ellipse.Fill>
+                <ImageBrush x:Name="imgPerfilBot"></ImageBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Ellipse Margin="15,870,1753,10">
+            <Ellipse.Effect>
+                <DropShadowEffect/>
+            </Ellipse.Effect>
+            <Ellipse.Fill>
+                <ImageBrush x:Name="imgPerfilUsuari"></ImageBrush>
+            </Ellipse.Fill>
+        </Ellipse>
     </Grid>
 </Window>

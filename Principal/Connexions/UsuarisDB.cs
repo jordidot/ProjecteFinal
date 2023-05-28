@@ -10,14 +10,29 @@ using System.Security.Cryptography;
 
 namespace Principal.Connexions
 {
+    /// <summary>
+    /// Classe Usuaris DB
+    /// </summary>
     public class UsuarisDB
     {
         //Atributs
+        /// <summary>
+        /// Quantitat d'usuaris
+        /// </summary>
         public int QuantitatTotal { get; set; }
+        /// <summary>
+        /// Llista de tots els usuaris
+        /// </summary>
         public Usuaris Usuaris { get; set; }
+        /// <summary>
+        /// Connexio a la base de dades
+        /// </summary>
         public ConnexioDB ConnexioBD { get; set; }
        
         //Constructors
+        /// <summary>
+        /// Constructor d'Usuaris DB
+        /// </summary>
         public UsuarisDB()
         {
             ConnexioBD = new ConnexioDB();

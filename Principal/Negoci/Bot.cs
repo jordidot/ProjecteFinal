@@ -6,15 +6,34 @@ using System.Threading.Tasks;
 
 namespace Principal.Negoci
 {
+    /// <summary>
+    /// Classe Bot
+    /// </summary>
     public class Bot
     {
         //Atributs
+        /// <summary>
+        /// Imatge del bot
+        /// </summary>
         public string Imatge { get; set; }
+        /// <summary>
+        /// Nom del bot
+        /// </summary>
         public string Nom { get; set; }
+        /// <summary>
+        /// Cartes del bot
+        /// </summary>
         public Cartes Cartes { get; set; }
+        /// <summary>
+        /// Llista de totes les cartes.
+        /// </summary>
         public Cartes TotesCartes { get; set; }
 
         //Constructors
+        /// <summary>
+        /// Constructor Bot
+        /// </summary>
+        /// <param name="cartes"></param>
         public Bot(Cartes cartes)
         {
             this.Imatge = "";

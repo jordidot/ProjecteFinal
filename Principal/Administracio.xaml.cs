@@ -17,13 +17,39 @@ using System.Windows.Shapes;
 
 namespace Principal
 {
+    /// <summary>
+    /// Finestra Administració
+    /// </summary>
     public partial class Administracio : Window
     {
+        /// <summary>
+        /// Usuari Administrador
+        /// </summary>
         public Usuari Administrador { get; set; }
+        /// <summary>
+        /// Tots els usuaris
+        /// </summary>
         public Usuaris TotsUsuaris { get; set; }
+        /// <summary>
+        /// Totes les cartes
+        /// </summary>
         public Cartes TotesCartes { get; set; }
+        /// <summary>
+        /// Totes les partides
+        /// </summary>
         public Partides TotesPartides { get; set; }
+        /// <summary>
+        /// Totes les habilitats
+        /// </summary>
         public Habilitats TotesHabilitats { get; set; }
+        /// <summary>
+        /// Constrcutor Administració
+        /// </summary>
+        /// <param name="usuari"></param>
+        /// <param name="cartes"></param>
+        /// <param name="partides"></param>
+        /// <param name="habilitats"></param>
+        /// <param name="usuaris"></param>
         public Administracio(Usuari usuari, Cartes cartes, Partides partides, Habilitats habilitats, Usuaris usuaris)
         {
             InitializeComponent();
@@ -280,7 +306,7 @@ namespace Principal
                 habilitatsCartaNova.LListahabilitats.Add(this.TotesHabilitats.LListahabilitats[comboBoxHabilitat2.SelectedIndex]);
                 habilitatsCartaNova.LListahabilitats.Add(this.TotesHabilitats.LListahabilitats[comboBoxHabilitat3.SelectedIndex]);
                 habilitatsCartaNova.LListahabilitats.Add(this.TotesHabilitats.LListahabilitats[comboBoxHabilitat4.SelectedIndex]);
-                Carta carta = new Carta(this.TotesCartes.LlistaCartes.Count + 1, txtBoxNomCarta.Text, txtBoxDescripcioCarta.Text, txtBoxImatgeCarta.Text, habilitatsCartaNova);
+                Carta carta = new(this.TotesCartes.LlistaCartes.Count + 1, txtBoxNomCarta.Text, txtBoxDescripcioCarta.Text, txtBoxImatgeCarta.Text, habilitatsCartaNova);
                 this.TotesCartes.AfegirCarta(carta);
                 this.TotesCartes.LlistaCartes.Add(carta);
                 dataGridCartes.ItemsSource = null;

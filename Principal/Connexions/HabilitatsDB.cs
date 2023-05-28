@@ -9,12 +9,24 @@ using System.Windows;
 
 namespace Principal.Connexions
 {
+    /// <summary>
+    /// Classe Habilitats
+    /// </summary>
     public class HabilitatsDB
     {
         //Atributs
+        /// <summary>
+        /// Llista d'habilitats
+        /// </summary>
         public Habilitats Habilitats { get; set; }
+        /// <summary>
+        /// Connexio a la base de dades
+        /// </summary>
         public ConnexioDB ConnexioBD { get; set; }
         //Constructors
+        /// <summary>
+        /// Constrcutor habilitats
+        /// </summary>
         public HabilitatsDB()
         {
             Habilitats = new Habilitats();
@@ -67,7 +79,7 @@ namespace Principal.Connexions
         /// <summary>
         /// Mètode de la classe HabilitatsDB que modifica moltes habilitats a la base de dades.
         /// </summary>
-        /// <param name="habilitat">Classe Habilitats que té una llista amb totes les habilitats.</param>
+        /// <param name="habilitats">Classe Habilitats que té una llista amb totes les habilitats.</param>
         public void ModificarHabilitats(Habilitats habilitats)
         {
 

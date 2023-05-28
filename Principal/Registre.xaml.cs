@@ -16,9 +16,15 @@ using System.Windows.Shapes;
 
 namespace Principal
 {
+    /// <summary>
+    /// Finestra Registre
+    /// </summary>
     public partial class Registre : Window
     {
         //Constructors
+        /// <summary>
+        /// Constrcutor registre
+        /// </summary>
         public Registre()
         {
             InitializeComponent();

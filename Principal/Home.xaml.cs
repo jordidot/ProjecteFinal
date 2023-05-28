@@ -16,16 +16,39 @@ using System.Windows.Shapes;
 
 namespace Principal
 {
+    /// <summary>
+    /// Finestra home
+    /// </summary>
     public partial class Home : Window
     {
         //Atributs i propietats
+        /// <summary>
+        /// Usuari logejat.
+        /// </summary>
         public Usuari Usuari { get; set; }
+        /// <summary>
+        /// Totes les cartes
+        /// </summary>
         public Cartes TotesCartes { get; set; }
+        /// <summary>
+        /// Totes les habilitats
+        /// </summary>
         public Habilitats TotesHabilitats { get; set; }
+        /// <summary>
+        /// Totes les partides
+        /// </summary>
         public Partides TotesPartides { get; set; }
+        /// <summary>
+        /// Tots els usuaris
+        /// </summary>
         public Usuaris TotsUsuaris { get; set; }
 
         //Constructors
+        /// <summary>
+        /// Constrcutor del Home 2 parametres
+        /// </summary>
+        /// <param name="usuari"></param>
+        /// <param name="cartes"></param>
         public Home(Usuari usuari, Cartes cartes)
         {
             InitializeComponent();
@@ -36,6 +59,14 @@ namespace Principal
             lblAliasBenvingut.Content = usuari.Alias;
             imageProfile.Source = new BitmapImage(new Uri(usuari.ImatgePerfil));
         }
+        /// <summary>
+        /// Constructor del Home ple.
+        /// </summary>
+        /// <param name="usuari"></param>
+        /// <param name="cartes"></param>
+        /// <param name="habilitats"></param>
+        /// <param name="partides"></param>
+        /// <param name="usuaris"></param>
         public Home(Usuari usuari, Cartes cartes, Habilitats habilitats, Partides partides, Usuaris usuaris)
         {
             InitializeComponent();
@@ -444,11 +475,36 @@ namespace Principal
         }
     }
     //Classe que utilitzo per el Data grid de Partides així hem mostra les següents dades de partides al data grid.
+    /// <summary>
+    /// Classe per recollir dades en el datagrid de les partides de l'usuari.
+    /// </summary>
     public class PartidaLLista
     {
+        /// <summary>
+        /// Bot contra el que competeix.
+        /// </summary>
         public string Bot { get; set; }
+        /// <summary>
+        /// Usuari contra el que competeix
+        /// </summary>
         public string Usuari { get; set; }
+        /// <summary>
+        /// Resultats de la partida
+        /// </summary>
         public string Resultat { get; set; }
+        /// <summary>
+        /// Punts de la partida
+        /// </summary>
         public string Punts { get; set; }
+        /// <summary>
+        /// Constrcutor de partida llista
+        /// </summary>
+        public PartidaLLista()
+        {
+            this.Bot = "";
+            this.Resultat = "";
+            this.Usuari = "";
+            this.Punts = "";
+;        }
     }
 }

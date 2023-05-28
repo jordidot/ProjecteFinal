@@ -18,17 +18,49 @@ using System.Windows.Shapes;
 
 namespace Principal
 {
+    /// <summary>
+    /// Finestra Afegir un nou mazo
+    /// </summary>
     public partial class AfegirUnNouMazo : Window
     {
         //Atributs i propietats
+        /// <summary>
+        /// Contador de cartes afegides
+        /// </summary>
         public int Contador { get; set; }
+        /// <summary>
+        /// Usauri logejat
+        /// </summary>
         public Usuari Usuari { get; set; }
+        /// <summary>
+        /// Cartes del mazo que s'esta creant
+        /// </summary>
         public Cartes CartesMazoNou { get; set; }
+        /// <summary>
+        /// Totes les cartes
+        /// </summary>
         public Cartes TotesCartes { get; set; }
+        /// <summary>
+        /// Tots els usuaris
+        /// </summary>
         public Usuaris TotsUsuaris { get; set; }
+        /// <summary>
+        /// Totes les partides
+        /// </summary>
         public Partides TotesPartides { get; set; }
+        /// <summary>
+        /// Totes les habilitats
+        /// </summary>
         public Habilitats TotesHabilitats { get; set; }
         //Constructors
+        /// <summary>
+        /// Constructor Finestra d'Afegir nou mazo
+        /// </summary>
+        /// <param name="usuari"></param>
+        /// <param name="totesCartes"></param>
+        /// <param name="habilitats"></param>
+        /// <param name="partides"></param>
+        /// <param name="usuaris"></param>
         public AfegirUnNouMazo(Usuari usuari,Cartes totesCartes, Habilitats habilitats, Partides partides, Usuaris usuaris)
         {
             InitializeComponent();

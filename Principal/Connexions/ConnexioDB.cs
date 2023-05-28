@@ -10,17 +10,35 @@ using Newtonsoft.Json;
 
 namespace Principal.Connexions
 {
+    /// <summary>
+    /// Classe ConnexioDB
+    /// </summary>
     public class ConnexioDB
     {
         //Atributs
+        /// <summary>
+        /// Nom de la Base de dades
+        /// </summary>
         public string NomBD { get; set; }
+        /// <summary>
+        /// Nom de l'usuari de la BD
+        /// </summary>
         public string UsuariBD { get; set; }
+        /// <summary>
+        /// Contrasenya de l'usuari de la BD
+        /// </summary>
         public string ContrasenyaBD { get; set; }
+        /// <summary>
+        /// Ip o direccio del host de la BD
+        /// </summary>
         public string DireccioHost { get; set; }
 
         //Constructors
         //Assigno totes les dades amb el paràmetres que obtinc.
-        public ConnexioDB(/*string contrasenya, string direcciohost, string nom, string usuari*/)
+        /// <summary>
+        /// Constructor Connexio DB
+        /// </summary>
+        public ConnexioDB()
         {
             StreamReader json = new StreamReader("database.json");
             ConnexioJSON connexio = JsonConvert.DeserializeObject<ConnexioJSON>(json.ReadToEnd());

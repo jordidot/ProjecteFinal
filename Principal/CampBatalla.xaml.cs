@@ -17,20 +17,61 @@ using System.Windows.Threading;
 
 namespace Principal
 {
+    /// <summary>
+    /// Finestra Camp de batalla
+    /// </summary>
     public partial class CampBatalla : Window
     {
         //Atributs
         private Partida partida;
+        /// <summary>
+        /// Carta Seleccionada de l'Usuari
+        /// </summary>
         public Carta CartaSeleccionadaUsuari { get; set; }
+        /// <summary>
+        /// Carta Seleccionada del Bot
+        /// </summary>
         public Carta CartaSeleccionadaBot { get; set; }
+        /// <summary>
+        /// Id de la carta seleccionada del Bot
+        /// </summary>
         public int IdCartaSelecciondaBot { get; set; }
+        /// <summary>
+        /// Habilitats seleccionades
+        /// </summary>
         public Habilitats HabilitatsSeleccionades { get; set; }
+        /// <summary>
+        /// Torns de la partida
+        /// </summary>
         public int Turnos { get; set; }
+        /// <summary>
+        /// Boolea si ha clickat en començar partida.
+        /// </summary>
         public bool HaComençatPartida { get; set; }
+        /// <summary>
+        /// Totes les cartes
+        /// </summary>
         public Cartes TotesCartes { get; set; }
+        /// <summary>
+        /// Tots els usuaris
+        /// </summary>
         public Usuaris TotsUsuaris { get; set; }
+        /// <summary>
+        /// Totes les partides
+        /// </summary>
         public Partides TotesPartides { get; set; }
+        /// <summary>
+        /// Totes les habilitats
+        /// </summary>
         public Habilitats TotesHabilitats { get; set; }
+        /// <summary>
+        /// Constructor del camp de batalla
+        /// </summary>
+        /// <param name="partida"></param>
+        /// <param name="cartes"></param>
+        /// <param name="usuaris"></param>
+        /// <param name="partides"></param>
+        /// <param name="habilitats"></param>
         public CampBatalla(Partida partida, Cartes cartes,Usuaris usuaris,Partides partides,Habilitats habilitats)
         {
             InitializeComponent();
@@ -44,7 +85,12 @@ namespace Principal
             HabilitatsSeleccionades = new();
             this.partida = partida;
             btnComençaPartida.Visibility = Visibility.Visible;
-
+            lblMazoBotNom.Content = "Cartes " +partida.Bot.Nom;
+            lblMazoUsuariNom.Content = "Cartes " + partida.Usuari.Alias;
+            lblVidaBotNom.Content = "Vida " + partida.Bot.Nom;
+            lblVidaUsuariNom.Content = "Vida " + partida.Usuari.Alias;
+            imgPerfilBot.ImageSource = new BitmapImage(new Uri(partida.Bot.Imatge));
+            imgPerfilUsuari.ImageSource = new BitmapImage(new Uri(partida.Usuari.ImatgePerfil));
         }
         //Mètodes
         /// <summary>

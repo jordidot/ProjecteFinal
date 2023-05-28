@@ -6,8 +6,46 @@
     <members>
         <member name="T:Principal.Administracio">
             <summary>
+            Finestra Administració
+            </summary>
+            <summary>
             Administracio
             </summary>
+        </member>
+        <member name="P:Principal.Administracio.Administrador">
+            <summary>
+            Usuari Administrador
+            </summary>
+        </member>
+        <member name="P:Principal.Administracio.TotsUsuaris">
+            <summary>
+            Tots els usuaris
+            </summary>
+        </member>
+        <member name="P:Principal.Administracio.TotesCartes">
+            <summary>
+            Totes les cartes
+            </summary>
+        </member>
+        <member name="P:Principal.Administracio.TotesPartides">
+            <summary>
+            Totes les partides
+            </summary>
+        </member>
+        <member name="P:Principal.Administracio.TotesHabilitats">
+            <summary>
+            Totes les habilitats
+            </summary>
+        </member>
+        <member name="M:Principal.Administracio.#ctor(Principal.Negoci.Usuari,Principal.Negoci.Cartes,Principal.Negoci.Partides,Principal.Negoci.Habilitats,Principal.Negoci.Usuaris)">
+            <summary>
+            Constrcutor Administració
+            </summary>
+            <param name="usuari"></param>
+            <param name="cartes"></param>
+            <param name="partides"></param>
+            <param name="habilitats"></param>
+            <param name="usuaris"></param>
         </member>
         <member name="M:Principal.Administracio.windowsAdministracio_Closing(System.Object,System.ComponentModel.CancelEventArgs)">
             <summary>
@@ -184,8 +222,56 @@
         </member>
         <member name="T:Principal.AfegirUnNouMazo">
             <summary>
+            Finestra Afegir un nou mazo
+            </summary>
+            <summary>
             AfegirUnNouMazo
             </summary>
+        </member>
+        <member name="P:Principal.AfegirUnNouMazo.Contador">
+            <summary>
+            Contador de cartes afegides
+            </summary>
+        </member>
+        <member name="P:Principal.AfegirUnNouMazo.Usuari">
+            <summary>
+            Usauri logejat
+            </summary>
+        </member>
+        <member name="P:Principal.AfegirUnNouMazo.CartesMazoNou">
+            <summary>
+            Cartes del mazo que s'esta creant
+            </summary>
+        </member>
+        <member name="P:Principal.AfegirUnNouMazo.TotesCartes">
+            <summary>
+            Totes les cartes
+            </summary>
+        </member>
+        <member name="P:Principal.AfegirUnNouMazo.TotsUsuaris">
+            <summary>
+            Tots els usuaris
+            </summary>
+        </member>
+        <member name="P:Principal.AfegirUnNouMazo.TotesPartides">
+            <summary>
+            Totes les partides
+            </summary>
+        </member>
+        <member name="P:Principal.AfegirUnNouMazo.TotesHabilitats">
+            <summary>
+            Totes les habilitats
+            </summary>
+        </member>
+        <member name="M:Principal.AfegirUnNouMazo.#ctor(Principal.Negoci.Usuari,Principal.Negoci.Cartes,Principal.Negoci.Habilitats,Principal.Negoci.Partides,Principal.Negoci.Usuaris)">
+            <summary>
+            Constructor Finestra d'Afegir nou mazo
+            </summary>
+            <param name="usuari"></param>
+            <param name="totesCartes"></param>
+            <param name="habilitats"></param>
+            <param name="partides"></param>
+            <param name="usuaris"></param>
         </member>
         <member name="M:Principal.AfegirUnNouMazo.stckPanelCartes_Loaded(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
@@ -227,8 +313,71 @@
         </member>
         <member name="T:Principal.CampBatalla">
             <summary>
+            Finestra Camp de batalla
+            </summary>
+            <summary>
             CampBatalla
             </summary>
+        </member>
+        <member name="P:Principal.CampBatalla.CartaSeleccionadaUsuari">
+            <summary>
+            Carta Seleccionada de l'Usuari
+            </summary>
+        </member>
+        <member name="P:Principal.CampBatalla.CartaSeleccionadaBot">
+            <summary>
+            Carta Seleccionada del Bot
+            </summary>
+        </member>
+        <member name="P:Principal.CampBatalla.IdCartaSelecciondaBot">
+            <summary>
+            Id de la carta seleccionada del Bot
+            </summary>
+        </member>
+        <member name="P:Principal.CampBatalla.HabilitatsSeleccionades">
+            <summary>
+            Habilitats seleccionades
+            </summary>
+        </member>
+        <member name="P:Principal.CampBatalla.Turnos">
+            <summary>
+            Torns de la partida
+            </summary>
+        </member>
+        <member name="P:Principal.CampBatalla.HaComençatPartida">
+            <summary>
+            Boolea si ha clickat en començar partida.
+            </summary>
+        </member>
+        <member name="P:Principal.CampBatalla.TotesCartes">
+            <summary>
+            Totes les cartes
+            </summary>
+        </member>
+        <member name="P:Principal.CampBatalla.TotsUsuaris">
+            <summary>
+            Tots els usuaris
+            </summary>
+        </member>
+        <member name="P:Principal.CampBatalla.TotesPartides">
+            <summary>
+            Totes les partides
+            </summary>
+        </member>
+        <member name="P:Principal.CampBatalla.TotesHabilitats">
+            <summary>
+            Totes les habilitats
+            </summary>
+        </member>
+        <member name="M:Principal.CampBatalla.#ctor(Principal.Negoci.Partida,Principal.Negoci.Cartes,Principal.Negoci.Usuaris,Principal.Negoci.Partides,Principal.Negoci.Habilitats)">
+            <summary>
+            Constructor del camp de batalla
+            </summary>
+            <param name="partida"></param>
+            <param name="cartes"></param>
+            <param name="usuaris"></param>
+            <param name="partides"></param>
+            <param name="habilitats"></param>
         </member>
         <member name="M:Principal.CampBatalla.campBatallaWindow_Closing(System.Object,System.ComponentModel.CancelEventArgs)">
             <summary>
@@ -347,6 +496,26 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:Principal.Connexions.CartesDB">
+            <summary>
+            Classe CartesDB
+            </summary>
+        </member>
+        <member name="M:Principal.Connexions.CartesDB.#ctor">
+            <summary>
+            Constructor cartes
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.CartesDB.Cartes">
+            <summary>
+            Connexio a la base de dades
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.CartesDB.ConnexioBD">
+            <summary>
+            Connexio a la base de dades
+            </summary>
+        </member>
         <member name="M:Principal.Connexions.CartesDB.AfegirCartaBD(Principal.Negoci.Carta)">
             <summary>
             Métode de la classe CartesDB que afegeix una carta a la taula cartes de la BD.
@@ -371,11 +540,61 @@
             </summary>
             <returns>Retorna una classe Cartes amb una llista de cartes.</returns>
         </member>
+        <member name="T:Principal.Connexions.ConnexioDB">
+            <summary>
+            Classe ConnexioDB
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.ConnexioDB.NomBD">
+            <summary>
+            Nom de la Base de dades
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.ConnexioDB.UsuariBD">
+            <summary>
+            Nom de l'usuari de la BD
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.ConnexioDB.ContrasenyaBD">
+            <summary>
+            Contrasenya de l'usuari de la BD
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.ConnexioDB.DireccioHost">
+            <summary>
+            Ip o direccio del host de la BD
+            </summary>
+        </member>
+        <member name="M:Principal.Connexions.ConnexioDB.#ctor">
+            <summary>
+            Constructor Connexio DB
+            </summary>
+        </member>
         <member name="M:Principal.Connexions.ConnexioDB.Connectar">
             <summary>
             Mètode de la classe ConnexioBD que obre la conexió amb la base de dades.
             </summary>
             <returns>Retorna un MYsqlConnection amb la connexió oberta.</returns>
+        </member>
+        <member name="T:Principal.Connexions.HabilitatsDB">
+            <summary>
+            Classe Habilitats
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.HabilitatsDB.Habilitats">
+            <summary>
+            Llista d'habilitats
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.HabilitatsDB.ConnexioBD">
+            <summary>
+            Connexio a la base de dades
+            </summary>
+        </member>
+        <member name="M:Principal.Connexions.HabilitatsDB.#ctor">
+            <summary>
+            Constrcutor habilitats
+            </summary>
         </member>
         <member name="M:Principal.Connexions.HabilitatsDB.AfegirHabilitatBD(Principal.Negoci.Habilitat)">
             <summary>
@@ -393,13 +612,44 @@
             <summary>
             Mètode de la classe HabilitatsDB que modifica moltes habilitats a la base de dades.
             </summary>
-            <param name="habilitat">Classe Habilitats que té una llista amb totes les habilitats.</param>
+            <param name="habilitats">Classe Habilitats que té una llista amb totes les habilitats.</param>
         </member>
         <member name="M:Principal.Connexions.HabilitatsDB.RecuperarHabilitats">
             <summary>
             Mètode de la classe HabilitatsDB que recupera totes les habilitats de la base de dades.
             </summary>
             <returns>Retorna una classe Habilitats abm una llista de totes les habilitats.</returns>
+        </member>
+        <member name="T:Principal.Connexions.MazosDB">
+            <summary>
+            Classe MazosDB
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.MazosDB.Quantitat">
+            <summary>
+            Quantitat de Mazos
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.MazosDB.Mazos">
+            <summary>
+            Llista de mazos
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.MazosDB.ConnexioBD">
+            <summary>
+            Connexio a la base de dades
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.MazosDB.TotesCartes">
+            <summary>
+            Llista de tote les cartes
+            </summary>
+        </member>
+        <member name="M:Principal.Connexions.MazosDB.#ctor(Principal.Negoci.Cartes)">
+            <summary>
+            Constrcutor Mazos que rep cartes.
+            </summary>
+            <param name="cartes">Classe Cartes amb una llista de cartes amb tota l'informació d'aquestes.</param>
         </member>
         <member name="M:Principal.Connexions.MazosDB.AfegirMazoBD(Principal.Negoci.Mazo)">
             <summary>
@@ -417,7 +667,7 @@
             <summary>
             Mètode de la classe MazosDB que eliminar un mazo a la base de dades per l'id del mazo.
             </summary>
-            <param name="usuari">Classe Mazo que conté informació d'aquest.</param>
+            <param name="mazo">Classe Mazo que conté informació d'aquest.</param>
         </member>
         <member name="M:Principal.Connexions.MazosDB.RecuperarMazos(Principal.Negoci.Usuari)">
             <summary>
@@ -425,6 +675,44 @@
             </summary>
             <param name="usuari">Classe Usuari que conté les dades d'aquest.</param>
             <returns>Retorn un classe Mazo amb l'informació d'aquest.</returns>
+        </member>
+        <member name="T:Principal.Connexions.PartidesDB">
+            <summary>
+            Classe PartidesDB
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.PartidesDB.Quantitat">
+            <summary>
+            Quantiat de Partides
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.PartidesDB.ConnexioBD">
+            <summary>
+            Connexio a la base de dades
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.PartidesDB.TotesCartes">
+            <summary>
+            Llista de totes les cartes
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.PartidesDB.TotesPartides">
+            <summary>
+            Llista de Totes les partides
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.PartidesDB.TotsUsuaris">
+            <summary>
+            Llista de tots els Usuaris
+            </summary>
+        </member>
+        <member name="M:Principal.Connexions.PartidesDB.#ctor(Principal.Negoci.Cartes,Principal.Negoci.Partida,Principal.Negoci.Usuaris)">
+            <summary>
+            Constructor Partides DB
+            </summary>
+            <param name="cartes">Llista de cartes</param>
+            <param name="partida">Partida</param>
+            <param name="usuaris">Llista d'uusaris</param>
         </member>
         <member name="M:Principal.Connexions.PartidesDB.AfegirPartidaBD(Principal.Negoci.Partida)">
             <summary>
@@ -443,6 +731,31 @@
             Mètode de la classe PartidesDB que recupera les partides de la base de dades.
             </summary>
             <returns>Retorna una llista de Partida amb l'informació d'aquestes.</returns>
+        </member>
+        <member name="T:Principal.Connexions.UsuarisDB">
+            <summary>
+            Classe Usuaris DB
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.UsuarisDB.QuantitatTotal">
+            <summary>
+            Quantitat d'usuaris
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.UsuarisDB.Usuaris">
+            <summary>
+            Llista de tots els usuaris
+            </summary>
+        </member>
+        <member name="P:Principal.Connexions.UsuarisDB.ConnexioBD">
+            <summary>
+            Connexio a la base de dades
+            </summary>
+        </member>
+        <member name="M:Principal.Connexions.UsuarisDB.#ctor">
+            <summary>
+            Constructor d'Usuaris DB
+            </summary>
         </member>
         <member name="M:Principal.Connexions.UsuarisDB.AfegirUsuariBD(Principal.Negoci.Usuari)">
             <summary>
@@ -481,8 +794,53 @@
         </member>
         <member name="T:Principal.Home">
             <summary>
+            Finestra home
+            </summary>
+            <summary>
             Home
             </summary>
+        </member>
+        <member name="P:Principal.Home.Usuari">
+            <summary>
+            Usuari logejat.
+            </summary>
+        </member>
+        <member name="P:Principal.Home.TotesCartes">
+            <summary>
+            Totes les cartes
+            </summary>
+        </member>
+        <member name="P:Principal.Home.TotesHabilitats">
+            <summary>
+            Totes les habilitats
+            </summary>
+        </member>
+        <member name="P:Principal.Home.TotesPartides">
+            <summary>
+            Totes les partides
+            </summary>
+        </member>
+        <member name="P:Principal.Home.TotsUsuaris">
+            <summary>
+            Tots els usuaris
+            </summary>
+        </member>
+        <member name="M:Principal.Home.#ctor(Principal.Negoci.Usuari,Principal.Negoci.Cartes)">
+            <summary>
+            Constrcutor del Home 2 parametres
+            </summary>
+            <param name="usuari"></param>
+            <param name="cartes"></param>
+        </member>
+        <member name="M:Principal.Home.#ctor(Principal.Negoci.Usuari,Principal.Negoci.Cartes,Principal.Negoci.Habilitats,Principal.Negoci.Partides,Principal.Negoci.Usuaris)">
+            <summary>
+            Constructor del Home ple.
+            </summary>
+            <param name="usuari"></param>
+            <param name="cartes"></param>
+            <param name="habilitats"></param>
+            <param name="partides"></param>
+            <param name="usuaris"></param>
         </member>
         <member name="M:Principal.Home.BtnModificarAliasBefore_Click(System.Object,System.Windows.RoutedEventArgs)">
             <summary>
@@ -616,9 +974,72 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:Principal.PartidaLLista">
+            <summary>
+            Classe per recollir dades en el datagrid de les partides de l'usuari.
+            </summary>
+        </member>
+        <member name="P:Principal.PartidaLLista.Bot">
+            <summary>
+            Bot contra el que competeix.
+            </summary>
+        </member>
+        <member name="P:Principal.PartidaLLista.Usuari">
+            <summary>
+            Usuari contra el que competeix
+            </summary>
+        </member>
+        <member name="P:Principal.PartidaLLista.Resultat">
+            <summary>
+            Resultats de la partida
+            </summary>
+        </member>
+        <member name="P:Principal.PartidaLLista.Punts">
+            <summary>
+            Punts de la partida
+            </summary>
+        </member>
+        <member name="M:Principal.PartidaLLista.#ctor">
+            <summary>
+            Constrcutor de partida llista
+            </summary>
+        </member>
         <member name="T:Principal.MainWindow">
             <summary>
+            Finestra login
+            </summary>
+            <summary>
             MainWindow
+            </summary>
+        </member>
+        <member name="P:Principal.MainWindow.Usuaris">
+            <summary>
+            Llista d'usuaris
+            </summary>
+        </member>
+        <member name="P:Principal.MainWindow.Cartes">
+            <summary>
+            Totes les cartes
+            </summary>
+        </member>
+        <member name="P:Principal.MainWindow.Mazos">
+            <summary>
+            Tots els mazos
+            </summary>
+        </member>
+        <member name="P:Principal.MainWindow.TotesPartides">
+            <summary>
+            Totes les partides
+            </summary>
+        </member>
+        <member name="P:Principal.MainWindow.TotsUsuaris">
+            <summary>
+            Tots els usuaris
+            </summary>
+        </member>
+        <member name="M:Principal.MainWindow.#ctor">
+            <summary>
+            Constrcutor del login
             </summary>
         </member>
         <member name="M:Principal.MainWindow.BtnRegistrarmeLogin_Click(System.Object,System.Windows.RoutedEventArgs)">
@@ -640,6 +1061,37 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:Principal.Negoci.Bot">
+            <summary>
+            Classe Bot
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Bot.Imatge">
+            <summary>
+            Imatge del bot
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Bot.Nom">
+            <summary>
+            Nom del bot
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Bot.Cartes">
+            <summary>
+            Cartes del bot
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Bot.TotesCartes">
+            <summary>
+            Llista de totes les cartes.
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Bot.#ctor(Principal.Negoci.Cartes)">
+            <summary>
+            Constructor Bot
+            </summary>
+            <param name="cartes"></param>
+        </member>
         <member name="M:Principal.Negoci.Bot.GenerarCartes(Principal.Negoci.Cartes)">
             <summary>
             Mètode de la classe Bot que genera les cartes d'aquest de manera random.
@@ -655,6 +1107,72 @@
             <summary>
             Mètode de la classe Bot que genera el nom d'aquest.
             </summary>
+        </member>
+        <member name="T:Principal.Negoci.Carta">
+            <summary>
+            Classe Carta
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Carta.Id">
+            <summary>
+            Id de la carta
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Carta.Nom">
+            <summary>
+            Nom de la carta
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Carta.Imatge">
+            <summary>
+            Imatge de la carta
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Carta.Descripcio">
+            <summary>
+            Descripcio de la carta
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Carta.Habilitats">
+            <summary>
+            Llista d'habilitats de la carta.
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Carta.#ctor">
+            <summary>
+            Constructor Carta
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Carta.#ctor(System.Int32,System.String,System.String,System.String,Principal.Negoci.Habilitats)">
+            <summary>
+            Constructor Carta
+            </summary>
+            <param name="id"></param>
+            <param name="nom"></param>
+            <param name="descripcio"></param>
+            <param name="imatge"></param>
+            <param name="habilitats"></param>
+        </member>
+        <member name="T:Principal.Negoci.Cartes">
+            <summary>
+            Classe Cartes
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Cartes.LlistaCartes">
+            <summary>
+            Llista de Cartes
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Cartes.#ctor">
+            <summary>
+            Constructor Cartes
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Cartes.#ctor(System.Collections.Generic.List{Principal.Negoci.Carta})">
+            <summary>
+            Constructor Cartes
+            </summary>
+            <param name="llistacartes"></param>
         </member>
         <member name="M:Principal.Negoci.Cartes.AfegirCarta(Principal.Negoci.Carta)">
             <summary>
@@ -680,6 +1198,72 @@
             </summary>
             <returns>Retorna una classe Cartes amb una llista de totes les cartes recuperades de la BD.</returns>
         </member>
+        <member name="T:Principal.Negoci.Habilitat">
+            <summary>
+            Classe Habilitat
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Habilitat.Id">
+            <summary>
+            Id de l'habilitat
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Habilitat.Cooldown">
+            <summary>
+            Cooldown de l'habilitat
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Habilitat.Dany">
+            <summary>
+            Dany de l'habilitat
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Habilitat.Descripcio">
+            <summary>
+            Descripcio de l'habilitat
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Habilitat.Nom">
+            <summary>
+            Nom de l'habilitat
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Habilitat.#ctor">
+            <summary>
+            Constructor Habilitat
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Habilitat.#ctor(System.Int32,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Constructor Habilitat
+            </summary>
+            <param name="id"></param>
+            <param name="cooldown"></param>
+            <param name="dany"></param>
+            <param name="descripcio"></param>
+            <param name="nom"></param>
+        </member>
+        <member name="T:Principal.Negoci.Habilitats">
+            <summary>
+            Classe Habilitats
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Habilitats.LListahabilitats">
+            <summary>
+            Llista d'habilitats
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Habilitats.#ctor">
+            <summary>
+            Constructor Habilitats
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Habilitats.#ctor(System.Collections.Generic.List{Principal.Negoci.Habilitat})">
+            <summary>
+            Constructor Habilitats
+            </summary>
+            <param name="list"></param>
+        </member>
         <member name="M:Principal.Negoci.Habilitats.AfegirHabilitat(Principal.Negoci.Habilitat)">
             <summary>
             Mètode de la classe Habilitats que crida a la classe HabilitatsDB per afegir una habilitat a la base de dades.
@@ -704,12 +1288,77 @@
             </summary>
             <returns>Retorna una llista d'Habilitat amb imformació de la base de dades.</returns>
         </member>
+        <member name="T:Principal.Negoci.Mazo">
+            <summary>
+            Classe Mazo
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Mazo.Id">
+            <summary>
+            Id del mazo
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Mazo.Nom">
+            <summary>
+            Nom del mazo
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Mazo.Cartes">
+            <summary>
+            Llista de Cartes Mazo
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Mazo.Usuari">
+            <summary>
+            Usuari dle Mazo
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Mazo.#ctor(System.Int32,Principal.Negoci.Cartes,System.String,Principal.Negoci.Usuari)">
+            <summary>
+            Constructor Mazo
+            </summary>
+            <param name="id"></param>
+            <param name="cartes"></param>
+            <param name="nom"></param>
+            <param name="usuari"></param>
+        </member>
+        <member name="T:Principal.Negoci.Mazos">
+            <summary>
+            Classe Mazos
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Mazos.LlistaMazos">
+            <summary>
+            LLista de Mazos
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Mazos.TotesCartes">
+            <summary>
+            Totes les cartes
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Mazos.#ctor">
+            <summary>
+            Constructor Mazos
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Mazos.#ctor(Principal.Negoci.Cartes)">
+            <summary>
+            Constructor Mazos
+            </summary>
+            <param name="cartes"></param>
+        </member>
+        <member name="M:Principal.Negoci.Mazos.#ctor(System.Collections.Generic.List{Principal.Negoci.Mazo})">
+            <summary>
+            Constructor amb llista de Mazos
+            </summary>
+            <param name="llistaMazos"></param>
+        </member>
         <member name="M:Principal.Negoci.Mazos.AfegirMazoBD(Principal.Negoci.Mazo)">
             <summary>
             Mètode de la classe Mazos que comprova si l'usuari té el mateix mazo i si el nom del mazo es correcte si es així crida a la classe MazosDB per afegir el mazo a la base de dades.
             </summary>
-            <param name="usuari">Classe Usuari amb l'informació d'aquest.</param>
-            <param name="m">Classe Mazo amb l'informació d'aquest.</param>
+            <param name="mazo">Classe Mazo amb l'informació d'aquest.</param>
         </member>
         <member name="M:Principal.Negoci.Mazos.EliminarMazo(Principal.Negoci.Mazo)">
             <summary>
@@ -737,6 +1386,83 @@
             <param name="cartes">Classe Cartes que conté una llista amb totes les cartes.</param>
             <returns>Retorna una classe Mazos amb el Mazo de l'usuari.</returns>
         </member>
+        <member name="T:Principal.Negoci.Partida">
+            <summary>
+            Classe Partida
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Partida.Id">
+            <summary>
+            Id partida
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Partida.BotVida">
+            <summary>
+            Vida del bot partida
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Partida.UsuariVida">
+            <summary>
+            Vida Usuari Partida
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Partida.EstatPartida">
+            <summary>
+            Resultat de la partida
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Partida.Bot">
+            <summary>
+            Bot de partida
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Partida.Usuari">
+            <summary>
+            Usuari logejat
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Partida.#ctor(System.Int32,Principal.Negoci.Bot,System.Int32,Principal.Negoci.Usuari,System.Int32,System.String)">
+            <summary>
+            Constructor Partida
+            </summary>
+            <param name="id"></param>
+            <param name="bot"></param>
+            <param name="botVida"></param>
+            <param name="usuari"></param>
+            <param name="usuariVida"></param>
+            <param name="estatPartida"></param>
+        </member>
+        <member name="T:Principal.Negoci.Partides">
+            <summary>
+            Classe Partides
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Partides.Quantitat">
+            <summary>
+            Quantitat de partides
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Partides.LlistaPartides">
+            <summary>
+            Llista de partides
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Partides.TotesCartes">
+            <summary>
+            Totes les cartes de Partides
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Partides.TotsUsuaris">
+            <summary>
+            Tots els usuaris de Partides
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Partides.#ctor(Principal.Negoci.Usuaris)">
+            <summary>
+            Constructor Partides
+            </summary>
+            <param name="usuaris"></param>
+        </member>
         <member name="M:Principal.Negoci.Partides.AfegirPartida(Principal.Negoci.Cartes,Principal.Negoci.Partida)">
             <summary>
             Mètode de la classe Partides que crida a la classe PartidesDB per afegir una partida a la base de dades.
@@ -759,11 +1485,106 @@
             <param name="cartes">Classe Cartes que conté una llista de Carta amb tota l'informació d'aquestes.</param>
             <returns></returns>
         </member>
+        <member name="T:Principal.Negoci.Usuari">
+            <summary>
+            Classe Usuari
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Usuari.Id">
+            <summary>
+            Id usuari
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Usuari.Alias">
+            <summary>
+            Alias de l'Usuari
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Usuari.Contrasenya">
+            <summary>
+            Contrasenya de l'Usuari
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Usuari.NomUsuari">
+            <summary>
+            Nom de compte Usuari
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Usuari.Mazos">
+            <summary>
+            Cartes de l'Usuari
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Usuari.Partides">
+            <summary>
+            Partides de l'Usuari
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Usuari.Punts">
+            <summary>
+            Punts de l'Usuari.
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Usuari.ImatgePerfil">
+            <summary>
+            Imatge de l'Usuari
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Usuari.EsAdministrador">
+            <summary>
+            Es administrador de l'Usuari.
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Usuari.#ctor">
+            <summary>
+            Constructor buit de Usuari.
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Usuari.#ctor(System.Int32,System.String,System.String,System.String,Principal.Negoci.Mazos,Principal.Negoci.Partides,System.Int32,System.String,System.Int32)">
+            <summary>
+            Constructor Usuari ple.
+            </summary>
+            <param name="id"></param>
+            <param name="alias"></param>
+            <param name="contrasenya"></param>
+            <param name="nomUsuari"></param>
+            <param name="mazos"></param>
+            <param name="partides"></param>
+            <param name="punts"></param>
+            <param name="imatgePerfil"></param>
+            <param name="esAdministrador"></param>
+        </member>
         <member name="M:Principal.Negoci.Usuari.CambiarImatge(Principal.Negoci.Usuari)">
             <summary>
             Mètode de la classe Usuari que crida a la classe UsuarisDB per canviar l'imatge del usuari.
             </summary>
             <param name="usuari">Classe Usuari que conté l'informació d'aquest.</param>
+        </member>
+        <member name="T:Principal.Negoci.Usuaris">
+            <summary>
+            Classe Usuaris
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Usuaris.Llistausuaris">
+            <summary>
+            LLista Usuaris
+            </summary>
+        </member>
+        <member name="P:Principal.Negoci.Usuaris.QuantitatUsuaris">
+            <summary>
+            Quantitat Usuaris
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Usuaris.#ctor">
+            <summary>
+            Constructor Usuaris buit.
+            </summary>
+        </member>
+        <member name="M:Principal.Negoci.Usuaris.#ctor(System.Collections.Generic.List{Principal.Negoci.Usuari})">
+            <summary>
+            Constructor Usuaris ple.
+            </summary>
+            <param name="llistaUsuaris"></param>
         </member>
         <member name="M:Principal.Negoci.Usuaris.AfegirUsuari(Principal.Negoci.Usuari)">
             <summary>
@@ -797,7 +1618,15 @@
         </member>
         <member name="T:Principal.Registre">
             <summary>
+            Finestra Registre
+            </summary>
+            <summary>
             Registre
+            </summary>
+        </member>
+        <member name="M:Principal.Registre.#ctor">
+            <summary>
+            Constrcutor registre
             </summary>
         </member>
         <member name="M:Principal.Registre.BtntornarLogin_Click(System.Object,System.Windows.RoutedEventArgs)">

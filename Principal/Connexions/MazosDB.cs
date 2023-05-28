@@ -10,14 +10,33 @@ using System.CodeDom;
 
 namespace Principal.Connexions
 {
+    /// <summary>
+    /// Classe MazosDB
+    /// </summary>
     public class MazosDB
     {
         //Atributs
+        /// <summary>
+        /// Quantitat de Mazos
+        /// </summary>
         public int Quantitat { get; set; }
+        /// <summary>
+        /// Llista de mazos
+        /// </summary>
         public Mazos Mazos { get; set; }
+        /// <summary>
+        /// Connexio a la base de dades
+        /// </summary>
         public ConnexioDB ConnexioBD { get; set; }
+        /// <summary>
+        /// Llista de tote les cartes
+        /// </summary>
         public Cartes TotesCartes { get; set; }
         //Constructors
+        /// <summary>
+        /// Constrcutor Mazos que rep cartes.
+        /// </summary>
+        /// <param name="cartes">Classe Cartes amb una llista de cartes amb tota l'informació d'aquestes.</param>
         public MazosDB(Cartes cartes)
         {
             this.TotesCartes = cartes;
@@ -72,7 +91,7 @@ namespace Principal.Connexions
         /// <summary>
         /// Mètode de la classe MazosDB que eliminar un mazo a la base de dades per l'id del mazo.
         /// </summary>
-        /// <param name="usuari">Classe Mazo que conté informació d'aquest.</param>
+        /// <param name="mazo">Classe Mazo que conté informació d'aquest.</param>
         public void EliminarMazoBD(Mazo mazo)
         {
             try

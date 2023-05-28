@@ -8,15 +8,28 @@ using System.Windows;
 
 namespace Principal.Negoci
 {
+    /// <summary>
+    /// Classe Habilitats
+    /// </summary>
     public class Habilitats
     {
         //Atributs i propietats
+        /// <summary>
+        /// Llista d'habilitats
+        /// </summary>
         public List<Habilitat> LListahabilitats { get; set; }
         //Constructors
+        /// <summary>
+        /// Constructor Habilitats
+        /// </summary>
         public Habilitats()
         {
             LListahabilitats = new List<Habilitat>();
         }
+        /// <summary>
+        /// Constructor Habilitats
+        /// </summary>
+        /// <param name="list"></param>
         public Habilitats(List<Habilitat> list)
         {
             this.LListahabilitats = list;

@@ -17,15 +17,36 @@ using System.Windows.Shapes;
 
 namespace Principal
 {
+    /// <summary>
+    /// Finestra login
+    /// </summary>
     public partial class MainWindow : Window
     {
         //Atributs i propietats
+        /// <summary>
+        /// Llista d'usuaris
+        /// </summary>
         public Usuaris Usuaris { get; set; }
+        /// <summary>
+        /// Totes les cartes
+        /// </summary>
         public Cartes Cartes { get; set; }
+        /// <summary>
+        /// Tots els mazos
+        /// </summary>
         public Mazos Mazos { get; set; }
+        /// <summary>
+        /// Totes les partides
+        /// </summary>
         public Partides TotesPartides { get; set; }
+        /// <summary>
+        /// Tots els usuaris
+        /// </summary>
         public Usuaris TotsUsuaris { get; set; }
         //Constructors
+        /// <summary>
+        /// Constrcutor del login
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();

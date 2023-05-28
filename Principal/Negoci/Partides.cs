@@ -7,14 +7,33 @@ using System.Threading.Tasks;
 
 namespace Principal.Negoci
 {
+    /// <summary>
+    /// Classe Partides
+    /// </summary>
     public class Partides
     {
         //Atributs i propietats
+        /// <summary>
+        /// Quantitat de partides
+        /// </summary>
         public int Quantitat { get; set; }
+        /// <summary>
+        /// Llista de partides
+        /// </summary>
         public List<Partida> LlistaPartides { get; set; }
+        /// <summary>
+        /// Totes les cartes de Partides
+        /// </summary>
         public Cartes TotesCartes { get; set; }
+        /// <summary>
+        /// Tots els usuaris de Partides
+        /// </summary>
         public Usuaris TotsUsuaris { get; set; }
         //Constructors  
+        /// <summary>
+        /// Constructor Partides
+        /// </summary>
+        /// <param name="usuaris"></param>
         public Partides(Usuaris usuaris)
         {
             this.TotsUsuaris = usuaris;

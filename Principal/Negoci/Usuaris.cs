@@ -7,16 +7,32 @@ using System.Threading.Tasks;
 
 namespace Principal.Negoci
 {
+    /// <summary>
+    /// Classe Usuaris
+    /// </summary>
     public class Usuaris
     {
         //Atributs
+        /// <summary>
+        /// LLista Usuaris
+        /// </summary>
         public List<Usuari> Llistausuaris { get; set; }
+        /// <summary>
+        /// Quantitat Usuaris
+        /// </summary>
         public int QuantitatUsuaris { get; set; }
         //Constructors
+        /// <summary>
+        /// Constructor Usuaris buit.
+        /// </summary>
         public Usuaris()
         {
             Llistausuaris = new List<Usuari>();
         }
+        /// <summary>
+        /// Constructor Usuaris ple.
+        /// </summary>
+        /// <param name="llistaUsuaris"></param>
         public Usuaris(List<Usuari> llistaUsuaris)
         {
             Llistausuaris = llistaUsuaris;

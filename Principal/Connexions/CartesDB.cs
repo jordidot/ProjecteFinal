@@ -9,6 +9,9 @@ using MySqlConnector;
 
 namespace Principal.Connexions
 {
+    /// <summary>
+    /// Classe CartesDB
+    /// </summary>
     public class CartesDB
     {
         //Atributs
@@ -17,12 +20,21 @@ namespace Principal.Connexions
 
         //Constructors
         //Inicialitzo la connexio a la base de dades.
+        /// <summary>
+        /// Constructor cartes
+        /// </summary>
         public CartesDB()
         {
             connexioBD = new ConnexioDB();
             cartes = new Cartes();
         }
+        /// <summary>
+        /// Connexio a la base de dades
+        /// </summary>
         public Cartes Cartes { get { return cartes; } set { this.cartes = value; } }
+        /// <summary>
+        /// Connexio a la base de dades
+        /// </summary>
         public ConnexioDB ConnexioBD { get { return connexioBD; } set { this.connexioBD = value; } }
 
 
